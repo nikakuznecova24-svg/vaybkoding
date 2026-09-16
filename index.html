@@ -561,31 +561,31 @@
             <div class="glass-panel rounded-[3rem] p-8 md:p-12 border border-white shadow-xl relative">
                 <div id="calcChips" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                     <button type="button" class="calc-chip w-full flex items-center gap-3 text-xs px-3 py-2 bg-white rounded-xl border border-serene-200 focus:outline-none text-left" data-type="Лендинг / Сайт" data-price="15000" onclick="toggleCalcItem(this)">
-                        <span class="w-4 h-4 shrink-0 flex items-center justify-center"><i data-lucide="check" class="calc-check hidden w-4 h-4 text-accent-terracotta"></i></span>
+                        <span class="calc-dot w-4 h-4 rounded-full border border-serene-200 shrink-0 flex items-center justify-center transition-colors"><i data-lucide="check" class="calc-check hidden w-2.5 h-2.5 text-white"></i></span>
                         <span class="font-medium text-serene-800">лендинг / сайт</span>
                     </button>
                     <button type="button" class="calc-chip w-full flex items-center gap-3 text-xs px-3 py-2 bg-white rounded-xl border border-serene-200 focus:outline-none text-left" data-type="Сервис / интерактивный лид-магнит" data-price="10000" onclick="toggleCalcItem(this)">
-                        <span class="w-4 h-4 shrink-0 flex items-center justify-center"><i data-lucide="check" class="calc-check hidden w-4 h-4 text-accent-terracotta"></i></span>
+                        <span class="calc-dot w-4 h-4 rounded-full border border-serene-200 shrink-0 flex items-center justify-center transition-colors"><i data-lucide="check" class="calc-check hidden w-2.5 h-2.5 text-white"></i></span>
                         <span class="font-medium text-serene-800">сервис / лид-магнит</span>
                     </button>
                     <button type="button" class="calc-chip w-full flex items-center gap-3 text-xs px-3 py-2 bg-white rounded-xl border border-serene-200 focus:outline-none text-left" data-type="Платформа для обучения" data-price="25000" onclick="toggleCalcItem(this)">
-                        <span class="w-4 h-4 shrink-0 flex items-center justify-center"><i data-lucide="check" class="calc-check hidden w-4 h-4 text-accent-terracotta"></i></span>
+                        <span class="calc-dot w-4 h-4 rounded-full border border-serene-200 shrink-0 flex items-center justify-center transition-colors"><i data-lucide="check" class="calc-check hidden w-2.5 h-2.5 text-white"></i></span>
                         <span class="font-medium text-serene-800">платформа для обучения</span>
                     </button>
                     <button type="button" class="calc-chip w-full flex items-center gap-3 text-xs px-3 py-2 bg-white rounded-xl border border-serene-200 focus:outline-none text-left" data-type="ИИ-агент" data-price="20000" onclick="toggleCalcItem(this)">
-                        <span class="w-4 h-4 shrink-0 flex items-center justify-center"><i data-lucide="check" class="calc-check hidden w-4 h-4 text-accent-terracotta"></i></span>
+                        <span class="calc-dot w-4 h-4 rounded-full border border-serene-200 shrink-0 flex items-center justify-center transition-colors"><i data-lucide="check" class="calc-check hidden w-2.5 h-2.5 text-white"></i></span>
                         <span class="font-medium text-serene-800">ии-агент</span>
                     </button>
                     <button type="button" class="calc-chip w-full flex items-center gap-3 text-xs px-3 py-2 bg-white rounded-xl border border-serene-200 focus:outline-none text-left" data-type="Воронка в Telegram" data-price="25000" onclick="toggleCalcItem(this)">
-                        <span class="w-4 h-4 shrink-0 flex items-center justify-center"><i data-lucide="check" class="calc-check hidden w-4 h-4 text-accent-terracotta"></i></span>
+                        <span class="calc-dot w-4 h-4 rounded-full border border-serene-200 shrink-0 flex items-center justify-center transition-colors"><i data-lucide="check" class="calc-check hidden w-2.5 h-2.5 text-white"></i></span>
                         <span class="font-medium text-serene-800">воронка в telegram</span>
                     </button>
                     <button type="button" class="calc-chip w-full flex items-center gap-3 text-xs px-3 py-2 bg-white rounded-xl border border-serene-200 focus:outline-none text-left" data-type="Мини-апп" data-price="15000" onclick="toggleCalcItem(this)">
-                        <span class="w-4 h-4 shrink-0 flex items-center justify-center"><i data-lucide="check" class="calc-check hidden w-4 h-4 text-accent-terracotta"></i></span>
+                        <span class="calc-dot w-4 h-4 rounded-full border border-serene-200 shrink-0 flex items-center justify-center transition-colors"><i data-lucide="check" class="calc-check hidden w-2.5 h-2.5 text-white"></i></span>
                         <span class="font-medium text-serene-800">мини-апп</span>
                     </button>
                     <button type="button" class="calc-chip w-full flex items-center gap-3 text-xs px-3 py-2 bg-white rounded-xl border border-serene-200 focus:outline-none text-left" data-type="Чат-бот" data-price="15000" onclick="toggleCalcItem(this)">
-                        <span class="w-4 h-4 shrink-0 flex items-center justify-center"><i data-lucide="check" class="calc-check hidden w-4 h-4 text-accent-terracotta"></i></span>
+                        <span class="calc-dot w-4 h-4 rounded-full border border-serene-200 shrink-0 flex items-center justify-center transition-colors"><i data-lucide="check" class="calc-check hidden w-2.5 h-2.5 text-white"></i></span>
                         <span class="font-medium text-serene-800">чат-бот</span>
                     </button>
                 </div>
@@ -1186,10 +1186,15 @@
         const CALC_CHIP_OFF = "calc-chip w-full flex items-center gap-3 text-xs px-3 py-2 bg-white rounded-xl border border-serene-200 focus:outline-none text-left";
         const CALC_CHIP_ON = "calc-chip w-full flex items-center gap-3 text-xs px-3 py-2 bg-accent-terracotta/5 rounded-xl border border-accent-terracotta/25 focus:outline-none text-left";
 
+        const CALC_DOT_OFF = "calc-dot w-4 h-4 rounded-full border border-serene-200 shrink-0 flex items-center justify-center transition-colors";
+        const CALC_DOT_ON = "calc-dot w-4 h-4 rounded-full border border-accent-terracotta bg-accent-terracotta shrink-0 flex items-center justify-center transition-colors";
+
         function toggleCalcItem(btn) {
             const on = btn.dataset.on === '1';
             btn.dataset.on = on ? '0' : '1';
             btn.className = on ? CALC_CHIP_OFF : CALC_CHIP_ON;
+            const dot = btn.querySelector('.calc-dot');
+            if (dot) dot.className = on ? CALC_DOT_OFF : CALC_DOT_ON;
             const check = btn.querySelector('.calc-check');
             if (check) check.classList.toggle('hidden', on);
             updateCalc();
