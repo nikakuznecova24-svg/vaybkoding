@@ -17,9 +17,9 @@
     </script>
     <!-- ================================================================= -->
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
+    <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
+    <link rel="stylesheet" href="assets/styles.css">
+
     <!-- Google Fonts: Plus Jakarta Sans & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,59 +27,6 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'Plus Jakarta Sans', 'sans-serif'],
-                        display: ['Plus Jakarta Sans', 'sans-serif'],
-                    },
-                    colors: {
-                        serene: {
-                            50: '#FAF8F5',
-                            100: '#F5EFE6',
-                            200: '#EAE0D5',
-                            800: '#3D3A36',
-                            900: '#22211F',
-                        },
-                        accent: {
-                            gold: '#D4AF37',
-                            terracotta: '#E07A5F',
-                            sage: '#81B29A',
-                            sunset: '#F4A261'
-                        }
-                    },
-                    animation: {
-                        'float-slow': 'float 8s ease-in-out infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'breathe': 'breathe 10s ease-in-out infinite',
-                        'kenburns': 'kenburns 24s ease-in-out infinite alternate',
-                        'glow-pulse': 'glowPulse 3s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
-                            '50%': { transform: 'translateY(-10px) rotate(1deg)' },
-                        },
-                        breathe: {
-                            '0%, 100%': { transform: 'scale(1)', opacity: '0.15' },
-                            '50%': { transform: 'scale(1.08)', opacity: '0.35' },
-                        },
-                        kenburns: {
-                            '0%': { transform: 'scale(1.15) translate(0, 0)' },
-                            '100%': { transform: 'scale(1.3) translate(-1.5%, -1%)' },
-                        },
-                        glowPulse: {
-                            '0%, 100%': { boxShadow: '0 10px 30px -8px rgba(224,122,95,0.35)' },
-                            '50%': { boxShadow: '0 25px 60px -8px rgba(224,122,95,0.65)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -173,9 +120,19 @@
             opacity: 1;
             transform: translateY(0);
         }
+        /* Click reward pulse on CTA buttons */
+        @keyframes ctaPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.95); }
+            100% { transform: scale(1); }
+        }
+        .cta-pulse {
+            animation: ctaPulse 0.4s ease-out;
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-accent-sunset/20 selection:text-serene-900">
+    <div class="hidden in-view ring-4 ring-accent-terracotta/40 opacity-40 border-2 border-accent-terracotta border-accent-sunset shadow-2xl scale-[1.01] rotate-180"></div>
 
     <!-- Premium Reading Progress Bar -->
     <div class="fixed top-0 left-0 w-full h-1.5 bg-serene-200/50 z-40"></div>
@@ -798,7 +755,7 @@
                                 <span id="briefTypeToggleLabel" class="truncate">выбрать из списка</span>
                                 <i data-lucide="chevron-down" class="w-4 h-4 shrink-0 transition-transform" id="briefTypeToggleChevron"></i>
                             </button>
-                            <div id="briefTypeChips" class="hidden absolute z-20 mt-2 w-full bg-white rounded-xl border border-serene-200 shadow-lg p-2 flex flex-col gap-1 max-h-60 overflow-y-auto">
+                            <div id="briefTypeChips" class="hidden absolute z-20 mt-2 w-full bg-white rounded-xl border border-serene-200 shadow-lg p-2 flex flex-col gap-1 max-h-96 overflow-y-auto">
                                 <button type="button" data-type="Лендинг / Сайт" onclick="pickBriefType(this)" class="brief-chip w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-serene-800 hover:bg-serene-50 transition-all">лендинг / сайт</button>
                                 <button type="button" data-type="Сервис / интерактивный лид-магнит" onclick="pickBriefType(this)" class="brief-chip w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-serene-800 hover:bg-serene-50 transition-all">сервис / лид-магнит</button>
                                 <button type="button" data-type="Платформа для обучения" onclick="pickBriefType(this)" class="brief-chip w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-serene-800 hover:bg-serene-50 transition-all">платформа для обучения</button>
@@ -948,9 +905,23 @@
         // ----------------------------------------------------
         function goToSection(id, event) {
             if (event) event.preventDefault();
+            const btn = event ? event.currentTarget : null;
+            if (btn) {
+                btn.classList.add('cta-pulse');
+                setTimeout(function(){ btn.classList.remove('cta-pulse'); }, 550);
+            }
             const target = document.getElementById(id);
             if (target) {
                 target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                if (id === 'audit') {
+                    const formCard = target.querySelector('.spotlight-card');
+                    if (formCard) {
+                        setTimeout(function(){
+                            formCard.classList.add('ring-4', 'ring-accent-terracotta/40');
+                            setTimeout(function(){ formCard.classList.remove('ring-4', 'ring-accent-terracotta/40'); }, 1200);
+                        }, 400);
+                    }
+                }
             }
         }
 
