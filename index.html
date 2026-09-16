@@ -8,7 +8,6 @@
     <!-- ================================================================= -->
     <!-- НАСТРОЙКА ФОНА И КОНТАКТОВ                                        -->
     <script>
-        const USER_BACKGROUND_IMAGE = "https://static.tildacdn.com/tild3531-3563-4233-a232-333639326430/Unknown.jpeg";
         const TELEGRAM_USERNAME = "nikakuznecovaa"; // Ваш юзернейм в Telegram без @
     </script>
     <!-- ================================================================= -->
@@ -136,13 +135,12 @@
     <!-- Ambient Floating Wind Particles -->
     <canvas id="windParticles" class="fixed inset-0 pointer-events-none z-0"></canvas>
 
-    <!-- Scenic Background Backdrop -->
-    <div class="absolute top-0 left-0 w-full h-[100vh] z-[-2] overflow-hidden">
-        <img id="heroBgImage" 
-             src="https://static.tildacdn.com/tild3531-3563-4233-a232-333639326430/Unknown.jpeg" 
-             alt="Calm Mountain Valley Background" 
-             class="w-full h-full object-cover object-center opacity-100 absolute top-0 left-0 z-0 pointer-events-none scale-125"
-             onerror="this.src='https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80'">
+    <!-- Abstract Gradient Backdrop -->
+    <div class="absolute top-0 left-0 w-full h-[100vh] z-[-2] overflow-hidden bg-serene-50">
+        <div class="absolute -top-20 -left-20 w-[500px] h-[500px] bg-accent-terracotta/25 rounded-full blur-[120px]"></div>
+        <div class="absolute top-10 right-0 w-[440px] h-[440px] bg-accent-sunset/20 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-0 left-1/3 w-[480px] h-[480px] bg-accent-sage/20 rounded-full blur-[120px]"></div>
+        <div class="absolute top-1/3 right-1/4 w-[360px] h-[360px] bg-accent-gold/20 rounded-full blur-[110px]"></div>
     </div>
 
 
@@ -161,8 +159,13 @@
             </h1>
 
             <!-- Subtitle -->
-            <p class="text-base sm:text-lg md:text-xl text-serene-800 max-w-3xl mx-auto leading-relaxed font-light mb-10 drop-shadow-sm">
+            <p class="text-base sm:text-lg md:text-xl text-serene-800 max-w-3xl mx-auto leading-relaxed font-light mb-6 drop-shadow-sm">
                 веб-сервисы, интерактивные инструменты, ии-агенты и сайты для экспертов и предпринимателей. вместо месяцев разработки — готовый продукт за несколько дней.
+            </p>
+
+            <!-- Trust line -->
+            <p class="text-sm text-serene-800/80 mb-10">
+                я — ника, веду каждый проект сама, от смысла до сборки — <a href="https://nikakuznecova24-svg.github.io/portfolio/" target="_blank" rel="noopener" class="underline hover:text-accent-terracotta transition-colors">смотреть портфолио</a>
             </p>
 
             <!-- Actions -->
@@ -745,7 +748,6 @@
         window.onload = function() {
             try { lucide.createIcons(); } catch(e) { console.error('lucide init failed', e); }
             try { initWindCanvas(); } catch(e) { console.error('wind canvas init failed', e); }
-            try { initHeroBackground(); } catch(e) { console.error('hero background init failed', e); }
             try { initScrollProgressBar(); } catch(e) { console.error('scroll progress init failed', e); }
             try { initSpotlightCards(); } catch(e) { console.error('spotlight cards init failed', e); }
             try { initTelegramLinks(); } catch(e) { console.error('telegram links init failed', e); }
@@ -849,17 +851,7 @@
             }
         }
 
-        // ----------------------------------------------------
-        // Hero Background Initialization
-        // ----------------------------------------------------
-        function initHeroBackground() {
-            const bgImageElement = document.getElementById('heroBgImage');
-            if (bgImageElement && typeof USER_BACKGROUND_IMAGE !== 'undefined' && USER_BACKGROUND_IMAGE) {
-                bgImageElement.src = USER_BACKGROUND_IMAGE;
-            }
-        }
-
-        // ----------------------------------------------------
+// ----------------------------------------------------
         // Canvas Wind Particle Effect
         // ----------------------------------------------------
         let canvas, ctx, particles = [];
