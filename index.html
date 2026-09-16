@@ -1107,34 +1107,33 @@
         // ----------------------------------------------------
         // Interactive Configurator / Express-Brief Direct Sender
         // ----------------------------------------------------
+        const BRIEF_WORKER_URL = "https://vaybkoding-brief.nikakuznecova24.workers.dev";
+
         function sendBriefToTelegram() {
-            const niche = document.getElementById('briefNiche').value.trim() || 'Индивидуальная ниша';
+            const niche = document.getElementById('briefNiche').value.trim() || 'не указана';
             const type = document.getElementById('briefType').value || 'не указано';
-            const message = `Привет! Собрал экспресс-бриф на твоем сайте.\nНиша: ${niche}\nИнтересует решение: ${type}\nХочу получить бесплатный аудит!`;
-            
-            // 1. Copy to clipboard as a reliable backup
-            const tempEl = document.createElement('textarea');
-            tempEl.value = message;
-            document.body.appendChild(tempEl);
-            tempEl.select();
-            try {
-                document.execCommand('copy');
-            } catch(err) {
-                console.error('Copy failed', err);
-            }
-            document.body.removeChild(tempEl);
-
-            // 2. Direct Telegram API call with prefilled text parameters
-            const encodedText = encodeURIComponent(message);
-            const telegramUrl = `https://t.me/${TELEGRAM_USERNAME}?text=${encodedText}`;
-            window.open(telegramUrl, '_blank');
-
-            // 3. Briefly notify the user
             const btnText = document.getElementById('sendBriefBtnText');
-            btnText.textContent = "✓ Бриф скопирован и открывается в Telegram!";
-            setTimeout(() => {
-                btnText.textContent = "Отправить экспресс-бриф в чат";
-            }, 4000);
+            const originalText = btnText.textContent;
+            btnText.textContent = "отправляю…";
+
+            fetch(BRIEF_WORKER_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ niche: niche, types: type })
+            })
+            .then(function(res){ return res.json(); })
+            .then(function(data){
+                if (!data || !data.ok) throw new Error('not ok');
+                btnText.textContent = "✓ заявка отправлена!";
+            })
+            .catch(function(){
+                const message = `Привет! Собрал экспресс-бриф на твоем сайте.\nНиша: ${niche}\nИнтересует решение: ${type}\nХочу получить бесплатный аудит!`;
+                window.open(`https://t.me/${TELEGRAM_USERNAME}?text=${encodeURIComponent(message)}`, '_blank');
+                btnText.textContent = "открываю telegram…";
+            })
+            .finally(function(){
+                setTimeout(function(){ btnText.textContent = originalText; }, 4000);
+            });
         }
     </script>
 </body>
