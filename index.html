@@ -55,6 +55,7 @@
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'breathe': 'breathe 10s ease-in-out infinite',
                         'kenburns': 'kenburns 24s ease-in-out infinite alternate',
+                        'glow-pulse': 'glowPulse 3s ease-in-out infinite',
                     },
                     keyframes: {
                         float: {
@@ -68,6 +69,10 @@
                         kenburns: {
                             '0%': { transform: 'scale(1.15) translate(0, 0)' },
                             '100%': { transform: 'scale(1.3) translate(-1.5%, -1%)' },
+                        },
+                        glowPulse: {
+                            '0%, 100%': { boxShadow: '0 10px 30px -8px rgba(224,122,95,0.35)' },
+                            '50%': { boxShadow: '0 25px 60px -8px rgba(224,122,95,0.65)' },
                         }
                     }
                 }
@@ -129,7 +134,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(350px circle at var(--x, 0px) var(--y, 0px), rgba(244, 162, 97, 0.08), transparent 80%);
+            background: radial-gradient(380px circle at var(--x, 0px) var(--y, 0px), rgba(244, 162, 97, 0.16), transparent 80%);
             z-index: 1;
             pointer-events: none;
             border-radius: inherit;
@@ -138,6 +143,35 @@
         }
         .spotlight-card:hover::before {
             opacity: 1;
+        }
+        /* Gradient border reveal on hover */
+        .value-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 2px;
+            background: linear-gradient(135deg, #E07A5F, #F4A261, #D4AF37);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+            z-index: 2;
+        }
+        .value-card:hover::after {
+            opacity: 1;
+        }
+        /* Scroll-in reveal */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal-up.in-view {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -549,10 +583,11 @@
                 <div class="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
                     
                     <!-- Value Card 1 -->
-                    <div class="spotlight-card bg-white p-6 sm:p-8 rounded-3xl border border-serene-900/[0.06] shadow-sm relative group overflow-hidden flex flex-col justify-between min-h-[160px] sm:min-h-[220px]">
+                    <div class="spotlight-card value-card reveal-up bg-white p-6 sm:p-8 rounded-3xl border border-serene-900/[0.06] shadow-sm hover:shadow-xl hover:-translate-y-1 relative group overflow-hidden flex flex-col justify-between min-h-[160px] sm:min-h-[220px] transition-all duration-300" style="transition-delay:0ms">
+                        <div class="absolute -bottom-8 -right-8 w-36 h-36 bg-accent-terracotta/10 rounded-full blur-2xl pointer-events-none"></div>
                         <div class="flex justify-between items-start relative z-10">
                             <h4 class="font-display text-xl font-bold text-serene-900">смыслы как фундамент</h4>
-                            <span class="text-4xl font-display font-light text-serene-900/10 group-hover:text-accent-terracotta/20 transition-colors duration-300">01</span>
+                            <span class="text-6xl font-display font-light text-serene-900/10 blur-[1px] group-hover:text-accent-terracotta/20 transition-colors duration-300">01</span>
                         </div>
                         <p class="text-serene-800 text-xs leading-relaxed font-light mt-4 relative z-10">
                             мы не начинаем писать код, пока мы не докопаемся до самой сути вашего продукта. мы переводим вашу уникальность, ценности и экспертность на язык интерфейса.
@@ -560,10 +595,11 @@
                     </div>
 
                     <!-- Value Card 2 -->
-                    <div class="spotlight-card bg-accent-sunset/10 p-6 sm:p-8 rounded-3xl border border-accent-sunset/20 shadow-sm relative group overflow-hidden flex flex-col justify-between min-h-[160px] sm:min-h-[220px]">
+                    <div class="spotlight-card value-card reveal-up bg-accent-sunset/10 p-6 sm:p-8 rounded-3xl border border-accent-sunset/20 shadow-sm hover:shadow-xl hover:-translate-y-1 relative group overflow-hidden flex flex-col justify-between min-h-[160px] sm:min-h-[220px] transition-all duration-300" style="transition-delay:120ms">
+                        <div class="absolute -bottom-8 -right-8 w-36 h-36 bg-accent-sunset/20 rounded-full blur-2xl pointer-events-none"></div>
                         <div class="flex justify-between items-start relative z-10">
                             <h4 class="font-display text-xl font-bold text-serene-900">системная логика</h4>
-                            <span class="text-4xl font-display font-light text-serene-900/10 group-hover:text-accent-sunset/30 transition-colors duration-300">02</span>
+                            <span class="text-6xl font-display font-light text-serene-900/10 blur-[1px] group-hover:text-accent-sunset/30 transition-colors duration-300">02</span>
                         </div>
                         <p class="text-serene-800 text-xs leading-relaxed font-light mt-4 relative z-10">
                             красивый сайт без структуры — просто картинка. я заранее продумываю каждый шаг пользователя: что он видит, куда нажимает и что происходит дальше.
@@ -571,10 +607,11 @@
                     </div>
 
                     <!-- Value Card 3 (Col span 2 to balance the layout perfectly) -->
-                    <div class="spotlight-card bg-accent-terracotta text-white p-6 sm:p-8 rounded-3xl relative group overflow-hidden flex flex-col justify-between min-h-[160px] sm:min-h-[220px] md:col-span-2">
+                    <div class="spotlight-card value-card reveal-up animate-glow-pulse bg-accent-terracotta text-white p-6 sm:p-8 rounded-3xl hover:-translate-y-1 relative group overflow-hidden flex flex-col justify-between min-h-[160px] sm:min-h-[220px] md:col-span-2 transition-transform duration-300" style="transition-delay:240ms">
+                        <div class="absolute -bottom-10 -right-10 w-48 h-48 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
                         <div class="flex justify-between items-start relative z-10">
                             <h4 class="font-display text-xl font-bold">вайбкодинг — это скорость</h4>
-                            <span class="text-4xl font-display font-light text-white/10 group-hover:text-white/20 transition-colors duration-300">03</span>
+                            <span class="text-6xl font-display font-light text-white/10 blur-[1px] group-hover:text-white/20 transition-colors duration-300">03</span>
                         </div>
                         <p class="text-white/80 text-xs leading-relaxed font-light mt-4 relative z-10">
                             вместо месяцев разработки — работающий прототип за несколько дней. я использую передовые ai-инструменты, чтобы ваше видение ожило максимально быстро и без лишней бюрократии.
@@ -818,7 +855,29 @@
             try { initScrollProgressBar(); } catch(e) { console.error('scroll progress init failed', e); }
             try { initSpotlightCards(); } catch(e) { console.error('spotlight cards init failed', e); }
             try { initTelegramLinks(); } catch(e) { console.error('telegram links init failed', e); }
+            try { initRevealAnimations(); } catch(e) { console.error('reveal animations init failed', e); }
         };
+
+        // ----------------------------------------------------
+        // Scroll-in Reveal Animation
+        // ----------------------------------------------------
+        function initRevealAnimations() {
+            const items = document.querySelectorAll('.reveal-up');
+            if (!items.length) return;
+            if (!('IntersectionObserver' in window)) {
+                items.forEach(el => el.classList.add('in-view'));
+                return;
+            }
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            items.forEach(el => observer.observe(el));
+        }
 
         // ----------------------------------------------------
         // Wire up every Telegram link/action to the single
