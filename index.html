@@ -347,17 +347,22 @@
                             <span class="text-xs font-bold text-accent-sage">услуга 01</span>
                             <span class="px-3 py-1 bg-accent-sage/10 text-accent-sage rounded-full text-xs font-semibold">популярно</span>
                         </div>
-                        <h3 class="font-display text-2xl md:text-3xl font-bold text-serene-900 mb-4">1. лендинг / сайт</h3>
-                        <div class="text-serene-800 space-y-4 mb-6 text-sm md:text-base max-w-3xl">
+                        <h3 class="font-display text-2xl md:text-3xl font-bold text-serene-900 mb-3">1. лендинг / сайт</h3>
+                        <p class="text-serene-800 text-sm md:text-base mb-3">сайт, по которому клиент за секунды решает, писать вам или нет</p>
+                        <p class="text-lg font-bold text-accent-terracotta mb-4">стоимость: <span class="font-display text-xl">от 15 000₽</span></p>
+                        <button type="button" onclick="toggleServiceCard(this)" class="service-toggle inline-flex items-center gap-1.5 text-accent-terracotta font-semibold text-sm mb-1">
+                            <span class="toggle-label">подробнее</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform toggle-chevron"></i>
+                        </button>
+                        <div class="service-details hidden text-serene-800 space-y-4 mt-4 mb-6 text-sm md:text-base max-w-3xl">
                             <p class="font-medium">по сайту клиент решает, писать вам или нет — часто ещё до звонка.</p>
                             <p class="font-light">хороший дизайн и понятный текст решают за секунды, останется человек на странице или уйдёт.</p>
                             <div class="pt-4 border-t border-serene-200/50 space-y-2">
                                 <p><strong class="font-semibold text-serene-900">для кого:</strong> эксперты и специалисты, которые продают свои услуги и продукты.</p>
-                                <p class="text-lg font-bold text-accent-terracotta mt-2">стоимость: <span class="font-display text-xl">от 15 000₽</span></p>
                             </div>
                         </div>
                     </div>
-                    <a href="#audit" onclick="selectBriefType('Лендинг / Сайт'); goToSection('audit', event)" class="inline-flex items-center gap-2 bg-accent-terracotta/10 hover:bg-accent-terracotta hover:text-white text-accent-terracotta font-semibold text-sm group px-5 py-2.5 rounded-full transition-all w-fit">
+                    <a href="#audit" onclick="selectBriefType('Лендинг / Сайт'); goToSection('audit', event)" class="service-cta hidden inline-flex items-center gap-2 bg-accent-terracotta/10 hover:bg-accent-terracotta hover:text-white text-accent-terracotta font-semibold text-sm group px-5 py-2.5 rounded-full transition-all w-fit">
                         <span>обсудить концепцию сайта</span>
                         <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                     </a>
@@ -370,17 +375,22 @@
                             <span class="text-xs font-bold text-accent-terracotta">услуга 02</span>
                             <span class="px-3 py-1 bg-accent-terracotta/10 text-accent-terracotta rounded-full text-xs font-semibold">высокий отклик</span>
                         </div>
-                        <h3 class="font-display text-2xl md:text-3xl font-bold text-serene-900 mb-4">2. сервис / интерактивный лид-магнит</h3>
-                        <div class="text-serene-800 space-y-4 mb-6 text-sm md:text-base max-w-3xl">
+                        <h3 class="font-display text-2xl md:text-3xl font-bold text-serene-900 mb-3">2. сервис / интерактивный лид-магнит</h3>
+                        <p class="text-serene-800 text-sm md:text-base mb-3">интерактивный инструмент вместо скучного pdf или рутинной таблицы</p>
+                        <p class="text-lg font-bold text-accent-terracotta mb-4">стоимость: <span class="font-display text-xl">от 10 000₽</span></p>
+                        <button type="button" onclick="toggleServiceCard(this)" class="service-toggle inline-flex items-center gap-1.5 text-accent-terracotta font-semibold text-sm mb-1">
+                            <span class="toggle-label">подробнее</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform toggle-chevron"></i>
+                        </button>
+                        <div class="service-details hidden text-serene-800 space-y-4 mt-4 mb-6 text-sm md:text-base max-w-3xl">
                             <p class="font-medium">веб-инструмент под конкретную задачу: интерактивный тест, калькулятор, диагностика — вместо скучного pdf. или рабочий инструмент для рутины: дашборд, трекер, сбор отзывов, калькулятор услуг.</p>
                             <p class="font-light">пока человек проходит тест или пользуется инструментом, он не читает про вас — он уже отвечает и вовлекается.</p>
                             <div class="pt-4 border-t border-serene-200/50 space-y-2">
                                 <p><strong class="font-semibold text-serene-900">для кого:</strong> для тех, кто хочет превращать «холодную» аудиторию в клиентов через игру, или убрать рутину в бизнес-процессах.</p>
-                                <p class="text-lg font-bold text-accent-terracotta mt-2">стоимость: <span class="font-display text-xl">от 10 000₽</span></p>
                             </div>
                         </div>
                     </div>
-                    <a href="#audit" onclick="selectBriefType('Сервис / интерактивный лид-магнит'); goToSection('audit', event)" class="inline-flex items-center gap-2 bg-accent-terracotta/10 hover:bg-accent-terracotta hover:text-white text-accent-terracotta font-semibold text-sm group px-5 py-2.5 rounded-full transition-all w-fit">
+                    <a href="#audit" onclick="selectBriefType('Сервис / интерактивный лид-магнит'); goToSection('audit', event)" class="service-cta hidden inline-flex items-center gap-2 bg-accent-terracotta/10 hover:bg-accent-terracotta hover:text-white text-accent-terracotta font-semibold text-sm group px-5 py-2.5 rounded-full transition-all w-fit">
                         <span>обсудить сервис или лид-магнит</span>
                         <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                     </a>
@@ -393,16 +403,21 @@
                             <span class="text-xs font-bold text-accent-gold">услуга 03</span>
                             <span class="px-3 py-1 bg-accent-gold/10 text-accent-gold rounded-full text-xs font-semibold">для наставников</span>
                         </div>
-                        <h3 class="font-display text-2xl md:text-3xl font-bold text-serene-900 mb-4">3. платформа для обучения</h3>
-                        <div class="text-serene-800 space-y-4 mb-6 text-sm md:text-base max-w-3xl">
+                        <h3 class="font-display text-2xl md:text-3xl font-bold text-serene-900 mb-3">3. платформа для обучения</h3>
+                        <p class="text-serene-800 text-sm md:text-base mb-3">закрытый сервис для курса с прогрессом и заданиями ученика</p>
+                        <p class="text-lg font-bold text-accent-terracotta mb-4">стоимость: <span class="font-display text-xl">от 25 000₽</span></p>
+                        <button type="button" onclick="toggleServiceCard(this)" class="service-toggle inline-flex items-center gap-1.5 text-accent-terracotta font-semibold text-sm mb-1">
+                            <span class="toggle-label">подробнее</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform toggle-chevron"></i>
+                        </button>
+                        <div class="service-details hidden text-serene-800 space-y-4 mt-4 mb-6 text-sm md:text-base max-w-3xl">
                             <p class="font-medium">закрытый веб-сервис для курса или наставничества. ученик видит свой прогресс по урокам, отмечает пройденное и записывает выводы — всё в одном месте.</p>
                             <div class="pt-4 border-t border-serene-200/50 space-y-2">
                                 <p><strong class="font-semibold text-serene-900">для кого:</strong> наставники, проводники, репетиторы, тренеры, учителя, которые ценят глубину и системный подход.</p>
-                                <p class="text-lg font-bold text-accent-terracotta mt-2">стоимость: <span class="font-display text-xl">от 25 000₽</span></p>
                             </div>
                         </div>
                     </div>
-                    <a href="#audit" onclick="selectBriefType('Платформа для обучения'); goToSection('audit', event)" class="inline-flex items-center gap-2 bg-accent-terracotta/10 hover:bg-accent-terracotta hover:text-white text-accent-terracotta font-semibold text-sm group px-5 py-2.5 rounded-full transition-all w-fit">
+                    <a href="#audit" onclick="selectBriefType('Платформа для обучения'); goToSection('audit', event)" class="service-cta hidden inline-flex items-center gap-2 bg-accent-terracotta/10 hover:bg-accent-terracotta hover:text-white text-accent-terracotta font-semibold text-sm group px-5 py-2.5 rounded-full transition-all w-fit">
                         <span>обсудить создание платформы</span>
                         <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                     </a>
@@ -415,16 +430,21 @@
                             <span class="text-xs font-bold text-accent-sunset">услуга 04</span>
                             <span class="px-3 py-1 bg-accent-sunset/10 text-accent-sunset rounded-full text-xs font-semibold">24/7 на связи</span>
                         </div>
-                        <h3 class="font-display text-2xl md:text-3xl font-bold text-serene-900 mb-4">4. ии-агент</h3>
-                        <div class="text-serene-800 space-y-4 mb-6 text-sm md:text-base max-w-3xl">
+                        <h3 class="font-display text-2xl md:text-3xl font-bold text-serene-900 mb-3">4. ии-агент</h3>
+                        <p class="text-serene-800 text-sm md:text-base mb-3">бот, который отвечает вашим клиентам в telegram или на сайте 24/7</p>
+                        <p class="text-lg font-bold text-accent-terracotta mb-4">стоимость: <span class="font-display text-xl">от 20 000₽</span></p>
+                        <button type="button" onclick="toggleServiceCard(this)" class="service-toggle inline-flex items-center gap-1.5 text-accent-terracotta font-semibold text-sm mb-1">
+                            <span class="toggle-label">подробнее</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform toggle-chevron"></i>
+                        </button>
+                        <div class="service-details hidden text-serene-800 space-y-4 mt-4 mb-6 text-sm md:text-base max-w-3xl">
                             <p class="font-medium">бот, который отвечает вашим клиентам в telegram или на сайте: консультирует, отвечает на частые вопросы, записывает на встречу. работает и ночью, пока вы спите.</p>
                             <div class="pt-4 border-t border-serene-200/50 space-y-2">
                                 <p><strong class="font-semibold text-serene-900">для кого:</strong> для тех, у кого много одинаковых вопросов от клиентов и нет времени отвечать на каждый лично.</p>
-                                <p class="text-lg font-bold text-accent-terracotta mt-2">стоимость: <span class="font-display text-xl">от 20 000₽</span></p>
                             </div>
                         </div>
                     </div>
-                    <a href="#audit" onclick="selectBriefType('ИИ-агент'); goToSection('audit', event)" class="inline-flex items-center gap-2 bg-accent-terracotta/10 hover:bg-accent-terracotta hover:text-white text-accent-terracotta font-semibold text-sm group px-5 py-2.5 rounded-full transition-all w-fit">
+                    <a href="#audit" onclick="selectBriefType('ИИ-агент'); goToSection('audit', event)" class="service-cta hidden inline-flex items-center gap-2 bg-accent-terracotta/10 hover:bg-accent-terracotta hover:text-white text-accent-terracotta font-semibold text-sm group px-5 py-2.5 rounded-full transition-all w-fit">
                         <span>обсудить ии-агента</span>
                         <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                     </a>
@@ -437,16 +457,21 @@
                             <span class="text-xs font-bold text-accent-sage">услуга 05</span>
                             <span class="px-3 py-1 bg-accent-sage/10 text-accent-sage rounded-full text-xs font-semibold">автопрогрев</span>
                         </div>
-                        <h3 class="font-display text-2xl md:text-3xl font-bold text-serene-900 mb-4">5. воронка в telegram</h3>
-                        <div class="text-serene-800 space-y-4 mb-6 text-sm md:text-base max-w-3xl">
+                        <h3 class="font-display text-2xl md:text-3xl font-bold text-serene-900 mb-3">5. воронка в telegram</h3>
+                        <p class="text-serene-800 text-sm md:text-base mb-3">серия сообщений, которая сама прогревает и ведёт к покупке</p>
+                        <p class="text-lg font-bold text-accent-terracotta mb-4">стоимость: <span class="font-display text-xl">от 25 000₽</span></p>
+                        <button type="button" onclick="toggleServiceCard(this)" class="service-toggle inline-flex items-center gap-1.5 text-accent-terracotta font-semibold text-sm mb-1">
+                            <span class="toggle-label">подробнее</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform toggle-chevron"></i>
+                        </button>
+                        <div class="service-details hidden text-serene-800 space-y-4 mt-4 mb-6 text-sm md:text-base max-w-3xl">
                             <p class="font-medium">серия сообщений в telegram-боте, которая сама ведёт человека от первого касания до записи или покупки — без вашего участия в переписке.</p>
                             <div class="pt-4 border-t border-serene-200/50 space-y-2">
                                 <p><strong class="font-semibold text-serene-900">для кого:</strong> для тех, кто продаёт через telegram-канал или рассылку и устал вручную прогревать каждого.</p>
-                                <p class="text-lg font-bold text-accent-terracotta mt-2">стоимость: <span class="font-display text-xl">от 25 000₽</span></p>
                             </div>
                         </div>
                     </div>
-                    <a href="#audit" onclick="selectBriefType('Воронка в Telegram'); goToSection('audit', event)" class="inline-flex items-center gap-2 bg-accent-terracotta/10 hover:bg-accent-terracotta hover:text-white text-accent-terracotta font-semibold text-sm group px-5 py-2.5 rounded-full transition-all w-fit">
+                    <a href="#audit" onclick="selectBriefType('Воронка в Telegram'); goToSection('audit', event)" class="service-cta hidden inline-flex items-center gap-2 bg-accent-terracotta/10 hover:bg-accent-terracotta hover:text-white text-accent-terracotta font-semibold text-sm group px-5 py-2.5 rounded-full transition-all w-fit">
                         <span>собрать воронку</span>
                         <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                     </a>
@@ -459,16 +484,21 @@
                             <span class="text-xs font-bold text-accent-terracotta">услуга 06</span>
                             <span class="px-3 py-1 bg-accent-terracotta/10 text-accent-terracotta rounded-full text-xs font-semibold">внутри telegram</span>
                         </div>
-                        <h3 class="font-display text-2xl md:text-3xl font-bold text-serene-900 mb-4">6. мини-апп</h3>
-                        <div class="text-serene-800 space-y-4 mb-6 text-sm md:text-base max-w-3xl">
+                        <h3 class="font-display text-2xl md:text-3xl font-bold text-serene-900 mb-3">6. мини-апп</h3>
+                        <p class="text-serene-800 text-sm md:text-base mb-3">приложение внутри telegram — без отдельного сайта и установки</p>
+                        <p class="text-lg font-bold text-accent-terracotta mb-4">стоимость: <span class="font-display text-xl">от 15 000₽</span></p>
+                        <button type="button" onclick="toggleServiceCard(this)" class="service-toggle inline-flex items-center gap-1.5 text-accent-terracotta font-semibold text-sm mb-1">
+                            <span class="toggle-label">подробнее</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform toggle-chevron"></i>
+                        </button>
+                        <div class="service-details hidden text-serene-800 space-y-4 mt-4 mb-6 text-sm md:text-base max-w-3xl">
                             <p class="font-medium">приложение прямо внутри telegram — каталог, запись, личный кабинет или трекер, без отдельного сайта и без установки.</p>
                             <div class="pt-4 border-t border-serene-200/50 space-y-2">
                                 <p><strong class="font-semibold text-serene-900">для кого:</strong> для тех, чья аудитория уже живёт в telegram и не хочет никуда переходить.</p>
-                                <p class="text-lg font-bold text-accent-terracotta mt-2">стоимость: <span class="font-display text-xl">от 15 000₽</span></p>
                             </div>
                         </div>
                     </div>
-                    <a href="#audit" onclick="selectBriefType('Мини-апп'); goToSection('audit', event)" class="inline-flex items-center gap-2 bg-accent-terracotta/10 hover:bg-accent-terracotta hover:text-white text-accent-terracotta font-semibold text-sm group px-5 py-2.5 rounded-full transition-all w-fit">
+                    <a href="#audit" onclick="selectBriefType('Мини-апп'); goToSection('audit', event)" class="service-cta hidden inline-flex items-center gap-2 bg-accent-terracotta/10 hover:bg-accent-terracotta hover:text-white text-accent-terracotta font-semibold text-sm group px-5 py-2.5 rounded-full transition-all w-fit">
                         <span>обсудить мини-апп</span>
                         <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                     </a>
@@ -481,16 +511,21 @@
                             <span class="text-xs font-bold text-accent-gold">услуга 07</span>
                             <span class="px-3 py-1 bg-accent-gold/10 text-accent-gold rounded-full text-xs font-semibold">простой и быстрый</span>
                         </div>
-                        <h3 class="font-display text-2xl md:text-3xl font-bold text-serene-900 mb-4">7. чат-бот</h3>
-                        <div class="text-serene-800 space-y-4 mb-6 text-sm md:text-base max-w-3xl">
+                        <h3 class="font-display text-2xl md:text-3xl font-bold text-serene-900 mb-3">7. чат-бот</h3>
+                        <p class="text-serene-800 text-sm md:text-base mb-3">бот с простыми сценариями — меню, faq, запись, заявки</p>
+                        <p class="text-lg font-bold text-accent-terracotta mb-4">стоимость: <span class="font-display text-xl">от 15 000₽</span></p>
+                        <button type="button" onclick="toggleServiceCard(this)" class="service-toggle inline-flex items-center gap-1.5 text-accent-terracotta font-semibold text-sm mb-1">
+                            <span class="toggle-label">подробнее</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform toggle-chevron"></i>
+                        </button>
+                        <div class="service-details hidden text-serene-800 space-y-4 mt-4 mb-6 text-sm md:text-base max-w-3xl">
                             <p class="font-medium">бот с понятными сценариями: меню, ответы на частые вопросы, запись, приём заявок. без ии — зато простой и предсказуемый в управлении.</p>
                             <div class="pt-4 border-t border-serene-200/50 space-y-2">
                                 <p><strong class="font-semibold text-serene-900">для кого:</strong> для тех, кому нужен понятный рабочий инструмент, а полноценный ии-агент — избыточно.</p>
-                                <p class="text-lg font-bold text-accent-terracotta mt-2">стоимость: <span class="font-display text-xl">от 15 000₽</span></p>
                             </div>
                         </div>
                     </div>
-                    <a href="#audit" onclick="selectBriefType('Чат-бот'); goToSection('audit', event)" class="inline-flex items-center gap-2 bg-accent-terracotta/10 hover:bg-accent-terracotta hover:text-white text-accent-terracotta font-semibold text-sm group px-5 py-2.5 rounded-full transition-all w-fit">
+                    <a href="#audit" onclick="selectBriefType('Чат-бот'); goToSection('audit', event)" class="service-cta hidden inline-flex items-center gap-2 bg-accent-terracotta/10 hover:bg-accent-terracotta hover:text-white text-accent-terracotta font-semibold text-sm group px-5 py-2.5 rounded-full transition-all w-fit">
                         <span>обсудить чат-бота</span>
                         <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                     </a>
@@ -967,6 +1002,23 @@
                     document.getElementById(`faqIcon${i}`).style.transform = "rotate(0deg)";
                 }
             }
+        }
+
+        // ----------------------------------------------------
+        // Service Card Expand/Collapse
+        // ----------------------------------------------------
+        function toggleServiceCard(btn) {
+            const wrap = btn.closest('.flex-1');
+            const card = btn.closest('.flex-1').parentElement;
+            const details = wrap.querySelector('.service-details');
+            const cta = card.querySelector('.service-cta');
+            const label = btn.querySelector('.toggle-label');
+            const chevron = btn.querySelector('.toggle-chevron');
+            const opening = details.classList.contains('hidden');
+            details.classList.toggle('hidden');
+            if (cta) cta.classList.toggle('hidden');
+            label.textContent = opening ? 'свернуть' : 'подробнее';
+            chevron.classList.toggle('rotate-180');
         }
 
         // ----------------------------------------------------
