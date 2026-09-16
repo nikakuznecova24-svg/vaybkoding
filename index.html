@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вайбкодинг & ИИ-Решения | Цифровая Опора для Бизнеса</title>
+
+    <!-- ================================================================= -->
+    <!-- НАСТРОЙКА ФОНА И КОНТАКТОВ                                        -->
+    <script>
+        const USER_BACKGROUND_IMAGE = "https://static.tildacdn.com/tild3531-3563-4233-a232-333639326430/Unknown.jpeg";
+        const TELEGRAM_USERNAME = "nikakuznecovaa"; // Ваш юзернейм в Telegram без @
+    </script>
+    <!-- ================================================================= -->
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Canvas Confetti Library for aesthetic celebration -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        serene: {
+                            50: '#FAF8F5',
+                            100: '#F5EFE6',
+                            200: '#EAE0D5',
+                            800: '#3D3A36',
+                            900: '#22211F',
+                        },
+                        accent: {
+                            gold: '#D4AF37',
+                            terracotta: '#E07A5F',
+                            sage: '#81B29A',
+                            sunset: '#F4A261'
+                        }
+                    },
+                    animation: {
+                        'float-slow': 'float 8s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'breathe': 'breathe 10s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-10px) rotate(1deg)' },
+                        },
+                        breathe: {
+                            '0%, 100%': { transform: 'scale(1)', opacity: '0.15' },
+                            '50%': { transform: 'scale(1.08)', opacity: '0.35' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FAF8F5;
+            color: #22211F;
+            overflow-x: hidden;
+        }
+        /* Custom premium scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAF8F5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E5DCD0;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4C5B3;
+        }
+        /* Glassmorphism panel */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+        /* Infinite Marquee Animation styles */
+        @keyframes marquee {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
+        }
+        .animate-marquee {
+            display: inline-flex;
+            white-space: nowrap;
+            animation: marquee 14s linear infinite;
+        }
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+        /* Spotlight Card Interactive effect variables */
+        .spotlight-card {
+            position: relative;
+        }
+        .spotlight-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(350px circle at var(--x, 0px) var(--y, 0px), rgba(244, 162, 97, 0.08), transparent 80%);
+            z-index: 1;
+            pointer-events: none;
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .spotlight-card:hover::before {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-accent-sunset/20 selection:text-serene-900">
+
+    <!-- Premium Reading Progress Bar -->
+    <div class="fixed top-0 left-0 w-full h-1.5 bg-serene-200/50 z-40"></div>
+    <div id="scrollProgress" class="fixed top-0 left-0 h-1.5 bg-gradient-to-r from-accent-terracotta to-accent-sunset z-50 transition-[width] duration-300 ease-out shadow-sm" style="width: 0%;"></div>
+
+    <!-- Ambient Floating Wind Particles -->
+    <canvas id="windParticles" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+    <!-- Scenic Background Backdrop -->
+    <div class="absolute top-0 left-0 w-full h-[100vh] z-[-2] overflow-hidden">
+        <img id="heroBgImage" 
+             src="https://static.tildacdn.com/tild3531-3563-4233-a232-333639326430/Unknown.jpeg" 
+             alt="Calm Mountain Valley Background" 
+             class="w-full h-full object-cover object-center opacity-100 absolute top-0 left-0 z-0 pointer-events-none scale-125"
+             onerror="this.src='https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80'">
+    </div>
+
+    <!-- Header / Floating Capsule Navbar -->
+    <header class="fixed top-6 left-0 right-0 z-40 px-4 transition-all duration-300">
+        <div class="max-w-2xl mx-auto relative">
+            <nav class="glass-panel px-3 py-2 rounded-full flex items-center gap-2 shadow-sm shadow-serene-800/5">
+                <!-- Logo -->
+                <a href="#hero" onclick="goToSection('hero', event)" class="flex items-center gap-2 group shrink-0">
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-accent-terracotta to-accent-sunset flex items-center justify-center shadow-sm">
+                        <i data-lucide="sparkles" class="w-4 h-4 text-white"></i>
+                    </div>
+                </a>
+
+                <!-- Navigation (always visible) -->
+                <div class="flex items-center gap-3 text-[10px] sm:text-xs font-semibold tracking-wider uppercase text-serene-800 overflow-x-auto whitespace-nowrap flex-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+                    <a href="#services" onclick="goToSection('services', event)" class="hover:text-accent-terracotta transition-colors shrink-0">Услуги</a>
+                </div>
+
+                <!-- CTA -->
+                <a href="#audit" onclick="goToSection('audit', event)" class="text-[10px] md:text-xs font-semibold bg-serene-900 text-white px-3.5 py-1.5 rounded-full hover:bg-serene-800 transition-all shadow-sm hover:scale-[1.02] active:scale-95 duration-200 shrink-0">
+                    Аудит
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section with reduced spacing -->
+    <section id="hero" class="relative min-h-[90vh] pt-28 pb-12 flex flex-col justify-between items-center px-4 overflow-hidden">
+        <div class="my-auto max-w-4xl text-center z-10">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-panel border border-white/80 shadow-sm text-xs text-serene-800 mb-6 animate-float-slow">
+                <span class="w-2 h-2 rounded-full bg-accent-sage animate-ping"></span>
+                <span class="font-medium">✨ Продукты за несколько дней с помощью ИИ</span>
+            </div>
+
+            <!-- Heading -->
+            <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-serene-900 leading-[1.15] tracking-tight mb-6 drop-shadow-sm">
+                создаю ии-решения, которые помогают бизнесу продавать.
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="text-base sm:text-lg md:text-xl text-serene-800 max-w-3xl mx-auto leading-relaxed font-light mb-10 drop-shadow-sm">
+                веб-сервисы, интерактивные инструменты, ии-агенты и сайты для экспертов и предпринимателей. вместо месяцев разработки — готовый продукт за несколько дней.
+            </p>
+
+            <!-- Actions -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#audit" onclick="goToSection('audit', event)" class="group relative px-8 py-4 w-full sm:w-auto bg-gradient-to-r from-accent-terracotta to-accent-sunset text-white font-medium rounded-full shadow-lg shadow-accent-terracotta/20 hover:shadow-xl hover:shadow-accent-terracotta/30 hover:scale-[1.02] active:scale-95 transition-all duration-300 text-center flex items-center justify-center gap-3">
+                    <span>хочу обсудить проект и получить бесплатный аудит</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+                <a href="#services" onclick="goToSection('services', event)" class="px-8 py-4 w-full sm:w-auto glass-panel hover:bg-white/80 text-serene-800 font-medium rounded-full border border-white/60 transition-all hover:scale-[1.02] text-center">
+                    посмотреть услуги
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: Interactive Target Audience Selector -->
+    <section id="role-selector" class="py-20 relative z-10 px-4 bg-white border-y border-serene-200/40">
+        <div class="max-w-5xl mx-auto">
+            
+            <div class="text-center mb-12">
+                <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-serene-900 leading-snug">
+                    нам с тобой по пути, если ты...
+                </h2>
+            </div>
+
+            <!-- Two-Column Interactive Segment -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch mb-12">
+                
+                <!-- Left Column: Expert / Specialist -->
+                <div id="expertCol" onclick="toggleRoleFocus('expert')" class="spotlight-card group cursor-pointer bg-[#FAF8F5]/40 rounded-[2.5rem] border border-serene-900/[0.06] p-6 sm:p-8 md:p-10 transition-all duration-500 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 relative min-h-[440px]">
+                    <div class="absolute inset-0 bg-gradient-to-br from-accent-terracotta/[0.015] to-transparent rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                    
+                    <div class="relative z-10 flex flex-col justify-between h-full flex-grow">
+                        <div>
+                            <!-- Card Header -->
+                            <div class="flex items-center gap-3.5 pb-6 border-b border-serene-200/60 mb-8">
+                                <div class="w-10 h-10 rounded-2xl bg-accent-terracotta/10 flex items-center justify-center text-xl shrink-0">
+                                    🧠
+                                </div>
+                                <div>
+                                    <h3 class="font-display text-lg sm:text-xl font-bold text-serene-900">Эксперт / специалист</h3>
+                                    <p class="text-[10px] text-serene-800/60 font-semibold tracking-wider uppercase mt-0.5">упаковка ценности и запуск</p>
+                                </div>
+                            </div>
+
+                            <!-- Rows Content -->
+                            <div class="space-y-5 text-xs sm:text-sm text-serene-800 leading-relaxed font-light">
+                                <div class="pb-4 border-b border-serene-200/40 flex gap-3 last:border-b-0 last:pb-0">
+                                    <i data-lucide="chevron-right" class="w-4 h-4 text-accent-terracotta shrink-0 mt-0.5"></i>
+                                    <p><strong class="font-bold text-serene-900 block mb-0.5">Устал доказывать ценность на созвонах:</strong> Хочешь, чтобы цифровой продукт закрывал вопросы о чеке до первого слова.</p>
+                                </div>
+                                <div class="pb-4 border-b border-serene-200/40 flex gap-3 last:border-b-0 last:pb-0">
+                                    <i data-lucide="chevron-right" class="w-4 h-4 text-accent-terracotta shrink-0 mt-0.5"></i>
+                                    <p><strong class="font-bold text-serene-900 block mb-0.5">Стыдно отправлять ссылку на сайт:</strong> Необходим дорогой, безупречный digital-артефакт, транслирующий твой реальный масштаб.</p>
+                                </div>
+                                <div class="pb-4 border-b border-serene-200/40 flex gap-3 last:border-b-0 last:pb-0">
+                                    <i data-lucide="chevron-right" class="w-4 h-4 text-accent-terracotta shrink-0 mt-0.5"></i>
+                                    <p><strong class="font-bold text-serene-900 block mb-0.5">Привычные прогревы больше не работают:</strong> Ты ищешь новые интерактивные механики для вовлечения аудитории здесь и сейчас.</p>
+                                </div>
+                                <div class="flex gap-3">
+                                    <i data-lucide="chevron-right" class="w-4 h-4 text-accent-terracotta shrink-0 mt-0.5"></i>
+                                    <p><strong class="font-bold text-serene-900 block mb-0.5">Конкуренты продают дороже:</strong> При этом уступают по качеству. Дело в сильной упаковке смыслов.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Entrepreneur / Founder -->
+                <div id="founderCol" onclick="toggleRoleFocus('founder')" class="spotlight-card group cursor-pointer bg-[#FAF8F5]/40 rounded-[2.5rem] border border-serene-900/[0.06] p-6 sm:p-8 md:p-10 transition-all duration-500 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 relative min-h-[440px]">
+                    <div class="absolute inset-0 bg-gradient-to-br from-accent-sunset/[0.015] to-transparent rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                    
+                    <div class="relative z-10 flex flex-col justify-between h-full flex-grow">
+                        <div>
+                            <!-- Card Header -->
+                            <div class="flex items-center gap-3.5 pb-6 border-b border-serene-200/60 mb-8">
+                                <div class="w-10 h-10 rounded-2xl bg-accent-sunset/10 flex items-center justify-center text-xl shrink-0">
+                                    ⚡
+                                </div>
+                                <div>
+                                    <h3 class="font-display text-lg sm:text-xl font-bold text-serene-900">Предприниматель / основатель</h3>
+                                    <p class="text-[10px] text-serene-800/60 font-semibold tracking-wider uppercase mt-0.5">автоматизация и масштаб</p>
+                                </div>
+                            </div>
+
+                            <!-- Rows Content -->
+                            <div class="space-y-5 text-xs sm:text-sm text-serene-800 leading-relaxed font-light">
+                                <div class="pb-4 border-b border-serene-200/40 flex gap-3 last:border-b-0 last:pb-0">
+                                    <i data-lucide="chevron-right" class="w-4 h-4 text-accent-sunset shrink-0 mt-0.5"></i>
+                                    <p><strong class="font-bold text-serene-900 block mb-0.5">Тонешь в операционке и рутине:</strong> Квалификацию лидов и ручную переписку давно пора делегировать автоматизации.</p>
+                                </div>
+                                <div class="pb-4 border-b border-serene-200/40 flex gap-3 last:border-b-0 last:pb-0">
+                                    <i data-lucide="chevron-right" class="w-4 h-4 text-accent-sunset shrink-0 mt-0.5"></i>
+                                    <p><strong class="font-bold text-serene-900 block mb-0.5">Нужна автономная воронка лидов:</strong> Чтобы система сама прогревала людей с первого клика, пока ты сфокусирован на продукте.</p>
+                                </div>
+                                <div class="pb-4 border-b border-serene-200/40 flex gap-3 last:border-b-0 last:pb-0">
+                                    <i data-lucide="chevron-right" class="w-4 h-4 text-accent-sunset shrink-0 mt-0.5"></i>
+                                    <p><strong class="font-bold text-serene-900 block mb-0.5">Уперся в потолок личных часов:</strong> Хочешь превратить свою экспертную услугу в IT-сервис.</p>
+                                </div>
+                                <div class="flex gap-3">
+                                    <i data-lucide="chevron-right" class="w-4 h-4 text-accent-sunset shrink-0 mt-0.5"></i>
+                                    <p><strong class="font-bold text-serene-900 block mb-0.5">Хочешь быстро протестировать гипотезу:</strong> Без полугода разработки, раздутых бюджетов и бесконечных согласований.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Elegant Infinite Marquee Ticker -->
+        <div class="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden py-5 bg-gradient-to-r from-accent-terracotta to-accent-sunset select-none cursor-pointer group hover:from-accent-sunset hover:to-accent-terracotta transition-all duration-500 shadow-lg border-y border-white/10 animate-pulse-slow" onclick="document.getElementById('audit').scrollIntoView({ behavior: 'smooth' })">
+            <div class="animate-marquee flex gap-12 items-center">
+                <!-- Set 1 -->
+                <div class="flex items-center gap-12 text-xs md:text-sm font-display font-bold uppercase tracking-wider text-white shrink-0">
+                    <span>Пройти бесплатный экспресс-аудит</span>
+                    <span class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white text-accent-terracotta text-xs font-extrabold shadow-md hover:scale-105 active:scale-95 transition-all duration-300">
+                        🚀 Начать аудит
+                    </span>
+                    <span>✦ Смысловая диагностика бизнеса</span>
+                    <span class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white text-accent-sunset text-xs font-extrabold shadow-md hover:scale-105 active:scale-95 transition-all duration-300">
+                        ✨ Запустить разбор
+                    </span>
+                    <span>✦ Анализ воронки за 10 минут</span>
+                    <span class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white text-accent-sage text-xs font-extrabold shadow-md hover:scale-105 active:scale-95 transition-all duration-300">
+                        🌿 Получить разбор
+                    </span>
+                </div>
+                <!-- Set 2 (Duplicates for seamless loop) -->
+                <div class="flex items-center gap-12 text-xs md:text-sm font-display font-bold uppercase tracking-wider text-white shrink-0" aria-hidden="true">
+                    <span>Пройти бесплатный экспресс-аудит</span>
+                    <span class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white text-accent-terracotta text-xs font-extrabold shadow-md hover:scale-105 active:scale-95 transition-all duration-300">
+                        🚀 Начать аудит
+                    </span>
+                    <span>✦ Смысловая диагностика бизнеса</span>
+                    <span class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white text-accent-sunset text-xs font-extrabold shadow-md hover:scale-105 active:scale-95 transition-all duration-300">
+                        ✨ Запустить разбор
+                    </span>
+                    <span>✦ Анализ воронки за 10 минут</span>
+                    <span class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white text-accent-sage text-xs font-extrabold shadow-md hover:scale-105 active:scale-95 transition-all duration-300">
+                        🌿 Получить разбор
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Section: Services with tighter spacing -->
+    <section id="services" class="py-16 relative z-10 px-4">
+        <div class="max-w-5xl mx-auto">
+            
+            <!-- Section Title -->
+            <div class="text-center mb-12">
+                <span class="text-xs font-semibold uppercase tracking-widest text-accent-terracotta block mb-2">продуктовая линейка</span>
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-serene-900">линейка услуг (что я создаю)</h2>
+                <p class="text-serene-800 text-sm mt-3">нажмите на интересующую услугу, чтобы протестировать её демо прямо сейчас</p>
+            </div>
+
+            <!-- Services Stack -->
+            <div class="space-y-8">
+
+                <!-- Service 1: Лендинг / Сайт -->
+                <div class="bg-white rounded-[2.5rem] p-6 md:p-8 border border-serene-900/[0.06] shadow-xl flex flex-col hover:shadow-2xl transition-all duration-300">
+                    <div class="flex-1">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-bold uppercase tracking-wider text-accent-sage">услуга 01</span>
+                            <span class="px-3 py-1 bg-accent-sage/10 text-accent-sage rounded-full text-xs font-semibold">популярно</span>
+                        </div>
+                        <h3 class="font-display text-2xl md:text-3xl font-bold text-serene-900 mb-4">1. лендинг / сайт</h3>
+                        <div class="text-serene-800 space-y-4 mb-6 text-sm md:text-base max-w-3xl">
+                            <p class="font-medium">ваш сайт — это не просто страница. это цифровое издание о вас.</p>
+                            <p class="font-light">мы живем в эпоху визуального шума, где побеждает не тот, кто громче кричит, а тот, кто умеет транслировать нужные смыслы.</p>
+                            <div class="pt-4 border-t border-serene-200/50 space-y-2">
+                                <p><strong class="font-semibold text-serene-900">для кого:</strong> эксперты и специалисты, которые продают свои услуги и продукты.</p>
+                                <p class="text-lg font-bold text-accent-terracotta mt-2">стоимость: <span class="font-display text-xl">от 10 000₽</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#audit" onclick="selectBriefType('Лендинг / Сайт'); goToSection('audit', event)" class="inline-flex items-center gap-2 bg-accent-terracotta/10 hover:bg-accent-terracotta hover:text-white text-accent-terracotta font-semibold text-sm group px-5 py-2.5 rounded-full transition-all w-fit">
+                        <span>Обсудить концепцию сайта</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+
+                <!-- Service 2: Интерактивный лид-магнит -->
+                <div class="bg-white rounded-[2.5rem] p-6 md:p-8 border border-serene-900/[0.06] shadow-xl flex flex-col lg:flex-row gap-6 items-stretch hover:shadow-2xl transition-all duration-300">
+                    <div class="flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-xs font-bold uppercase tracking-wider text-accent-terracotta">услуга 02</span>
+                                <span class="px-3 py-1 bg-accent-terracotta/10 text-accent-terracotta rounded-full text-xs font-semibold">высокий отклик</span>
+                            </div>
+                            <h3 class="font-display text-2xl md:text-3xl font-bold text-serene-900 mb-4">2. интерактивный лид-магнит</h3>
+                            <div class="text-serene-800 space-y-4 mb-6 text-sm md:text-base">
+                                <p class="font-medium">веб-инструмент, который заменяет скучный pdf-файл. интерактивный тест, калькулятор питания, диагностика состояния, аудит бизнеса — то, с чем пользователю интересно взаимодействовать.</p>
+                                
+                                <p class="text-xs border-l-2 border-accent-terracotta/40 pl-3 py-1 italic bg-accent-terracotta/[0.03]">
+                                    <strong class="font-medium">почему это нужно:</strong> пока человек проходит ваш тест или взаимодействует с интерфейсом, он уже не просто «читатель», он — участник процесса.
+                                </p>
+
+                                <div class="pt-4 border-t border-serene-200/50 space-y-2 text-xs md:text-sm">
+                                    <p><strong class="font-semibold text-serene-900">для кого:</strong> для тех, кто хочет превращать «холодную» аудиторию в лояльных клиентов через игру.</p>
+                                    <p class="text-lg font-bold text-accent-terracotta mt-2">стоимость: <span class="font-display text-xl">от 5 000₽</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#audit" onclick="selectBriefType('Интерактивный лид-магнит'); goToSection('audit', event)" class="inline-flex items-center gap-2 bg-accent-terracotta/10 hover:bg-accent-terracotta hover:text-white text-accent-terracotta font-semibold text-sm group px-5 py-2.5 rounded-full transition-all w-fit">
+                            <span>Заказать интерактивный лид-магнит</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- Live Interactive Playground: Mini Quiz -->
+                    <div class="flex-1 bg-serene-100/50 rounded-3xl p-6 border border-serene-200/50 flex flex-col justify-between min-h-[350px]">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-xs font-semibold text-serene-800/60 uppercase tracking-widest">Живой пример</span>
+                                <span class="text-xs bg-white px-2 py-1 rounded-md shadow-sm text-serene-800">Тест: Энергия вашего сайта</span>
+                            </div>
+                            
+                            <!-- Active Quiz Screen -->
+                            <div id="quizContainer" class="bg-white p-5 rounded-2xl shadow-sm border border-serene-200/20">
+                                <!-- Step 1 -->
+                                <div id="quizStep1" class="space-y-3">
+                                    <h4 class="font-display text-sm font-bold text-serene-900">Какая главная сложность с вашими клиентами сейчас?</h4>
+                                    <div class="space-y-2">
+                                        <button onclick="nextQuizStep(1, 'cold')" class="w-full text-left p-2.5 rounded-xl border border-serene-200 text-xs hover:border-accent-sunset hover:bg-accent-sunset/5 transition-all">
+                                            Приходят холодными и долго думают
+                                        </button>
+                                        <button onclick="nextQuizStep(1, 'visual')" class="w-full text-left p-2.5 rounded-xl border border-serene-200 text-xs hover:border-accent-sunset hover:bg-accent-sunset/5 transition-all">
+                                            Устали от шаблонных визуалов
+                                        </button>
+                                        <button onclick="nextQuizStep(1, 'routine')" class="w-full text-left p-2.5 rounded-xl border border-serene-200 text-xs hover:border-accent-sunset hover:bg-accent-sunset/5 transition-all">
+                                            Слишком много ручной переписки
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Step 2 -->
+                                <div id="quizStep2" class="space-y-3 hidden">
+                                    <h4 class="font-display text-sm font-bold text-serene-900">Где вы чаще всего взаимодействуете с ними?</h4>
+                                    <div class="space-y-2">
+                                        <button onclick="nextQuizStep(2, 'site')" class="w-full text-left p-2.5 rounded-xl border border-serene-200 text-xs hover:border-accent-sunset hover:bg-accent-sunset/5 transition-all">
+                                            Сайт / Лендинг
+                                        </button>
+                                        <button onclick="nextQuizStep(2, 'social')" class="w-full text-left p-2.5 rounded-xl border border-serene-200 text-xs hover:border-accent-sunset hover:bg-accent-sunset/5 transition-all">
+                                            Социальные сети / Мессенджеры
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Step 3 Results -->
+                                <div id="quizStep3" class="space-y-3 hidden text-center py-4">
+                                    <div class="w-10 h-10 rounded-full bg-accent-sage/20 text-accent-sage flex items-center justify-center mx-auto mb-2">
+                                        <i data-lucide="award" class="w-5 h-5"></i>
+                                    </div>
+                                    <h4 class="font-display text-sm font-bold text-serene-900">Рекомендация для вас:</h4>
+                                    <p id="quizResultText" class="text-xs text-serene-800 max-w-xs mx-auto mb-4">...</p>
+                                    <div class="flex flex-col gap-2 items-center">
+                                        <a href="#audit" onclick="applyQuizResultToBrief(); goToSection('audit', event)" class="text-xs bg-accent-terracotta text-white px-4 py-2 rounded-full hover:scale-[1.02] active:scale-95 transition-all font-semibold shadow-sm">Хочу это решение!</a>
+                                        <button onclick="resetQuiz()" class="text-xs text-accent-terracotta underline hover:text-accent-terracotta/80 font-medium">
+                                            Пройти заново
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Progress indicator -->
+                        <div class="flex justify-between items-center mt-4 pt-4 border-t border-serene-200/50">
+                            <span class="text-[10px] text-serene-800/60 uppercase">Шаг <span id="quizStepIndicator">1</span> из 2</span>
+                            <div class="flex gap-1.5">
+                                <div id="dot1" class="w-2 h-2 rounded-full bg-accent-sunset transition-all"></div>
+                                <div id="dot2" class="w-2 h-2 rounded-full bg-serene-200 transition-all"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 3: Сервис (автоматизация с душой) -->
+                <div class="bg-white rounded-[2.5rem] p-6 md:p-8 border border-serene-900/[0.06] shadow-xl flex flex-col lg:flex-row gap-6 items-stretch hover:shadow-2xl transition-all duration-300">
+                    <div class="flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-xs font-bold uppercase tracking-wider text-accent-sunset">услуга 03</span>
+                                <span class="px-3 py-1 bg-accent-sunset/10 text-accent-sunset rounded-full text-xs font-semibold">автоматизация</span>
+                            </div>
+                            <h3 class="font-display text-2xl md:text-3xl font-bold text-serene-900 mb-4">3. сервис (автоматизация с душой)</h3>
+                            <div class="text-serene-800 space-y-4 mb-6 text-sm md:text-base max-w-3xl">
+                                <p class="font-medium">микро-решение для конкретной задачи. дашборд для команды, система сбора отзывов, трекер прогресса, калькулятор услуг, ии-менеджер для общения с клиентами — инструмент, который убирает рутину.</p>
+                                
+                                <p class="text-xs border-l-2 border-accent-sunset/40 pl-3 py-1 italic bg-accent-sunset/[0.03]">
+                                    <strong class="font-medium">почему это нужно:</strong> чтобы освободить время для творчества, стратегии и глубокого общения с людьми.
+                                </p>
+
+                                <div class="pt-4 border-t border-serene-200/50 space-y-2">
+                                    <p><strong class="font-semibold text-serene-900">для кого:</strong> для тех, кто хочет навести порядок, убрать хаос и почувствовать легкость в бизнес-процессах.</p>
+                                    <p class="text-lg font-bold text-accent-terracotta mt-2">стоимость: <span class="font-display text-xl">от 10 000₽</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#audit" onclick="selectBriefType('Сервис автоматизации'); goToSection('audit', event)" class="inline-flex items-center gap-2 bg-accent-terracotta/10 hover:bg-accent-terracotta hover:text-white text-accent-terracotta font-semibold text-sm group px-5 py-2.5 rounded-full transition-all w-fit">
+                            <span>Начать автоматизацию рутины</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- Live AI Assistant Chat Simulation -->
+                    <div class="flex-1 bg-serene-100/50 rounded-3xl p-6 border border-serene-200/50 flex flex-col justify-between min-h-[380px]">
+                        <div class="flex flex-col h-full justify-between flex-1">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-xs font-semibold text-serene-800/60 uppercase tracking-widest">ИИ-агент Мяу 🐾</span>
+                                <span class="flex items-center gap-1.5 text-xs bg-accent-sage/10 text-accent-sage px-2 py-1 rounded-md font-semibold">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-accent-sage animate-pulse"></span> Мурчит онлайн
+                                </span>
+                            </div>
+                            
+                            <!-- Chat Box (Expanded fully) -->
+                            <div class="bg-white rounded-2xl border border-serene-200/20 shadow-sm flex flex-col flex-1 justify-between overflow-hidden">
+                                <!-- Messages -->
+                                <div id="chatMessages" class="p-4 overflow-y-auto space-y-3 text-xs flex-1">
+                                    <div class="flex items-start gap-2">
+                                        <img src="https://i.pinimg.com/474x/fe/f6/2d/fef62ddeb20f093cb72d5a4f4e6f18cd.jpg" alt="ИИ-агент Мяу" class="w-6 h-6 rounded-full object-cover shrink-0 shadow-sm">
+                                        <div class="bg-serene-50 p-2.5 rounded-2xl rounded-tl-none text-serene-900 max-w-[80%] leading-relaxed">
+                                            Привет! Я ИИ-агент Мяу, твой мурчащий ассистент. Могу отвечать на вопросы ваших клиентов 24/7 с теплотой и глубокой эмпатией. О чём вы хотите меня спросить?
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Integrated Hot Questions -->
+                                <div class="px-4 py-2 border-t border-serene-50 bg-serene-50/35">
+                                    <div class="flex flex-wrap gap-1.5">
+                                        <button onclick="triggerQuickQuestion('Какая твоя миссия?')" class="text-[10px] bg-white border border-serene-200/60 px-2.5 py-1 rounded-full hover:border-accent-sunset transition-all text-serene-800 shadow-sm">
+                                            «Какая твоя миссия?»
+                                        </button>
+                                        <button onclick="triggerQuickQuestion('Как убрать рутину в бизнесе?')" class="text-[10px] bg-white border border-serene-200/60 px-2.5 py-1 rounded-full hover:border-accent-sunset transition-all text-serene-800 shadow-sm">
+                                            «Как убрать рутину?»
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <!-- Input -->
+                                <div class="p-2 border-t border-serene-100 flex gap-2 bg-white">
+                                    <input id="chatInput" type="text" placeholder="Спросить Мяу..." class="flex-1 text-xs px-3 py-2 bg-serene-50 rounded-xl focus:outline-none focus:ring-1 focus:ring-accent-sunset border-none" onkeypress="handleChatPress(event)">
+                                    <button onclick="sendChatMessage()" class="w-8 h-8 rounded-xl bg-serene-900 text-white flex items-center justify-center hover:bg-serene-800 transition-colors shrink-0">
+                                        <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 4: Платформа для обучения -->
+                <div class="bg-white rounded-[2.5rem] p-6 md:p-8 border border-serene-900/[0.06] shadow-xl flex flex-col lg:flex-row gap-6 items-stretch hover:shadow-2xl transition-all duration-300">
+                    <div class="flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-xs font-bold uppercase tracking-wider text-accent-gold">услуга 04</span>
+                                <span class="px-3 py-1 bg-accent-gold/10 text-accent-gold rounded-full text-xs font-semibold">трансформация</span>
+                            </div>
+                            <h3 class="font-display text-2xl md:text-3xl font-bold text-serene-900 mb-4">4. платформа для обучения</h3>
+                            <div class="text-serene-800 space-y-4 mb-6 text-sm md:text-base">
+                                <p class="font-medium">экосистема, где обучение становится трансформацией. закрытый веб-сервис для долгого взаимодействия. это не просто «курс», а пространство с логикой, прогрессом и рефлексией</p>
+
+                                <div class="pt-4 border-t border-serene-200/50 space-y-2 text-xs md:text-sm">
+                                    <p><strong class="font-semibold text-serene-900">для кого:</strong> наставники, проводники, репетиторы, тренеры, учителя, которые ценят глубину и системный подход.</p>
+                                    <p class="text-lg font-bold text-accent-terracotta mt-2">стоимость: <span class="font-display text-xl">от 25 000₽</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#audit" onclick="selectBriefType('Платформа для обучения'); goToSection('audit', event)" class="inline-flex items-center gap-2 bg-accent-terracotta/10 hover:bg-accent-terracotta hover:text-white text-accent-terracotta font-semibold text-sm group px-5 py-2.5 rounded-full transition-all w-fit">
+                            <span>Обсудить создание платформы</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- Student Cabinet Mockup with local confetti canvas -->
+                    <div class="flex-1 bg-serene-100/50 rounded-3xl p-6 border border-serene-200/50 flex flex-col justify-between min-h-[350px] relative overflow-hidden">
+                        <!-- Local Confetti Canvas -->
+                        <canvas id="confettiCanvas" class="absolute inset-0 pointer-events-none z-20 w-full h-full rounded-3xl"></canvas>
+                        
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-xs font-semibold text-serene-800/60 uppercase tracking-widest">Кабинет ученика</span>
+                                <span class="text-xs bg-white px-2 py-1 rounded-md shadow-sm text-serene-800">Прогресс обучения</span>
+                            </div>
+                            
+                            <div class="bg-white p-5 rounded-2xl shadow-sm border border-serene-200/20 space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-[10px] uppercase font-semibold text-accent-gold">Модуль 1: Смысловая глубина</span>
+                                    <span class="text-[10px] text-serene-800" id="progressPct">0% пройдено</span>
+                                </div>
+                                <div class="w-full bg-serene-100 h-1.5 rounded-full overflow-hidden">
+                                    <div id="learningProgress" class="bg-accent-gold h-full w-0 transition-all duration-500"></div>
+                                </div>
+                                
+                                <!-- Lessons Checklist -->
+                                <div class="space-y-2 text-xs">
+                                    <label class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-serene-50 cursor-pointer transition-colors">
+                                        <input type="checkbox" onchange="updatePlatformProgress()" class="rounded border-serene-300 text-accent-gold focus:ring-accent-gold" id="task1">
+                                        <span class="text-serene-900">Урок 1.1: Определение ключевой ценности</span>
+                                    </label>
+                                    <label class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-serene-50 cursor-pointer transition-colors">
+                                        <input type="checkbox" onchange="updatePlatformProgress()" class="rounded border-serene-300 text-accent-gold focus:ring-accent-gold" id="task2">
+                                        <span class="text-serene-900">Урок 1.2: Проектирование логики интерфейса</span>
+                                    </label>
+                                </div>
+
+                                <!-- Dynamic Reflection Prompt -->
+                                <div class="pt-3 border-t border-serene-100">
+                                    <p class="text-[10px] text-serene-800 mb-2 font-medium">Ваша рефлексия дня:</p>
+                                    <input type="text" id="reflectionInput" placeholder="Что сегодня поняли нового?" class="w-full text-xs px-2.5 py-1.5 bg-serene-50 rounded-lg focus:outline-none focus:ring-1 focus:ring-accent-gold border-none" oninput="showReflectionNotice()">
+                                    <p id="reflectionSaved" class="text-[9px] text-accent-sage mt-1 opacity-0 transition-opacity">✓ мысль записана в цифровой дневник проекта</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="text-[10px] text-serene-800 mt-2 relative z-10">Каждый шаг ученика сохраняется в едином эстетичном пространстве, увеличивая ценность вашего обучения.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section: Our Values / Why it works -->
+    <section id="values" class="py-16 relative z-10 px-4 bg-serene-50">
+        <div class="max-w-5xl mx-auto">
+            <div class="flex flex-col lg:flex-row gap-12 items-start">
+                
+                <!-- Left Narrative Block -->
+                <div class="lg:w-1/3 space-y-6">
+                    <span class="text-xs font-semibold uppercase tracking-widest text-accent-terracotta block">Наши ценности</span>
+                    <h3 class="font-display text-3xl sm:text-4xl font-bold text-serene-900 leading-tight">
+                        почему это работает
+                    </h3>
+                    <p class="text-serene-800 leading-relaxed font-light text-sm">
+                        каждый продукт проходит глубокий путь от смыслов в вашей голове до безупречного цифрового интерфейса в руках ваших клиентов.
+                    </p>
+                </div>
+
+                <!-- Right Values Grid (3 cards in pristine mockup layout) -->
+                <div class="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+                    
+                    <!-- Value Card 1 -->
+                    <div class="spotlight-card bg-white p-8 rounded-3xl border border-serene-900/[0.06] shadow-sm relative group overflow-hidden flex flex-col justify-between min-h-[220px]">
+                        <div class="flex justify-between items-start relative z-10">
+                            <h4 class="font-display text-xl font-bold text-serene-900">смыслы как фундамент</h4>
+                            <span class="text-4xl font-display font-light text-serene-900/10 group-hover:text-accent-terracotta/20 transition-colors duration-300">01</span>
+                        </div>
+                        <p class="text-serene-800 text-xs leading-relaxed font-light mt-4 relative z-10">
+                            мы не начинаем писать код, пока мы не докопаемся до самой сути вашего продукта. мы переводим вашу уникальность, ценности и экспертность на язык интерфейса.
+                        </p>
+                    </div>
+
+                    <!-- Value Card 2 -->
+                    <div class="spotlight-card bg-accent-sunset/10 p-8 rounded-3xl border border-accent-sunset/20 shadow-sm relative group overflow-hidden flex flex-col justify-between min-h-[220px]">
+                        <div class="flex justify-between items-start relative z-10">
+                            <h4 class="font-display text-xl font-bold text-serene-900">системная логика</h4>
+                            <span class="text-4xl font-display font-light text-serene-900/10 group-hover:text-accent-sunset/30 transition-colors duration-300">02</span>
+                        </div>
+                        <p class="text-serene-800 text-xs leading-relaxed font-light mt-4 relative z-10">
+                            красивый сайт без структуры — просто картинка. я проектирую цифровые пространства как единую экосистему, где каждый шаг пользователя предсказуем и удобен.
+                        </p>
+                    </div>
+
+                    <!-- Value Card 3 (Col span 2 to balance the layout perfectly) -->
+                    <div class="spotlight-card bg-accent-terracotta text-white p-8 rounded-3xl relative group overflow-hidden flex flex-col justify-between min-h-[220px] md:col-span-2">
+                        <div class="flex justify-between items-start relative z-10">
+                            <h4 class="font-display text-xl font-bold">вайбкодинг — это скорость</h4>
+                            <span class="text-4xl font-display font-light text-white/10 group-hover:text-white/20 transition-colors duration-300">03</span>
+                        </div>
+                        <p class="text-white/80 text-xs leading-relaxed font-light mt-4 relative z-10">
+                            вместо месяцев разработки — работающий прототип за несколько дней. я использую передовые ai-инструменты, чтобы ваше видение ожило максимально быстро и без лишней бюрократии.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: Premium Caring Accordion FAQ -->
+    <section class="py-20 relative z-10 px-4 bg-white border-t border-serene-900/[0.04]">
+        <div class="max-w-3xl mx-auto">
+            
+            <div class="text-center mb-12 space-y-2">
+                <span class="text-xs font-semibold uppercase tracking-widest text-accent-terracotta">поддержка и забота</span>
+                <h2 class="font-display text-2xl sm:text-3xl font-bold text-serene-900">Заботливые ответы на вопросы</h2>
+                <p class="text-serene-800 text-xs sm:text-sm font-light">Спокойно и уверенно закрываю ваши главные страхи о веб-разработке.</p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <div class="border border-serene-900/[0.06] rounded-2xl bg-[#FAF8F5]/35 overflow-hidden transition-all duration-300">
+                    <button onclick="toggleFaq(1)" class="w-full text-left p-5 flex items-center justify-between gap-4 focus:outline-none">
+                        <span class="font-display text-sm font-bold text-serene-900">1. Сколько времени занимает создание ИИ-решения или сайта?</span>
+                        <div id="faqIcon1" class="w-6 h-6 rounded-full bg-white flex items-center justify-center border border-serene-900/[0.04] transition-transform duration-300 text-serene-800 shrink-0">
+                            <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
+                        </div>
+                    </button>
+                    <div id="faqAnswer1" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <p class="p-5 pt-0 text-xs sm:text-sm text-serene-800/80 leading-relaxed font-light border-t border-serene-900/[0.03]">
+                            Вместо месяцев разработки по классическому пути, с помощью Вайбкодинга и ИИ-ассистентов мы создаем работающий продукт за 5–10 дней. Мы ценим ваше время и запускаем прототипы на сверхскорости.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="border border-serene-900/[0.06] rounded-2xl bg-[#FAF8F5]/35 overflow-hidden transition-all duration-300">
+                    <button onclick="toggleFaq(2)" class="w-full text-left p-5 flex items-center justify-between gap-4 focus:outline-none">
+                        <span class="font-display text-sm font-bold text-serene-900">2. Нужны ли технические навыки для управления готовым решением?</span>
+                        <div id="faqIcon2" class="w-6 h-6 rounded-full bg-white flex items-center justify-center border border-serene-900/[0.04] transition-transform duration-300 text-serene-800 shrink-0">
+                            <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
+                        </div>
+                    </button>
+                    <div id="faqAnswer2" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <p class="p-5 pt-0 text-xs sm:text-sm text-serene-800/80 leading-relaxed font-light border-t border-serene-900/[0.03]">
+                            Абсолютно нет. Я проектирую все инструменты максимально простыми для администрирования. К каждому решению прикладывается заботливая видеоинструкция, где наглядно показано, как всё редактировать за пару кликов.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="border border-serene-900/[0.06] rounded-2xl bg-[#FAF8F5]/35 overflow-hidden transition-all duration-300">
+                    <button onclick="toggleFaq(3)" class="w-full text-left p-5 flex items-center justify-between gap-4 focus:outline-none">
+                        <span class="font-display text-sm font-bold text-serene-900">3. Действительно ли это окупается и приносит прибыль?</span>
+                        <div id="faqIcon3" class="w-6 h-6 rounded-full bg-white flex items-center justify-center border border-serene-900/[0.04] transition-transform duration-300 text-serene-800 shrink-0">
+                            <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
+                        </div>
+                    </button>
+                    <div id="faqAnswer3" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <p class="p-5 pt-0 text-xs sm:text-sm text-serene-800/80 leading-relaxed font-light border-t border-serene-900/[0.03]">
+                            Да, потому что мы строим решения не «ради кода», а ради ваших смыслов и конверсий. Интерактивные тесты-опросники и автоматические квалификаторы окупаются уже с первых нескольких закрытых сделок, сокращая часы операционки и ручного прогрева.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="border border-serene-900/[0.06] rounded-2xl bg-[#FAF8F5]/35 overflow-hidden transition-all duration-300">
+                    <button onclick="toggleFaq(4)" class="w-full text-left p-5 flex items-center justify-between gap-4 focus:outline-none">
+                        <span class="font-display text-sm font-bold text-serene-900">4. Сколько правок включено и что если результат не понравится?</span>
+                        <div id="faqIcon4" class="w-6 h-6 rounded-full bg-white flex items-center justify-center border border-serene-900/[0.04] transition-transform duration-300 text-serene-800 shrink-0">
+                            <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
+                        </div>
+                    </button>
+                    <div id="faqAnswer4" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <p class="p-5 pt-0 text-xs sm:text-sm text-serene-800/80 leading-relaxed font-light border-t border-serene-900/[0.03]">
+                            В каждый тариф включён пакет правок на этапе разработки — мы согласуем макет и смыслы до того, как я приступлю к сборке, чтобы не переделывать готовое с нуля. Если после запуска что-то работает не так, как задумано, я исправляю это бесплатно — это часть моей ответственности за результат, а не отдельная платная услуга.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="border border-serene-900/[0.06] rounded-2xl bg-[#FAF8F5]/35 overflow-hidden transition-all duration-300">
+                    <button onclick="toggleFaq(5)" class="w-full text-left p-5 flex items-center justify-between gap-4 focus:outline-none">
+                        <span class="font-display text-sm font-bold text-serene-900">5. Что происходит после того, как сайт или сервис готов?</span>
+                        <div id="faqIcon5" class="w-6 h-6 rounded-full bg-white flex items-center justify-center border border-serene-900/[0.04] transition-transform duration-300 text-serene-800 shrink-0">
+                            <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
+                        </div>
+                    </button>
+                    <div id="faqAnswer5" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <p class="p-5 pt-0 text-xs sm:text-sm text-serene-800/80 leading-relaxed font-light border-t border-serene-900/[0.03]">
+                            Вы получаете готовый рабочий продукт и видеоинструкцию по его администрированию — без зависимости от меня для мелких правок текста или изображений. По более сложным задачам (новые функции, интеграции, масштабирование) остаюсь на связи и всегда готова обсудить следующий этап.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 6 -->
+                <div class="border border-serene-900/[0.06] rounded-2xl bg-[#FAF8F5]/35 overflow-hidden transition-all duration-300">
+                    <button onclick="toggleFaq(6)" class="w-full text-left p-5 flex items-center justify-between gap-4 focus:outline-none">
+                        <span class="font-display text-sm font-bold text-serene-900">6. Почему вайбкодинг, а не классическая веб-студия?</span>
+                        <div id="faqIcon6" class="w-6 h-6 rounded-full bg-white flex items-center justify-center border border-serene-900/[0.04] transition-transform duration-300 text-serene-800 shrink-0">
+                            <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
+                        </div>
+                    </button>
+                    <div id="faqAnswer6" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <p class="p-5 pt-0 text-xs sm:text-sm text-serene-800/80 leading-relaxed font-light border-t border-serene-900/[0.03]">
+                            В классической студии за проект отвечают 3-5 человек и несколько слоёв согласований — отсюда и месяцы разработки, и высокий чек. Я веду проект от смыслов до финальной сборки сама, использую ИИ-инструменты для скорости на рутинных задачах, а решения о структуре и продающей логике принимаю вручную. Это и есть баланс скорости, цены и качества.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section: Final CTA / Audit with tighter spacing -->
+    <section id="audit" class="py-16 relative z-10 px-4 overflow-hidden">
+        
+        <div class="absolute -bottom-10 right-1/4 w-96 h-96 bg-accent-sunset/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto">
+            
+            <div class="glass-panel rounded-[3rem] p-8 md:p-12 border border-white shadow-xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-accent-terracotta/5 rounded-full blur-2xl"></div>
+
+                <div class="max-w-2xl mx-auto text-center">
+                    <span class="text-xs font-semibold uppercase tracking-widest text-accent-terracotta block mb-3">личный разбор</span>
+                    
+                    <h2 class="font-display text-3xl md:text-4xl font-bold text-serene-900 mb-6">
+                        бесплатный аудит вашего цифрового пространства
+                    </h2>
+
+                    <p class="text-serene-800 leading-relaxed font-light mb-8 text-sm md:text-base">
+                        прежде чем предлагать решение — я хочу понять вашу ситуацию. напишите мне, и я разберу ваш сайт, лендинг или воронку и подскажу, как усилить смыслы с помощью вайбкодинга.
+                    </p>
+
+                    <!-- Interactive Configurator Form -->
+                    <div class="bg-serene-50/75 p-6 rounded-2xl border border-serene-200/50 mb-8 text-left space-y-4">
+                        <p class="text-xs font-semibold text-serene-900 uppercase tracking-wider mb-2">Соберите экспресс-бриф (по желанию):</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-[10px] uppercase text-serene-800/80 mb-1 font-medium">Ваша сфера или ниша</label>
+                                <input id="briefNiche" type="text" placeholder="например, фитнес-тренер или ИТ-консалтинг" class="w-full text-xs px-3 py-2 bg-white rounded-xl focus:ring-1 focus:ring-accent-sunset border border-serene-200 focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] uppercase text-serene-800/80 mb-1 font-medium">Что хотите создать?</label>
+                                <select id="briefType" class="w-full text-xs px-3 py-2 bg-white rounded-xl focus:ring-1 focus:ring-accent-sunset border border-serene-200 focus:outline-none text-serene-800">
+                                    <option value="Лендинг / Сайт">Лендинг / Сайт</option>
+                                    <option value="Интерактивный лид-магнит">Интерактивный лид-магнит</option>
+                                    <option value="Сервис автоматизации">Сервис (автоматизация)</option>
+                                    <option value="Платформа для обучения">Платформа для обучения</option>
+                                    <option value="Несколько решений сразу">Несколько решений сразу</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="pt-2">
+                            <button onclick="sendBriefToTelegram()" class="w-full py-3 bg-gradient-to-r from-accent-terracotta to-accent-sunset hover:shadow-md hover:scale-[1.01] active:scale-[0.99] rounded-xl text-xs font-semibold text-white transition-all flex items-center justify-center gap-2 shadow-sm">
+                                <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                                <span id="sendBriefBtnText">Отправить экспресс-бриф в чат</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Main Telegram Action -->
+                    <div class="flex flex-col items-center gap-4">
+                        <a id="telegramBtn" href="#" target="_blank" class="group relative px-10 py-4 w-full sm:w-auto bg-serene-900 text-white font-medium rounded-full shadow-lg hover:bg-serene-800 transition-all duration-300 flex items-center justify-center gap-3">
+                            <span class="absolute top-0 left-0 w-full h-full rounded-full bg-serene-900/10 animate-ping opacity-75"></span>
+                            <i data-lucide="send" class="w-5 h-5 text-accent-sunset shrink-0"></i>
+                            <span class="tracking-wide">написать в телеграм</span>
+                        </a>
+                        <p class="text-[10px] text-serene-800/60">Откроется диалог, где вы сможете задать вопрос</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Global Footer -->
+    <footer class="py-10 border-t border-serene-200/50 text-center relative z-10 px-4">
+        <p class="text-xs text-serene-800/60">
+            &copy; 2026 Вайбкодинг. Смыслы, логика и скорость. Все права защищены.
+        </p>
+    </footer>
+
+    <!-- Custom Application Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            try { initScrollProgressBar(); } catch(e) { console.error('scroll progress init failed', e); }
+            try { initTelegramLinks(); } catch(e) { console.error('telegram links init failed', e); }
+        });
+
+        window.onload = function() {
+            try { lucide.createIcons(); } catch(e) { console.error('lucide init failed', e); }
+            try { initWindCanvas(); } catch(e) { console.error('wind canvas init failed', e); }
+            try { initHeroBackground(); } catch(e) { console.error('hero background init failed', e); }
+            try { initScrollProgressBar(); } catch(e) { console.error('scroll progress init failed', e); }
+            try { initSpotlightCards(); } catch(e) { console.error('spotlight cards init failed', e); }
+            try { initTelegramLinks(); } catch(e) { console.error('telegram links init failed', e); }
+        };
+
+        // ----------------------------------------------------
+        // Wire up every Telegram link/action to the single
+        // TELEGRAM_USERNAME config variable at the top of the file
+        // ----------------------------------------------------
+        function initTelegramLinks() {
+            const btn = document.getElementById('telegramBtn');
+            if (btn) {
+                btn.href = `https://t.me/${TELEGRAM_USERNAME}`;
+            }
+        }
+
+        // ----------------------------------------------------
+        // Premium Spotlight Hover Card Glow Effect
+        // ----------------------------------------------------
+        function initSpotlightCards() {
+            const cards = document.querySelectorAll('.spotlight-card');
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.setProperty('--x', `${x}px`);
+                    card.style.setProperty('--y', `${y}px`);
+                });
+            });
+        }
+
+        // ----------------------------------------------------
+        // Premium Scroll Progress Tracker
+        // ----------------------------------------------------
+        function initScrollProgressBar() {
+            const scrollProgress = document.getElementById('scrollProgress');
+            let ticking = false;
+            function updateProgress() {
+                if (scrollProgress) {
+                    const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    const scrolledPct = scrollableHeight > 0 ? (window.scrollY / scrollableHeight) * 100 : 0;
+                    scrollProgress.style.width = `${Math.min(Math.max(scrolledPct, 0), 100)}%`;
+                }
+                ticking = false;
+            }
+            function onScroll() {
+                if (!ticking) {
+                    requestAnimationFrame(updateProgress);
+                    ticking = true;
+                }
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('resize', updateProgress);
+            updateProgress();
+        }
+
+        // ----------------------------------------------------
+        // Robust in-page navigation (works even where default
+        // anchor-link jumping is blocked, e.g. sandboxed previews)
+        // ----------------------------------------------------
+        function goToSection(id, event) {
+            if (event) event.preventDefault();
+            const target = document.getElementById(id);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // ----------------------------------------------------
+        // Target Role Focus Logic
+        // ----------------------------------------------------
+        let activeFocusedRole = null;
+
+        function toggleRoleFocus(role) {
+            const expertCol = document.getElementById('expertCol');
+            const founderCol = document.getElementById('founderCol');
+
+            if (activeFocusedRole === role) {
+                // Reset state - both columns equal
+                expertCol.classList.remove('opacity-40', 'border-2', 'border-accent-terracotta', 'shadow-2xl', 'scale-[1.01]');
+                founderCol.classList.remove('opacity-40', 'border-2', 'border-accent-sunset', 'shadow-2xl', 'scale-[1.01]');
+                activeFocusedRole = null;
+            } else {
+                activeFocusedRole = role;
+                if (role === 'expert') {
+                    // Expert becomes main focal point
+                    expertCol.classList.add('border-2', 'border-accent-terracotta', 'shadow-2xl', 'scale-[1.01]');
+                    expertCol.classList.remove('opacity-40');
+                    // Founder dims slightly
+                    founderCol.classList.add('opacity-40');
+                    founderCol.classList.remove('border-2', 'border-accent-sunset', 'shadow-2xl', 'scale-[1.01]');
+                } else if (role === 'founder') {
+                    // Founder becomes main focal point
+                    founderCol.classList.add('border-2', 'border-accent-sunset', 'shadow-2xl', 'scale-[1.01]');
+                    founderCol.classList.remove('opacity-40');
+                    // Expert dims slightly
+                    expertCol.classList.add('opacity-40');
+                    expertCol.classList.remove('border-2', 'border-accent-terracotta', 'shadow-2xl', 'scale-[1.01]');
+                }
+            }
+        }
+
+        // ----------------------------------------------------
+        // Hero Background Initialization
+        // ----------------------------------------------------
+        function initHeroBackground() {
+            const bgImageElement = document.getElementById('heroBgImage');
+            if (bgImageElement && typeof USER_BACKGROUND_IMAGE !== 'undefined' && USER_BACKGROUND_IMAGE) {
+                bgImageElement.src = USER_BACKGROUND_IMAGE;
+            }
+        }
+
+        // ----------------------------------------------------
+        // Canvas Wind Particle Effect
+        // ----------------------------------------------------
+        let canvas, ctx, particles = [];
+        
+        function initWindCanvas() {
+            canvas = document.getElementById('windParticles');
+            ctx = canvas.getContext('2d');
+            resizeCanvas();
+            
+            // Create particles
+            for (let i = 0; i < 35; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 1.5 + 0.5,
+                    density: Math.random() * 0.4 + 0.1,
+                    opacity: Math.random() * 0.4 + 0.1,
+                    speedX: Math.random() * 0.4 + 0.2
+                });
+            }
+            
+            window.addEventListener('resize', resizeCanvas);
+            animateParticles();
+        }
+
+        function resizeCanvas() {
+            if(canvas) {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(p => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(212, 175, 55, ${p.opacity})`;
+                ctx.shadowBlur = 4;
+                ctx.shadowColor = "rgba(244, 162, 97, 0.3)";
+                ctx.fill();
+                
+                p.x += p.speedX;
+                p.y += Math.sin(p.x / 40) * 0.1;
+                
+                if (p.x > canvas.width) {
+                    p.x = -10;
+                    p.y = Math.random() * canvas.height;
+                }
+            });
+            
+            requestAnimationFrame(animateParticles);
+        }
+
+        // ----------------------------------------------------
+        // Caring FAQ Accordion Controller
+        // ----------------------------------------------------
+        function toggleFaq(index) {
+            for (let i = 1; i <= 6; i++) {
+                const answer = document.getElementById(`faqAnswer${i}`);
+                const icon = document.getElementById(`faqIcon${i}`);
+                if (i === index) {
+                    if (answer.style.maxHeight) {
+                        answer.style.maxHeight = null;
+                        icon.style.transform = "rotate(0deg)";
+                    } else {
+                        answer.style.maxHeight = answer.scrollHeight + "px";
+                        icon.style.transform = "rotate(180deg)";
+                    }
+                } else {
+                    answer.style.maxHeight = null;
+                    document.getElementById(`faqIcon${i}`).style.transform = "rotate(0deg)";
+                }
+            }
+        }
+
+        // ----------------------------------------------------
+        // Button Action: Select Brief Type
+        // ----------------------------------------------------
+        function selectBriefType(typeValue) {
+            const selectEl = document.getElementById('briefType');
+            if (selectEl) {
+                selectEl.value = typeValue;
+            }
+        }
+
+        // ----------------------------------------------------
+        // Interactive Service 2: Diagnostic Quiz
+        // ----------------------------------------------------
+        let quizState = { step1Choice: '', step2Choice: '' };
+
+        function nextQuizStep(step, value) {
+            if (step === 1) {
+                quizState.step1Choice = value;
+                document.getElementById('quizStep1').classList.add('hidden');
+                document.getElementById('quizStep2').classList.remove('hidden');
+                document.getElementById('quizStepIndicator').textContent = '2';
+                document.getElementById('dot2').classList.replace('bg-serene-200', 'bg-accent-sunset');
+            } else if (step === 2) {
+                quizState.step2Choice = value;
+                document.getElementById('quizStep2').classList.add('hidden');
+                document.getElementById('quizStep3').classList.remove('hidden');
+                showQuizResult();
+            }
+        }
+
+        function showQuizResult() {
+            const resultText = document.getElementById('quizResultText');
+            let message = '';
+            if (quizState.step1Choice === 'cold') {
+                message = "Ваши клиенты приходят холодными. Вам идеально подойдет Интерактивный тест-опросник. Он вовлекает человека в диалог и прогревает его экспертным решением до покупки.";
+            } else if (quizState.step1Choice === 'visual') {
+                message = "Усталость от шаблонов лечится Цифровым изданием. Уникальный интерактивный лонгрид с микро-анимациями покажет ваш продукт как произведение искусства.";
+            } else if (quizState.step1Choice === 'routine') {
+                message = "Слишком много ручной переписки снижает вашу конверсию. ИИ-ассистент закроет 80% частых вопросов, собирая контакты тёплых лидов, пока вы отдыхаете.";
+            } else {
+                message = "Интерактивный лид-магнит — лучший способ мгновенно вовлечь аудиторию в игровой форме. Доверие клиентов вырастет на 40%!";
+            }
+            resultText.textContent = message;
+        }
+
+        function applyQuizResultToBrief() {
+            let recommendation = 'Интерактивный лид-магнит';
+            if (quizState.step1Choice === 'cold') {
+                recommendation = 'Интерактивный лид-магнит';
+            } else if (quizState.step1Choice === 'visual') {
+                recommendation = 'Лендинг / Сайт';
+            } else if (quizState.step1Choice === 'routine') {
+                recommendation = 'Сервис автоматизации';
+            }
+            selectBriefType(recommendation);
+        }
+
+        // ----------------------------------------------------
+        // Interactive Service 3: AI Chat (local fallback replies)
+        // ----------------------------------------------------
+        const MEOW_REPLIES = [
+            `Мяу! Я могу отвечать вашим клиентам 24/7 с теплотой и заботой, пока вы заняты важным. Напишите Нике в Telegram @${TELEGRAM_USERNAME}, чтобы обсудить своего ИИ-агента 🐾`,
+            `Мурр~ Моя миссия — снимать с вас рутину переписки и прогревать клиентов до продажи. Хотите такого же себе? Пишите @${TELEGRAM_USERNAME}!`,
+            `Отличный вопрос! Такие ИИ-агенты как я собирают контакты, отвечают на частые вопросы и передают тёплых лидов человеку. Обсудим детали в Telegram — @${TELEGRAM_USERNAME} 🐾`
+        ];
+
+        function sendChatMessage() {
+            const input = document.getElementById('chatInput');
+            const text = input.value.trim();
+            if(!text) return;
+            
+            appendMessage('user', text);
+            input.value = '';
+
+            const typingDiv = document.createElement('div');
+            typingDiv.id = "chatTypingState";
+            typingDiv.className = "flex items-start gap-2 animate-pulse";
+            typingDiv.innerHTML = `
+                <img src="https://i.pinimg.com/474x/fe/f6/2d/fef62ddeb20f093cb72d5a4f4e6f18cd.jpg" class="w-6 h-6 rounded-full object-cover shrink-0">
+                <div class="bg-serene-100 p-2.5 rounded-2xl text-[11px] text-serene-800">Мяу думает... 🐾</div>
+            `;
+            const chatMessages = document.getElementById('chatMessages');
+            chatMessages.appendChild(typingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            setTimeout(() => {
+                document.getElementById('chatTypingState')?.remove();
+                const reply = MEOW_REPLIES[Math.floor(Math.random() * MEOW_REPLIES.length)];
+                appendMessage('ai', reply);
+            }, 700);
+        }
+
+        function handleChatPress(event) {
+            if(event.key === 'Enter') {
+                sendChatMessage();
+            }
+        }
+
+        function triggerQuickQuestion(questionText) {
+            appendMessage('user', questionText);
+            
+            setTimeout(() => {
+                const typingDiv = document.createElement('div');
+                typingDiv.id = "chatTypingState";
+                typingDiv.className = "flex items-start gap-2 animate-pulse";
+                typingDiv.innerHTML = `
+                    <img src="https://i.pinimg.com/474x/fe/f6/2d/fef62ddeb20f093cb72d5a4f4e6f18cd.jpg" class="w-6 h-6 rounded-full object-cover shrink-0">
+                    <div class="bg-serene-100 p-2.5 rounded-2xl text-[11px] text-serene-800">Мяу думает... 🐾</div>
+                `;
+                const chatMessages = document.getElementById('chatMessages');
+                chatMessages.appendChild(typingDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+
+                setTimeout(() => {
+                    document.getElementById('chatTypingState')?.remove();
+                    const reply = MEOW_REPLIES[Math.floor(Math.random() * MEOW_REPLIES.length)];
+                    appendMessage('ai', reply);
+                }, 700);
+            }, 300);
+        }
+
+        function appendMessage(sender, text) {
+            const chatMessages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = "flex items-start gap-2 animate-float-slow";
+            
+            if (sender === 'user') {
+                messageDiv.className += " justify-end";
+                messageDiv.innerHTML = `
+                    <div class="bg-accent-sunset/15 p-2.5 rounded-2xl rounded-tl-none text-serene-900 max-w-[80%]">
+                        ${text}
+                    </div>
+                    <div class="w-6 h-6 rounded-full bg-accent-sunset text-white flex items-center justify-center text-[10px] shrink-0 font-bold">Вы</div>
+                `;
+            } else {
+                messageDiv.innerHTML = `
+                    <img src="https://i.pinimg.com/474x/fe/f6/2d/fef62ddeb20f093cb72d5a4f4e6f18cd.jpg" alt="ИИ-агент Мяу" class="w-6 h-6 rounded-full object-cover shrink-0 shadow-sm">
+                    <div class="bg-serene-50 p-2.5 rounded-2xl rounded-tl-none text-serene-900 max-w-[80%] leading-relaxed">
+                        ${text}
+                    </div>
+                `;
+            }
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // ----------------------------------------------------
+        // Interactive Service 4: Micro-Learning Tracker & Confetti
+        // ----------------------------------------------------
+        function updatePlatformProgress() {
+            const task1 = document.getElementById('task1').checked;
+            const task2 = document.getElementById('task2').checked;
+            
+            let percent = 0;
+            if(task1 && task2) percent = 100;
+            else if(task1 || task2) percent = 50;
+            
+            document.getElementById('learningProgress').style.width = percent + '%';
+            document.getElementById('progressPct').textContent = percent + '% пройдено';
+
+            // Launch aesthetic minimalist confetti at 100%
+            if (percent === 100) {
+                launchMinimalConfetti();
+            }
+        }
+
+        let localConfetti;
+        function launchMinimalConfetti() {
+            const myCanvas = document.getElementById('confettiCanvas');
+            if (!myCanvas) return;
+            
+            // Initialize the local confetti instance bound ONLY to this card's canvas
+            if (!localConfetti) {
+                localConfetti = confetti.create(myCanvas, {
+                    resize: true,
+                    useWorker: true
+                });
+            }
+
+            // Launch delicate, small-scale confetti rising from the bottom of the card
+            localConfetti({
+                particleCount: 40,
+                angle: 90,
+                spread: 55,
+                origin: { x: 0.5, y: 0.85 },
+                colors: ['#D4AF37', '#E07A5F', '#81B29A', '#F4A261']
+            });
+        }
+
+        function showReflectionNotice() {
+            const notice = document.getElementById('reflectionSaved');
+            notice.className = "text-[9px] text-accent-sage mt-1 opacity-100 transition-opacity";
+            
+            clearTimeout(window.reflectionTimeout);
+            window.reflectionTimeout = setTimeout(() => {
+                notice.className = "text-[9px] text-accent-sage mt-1 opacity-0 transition-opacity";
+            }, 2500);
+        }
+
+        // ----------------------------------------------------
+        // Interactive Configurator / Express-Brief Direct Sender
+        // ----------------------------------------------------
+        function sendBriefToTelegram() {
+            const niche = document.getElementById('briefNiche').value.trim() || 'Индивидуальная ниша';
+            const type = document.getElementById('briefType').value;
+            const message = `Привет! Собрал экспресс-бриф на твоем сайте.\nНиша: ${niche}\nИнтересует решение: ${type}\nХочу получить бесплатный аудит!`;
+            
+            // 1. Copy to clipboard as a reliable backup
+            const tempEl = document.createElement('textarea');
+            tempEl.value = message;
+            document.body.appendChild(tempEl);
+            tempEl.select();
+            try {
+                document.execCommand('copy');
+            } catch(err) {
+                console.error('Copy failed', err);
+            }
+            document.body.removeChild(tempEl);
+
+            // 2. Direct Telegram API call with prefilled text parameters
+            const encodedText = encodeURIComponent(message);
+            const telegramUrl = `https://t.me/${TELEGRAM_USERNAME}?text=${encodedText}`;
+            window.open(telegramUrl, '_blank');
+
+            // 3. Briefly notify the user
+            const btnText = document.getElementById('sendBriefBtnText');
+            btnText.textContent = "✓ Бриф скопирован и открывается в Telegram!";
+            setTimeout(() => {
+                btnText.textContent = "Отправить экспресс-бриф в чат";
+            }, 4000);
+        }
+
+        function resetQuiz() {
+            quizState = { step1Choice: '', step2Choice: '' };
+            document.getElementById('quizStep3').classList.add('hidden');
+            document.getElementById('quizStep1').classList.remove('hidden');
+            document.getElementById('quizStepIndicator').textContent = '1';
+            document.getElementById('dot2').classList.replace('bg-accent-sunset', 'bg-serene-200');
+        }
+    </script>
+</body>
+</html>
