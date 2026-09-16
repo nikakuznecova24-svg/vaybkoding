@@ -823,7 +823,7 @@
         <div class="w-16 sm:w-24 h-px bg-serene-900/15"></div>
     </div>
 
-    <div class="max-w-2xl mx-auto text-center px-4 py-8 relative z-10">
+    <div class="max-w-2xl mx-auto text-center px-4 py-4 relative z-10">
         <p class="text-serene-800 text-sm md:text-base font-light mb-4">не уверены, что именно заказывать?</p>
         <a href="quiz.html" class="px-4 py-2.5 sm:px-8 sm:py-4 w-auto text-xs sm:text-base glass-panel hover:bg-white/80 text-serene-800 font-medium rounded-full border border-white/60 transition-all hover:scale-[1.02] text-center inline-flex items-center justify-center">
             пройти тест за 10 секунд
@@ -949,6 +949,7 @@
             try { initSpotlightCards(); } catch(e) { console.error('spotlight cards init failed', e); }
             try { initTelegramLinks(); } catch(e) { console.error('telegram links init failed', e); }
             try { initRevealAnimations(); } catch(e) { console.error('reveal animations init failed', e); }
+            try { initQuizPrefill(); } catch(e) { console.error('quiz prefill init failed', e); }
         };
 
         // ----------------------------------------------------
@@ -1230,6 +1231,23 @@
                 if (c.dataset.on === '1') selectBriefType(c.getAttribute('data-type'));
             });
             goToSection('audit', event);
+        }
+
+        // ----------------------------------------------------
+        // Prefill Brief From Quiz Results (quiz.html -> ?quiz_types=...&quiz_note=...)
+        // ----------------------------------------------------
+        function initQuizPrefill() {
+            const params = new URLSearchParams(window.location.search);
+            const types = params.get('quiz_types');
+            const note = params.get('quiz_note');
+            if (!types && !note) return;
+            if (types) {
+                types.split('|').forEach(function(t) { selectBriefType(t); });
+            }
+            if (note) {
+                const q = document.getElementById('briefQuestion');
+                if (q) q.value = note;
+            }
         }
 
         // ----------------------------------------------------
