@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>какое решение вам подходит | вайбкодинг & ии-решения</title>
+    <meta name="description" content="ответьте на один вопрос и получите персональную рекомендацию — какая услуга или комплекс закроет именно вашу задачу.">
+
+    <script>
+        const TELEGRAM_USERNAME = "nikakuznecovaa"; // Ваш юзернейм в Telegram без @
+    </script>
+
+    <link rel="stylesheet" href="assets/styles.css?v=12">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FAF8F5;
+            background-image:
+                radial-gradient(1400px 800px at 10% 0%, rgba(224,122,95,0.18), transparent 70%),
+                radial-gradient(1400px 800px at 90% 25%, rgba(168,181,160,0.16), transparent 70%),
+                radial-gradient(1400px 900px at 10% 100%, rgba(212,162,74,0.18), transparent 70%);
+            color: #22211F;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-accent-sunset/20 selection:text-serene-900">
+
+    <section class="min-h-[90vh] py-16 px-4 flex items-center justify-center">
+        <div class="max-w-2xl w-full">
+
+            <div class="text-center mb-8">
+                <a href="index.html" class="text-xs text-serene-800/60 hover:text-accent-terracotta underline">← на главную</a>
+                <span class="text-xs font-semibold text-accent-terracotta block mt-4 mb-3">определим за 10 секунд</span>
+                <h1 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-serene-900">что вам подходит?</h1>
+                <p class="text-serene-800 leading-relaxed font-light mt-4 text-sm md:text-base max-w-2xl mx-auto">
+                    отметь всё, что откликается — соберём рекомендацию именно под тебя
+                </p>
+            </div>
+
+            <div id="quizForm" class="glass-panel rounded-[3rem] p-8 md:p-12 border border-white shadow-xl">
+                <div id="quizChips" class="flex flex-col gap-3 mb-8"></div>
+                <button type="button" onclick="showQuizResult()" class="w-full py-3 bg-gradient-to-r from-accent-terracotta to-accent-sunset text-white font-medium rounded-full shadow-sm text-sm">
+                    <span id="quizSubmitText">получить рекомендацию</span>
+                </button>
+            </div>
+
+            <div id="quizResult" class="hidden glass-panel rounded-[3rem] p-8 md:p-12 border border-white shadow-xl mt-4">
+                <span class="text-xs font-semibold text-accent-terracotta block mb-4">по твоим ответам</span>
+                <p class="font-display text-xl sm:text-3xl font-bold text-serene-900 mb-3">🎯 нужно: <span id="resultServices"></span></p>
+                <p class="text-serene-800 text-sm md:text-base mb-1">💰 <span id="resultPrice"></span></p>
+                <p class="text-serene-800 text-sm md:text-base mb-6">⏱ срок: 5-10 дней</p>
+                <p id="resultWhy" class="text-serene-800 leading-relaxed font-light text-sm md:text-base mb-8"></p>
+                <a id="resultCta" href="#" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-4 bg-serene-900 text-white font-medium rounded-full shadow-lg hover:bg-serene-800 transition-all duration-300">
+                    <i data-lucide="send" class="w-5 h-5 text-accent-sunset shrink-0"></i>
+                    <span>обсудить именно это</span>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        const QUIZ_ITEMS = [
+            { label: "стыдно отправлять свою ссылку на сайт клиентам", type: "Лендинг / Сайт", name: "сайт", price: 15000, why: "сайт снимет неловкость за старую ссылку — по нему сразу видно ваш масштаб" },
+            { label: "нужна умная поддержка, которая сама отвечает на вопросы клиентов", type: "ИИ-агент", name: "ии-агент", price: 20000, why: "ии-агент возьмёт на себя повторяющиеся вопросы и работает 24/7" },
+            { label: "нужен простой бот с меню и кнопками для заявок", type: "Чат-бот", name: "чат-бот", price: 15000, why: "чат-бот примет заявку и ответит по готовому сценарию — просто и предсказуемо" },
+            { label: "нет системы, которая сама продаёт, пока вы спите", type: "Воронка в Telegram", name: "воронка в telegram", price: 25000, why: "воронка сама прогревает и ведёт человека к покупке без вашего участия" },
+            { label: "веду курс или наставничество, а прогресс учеников теряется в переписке", type: "Платформа для обучения", name: "платформа для обучения", price: 25000, why: "платформа покажет прогресс каждого ученика в одном месте" },
+            { label: "аудитория уже живёт в telegram, отдельный сайт не нужен", type: "Мини-апп", name: "мини-апп", price: 15000, why: "мини-апп даёт каталог, запись или кабинет прямо внутри telegram" },
+            { label: "нужен простой инструмент для рутины — тест, трекер, калькулятор", type: "Сервис / интерактивный лид-магнит", name: "сервис / лид-магнит", price: 10000, why: "интерактивный инструмент вовлекает вместо скучного pdf или таблицы" }
+        ];
+
+        const CHIP_OFF = "quiz-chip w-full flex items-center gap-3 text-sm px-4 py-3 bg-white rounded-xl border border-serene-200 focus:outline-none text-left";
+        const CHIP_ON = "quiz-chip w-full flex items-center gap-3 text-sm px-4 py-3 bg-accent-terracotta/5 rounded-xl border border-accent-terracotta/25 focus:outline-none text-left";
+        const DOT_OFF = "quiz-dot w-4 h-4 rounded-full border border-serene-200 shrink-0 flex items-center justify-center transition-colors";
+        const DOT_ON = "quiz-dot w-4 h-4 rounded-full border border-accent-terracotta bg-accent-terracotta shrink-0 flex items-center justify-center transition-colors";
+
+        function buildQuizChips() {
+            const wrap = document.getElementById('quizChips');
+            QUIZ_ITEMS.forEach(function(item, i) {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = CHIP_OFF;
+                btn.dataset.index = i;
+                btn.onclick = function() { toggleQuizItem(btn); };
+                const dot = document.createElement('span');
+                dot.className = DOT_OFF;
+                dot.innerHTML = '<i data-lucide="check" class="quiz-check hidden w-2.5 h-2.5 text-white"></i>';
+                const text = document.createElement('span');
+                text.className = 'font-medium text-serene-800';
+                text.textContent = item.label;
+                btn.appendChild(dot);
+                btn.appendChild(text);
+                wrap.appendChild(btn);
+            });
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function toggleQuizItem(btn) {
+            const on = btn.dataset.on === '1';
+            btn.dataset.on = on ? '0' : '1';
+            btn.className = on ? CHIP_OFF : CHIP_ON;
+            const dot = btn.querySelector('.quiz-dot');
+            if (dot) dot.className = on ? DOT_OFF : DOT_ON;
+            const check = btn.querySelector('.quiz-check');
+            if (check) check.classList.toggle('hidden', on);
+        }
+
+        function showQuizResult() {
+            const chips = document.querySelectorAll('#quizChips .quiz-chip');
+            const selected = [];
+            chips.forEach(function(c) {
+                if (c.dataset.on === '1') selected.push(QUIZ_ITEMS[parseInt(c.dataset.index, 10)]);
+            });
+
+            const submitText = document.getElementById('quizSubmitText');
+            if (!selected.length) {
+                const original = submitText.textContent;
+                submitText.textContent = 'отметь хотя бы один пункт';
+                setTimeout(function(){ submitText.textContent = original; }, 2000);
+                return;
+            }
+
+            const sum = selected.reduce(function(acc, it){ return acc + it.price; }, 0);
+            const rate = selected.length >= 3 ? 0.85 : (selected.length === 2 ? 0.9 : 1);
+            const total = Math.round(sum * rate / 500) * 500;
+
+            document.getElementById('resultServices').textContent = selected.map(function(it){ return it.name; }).join(' + ');
+            document.getElementById('resultPrice').textContent = 'от ' + total.toLocaleString('ru-RU') + ' ₽' + (selected.length > 1 ? ' (с комплексной скидкой)' : '');
+            document.getElementById('resultWhy').textContent = '📌 ' + selected.map(function(it){ return it.why; }).join('. ') + '.';
+
+            const names = selected.map(function(it){ return it.name; }).join(', ');
+            const message = 'Привет! Прошёл тест на сайте и хочу обсудить: ' + names + '. Ориентир по цене: от ' + total.toLocaleString('ru-RU') + ' ₽.';
+            document.getElementById('resultCta').href = 'https://t.me/' + TELEGRAM_USERNAME + '?text=' + encodeURIComponent(message);
+
+            const resultBlock = document.getElementById('quizResult');
+            resultBlock.classList.remove('hidden');
+            resultBlock.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        document.addEventListener('DOMContentLoaded', buildQuizChips);
+    </script>
+</body>
+</html>
