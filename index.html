@@ -791,17 +791,21 @@
                             <input id="briefNiche" type="text" placeholder="например, фитнес-тренер или ИТ-консалтинг" class="w-full text-xs px-3 py-2 bg-white rounded-xl focus:ring-1 focus:ring-accent-sunset border border-serene-200 focus:outline-none">
                         </div>
 
-                        <div>
+                        <div class="relative">
                             <label class="block text-[10px] text-serene-800/80 mb-2 font-medium">что хотите создать?</label>
-                            <div id="briefTypeChips" class="flex flex-wrap gap-2">
-                                <button type="button" data-type="Лендинг / Сайт" onclick="pickBriefType(this)" class="brief-chip px-3 py-1.5 rounded-full text-xs font-medium border border-serene-200 bg-white text-serene-800 hover:border-accent-terracotta transition-all">лендинг / сайт</button>
-                                <button type="button" data-type="Сервис / интерактивный лид-магнит" onclick="pickBriefType(this)" class="brief-chip px-3 py-1.5 rounded-full text-xs font-medium border border-serene-200 bg-white text-serene-800 hover:border-accent-terracotta transition-all">сервис / лид-магнит</button>
-                                <button type="button" data-type="Платформа для обучения" onclick="pickBriefType(this)" class="brief-chip px-3 py-1.5 rounded-full text-xs font-medium border border-serene-200 bg-white text-serene-800 hover:border-accent-terracotta transition-all">платформа для обучения</button>
-                                <button type="button" data-type="ИИ-агент" onclick="pickBriefType(this)" class="brief-chip px-3 py-1.5 rounded-full text-xs font-medium border border-serene-200 bg-white text-serene-800 hover:border-accent-terracotta transition-all">ии-агент</button>
-                                <button type="button" data-type="Воронка в Telegram" onclick="pickBriefType(this)" class="brief-chip px-3 py-1.5 rounded-full text-xs font-medium border border-serene-200 bg-white text-serene-800 hover:border-accent-terracotta transition-all">воронка в telegram</button>
-                                <button type="button" data-type="Мини-апп" onclick="pickBriefType(this)" class="brief-chip px-3 py-1.5 rounded-full text-xs font-medium border border-serene-200 bg-white text-serene-800 hover:border-accent-terracotta transition-all">мини-апп</button>
-                                <button type="button" data-type="Чат-бот" onclick="pickBriefType(this)" class="brief-chip px-3 py-1.5 rounded-full text-xs font-medium border border-serene-200 bg-white text-serene-800 hover:border-accent-terracotta transition-all">чат-бот</button>
-                                <button type="button" data-type="Несколько решений сразу" onclick="pickBriefType(this)" class="brief-chip px-3 py-1.5 rounded-full text-xs font-medium border border-serene-200 bg-white text-serene-800 hover:border-accent-terracotta transition-all">несколько решений сразу</button>
+                            <button type="button" id="briefTypeToggle" onclick="toggleBriefDropdown()" class="w-full flex items-center justify-between gap-2 text-xs px-3 py-2 bg-white rounded-xl border border-serene-200 text-serene-800 focus:outline-none focus:ring-1 focus:ring-accent-sunset text-left">
+                                <span id="briefTypeToggleLabel" class="truncate">выбрать из списка</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 shrink-0 transition-transform" id="briefTypeToggleChevron"></i>
+                            </button>
+                            <div id="briefTypeChips" class="hidden absolute z-20 mt-2 w-full bg-white rounded-xl border border-serene-200 shadow-lg p-2 flex flex-col gap-1 max-h-60 overflow-y-auto">
+                                <button type="button" data-type="Лендинг / Сайт" onclick="pickBriefType(this)" class="brief-chip w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-serene-800 hover:bg-serene-50 transition-all">лендинг / сайт</button>
+                                <button type="button" data-type="Сервис / интерактивный лид-магнит" onclick="pickBriefType(this)" class="brief-chip w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-serene-800 hover:bg-serene-50 transition-all">сервис / лид-магнит</button>
+                                <button type="button" data-type="Платформа для обучения" onclick="pickBriefType(this)" class="brief-chip w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-serene-800 hover:bg-serene-50 transition-all">платформа для обучения</button>
+                                <button type="button" data-type="ИИ-агент" onclick="pickBriefType(this)" class="brief-chip w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-serene-800 hover:bg-serene-50 transition-all">ии-агент</button>
+                                <button type="button" data-type="Воронка в Telegram" onclick="pickBriefType(this)" class="brief-chip w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-serene-800 hover:bg-serene-50 transition-all">воронка в telegram</button>
+                                <button type="button" data-type="Мини-апп" onclick="pickBriefType(this)" class="brief-chip w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-serene-800 hover:bg-serene-50 transition-all">мини-апп</button>
+                                <button type="button" data-type="Чат-бот" onclick="pickBriefType(this)" class="brief-chip w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-serene-800 hover:bg-serene-50 transition-all">чат-бот</button>
+                                <button type="button" data-type="Несколько решений сразу" onclick="pickBriefType(this)" class="brief-chip w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-serene-800 hover:bg-serene-50 transition-all">несколько решений сразу</button>
                             </div>
                             <select id="briefType" class="hidden">
                                 <option value="">не выбрано</option>
@@ -1087,8 +1091,8 @@
             syncBriefTypeValue();
         }
 
-        const BRIEF_CHIP_OFF = "brief-chip px-3 py-1.5 rounded-full text-xs font-medium border border-serene-200 bg-white text-serene-800 hover:border-accent-terracotta transition-all";
-        const BRIEF_CHIP_ON = "brief-chip px-3 py-1.5 rounded-full text-xs font-medium border border-accent-terracotta bg-accent-terracotta text-white transition-all";
+        const BRIEF_CHIP_OFF = "brief-chip w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-serene-800 hover:bg-serene-50 transition-all";
+        const BRIEF_CHIP_ON = "brief-chip w-full text-left px-3 py-2 rounded-lg text-xs font-medium bg-accent-terracotta/10 text-accent-terracotta transition-all";
 
         function setChipOn(el, on) {
             el.dataset.on = on ? '1' : '0';
@@ -1100,12 +1104,33 @@
             const selected = Array.from(chips).filter(function(b){ return b.dataset.on === '1'; }).map(function(b){ return b.getAttribute('data-type'); });
             const selectEl = document.getElementById('briefType');
             if (selectEl) selectEl.value = selected.join(', ');
+            const label = document.getElementById('briefTypeToggleLabel');
+            if (label) label.textContent = selected.length ? selected.join(', ') : 'выбрать из списка';
         }
 
         function pickBriefType(el) {
             setChipOn(el, el.dataset.on !== '1');
             syncBriefTypeValue();
         }
+
+        function toggleBriefDropdown() {
+            const panel = document.getElementById('briefTypeChips');
+            const chevron = document.getElementById('briefTypeToggleChevron');
+            if (!panel) return;
+            panel.classList.toggle('hidden');
+            if (chevron) chevron.classList.toggle('rotate-180');
+        }
+
+        document.addEventListener('click', function(e) {
+            const toggle = document.getElementById('briefTypeToggle');
+            const panel = document.getElementById('briefTypeChips');
+            if (!toggle || !panel || panel.classList.contains('hidden')) return;
+            if (!toggle.contains(e.target) && !panel.contains(e.target)) {
+                panel.classList.add('hidden');
+                const chevron = document.getElementById('briefTypeToggleChevron');
+                if (chevron) chevron.classList.remove('rotate-180');
+            }
+        });
 
         // ----------------------------------------------------
         // Interactive Configurator / Express-Brief Direct Sender
