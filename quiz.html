@@ -6,10 +6,6 @@
     <title>какое решение вам подходит | вайбкодинг & ии-решения</title>
     <meta name="description" content="ответьте на один вопрос и получите персональную рекомендацию — какая услуга или комплекс закроет именно вашу задачу.">
 
-    <script>
-        const TELEGRAM_USERNAME = "nikakuznecovaa"; // Ваш юзернейм в Telegram без @
-    </script>
-
     <link rel="stylesheet" href="assets/styles.css?v=12">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -62,7 +58,7 @@
                 <p class="text-serene-800 text-sm md:text-base mb-1">💰 <span id="resultPrice"></span></p>
                 <p class="text-serene-800 text-sm md:text-base mb-6">⏱ срок: 5-10 дней</p>
                 <p id="resultWhy" class="text-serene-800 leading-relaxed font-light text-sm md:text-base mb-8"></p>
-                <a id="resultCta" href="#" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-4 bg-serene-900 text-white font-medium rounded-full shadow-lg hover:bg-serene-800 transition-all duration-300">
+                <a id="resultCta" href="#" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-4 bg-serene-900 text-white font-medium rounded-full shadow-lg hover:bg-serene-800 transition-all duration-300">
                     <i data-lucide="send" class="w-5 h-5 text-accent-sunset shrink-0"></i>
                     <span>обсудить именно это</span>
                 </a>
@@ -77,7 +73,7 @@
             { label: "нужна умная поддержка, которая сама отвечает на вопросы клиентов", type: "ИИ-агент", name: "ии-агент", price: 20000, why: "ии-агент возьмёт на себя повторяющиеся вопросы и работает 24/7" },
             { label: "нужен простой бот с меню и кнопками для заявок", type: "Чат-бот", name: "чат-бот", price: 15000, why: "чат-бот примет заявку и ответит по готовому сценарию — просто и предсказуемо" },
             { label: "нет системы, которая сама продаёт, пока вы спите", type: "Воронка в Telegram", name: "воронка в telegram", price: 25000, why: "воронка сама прогревает и ведёт человека к покупке без вашего участия" },
-            { label: "веду курс или наставничество, а прогресс учеников теряется в переписке", type: "Платформа для обучения", name: "платформа для обучения", price: 25000, why: "платформа покажет прогресс каждого ученика в одном месте" },
+            { label: "веду курс или наставничество и хочу выстроить понятную систему для учеников — с прогрессом и заданиями в одном месте", type: "Платформа для обучения", name: "платформа для обучения", price: 25000, why: "платформа покажет прогресс каждого ученика в одном месте" },
             { label: "аудитория уже живёт в telegram, отдельный сайт не нужен", type: "Мини-апп", name: "мини-апп", price: 15000, why: "мини-апп даёт каталог, запись или кабинет прямо внутри telegram" },
             { label: "нужен простой инструмент для рутины — тест, трекер, калькулятор", type: "Сервис / интерактивный лид-магнит", name: "сервис / лид-магнит", price: 10000, why: "интерактивный инструмент вовлекает вместо скучного pdf или таблицы" }
         ];
@@ -141,9 +137,10 @@
             document.getElementById('resultPrice').textContent = 'от ' + total.toLocaleString('ru-RU') + ' ₽' + (selected.length > 1 ? ' (с комплексной скидкой)' : '');
             document.getElementById('resultWhy').textContent = '📌 ' + selected.map(function(it){ return it.why; }).join('. ') + '.';
 
-            const names = selected.map(function(it){ return it.name; }).join(', ');
-            const message = 'Привет! Прошёл тест на сайте и хочу обсудить: ' + names + '. Ориентир по цене: от ' + total.toLocaleString('ru-RU') + ' ₽.';
-            document.getElementById('resultCta').href = 'https://t.me/' + TELEGRAM_USERNAME + '?text=' + encodeURIComponent(message);
+            const types = selected.map(function(it){ return it.type; }).join('|');
+            const note = 'прошёл(-ла) тест на сайте: ' + selected.map(function(it){ return it.name; }).join(', ') + '. ориентир по цене: от ' + total.toLocaleString('ru-RU') + ' ₽.';
+            const params = new URLSearchParams({ quiz_types: types, quiz_note: note });
+            document.getElementById('resultCta').href = 'index.html?' + params.toString() + '#audit';
 
             const resultBlock = document.getElementById('quizResult');
             resultBlock.classList.remove('hidden');
