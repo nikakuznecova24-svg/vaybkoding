@@ -1073,6 +1073,11 @@
             }
             
             window.addEventListener('resize', resizeCanvas);
+            window.addEventListener('scroll', () => {
+                particlesPaused = true;
+                clearTimeout(scrollPauseTimer);
+                scrollPauseTimer = setTimeout(() => { particlesPaused = false; }, 200);
+            }, { passive: true });
             animateParticles();
         }
 
@@ -1083,24 +1088,28 @@
             }
         }
 
+        let particlesPaused = false, scrollPauseTimer;
+
         function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            particles.forEach(p => {
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(212, 175, 55, ${p.opacity})`;
-                ctx.fill();
-                
-                p.x += p.speedX;
-                p.y += Math.sin(p.x / 40) * 0.1;
-                
-                if (p.x > canvas.width) {
-                    p.x = -10;
-                    p.y = Math.random() * canvas.height;
-                }
-            });
-            
+            if (!particlesPaused) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                particles.forEach(p => {
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(212, 175, 55, ${p.opacity})`;
+                    ctx.fill();
+
+                    p.x += p.speedX;
+                    p.y += Math.sin(p.x / 40) * 0.1;
+
+                    if (p.x > canvas.width) {
+                        p.x = -10;
+                        p.y = Math.random() * canvas.height;
+                    }
+                });
+            }
+
             requestAnimationFrame(animateParticles);
         }
 
