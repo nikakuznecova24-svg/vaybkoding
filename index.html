@@ -32,6 +32,8 @@
             overflow-x: hidden;
             max-width: 100%;
         }
+        .hero-gap-fix { padding-top: 8.5rem; }
+        @media (min-width: 640px) { .hero-gap-fix { padding-top: 10rem; } }
         body {
             max-width: 100%;
             font-family: 'Inter', sans-serif;
@@ -199,7 +201,7 @@
     </section>
 
     <!-- SECTION: Interactive Target Audience Selector -->
-    <section id="role-selector" class="pt-28 sm:pt-40 relative z-10 px-4">
+    <section id="role-selector" class="hero-gap-fix relative z-10 px-4">
         <div class="absolute top-10 left-0 w-48 h-48 bg-accent-terracotta/10 rounded-full blur-[100px] pointer-events-none"></div>
         <div class="absolute bottom-0 right-0 w-56 h-56 bg-accent-sunset/10 rounded-full blur-[100px] pointer-events-none"></div>
         <div class="max-w-5xl mx-auto">
@@ -214,7 +216,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch mb-12">
                 
                 <!-- Left Column: Expert / Specialist -->
-                <div id="expertCol" class="spotlight-card group bg-[#FAF8F5]/40 rounded-[2.5rem] border border-serene-900/[0.06] p-6 sm:p-8 md:p-10 transition-shadow duration-300 flex flex-col justify-between hover:shadow-xl relative min-h-[440px]">
+                <div id="expertCol" class="spotlight-card group bg-[#FAF8F5]/40 rounded-[2.5rem] border border-serene-900/[0.06] p-6 sm:p-8 md:p-10 transition-all duration-300 flex flex-col justify-between hover:shadow-xl relative min-h-[440px]">
                     <div class="absolute inset-0 bg-gradient-to-br from-accent-terracotta/[0.015] to-transparent rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
                     
                     <div class="relative z-10 flex flex-col justify-between h-full flex-grow">
@@ -254,7 +256,7 @@
                 </div>
 
                 <!-- Right Column: Entrepreneur / Founder -->
-                <div id="founderCol" class="spotlight-card group bg-[#FAF8F5]/40 rounded-[2.5rem] border border-serene-900/[0.06] p-6 sm:p-8 md:p-10 transition-shadow duration-300 flex flex-col justify-between hover:shadow-xl relative min-h-[440px]">
+                <div id="founderCol" class="spotlight-card group bg-[#FAF8F5]/40 rounded-[2.5rem] border border-serene-900/[0.06] p-6 sm:p-8 md:p-10 transition-all duration-300 flex flex-col justify-between hover:shadow-xl relative min-h-[440px]">
                     <div class="absolute inset-0 bg-gradient-to-br from-accent-sunset/[0.015] to-transparent rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
                     
                     <div class="relative z-10 flex flex-col justify-between h-full flex-grow">
@@ -1059,7 +1061,7 @@
             resizeCanvas();
             
             // Create particles
-            for (let i = 0; i < 35; i++) {
+            for (let i = 0; i < 16; i++) {
                 particles.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
@@ -1088,8 +1090,6 @@
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
                 ctx.fillStyle = `rgba(212, 175, 55, ${p.opacity})`;
-                ctx.shadowBlur = 4;
-                ctx.shadowColor = "rgba(244, 162, 97, 0.3)";
                 ctx.fill();
                 
                 p.x += p.speedX;
