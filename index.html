@@ -159,7 +159,7 @@
 
     <!-- Premium Reading Progress Bar -->
     <div class="fixed top-0 left-0 w-full h-1.5 bg-serene-200/50 z-40"></div>
-    <div id="scrollProgress" class="fixed top-0 left-0 h-1.5 bg-gradient-to-r from-accent-terracotta to-accent-sunset z-50 transition-[width] duration-300 ease-out shadow-sm" style="width: 0%;"></div>
+    <div id="scrollProgress" class="fixed top-0 left-0 w-full h-1.5 bg-gradient-to-r from-accent-terracotta to-accent-sunset z-50 shadow-sm" style="transform-origin: left; transform: scaleX(0); transition: transform 0.3s ease-out;"></div>
 
     <!-- Ambient Floating Wind Particles -->
     <canvas id="windParticles" class="fixed inset-0 pointer-events-none z-0"></canvas>
@@ -1008,7 +1008,7 @@
                 if (scrollProgress) {
                     const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
                     const scrolledPct = scrollableHeight > 0 ? (window.scrollY / scrollableHeight) * 100 : 0;
-                    scrollProgress.style.width = `${Math.min(Math.max(scrolledPct, 0), 100)}%`;
+                    scrollProgress.style.transform = `scaleX(${Math.min(Math.max(scrolledPct, 0), 100) / 100})`;
                 }
                 ticking = false;
             }
