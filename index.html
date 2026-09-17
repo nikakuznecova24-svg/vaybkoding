@@ -154,7 +154,6 @@
     </style>
 </head>
 <body class="antialiased selection:bg-accent-sunset/20 selection:text-serene-900">
-    <div class="hidden in-view ring-4 ring-2 ring-accent-terracotta/40 opacity-40 border-2 border-accent-terracotta border-accent-sunset shadow-2xl scale-[1.01] rotate-180"></div>
 
     <!-- Premium Reading Progress Bar -->
     <div class="fixed top-0 left-0 w-full h-1.5 bg-serene-200/50 z-40"></div>
@@ -1063,39 +1062,6 @@
         }
 
         // ----------------------------------------------------
-        // Target Role Focus Logic
-        // ----------------------------------------------------
-        let activeFocusedRole = null;
-
-        function toggleRoleFocus(role) {
-            const expertCol = document.getElementById('expertCol');
-            const founderCol = document.getElementById('founderCol');
-
-            if (activeFocusedRole === role) {
-                // Reset state - both columns equal
-                expertCol.classList.remove('opacity-40', 'border-2', 'border-accent-terracotta', 'shadow-2xl', 'scale-[1.01]');
-                founderCol.classList.remove('opacity-40', 'border-2', 'border-accent-sunset', 'shadow-2xl', 'scale-[1.01]');
-                activeFocusedRole = null;
-            } else {
-                activeFocusedRole = role;
-                if (role === 'expert') {
-                    // Expert becomes main focal point
-                    expertCol.classList.add('border-2', 'border-accent-terracotta', 'shadow-2xl', 'scale-[1.01]');
-                    expertCol.classList.remove('opacity-40');
-                    // Founder dims slightly
-                    founderCol.classList.add('opacity-40');
-                    founderCol.classList.remove('border-2', 'border-accent-sunset', 'shadow-2xl', 'scale-[1.01]');
-                } else if (role === 'founder') {
-                    // Founder becomes main focal point
-                    founderCol.classList.add('border-2', 'border-accent-sunset', 'shadow-2xl', 'scale-[1.01]');
-                    founderCol.classList.remove('opacity-40');
-                    // Expert dims slightly
-                    expertCol.classList.add('opacity-40');
-                    expertCol.classList.remove('border-2', 'border-accent-terracotta', 'shadow-2xl', 'scale-[1.01]');
-                }
-            }
-        }
-
 // ----------------------------------------------------
         // Canvas Wind Particle Effect
         // ----------------------------------------------------
