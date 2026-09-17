@@ -213,9 +213,142 @@
     </section>
 
     <!-- SECTION: Interactive Target Audience Selector -->
+    <section id="role-selector" class="pt-32 sm:pt-40 relative z-10 px-4">
+        <div class="absolute top-10 left-0 w-48 h-48 bg-accent-terracotta/10 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="absolute bottom-0 right-0 w-56 h-56 bg-accent-sunset/10 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="max-w-5xl mx-auto">
+            
+            <div class="text-center mb-12">
+                <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-serene-900 leading-snug">
+                    нам с тобой по пути, если ты...
+                </h2>
+            </div>
+
+            <!-- Two-Column Interactive Segment -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch mb-12">
+                
+                <!-- Left Column: Expert / Specialist -->
+                <div id="expertCol" class="spotlight-card group bg-[#FAF8F5]/40 rounded-[2.5rem] border border-serene-900/[0.06] p-6 sm:p-8 md:p-10 transition-shadow duration-300 flex flex-col justify-between hover:shadow-xl relative min-h-[440px]">
+                    <div class="absolute inset-0 bg-gradient-to-br from-accent-terracotta/[0.015] to-transparent rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                    
+                    <div class="relative z-10 flex flex-col justify-between h-full flex-grow">
+                        <div>
+                            <!-- Card Header -->
+                            <div class="flex items-center gap-3.5 pb-6 border-b border-serene-200/60 mb-8">
+                                <div class="w-10 h-10 rounded-2xl bg-accent-terracotta/10 flex items-center justify-center text-xl shrink-0">
+                                    🧠
+                                </div>
+                                <div>
+                                    <h3 class="font-display text-lg sm:text-xl font-bold text-serene-900">эксперт / специалист</h3>
+                                    <p class="text-[10px] text-serene-800/60 font-semibold mt-0.5">упаковка ценности и запуск</p>
+                                </div>
+                            </div>
+
+                            <!-- Rows Content -->
+                            <div class="space-y-5 text-sm sm:text-base text-serene-800 leading-relaxed font-light">
+                                <div class="pb-4 border-b border-serene-200/40 flex gap-3 last:border-b-0 last:pb-0">
+                                    <i data-lucide="chevron-right" class="w-4 h-4 text-accent-terracotta shrink-0 mt-0.5"></i>
+                                    <p><strong class="font-bold text-serene-900 block mb-0.5">устал доказывать ценность на созвонах:</strong> хочешь, чтобы цифровой продукт закрывал вопросы о чеке до первого слова.</p>
+                                </div>
+                                <div class="pb-4 border-b border-serene-200/40 flex gap-3 last:border-b-0 last:pb-0">
+                                    <i data-lucide="chevron-right" class="w-4 h-4 text-accent-terracotta shrink-0 mt-0.5"></i>
+                                    <p><strong class="font-bold text-serene-900 block mb-0.5">стыдно отправлять ссылку на сайт:</strong> нужен сайт, по которому сразу видно твой масштаб — без объяснений и оправданий.</p>
+                                </div>
+                                <div class="pb-4 border-b border-serene-200/40 flex gap-3 last:border-b-0 last:pb-0">
+                                    <i data-lucide="chevron-right" class="w-4 h-4 text-accent-terracotta shrink-0 mt-0.5"></i>
+                                    <p><strong class="font-bold text-serene-900 block mb-0.5">привычные прогревы больше не работают:</strong> ты ищешь новые интерактивные механики для вовлечения аудитории здесь и сейчас.</p>
+                                </div>
+                                <div class="flex gap-3">
+                                    <i data-lucide="chevron-right" class="w-4 h-4 text-accent-terracotta shrink-0 mt-0.5"></i>
+                                    <p><strong class="font-bold text-serene-900 block mb-0.5">конкуренты продают дороже:</strong> при этом уступают по качеству. дело в сильной упаковке смыслов.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Entrepreneur / Founder -->
+                <div id="founderCol" class="spotlight-card group bg-[#FAF8F5]/40 rounded-[2.5rem] border border-serene-900/[0.06] p-6 sm:p-8 md:p-10 transition-shadow duration-300 flex flex-col justify-between hover:shadow-xl relative min-h-[440px]">
+                    <div class="absolute inset-0 bg-gradient-to-br from-accent-sunset/[0.015] to-transparent rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                    
+                    <div class="relative z-10 flex flex-col justify-between h-full flex-grow">
+                        <div>
+                            <!-- Card Header -->
+                            <div class="flex items-center gap-3.5 pb-6 border-b border-serene-200/60 mb-8">
+                                <div class="w-10 h-10 rounded-2xl bg-accent-sunset/10 flex items-center justify-center text-xl shrink-0">
+                                    ⚡
+                                </div>
+                                <div>
+                                    <h3 class="font-display text-lg sm:text-xl font-bold text-serene-900">предприниматель / основатель</h3>
+                                    <p class="text-[10px] text-serene-800/60 font-semibold mt-0.5">автоматизация и масштаб</p>
+                                </div>
+                            </div>
+
+                            <!-- Rows Content -->
+                            <div class="space-y-5 text-sm sm:text-base text-serene-800 leading-relaxed font-light">
+                                <div class="pb-4 border-b border-serene-200/40 flex gap-3 last:border-b-0 last:pb-0">
+                                    <i data-lucide="chevron-right" class="w-4 h-4 text-accent-sunset shrink-0 mt-0.5"></i>
+                                    <p><strong class="font-bold text-serene-900 block mb-0.5">тонешь в операционке и рутине:</strong> квалификацию лидов и ручную переписку давно пора делегировать автоматизации.</p>
+                                </div>
+                                <div class="pb-4 border-b border-serene-200/40 flex gap-3 last:border-b-0 last:pb-0">
+                                    <i data-lucide="chevron-right" class="w-4 h-4 text-accent-sunset shrink-0 mt-0.5"></i>
+                                    <p><strong class="font-bold text-serene-900 block mb-0.5">нужна автономная воронка лидов:</strong> чтобы система сама прогревала людей с первого клика, пока ты сфокусирован на продукте.</p>
+                                </div>
+                                <div class="pb-4 border-b border-serene-200/40 flex gap-3 last:border-b-0 last:pb-0">
+                                    <i data-lucide="chevron-right" class="w-4 h-4 text-accent-sunset shrink-0 mt-0.5"></i>
+                                    <p><strong class="font-bold text-serene-900 block mb-0.5">уперся в потолок личных часов:</strong> хочешь превратить свою экспертную услугу в it-сервис.</p>
+                                </div>
+                                <div class="flex gap-3">
+                                    <i data-lucide="chevron-right" class="w-4 h-4 text-accent-sunset shrink-0 mt-0.5"></i>
+                                    <p><strong class="font-bold text-serene-900 block mb-0.5">хочешь быстро протестировать гипотезу:</strong> без полугода разработки, раздутых бюджетов и бесконечных согласований.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Elegant Infinite Marquee Ticker -->
+        <div class="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden py-5 bg-gradient-to-r from-accent-terracotta to-accent-sunset select-none cursor-pointer group hover:from-accent-sunset hover:to-accent-terracotta transition-all duration-500 shadow-lg border-y border-white/10" onclick="document.getElementById('audit').scrollIntoView({ behavior: 'smooth' })">
+            <div class="animate-marquee flex gap-12 items-center">
+                <!-- Set 1 -->
+                <div class="flex items-center gap-12 text-xs md:text-sm font-display font-bold text-white shrink-0">
+                    <span>пройти бесплатный экспресс-аудит</span>
+                    <span class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white text-accent-terracotta text-xs font-extrabold shadow-md hover:scale-105 active:scale-95 transition-all duration-300">
+                        🚀 начать аудит
+                    </span>
+                    <span>✦ смысловая диагностика бизнеса</span>
+                    <span class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white text-accent-sunset text-xs font-extrabold shadow-md hover:scale-105 active:scale-95 transition-all duration-300">
+                        ✨ запустить разбор
+                    </span>
+                    <span>✦ анализ воронки за 10 минут</span>
+                    <span class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white text-accent-sage text-xs font-extrabold shadow-md hover:scale-105 active:scale-95 transition-all duration-300">
+                        🌿 получить разбор
+                    </span>
+                </div>
+                <!-- Set 2 (Duplicates for seamless loop) -->
+                <div class="flex items-center gap-12 text-xs md:text-sm font-display font-bold text-white shrink-0" aria-hidden="true">
+                    <span>пройти бесплатный экспресс-аудит</span>
+                    <span class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white text-accent-terracotta text-xs font-extrabold shadow-md hover:scale-105 active:scale-95 transition-all duration-300">
+                        🚀 начать аудит
+                    </span>
+                    <span>✦ смысловая диагностика бизнеса</span>
+                    <span class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white text-accent-sunset text-xs font-extrabold shadow-md hover:scale-105 active:scale-95 transition-all duration-300">
+                        ✨ запустить разбор
+                    </span>
+                    <span>✦ анализ воронки за 10 минут</span>
+                    <span class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white text-accent-sage text-xs font-extrabold shadow-md hover:scale-105 active:scale-95 transition-all duration-300">
+                        🌿 получить разбор
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Section: Services with tighter spacing -->
-    <section id="services" class="pt-32 sm:pt-40 pb-16 relative z-10 px-4">
+    <section id="services" class="py-16 relative z-10 px-4">
         <div class="absolute top-1/3 left-0 w-64 h-64 bg-accent-gold/10 rounded-full blur-[100px] pointer-events-none"></div>
         <div class="absolute bottom-0 right-1/4 w-56 h-56 bg-accent-terracotta/10 rounded-full blur-[100px] pointer-events-none"></div>
         <div class="max-w-5xl mx-auto">
