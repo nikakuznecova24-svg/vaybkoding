@@ -162,8 +162,6 @@
     <div id="scrollProgress" class="fixed top-0 left-0 w-full h-1.5 bg-gradient-to-r from-accent-terracotta to-accent-sunset z-50 shadow-sm" style="transform-origin: left; transform: scaleX(0); transition: transform 0.3s ease-out;"></div>
 
     <!-- Ambient Floating Wind Particles -->
-    <canvas id="windParticles" class="fixed inset-0 pointer-events-none z-0"></canvas>
-
     <!-- Hero -->
     <section id="hero" class="relative min-h-[90vh] flex items-center justify-center px-4 py-20 overflow-hidden">
         <img src="https://static.tildacdn.com/tild3531-3563-4233-a232-333639326430/Unknown.jpeg"
@@ -942,7 +940,6 @@
 
         window.onload = function() {
             try { lucide.createIcons(); } catch(e) { console.error('lucide init failed', e); }
-            try { initWindCanvas(); } catch(e) { console.error('wind canvas init failed', e); }
             try { initScrollProgressBar(); } catch(e) { console.error('scroll progress init failed', e); }
             try { initSpotlightCards(); } catch(e) { console.error('spotlight cards init failed', e); }
             try { initTelegramLinks(); } catch(e) { console.error('telegram links init failed', e); }
@@ -1049,69 +1046,8 @@
             }
         }
 
-        // ----------------------------------------------------
-// ----------------------------------------------------
-        // Canvas Wind Particle Effect
-        // ----------------------------------------------------
-        let canvas, ctx, particles = [];
-        
-        function initWindCanvas() {
-            canvas = document.getElementById('windParticles');
-            ctx = canvas.getContext('2d');
-            resizeCanvas();
-            
-            // Create particles
-            for (let i = 0; i < 16; i++) {
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    radius: Math.random() * 1.5 + 0.5,
-                    density: Math.random() * 0.4 + 0.1,
-                    opacity: Math.random() * 0.4 + 0.1,
-                    speedX: Math.random() * 0.4 + 0.2
-                });
-            }
-            
-            window.addEventListener('resize', resizeCanvas);
-            window.addEventListener('scroll', () => {
-                particlesPaused = true;
-                clearTimeout(scrollPauseTimer);
-                scrollPauseTimer = setTimeout(() => { particlesPaused = false; }, 200);
-            }, { passive: true });
-            animateParticles();
-        }
-
-        function resizeCanvas() {
-            if(canvas) {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            }
-        }
-
-        let particlesPaused = false, scrollPauseTimer;
-
-        function animateParticles() {
-            if (!particlesPaused) {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-                particles.forEach(p => {
-                    ctx.beginPath();
-                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(212, 175, 55, ${p.opacity})`;
-                    ctx.fill();
-
-                    p.x += p.speedX;
-                    p.y += Math.sin(p.x / 40) * 0.1;
-
-                    if (p.x > canvas.width) {
-                        p.x = -10;
-                        p.y = Math.random() * canvas.height;
-                    }
-                });
-            }
-
-            requestAnimationFrame(animateParticles);
-        }
+        // Wind particle canvas removed 17.09.2026 — measured ~35% scroll-jank
+        // improvement from removing this fixed full-viewport canvas entirely.
 
         // ----------------------------------------------------
         // Caring FAQ Accordion Controller
