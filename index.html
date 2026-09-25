@@ -18,7 +18,7 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=31">
+    <link rel="stylesheet" href="assets/styles.css?v=32">
 
     <!-- Google Fonts: Plus Jakarta Sans & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,15 +55,21 @@
         /* Горизонтальный свайп-скролл карточек услуг на мобильных: скрываем полосу прокрутки */
         .services-scroll { scrollbar-width: none; -ms-overflow-style: none; }
         .services-scroll::-webkit-scrollbar { display: none; }
-        /* Иконка-подсказка «листай вбок»: рука едет слева направо к черте и возвращается */
-        @keyframes swipeHint {
-            0% { transform: translateX(0); opacity: 1; }
-            45% { transform: translateX(10px); opacity: 0.4; }
-            50% { transform: translateX(-2px); opacity: 0; }
-            75% { transform: translateX(0); opacity: 1; }
-            100% { transform: translateX(0); opacity: 1; }
+        /* Иконка-подсказка «листай вбок»: рука тянет карточку, бокс схлопывается, потом всё сбрасывается */
+        @keyframes swipeHintBox {
+            0%, 15% { width: 3rem; }
+            55%, 68% { width: 0.6rem; }
+            85%, 100% { width: 3rem; }
         }
-        .swipe-hint-icon { animation: swipeHint 1.6s ease-in-out infinite; }
+        @keyframes swipeHintHand {
+            0%, 15% { transform: translateX(0) scale(1) rotate(0deg); opacity: 1; }
+            55% { transform: translateX(16px) scale(1.35) rotate(-10deg); opacity: 1; }
+            68% { transform: translateX(16px) scale(1.35) rotate(-10deg); opacity: 0; }
+            72% { transform: translateX(-6px) scale(0.9) rotate(0deg); opacity: 0; }
+            85%, 100% { transform: translateX(0) scale(1) rotate(0deg); opacity: 1; }
+        }
+        .swipe-hint-box { animation: swipeHintBox 1.8s ease-in-out infinite; }
+        .swipe-hint-icon { animation: swipeHintHand 1.8s ease-in-out infinite; }
 
         /* Custom premium scrollbar */
         ::-webkit-scrollbar {
@@ -497,7 +503,7 @@
             <!-- Section Title -->
             <div class="flex items-center justify-between md:justify-center gap-3 mb-8">
                 <h2 class="font-display text-3xl md:text-4xl font-bold text-serene-900">линейка услуг</h2>
-                <div class="md:hidden relative w-12 h-9 rounded-lg bg-serene-900/10 overflow-hidden flex items-center shrink-0">
+                <div class="md:hidden relative h-9 rounded-lg bg-serene-900/10 overflow-hidden flex items-center shrink-0 swipe-hint-box">
                     <span class="absolute top-1/2 right-2.5 -translate-y-1/2 w-px h-4 bg-serene-800/25"></span>
                     <i data-lucide="hand" class="w-4 h-4 text-serene-800/70 ml-2 swipe-hint-icon"></i>
                 </div>
