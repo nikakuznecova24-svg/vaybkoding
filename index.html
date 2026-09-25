@@ -68,6 +68,23 @@
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.6);
         }
+        /* Мобильная оптимизация скролла: backdrop-filter + фиксированная полоса прогресса
+           вместе сильно тормозят скролл в Safari на iOS. На мобильных убираем размытие фона
+           у стеклянных панелей (компенсируя более плотной заливкой) и слегка уменьшаем
+           тяжёлые decorative blur — визуально почти незаметно, но скролл станет плавным. */
+        @media (max-width: 820px) {
+            .glass-panel {
+                background: rgba(255, 255, 255, 0.72);
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+            }
+            [class*="blur-["] {
+                filter: blur(36px) !important;
+            }
+            .blur-2xl {
+                filter: blur(24px) !important;
+            }
+        }
         /* Infinite Marquee Animation styles */
         @keyframes marquee {
             0% { transform: translate3d(0, 0, 0); }
