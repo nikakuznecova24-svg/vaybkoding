@@ -24,7 +24,7 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=37">
+    <link rel="stylesheet" href="assets/styles.css?v=38">
 
     <!-- Google Fonts: Plus Jakarta Sans & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -371,9 +371,74 @@
                 </h2>
             </div>
 
-            <!-- Two-Column Interactive Segment -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch mb-12">
-                
+            <!-- Mobile: compact segmented toggle + single content card -->
+            <div class="md:hidden mb-12">
+                <div class="relative flex bg-[#eee3d8] rounded-full p-1 mb-6 max-w-xs mx-auto">
+                    <div id="roleToggleThumb" class="absolute top-1 bottom-1 left-1 w-[calc(50%-4px)] bg-gradient-to-r from-accent-terracotta to-accent-sunset rounded-full transition-transform duration-300 ease-out"></div>
+                    <button type="button" onclick="selectRole('expert')" id="roleTabExpert" class="relative z-10 flex-1 py-2.5 text-sm font-semibold text-center text-white transition-colors">эксперт</button>
+                    <button type="button" onclick="selectRole('founder')" id="roleTabFounder" class="relative z-10 flex-1 py-2.5 text-sm font-semibold text-center text-serene-800 transition-colors">предприниматель</button>
+                </div>
+
+                <div id="roleContentExpert" class="bg-[#FAF8F5]/40 rounded-[2.5rem] border border-serene-900/[0.06] p-6 sm:p-8">
+                    <div class="flex items-center gap-3.5 pb-6 border-b border-serene-200/60 mb-6">
+                        <div class="w-10 h-10 rounded-2xl bg-accent-terracotta/10 flex items-center justify-center text-xl shrink-0">🧠</div>
+                        <div>
+                            <h3 class="font-display text-lg font-bold text-serene-900">эксперт / специалист</h3>
+                            <p class="text-[10px] text-serene-800/60 font-semibold mt-0.5">упаковка ценности и запуск</p>
+                        </div>
+                    </div>
+                    <div class="space-y-5 text-sm text-serene-800 leading-relaxed font-light">
+                        <div class="pb-4 border-b border-serene-200/40 flex gap-3">
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-accent-terracotta shrink-0 mt-0.5"></i>
+                            <p><strong class="font-bold text-serene-900 block mb-0.5">устал доказывать ценность на созвонах:</strong> хочешь, чтобы цифровой продукт закрывал вопросы о чеке до первого слова.</p>
+                        </div>
+                        <div class="pb-4 border-b border-serene-200/40 flex gap-3">
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-accent-terracotta shrink-0 mt-0.5"></i>
+                            <p><strong class="font-bold text-serene-900 block mb-0.5">стыдно отправлять ссылку на сайт:</strong> нужен сайт, по которому сразу видно твой масштаб — без объяснений и оправданий.</p>
+                        </div>
+                        <div class="pb-4 border-b border-serene-200/40 flex gap-3">
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-accent-terracotta shrink-0 mt-0.5"></i>
+                            <p><strong class="font-bold text-serene-900 block mb-0.5">привычные прогревы больше не работают:</strong> ты ищешь новые интерактивные механики для вовлечения аудитории здесь и сейчас.</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-accent-terracotta shrink-0 mt-0.5"></i>
+                            <p><strong class="font-bold text-serene-900 block mb-0.5">конкуренты продают дороже:</strong> при этом уступают по качеству. дело в сильной упаковке смыслов.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="roleContentFounder" hidden class="bg-[#FAF8F5]/40 rounded-[2.5rem] border border-serene-900/[0.06] p-6 sm:p-8">
+                    <div class="flex items-center gap-3.5 pb-6 border-b border-serene-200/60 mb-6">
+                        <div class="w-10 h-10 rounded-2xl bg-accent-sunset/10 flex items-center justify-center text-xl shrink-0">⚡</div>
+                        <div>
+                            <h3 class="font-display text-lg font-bold text-serene-900">предприниматель / основатель</h3>
+                            <p class="text-[10px] text-serene-800/60 font-semibold mt-0.5">автоматизация и масштаб</p>
+                        </div>
+                    </div>
+                    <div class="space-y-5 text-sm text-serene-800 leading-relaxed font-light">
+                        <div class="pb-4 border-b border-serene-200/40 flex gap-3">
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-accent-sunset shrink-0 mt-0.5"></i>
+                            <p><strong class="font-bold text-serene-900 block mb-0.5">тонешь в операционке и рутине:</strong> квалификацию лидов и ручную переписку давно пора делегировать автоматизации.</p>
+                        </div>
+                        <div class="pb-4 border-b border-serene-200/40 flex gap-3">
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-accent-sunset shrink-0 mt-0.5"></i>
+                            <p><strong class="font-bold text-serene-900 block mb-0.5">нужна автономная воронка лидов:</strong> чтобы система сама прогревала людей с первого клика, пока ты сфокусирован на продукте.</p>
+                        </div>
+                        <div class="pb-4 border-b border-serene-200/40 flex gap-3">
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-accent-sunset shrink-0 mt-0.5"></i>
+                            <p><strong class="font-bold text-serene-900 block mb-0.5">уперся в потолок личных часов:</strong> хочешь превратить свою экспертную услугу в it-сервис.</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-accent-sunset shrink-0 mt-0.5"></i>
+                            <p><strong class="font-bold text-serene-900 block mb-0.5">хочешь быстро протестировать гипотезу:</strong> без полугода разработки, раздутых бюджетов и бесконечных согласований.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desktop: Two-Column Interactive Segment -->
+            <div class="hidden md:grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch mb-12">
+
                 <!-- Left Column: Expert / Specialist -->
                 <div id="expertCol" class="spotlight-card group bg-[#FAF8F5]/40 rounded-[2.5rem] border border-serene-900/[0.06] p-6 sm:p-8 md:p-10 transition-all duration-300 flex flex-col justify-between hover:shadow-xl relative min-h-[440px]">
                     <div class="absolute inset-0 bg-gradient-to-br from-accent-terracotta/[0.015] to-transparent rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
@@ -1154,6 +1219,29 @@
         // ----------------------------------------------------
         // Top nav: mobile burger menu
         // ----------------------------------------------------
+        // Mobile role selector: segmented toggle (эксперт / предприниматель)
+        function selectRole(role) {
+            const thumb = document.getElementById('roleToggleThumb');
+            const expertContent = document.getElementById('roleContentExpert');
+            const founderContent = document.getElementById('roleContentFounder');
+            const tabExpert = document.getElementById('roleTabExpert');
+            const tabFounder = document.getElementById('roleTabFounder');
+            if (!thumb || !expertContent || !founderContent) return;
+            if (role === 'founder') {
+                thumb.style.transform = 'translateX(100%)';
+                expertContent.hidden = true;
+                founderContent.hidden = false;
+                tabFounder.classList.add('text-white'); tabFounder.classList.remove('text-serene-800');
+                tabExpert.classList.add('text-serene-800'); tabExpert.classList.remove('text-white');
+            } else {
+                thumb.style.transform = 'translateX(0)';
+                expertContent.hidden = false;
+                founderContent.hidden = true;
+                tabExpert.classList.add('text-white'); tabExpert.classList.remove('text-serene-800');
+                tabFounder.classList.add('text-serene-800'); tabFounder.classList.remove('text-white');
+            }
+        }
+
         function toggleMobileNav() {
             const nav = document.getElementById('mobileNav');
             const overlay = document.getElementById('mobileNavOverlay');
