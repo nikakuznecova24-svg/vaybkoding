@@ -85,6 +85,18 @@
                 filter: blur(24px) !important;
             }
         }
+        /* На тач-устройствах касание пальцем при скролле «залипает» как :hover —
+           карточки услуг (13 шт, shadow-xl -> hover:shadow-2xl, transition-all 300ms)
+           начинают анимировать тень при каждом касании во время свайпа, а box-shadow
+           требует перерисовки каждый кадр. На устройствах без настоящего курсора
+           убираем hover-переход теней, оставляя лёгкие opacity/transform-эффекты. */
+        @media (hover: none) {
+            .spotlight-card,
+            .spotlight-card *,
+            a, button {
+                transition-property: opacity, transform, color, background-color !important;
+            }
+        }
         /* Infinite Marquee Animation styles */
         @keyframes marquee {
             0% { transform: translate3d(0, 0, 0); }
