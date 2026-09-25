@@ -87,6 +87,26 @@
             .blur-2xl {
                 filter: blur(24px) !important;
             }
+            /* Верхнее меню на мобильных — полностью прозрачное, поверх фото в шапке,
+               без белой подложки; текст/иконка светлые, с лёгкой тенью для читаемости.
+               При скролле ниже шапки (класс nav-solid, ставится в JS) подложка и тёмный
+               текст возвращаются — иначе меню станет нечитаемым на светлом фоне ниже. */
+            #siteNav {
+                background: transparent;
+                border-bottom: none;
+            }
+            #siteNav.nav-solid {
+                background: rgba(255, 255, 255, 0.88);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+            }
+            #siteNav .nav-adaptive {
+                color: #fff;
+            }
+            #siteNav.nav-solid .nav-adaptive {
+                color: #22211F;
+                text-shadow: none;
+                filter: none;
+            }
         }
         /* На тач-устройствах касание пальцем при скролле «залипает» как :hover —
            карточки услуг (13 шт, shadow-xl -> hover:shadow-2xl, transition-all 300ms)
@@ -192,7 +212,12 @@
     <!-- SECTION: Top navigation -->
     <header id="siteNav" class="sticky top-0 z-30 glass-panel border-b border-white/60">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-            <a href="#hero" class="font-display text-lg font-bold text-serene-900 shrink-0">Ника Кузнецова</a>
+            <div class="flex items-center gap-3">
+                <button type="button" id="navBurger" onclick="toggleMobileNav()" aria-label="меню" aria-expanded="false" class="md:hidden w-9 h-9 flex items-center justify-center">
+                    <i data-lucide="menu" class="nav-adaptive w-6 h-6 md:text-serene-900" style="filter: drop-shadow(0 1px 2px rgba(0,0,0,0.25))"></i>
+                </button>
+                <a href="#hero" class="nav-adaptive font-display text-base sm:text-lg font-bold md:text-serene-900 shrink-0" style="filter: drop-shadow(0 1px 2px rgba(0,0,0,0.25))">Ника Кузнецова</a>
+            </div>
 
             <nav class="hidden md:flex items-center gap-8">
                 <a href="#about" class="text-sm font-medium text-serene-800 hover:text-accent-terracotta transition-colors">обо мне</a>
@@ -201,17 +226,12 @@
                 <a href="#faq" class="text-sm font-medium text-serene-800 hover:text-accent-terracotta transition-colors">q&amp;a</a>
             </nav>
 
-            <div class="flex items-center gap-3">
-                <a href="#audit" class="hidden sm:inline-flex items-center rounded-full bg-gradient-to-r from-accent-terracotta to-accent-sunset text-white font-bold text-xs sm:text-sm px-4 sm:px-5 py-2.5 shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-transform">
-                    бесплатный аудит
-                </a>
-                <button type="button" id="navBurger" onclick="toggleMobileNav()" aria-label="меню" aria-expanded="false" class="md:hidden w-10 h-10 flex items-center justify-center rounded-full glass-panel border border-white/60">
-                    <i data-lucide="menu" class="w-5 h-5 text-serene-900"></i>
-                </button>
-            </div>
+            <a href="#audit" class="inline-flex items-center rounded-full bg-gradient-to-r from-accent-terracotta to-accent-sunset text-white font-bold text-xs sm:text-sm px-4 sm:px-5 py-2.5 shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-transform">
+                бесплатный аудит
+            </a>
         </div>
 
-        <nav id="mobileNav" hidden class="md:hidden border-t border-white/60 px-4 py-3 flex flex-col gap-1 bg-white/85">
+        <nav id="mobileNav" hidden class="md:hidden border-t border-white/60 px-4 py-3 flex flex-col gap-1 bg-white/90 backdrop-blur">
             <a href="#about" onclick="closeMobileNav()" class="py-2.5 text-sm font-medium text-serene-800">обо мне</a>
             <a href="#services" onclick="closeMobileNav()" class="py-2.5 text-sm font-medium text-serene-800">услуги</a>
             <a href="https://nikakuznecova24-svg.github.io/portfolio/" target="_blank" rel="noopener" class="py-2.5 text-sm font-medium text-serene-800">кейсы</a>
@@ -1006,6 +1026,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             try { initScrollProgressBar(); } catch(e) { console.error('scroll progress init failed', e); }
             try { initTelegramLinks(); } catch(e) { console.error('telegram links init failed', e); }
+            try { initNavSolidToggle(); } catch(e) { console.error('nav solid toggle init failed', e); }
         });
 
         window.onload = function() {
@@ -1059,6 +1080,25 @@
             const burger = document.getElementById('navBurger');
             if (nav) nav.setAttribute('hidden', '');
             burger?.setAttribute('aria-expanded', 'false');
+        }
+
+        // На мобильных меню прозрачное поверх фото в шапке; как только страница
+        // проскроллена ниже шапки, включаем светлую подложку и тёмный текст,
+        // иначе меню исчезает на светлом фоне остальных секций.
+        function initNavSolidToggle() {
+            const nav = document.getElementById('siteNav');
+            const hero = document.getElementById('hero');
+            if (!nav || !hero) return;
+            let ticking = false;
+            function update() {
+                const threshold = Math.max(hero.offsetHeight - nav.offsetHeight - 20, 40);
+                nav.classList.toggle('nav-solid', window.scrollY > threshold);
+                ticking = false;
+            }
+            window.addEventListener('scroll', () => {
+                if (!ticking) { requestAnimationFrame(update); ticking = true; }
+            }, { passive: true });
+            update();
         }
 
         // ----------------------------------------------------
