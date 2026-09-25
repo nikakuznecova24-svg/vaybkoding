@@ -24,7 +24,7 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=42">
+    <link rel="stylesheet" href="assets/styles.css?v=43">
 
     <!-- Google Fonts: Plus Jakarta Sans & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -185,12 +185,12 @@
         /* Scroll-in reveal */
         .reveal-up {
             opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
+            transform: translateY(56px) scale(0.96);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .reveal-up.in-view {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
         }
         /* Click reward pulse on CTA buttons */
         @keyframes ctaPulse {
