@@ -24,7 +24,7 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=43">
+    <link rel="stylesheet" href="assets/styles.css?v=44">
 
     <!-- Google Fonts: Plus Jakarta Sans & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -954,97 +954,104 @@
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-48 bg-accent-terracotta/[0.06] rounded-full blur-[100px] pointer-events-none"></div>
         <div class="max-w-3xl mx-auto">
             
-            <div class="text-center mb-12 space-y-2">
-                <span class="text-xs font-semibold text-accent-terracotta">поддержка и забота</span>
-                <h2 class="font-display text-2xl sm:text-3xl font-bold text-serene-900">ответы на частые вопросы</h2>
+            <div class="flex items-end justify-between gap-4 mb-6">
+                <h2 class="font-display text-4xl sm:text-5xl font-extrabold text-accent-terracotta leading-none tracking-tight">FAQ</h2>
+                <span class="text-[11px] sm:text-sm text-serene-800/45 font-medium whitespace-nowrap pb-1.5">(популярные вопросы)</span>
             </div>
+            <div class="h-px bg-serene-900/10 mb-1"></div>
 
-            <div class="reveal-up space-y-4">
+            <div class="reveal-up divide-y divide-serene-900/[0.08]">
                 <!-- FAQ 1 -->
-                <div id="faqItem1" class="border border-serene-900/[0.06] rounded-2xl bg-serene-50/60 overflow-hidden transition-colors duration-300">
-                    <button onclick="toggleFaq(1)" class="w-full text-left p-5 flex items-center justify-between gap-4 focus:outline-none">
-                        <span class="font-display text-sm font-bold text-serene-900">1. сколько времени занимает создание ии-решения или сайта?</span>
-                        <div id="faqIcon1" class="w-6 h-6 rounded-full bg-serene-900/[0.04] flex items-center justify-center border border-serene-900/[0.06] transition-all duration-300 text-serene-800/70 shrink-0">
-                            <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
+                <div id="faqItem1">
+                    <button onclick="toggleFaq(1)" class="w-full text-left py-5 flex items-center gap-4 focus:outline-none group">
+                        <span class="text-accent-terracotta text-base shrink-0">✦</span>
+                        <span class="flex-1 font-display text-sm sm:text-base font-semibold text-serene-900">сколько времени занимает создание ии-решения или сайта?</span>
+                        <div id="faqIcon1" class="w-8 h-8 rounded-full bg-accent-terracotta flex items-center justify-center shrink-0 transition-transform duration-300">
+                            <i data-lucide="plus" class="w-4 h-4 text-white"></i>
                         </div>
                     </button>
                     <div id="faqAnswer1" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
-                        <p class="p-5 pt-0 text-sm sm:text-base text-serene-800/80 leading-relaxed font-light border-t border-serene-900/[0.03]">
+                        <p class="pb-5 pl-8 sm:pl-9 pr-11 text-sm sm:text-base text-serene-800/80 leading-relaxed font-light">
                             вместо месяцев разработки по классическому пути, с помощью вайбкодинга и ии-ассистентов я создаю работающий продукт за 5–10 дней — ценю ваше время и запускаю прототипы на сверхскорости.
                         </p>
                     </div>
                 </div>
 
                 <!-- FAQ 2 -->
-                <div id="faqItem2" class="border border-serene-900/[0.06] rounded-2xl bg-serene-50/60 overflow-hidden transition-colors duration-300">
-                    <button onclick="toggleFaq(2)" class="w-full text-left p-5 flex items-center justify-between gap-4 focus:outline-none">
-                        <span class="font-display text-sm font-bold text-serene-900">2. нужны ли технические навыки для управления готовым решением?</span>
-                        <div id="faqIcon2" class="w-6 h-6 rounded-full bg-serene-900/[0.04] flex items-center justify-center border border-serene-900/[0.06] transition-all duration-300 text-serene-800/70 shrink-0">
-                            <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
+                <div id="faqItem2">
+                    <button onclick="toggleFaq(2)" class="w-full text-left py-5 flex items-center gap-4 focus:outline-none group">
+                        <span class="text-accent-terracotta text-base shrink-0">✦</span>
+                        <span class="flex-1 font-display text-sm sm:text-base font-semibold text-serene-900">нужны ли технические навыки для управления готовым решением?</span>
+                        <div id="faqIcon2" class="w-8 h-8 rounded-full bg-accent-terracotta flex items-center justify-center shrink-0 transition-transform duration-300">
+                            <i data-lucide="plus" class="w-4 h-4 text-white"></i>
                         </div>
                     </button>
                     <div id="faqAnswer2" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
-                        <p class="p-5 pt-0 text-sm sm:text-base text-serene-800/80 leading-relaxed font-light border-t border-serene-900/[0.03]">
+                        <p class="pb-5 pl-8 sm:pl-9 pr-11 text-sm sm:text-base text-serene-800/80 leading-relaxed font-light">
                             абсолютно нет. я проектирую все инструменты максимально простыми для администрирования. к каждому решению прикладывается заботливая видеоинструкция, где наглядно показано, как всё редактировать за пару кликов.
                         </p>
                     </div>
                 </div>
 
                 <!-- FAQ 3 -->
-                <div id="faqItem3" class="border border-serene-900/[0.06] rounded-2xl bg-serene-50/60 overflow-hidden transition-colors duration-300">
-                    <button onclick="toggleFaq(3)" class="w-full text-left p-5 flex items-center justify-between gap-4 focus:outline-none">
-                        <span class="font-display text-sm font-bold text-serene-900">3. действительно ли это окупается и приносит прибыль?</span>
-                        <div id="faqIcon3" class="w-6 h-6 rounded-full bg-serene-900/[0.04] flex items-center justify-center border border-serene-900/[0.06] transition-all duration-300 text-serene-800/70 shrink-0">
-                            <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
+                <div id="faqItem3">
+                    <button onclick="toggleFaq(3)" class="w-full text-left py-5 flex items-center gap-4 focus:outline-none group">
+                        <span class="text-accent-terracotta text-base shrink-0">✦</span>
+                        <span class="flex-1 font-display text-sm sm:text-base font-semibold text-serene-900">действительно ли это окупается и приносит прибыль?</span>
+                        <div id="faqIcon3" class="w-8 h-8 rounded-full bg-accent-terracotta flex items-center justify-center shrink-0 transition-transform duration-300">
+                            <i data-lucide="plus" class="w-4 h-4 text-white"></i>
                         </div>
                     </button>
                     <div id="faqAnswer3" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
-                        <p class="p-5 pt-0 text-sm sm:text-base text-serene-800/80 leading-relaxed font-light border-t border-serene-900/[0.03]">
+                        <p class="pb-5 pl-8 sm:pl-9 pr-11 text-sm sm:text-base text-serene-800/80 leading-relaxed font-light">
                             да — я строю решения ради ваших смыслов и конверсий. интерактивные тесты-опросники и автоматические квалификаторы окупаются уже с первых нескольких закрытых сделок, сокращая часы операционки и ручного прогрева.
                         </p>
                     </div>
                 </div>
 
                 <!-- FAQ 4 -->
-                <div id="faqItem4" class="border border-serene-900/[0.06] rounded-2xl bg-serene-50/60 overflow-hidden transition-colors duration-300">
-                    <button onclick="toggleFaq(4)" class="w-full text-left p-5 flex items-center justify-between gap-4 focus:outline-none">
-                        <span class="font-display text-sm font-bold text-serene-900">4. сколько правок включено и что если результат не понравится?</span>
-                        <div id="faqIcon4" class="w-6 h-6 rounded-full bg-serene-900/[0.04] flex items-center justify-center border border-serene-900/[0.06] transition-all duration-300 text-serene-800/70 shrink-0">
-                            <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
+                <div id="faqItem4">
+                    <button onclick="toggleFaq(4)" class="w-full text-left py-5 flex items-center gap-4 focus:outline-none group">
+                        <span class="text-accent-terracotta text-base shrink-0">✦</span>
+                        <span class="flex-1 font-display text-sm sm:text-base font-semibold text-serene-900">сколько правок включено и что если результат не понравится?</span>
+                        <div id="faqIcon4" class="w-8 h-8 rounded-full bg-accent-terracotta flex items-center justify-center shrink-0 transition-transform duration-300">
+                            <i data-lucide="plus" class="w-4 h-4 text-white"></i>
                         </div>
                     </button>
                     <div id="faqAnswer4" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
-                        <p class="p-5 pt-0 text-sm sm:text-base text-serene-800/80 leading-relaxed font-light border-t border-serene-900/[0.03]">
+                        <p class="pb-5 pl-8 sm:pl-9 pr-11 text-sm sm:text-base text-serene-800/80 leading-relaxed font-light">
                             в каждый тариф включён пакет правок на этапе разработки — мы согласуем макет и смыслы до того, как я приступлю к сборке, чтобы не переделывать готовое с нуля. если после запуска что-то работает не так, как задумано, я исправляю это бесплатно — это часть моей ответственности за результат, а не отдельная платная услуга.
                         </p>
                     </div>
                 </div>
 
                 <!-- FAQ 5 -->
-                <div id="faqItem5" class="border border-serene-900/[0.06] rounded-2xl bg-serene-50/60 overflow-hidden transition-colors duration-300">
-                    <button onclick="toggleFaq(5)" class="w-full text-left p-5 flex items-center justify-between gap-4 focus:outline-none">
-                        <span class="font-display text-sm font-bold text-serene-900">5. что происходит после того, как сайт или сервис готов?</span>
-                        <div id="faqIcon5" class="w-6 h-6 rounded-full bg-serene-900/[0.04] flex items-center justify-center border border-serene-900/[0.06] transition-all duration-300 text-serene-800/70 shrink-0">
-                            <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
+                <div id="faqItem5">
+                    <button onclick="toggleFaq(5)" class="w-full text-left py-5 flex items-center gap-4 focus:outline-none group">
+                        <span class="text-accent-terracotta text-base shrink-0">✦</span>
+                        <span class="flex-1 font-display text-sm sm:text-base font-semibold text-serene-900">что происходит после того, как сайт или сервис готов?</span>
+                        <div id="faqIcon5" class="w-8 h-8 rounded-full bg-accent-terracotta flex items-center justify-center shrink-0 transition-transform duration-300">
+                            <i data-lucide="plus" class="w-4 h-4 text-white"></i>
                         </div>
                     </button>
                     <div id="faqAnswer5" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
-                        <p class="p-5 pt-0 text-sm sm:text-base text-serene-800/80 leading-relaxed font-light border-t border-serene-900/[0.03]">
+                        <p class="pb-5 pl-8 sm:pl-9 pr-11 text-sm sm:text-base text-serene-800/80 leading-relaxed font-light">
                             вы получаете готовый рабочий продукт и видеоинструкцию по его администрированию — без зависимости от меня для мелких правок текста или изображений. по более сложным задачам (новые функции, интеграции, масштабирование) остаюсь на связи и всегда готова обсудить следующий этап.
                         </p>
                     </div>
                 </div>
 
                 <!-- FAQ 6 -->
-                <div id="faqItem6" class="border border-serene-900/[0.06] rounded-2xl bg-serene-50/60 overflow-hidden transition-colors duration-300">
-                    <button onclick="toggleFaq(6)" class="w-full text-left p-5 flex items-center justify-between gap-4 focus:outline-none">
-                        <span class="font-display text-sm font-bold text-serene-900">6. почему вайбкодинг, а не классическая веб-студия?</span>
-                        <div id="faqIcon6" class="w-6 h-6 rounded-full bg-serene-900/[0.04] flex items-center justify-center border border-serene-900/[0.06] transition-all duration-300 text-serene-800/70 shrink-0">
-                            <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
+                <div id="faqItem6">
+                    <button onclick="toggleFaq(6)" class="w-full text-left py-5 flex items-center gap-4 focus:outline-none group">
+                        <span class="text-accent-terracotta text-base shrink-0">✦</span>
+                        <span class="flex-1 font-display text-sm sm:text-base font-semibold text-serene-900">почему вайбкодинг, а не классическая веб-студия?</span>
+                        <div id="faqIcon6" class="w-8 h-8 rounded-full bg-accent-terracotta flex items-center justify-center shrink-0 transition-transform duration-300">
+                            <i data-lucide="plus" class="w-4 h-4 text-white"></i>
                         </div>
                     </button>
                     <div id="faqAnswer6" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
-                        <p class="p-5 pt-0 text-sm sm:text-base text-serene-800/80 leading-relaxed font-light border-t border-serene-900/[0.03]">
+                        <p class="pb-5 pl-8 sm:pl-9 pr-11 text-sm sm:text-base text-serene-800/80 leading-relaxed font-light">
                             в классической студии за проект отвечают 3-5 человек и несколько слоёв согласований — отсюда и месяцы разработки, и высокий чек. я веду проект от смыслов до финальной сборки сама, использую ии-инструменты для скорости на рутинных задачах, а решения о структуре и продающей логике принимаю вручную. это и есть баланс скорости, цены и качества.
                         </p>
                     </div>
@@ -1381,24 +1388,15 @@
         // ----------------------------------------------------
         function toggleFaq(index) {
             for (let i = 1; i <= 6; i++) {
-                const item = document.getElementById(`faqItem${i}`);
                 const answer = document.getElementById(`faqAnswer${i}`);
                 const icon = document.getElementById(`faqIcon${i}`);
                 const isOpenNow = i === index && !answer.style.maxHeight;
                 if (i === index && isOpenNow) {
                     answer.style.maxHeight = answer.scrollHeight + "px";
-                    icon.style.transform = "rotate(180deg)";
-                    item.classList.remove("border-serene-900/[0.06]", "bg-serene-50/60");
-                    item.classList.add("border-accent-terracotta/25", "bg-accent-terracotta/5");
-                    icon.classList.remove("bg-serene-900/[0.04]", "border-serene-900/[0.06]", "text-serene-800/70");
-                    icon.classList.add("bg-accent-terracotta/15", "border-accent-terracotta/20", "text-accent-terracotta");
+                    icon.style.transform = "rotate(135deg)";
                 } else {
                     answer.style.maxHeight = null;
                     icon.style.transform = "rotate(0deg)";
-                    item.classList.remove("border-accent-terracotta/25", "bg-accent-terracotta/5");
-                    item.classList.add("border-serene-900/[0.06]", "bg-serene-50/60");
-                    icon.classList.remove("bg-accent-terracotta/15", "border-accent-terracotta/20", "text-accent-terracotta");
-                    icon.classList.add("bg-serene-900/[0.04]", "border-serene-900/[0.06]", "text-serene-800/70");
                 }
             }
         }
