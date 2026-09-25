@@ -24,7 +24,7 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=41">
+    <link rel="stylesheet" href="assets/styles.css?v=42">
 
     <!-- Google Fonts: Plus Jakarta Sans & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -271,7 +271,7 @@
 
         <!-- Mobile: photo card with text overlay -->
         <div class="md:hidden max-w-3xl mx-auto">
-            <div class="relative rounded-[2.5rem] overflow-hidden shadow-xl">
+            <div class="reveal-up relative rounded-[2.5rem] overflow-hidden shadow-xl">
                 <img src="assets/nika-hero.jpg" alt="Ника Кузнецова" class="w-full aspect-[3/4] object-cover object-top">
                 <div class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/70 via-black/25 to-transparent pointer-events-none"></div>
                 <div class="absolute top-5 left-5 inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-panel border border-white/80 shadow-sm text-xs text-serene-800">
@@ -440,7 +440,7 @@
             <div class="hidden md:grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch mb-12">
 
                 <!-- Left Column: Expert / Specialist -->
-                <div id="expertCol" class="spotlight-card group bg-[#FAF8F5]/40 rounded-[2.5rem] border border-serene-900/[0.06] p-6 sm:p-8 md:p-10 transition-all duration-300 flex flex-col justify-between hover:shadow-xl relative min-h-[440px]">
+                <div id="expertCol" class="reveal-up spotlight-card group bg-[#FAF8F5]/40 rounded-[2.5rem] border border-serene-900/[0.06] p-6 sm:p-8 md:p-10 transition-all duration-300 flex flex-col justify-between hover:shadow-xl relative min-h-[440px]" style="transition-delay:0ms">
                     <div class="absolute inset-0 bg-gradient-to-br from-accent-terracotta/[0.015] to-transparent rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
                     
                     <div class="relative z-10 flex flex-col justify-between h-full flex-grow">
@@ -480,7 +480,7 @@
                 </div>
 
                 <!-- Right Column: Entrepreneur / Founder -->
-                <div id="founderCol" class="spotlight-card group bg-[#FAF8F5]/40 rounded-[2.5rem] border border-serene-900/[0.06] p-6 sm:p-8 md:p-10 transition-all duration-300 flex flex-col justify-between hover:shadow-xl relative min-h-[440px]">
+                <div id="founderCol" class="reveal-up spotlight-card group bg-[#FAF8F5]/40 rounded-[2.5rem] border border-serene-900/[0.06] p-6 sm:p-8 md:p-10 transition-all duration-300 flex flex-col justify-between hover:shadow-xl relative min-h-[440px]" style="transition-delay:120ms">
                     <div class="absolute inset-0 bg-gradient-to-br from-accent-sunset/[0.015] to-transparent rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
                     
                     <div class="relative z-10 flex flex-col justify-between h-full flex-grow">
@@ -790,7 +790,7 @@
             </button>
 
             <div id="calcBody" class="hidden md:block">
-            <div class="glass-panel rounded-[3rem] p-6 sm:p-8 md:p-12 border border-white shadow-xl relative">
+            <div class="reveal-up glass-panel rounded-[3rem] p-6 sm:p-8 md:p-12 border border-white shadow-xl relative">
                 <div id="calcChips" class="grid grid-cols-2 gap-2.5 sm:gap-4 mb-8">
                     <button type="button" class="calc-chip w-full flex items-center gap-3 text-sm px-3 py-2 bg-white rounded-xl border border-serene-200 focus:outline-none text-left" data-type="Лендинг / Сайт" data-price="15000" onclick="toggleCalcItem(this)">
                         <span class="calc-dot w-4 h-4 rounded-full border border-serene-200 shrink-0 flex items-center justify-center transition-colors"><i data-lucide="check" class="calc-check hidden w-2.5 h-2.5 text-white"></i></span>
@@ -913,7 +913,7 @@
     <!-- SECTION: About / Trust -->
     <section id="about" class="py-16 relative z-10 px-4">
         <div class="absolute top-0 right-1/3 w-48 h-48 bg-accent-sage/10 rounded-full blur-[100px] pointer-events-none"></div>
-        <div class="max-w-4xl mx-auto glass-panel rounded-[3rem] p-8 sm:p-10 md:p-12 border border-white shadow-xl flex flex-col lg:flex-row items-center gap-10 text-center lg:text-left relative">
+        <div class="reveal-up max-w-4xl mx-auto glass-panel rounded-[3rem] p-8 sm:p-10 md:p-12 border border-white shadow-xl flex flex-col lg:flex-row items-center gap-10 text-center lg:text-left relative">
             <img src="assets/nika-portrait.jpg" alt="Ника Кузнецова" class="w-36 h-36 lg:w-56 lg:h-56 rounded-full object-cover shadow-lg border-4 border-white shrink-0">
             <div class="lg:flex-1">
                 <span class="text-xs font-semibold text-accent-terracotta block mb-3">обо мне</span>
@@ -959,7 +959,7 @@
                 <h2 class="font-display text-2xl sm:text-3xl font-bold text-serene-900">ответы на частые вопросы</h2>
             </div>
 
-            <div class="space-y-4">
+            <div class="reveal-up space-y-4">
                 <!-- FAQ 1 -->
                 <div id="faqItem1" class="border border-serene-900/[0.06] rounded-2xl bg-serene-50/60 overflow-hidden transition-colors duration-300">
                     <button onclick="toggleFaq(1)" class="w-full text-left p-5 flex items-center justify-between gap-4 focus:outline-none">
@@ -1074,7 +1074,7 @@
 
         <div class="max-w-4xl mx-auto">
             
-            <div class="glass-panel rounded-[3rem] p-8 md:p-12 border border-white shadow-xl relative">
+            <div class="reveal-up glass-panel rounded-[3rem] p-8 md:p-12 border border-white shadow-xl relative">
                 <div class="absolute top-0 right-0 w-32 h-32 bg-accent-terracotta/5 rounded-full blur-2xl"></div>
 
                 <div class="max-w-2xl mx-auto text-center">
