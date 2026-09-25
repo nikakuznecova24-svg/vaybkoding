@@ -24,7 +24,7 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=38">
+    <link rel="stylesheet" href="assets/styles.css?v=39">
 
     <!-- Google Fonts: Plus Jakarta Sans & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -784,8 +784,14 @@
                 </p>
             </div>
 
-            <div class="glass-panel rounded-[3rem] p-8 md:p-12 border border-white shadow-xl relative">
-                <div id="calcChips" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            <button type="button" id="calcToggleBtn" onclick="toggleCalcAccordion()" class="md:hidden flex items-center justify-center gap-2 mx-auto rounded-full border-2 border-accent-terracotta text-accent-terracotta font-semibold text-sm px-6 py-3 mb-6">
+                <span id="calcToggleLabel">собрать свой комплекс</span>
+                <i data-lucide="chevron-down" id="calcToggleChevron" class="w-4 h-4 transition-transform duration-300"></i>
+            </button>
+
+            <div id="calcBody" class="hidden md:block">
+            <div class="glass-panel rounded-[3rem] p-6 sm:p-8 md:p-12 border border-white shadow-xl relative">
+                <div id="calcChips" class="grid grid-cols-2 gap-2.5 sm:gap-4 mb-8">
                     <button type="button" class="calc-chip w-full flex items-center gap-3 text-sm px-3 py-2 bg-white rounded-xl border border-serene-200 focus:outline-none text-left" data-type="Лендинг / Сайт" data-price="15000" onclick="toggleCalcItem(this)">
                         <span class="calc-dot w-4 h-4 rounded-full border border-serene-200 shrink-0 flex items-center justify-center transition-colors"><i data-lucide="check" class="calc-check hidden w-2.5 h-2.5 text-white"></i></span>
                         <span class="font-medium text-serene-800">лендинг / сайт</span>
@@ -826,6 +832,7 @@
                         обсудить комплекс
                     </a>
                 </div>
+            </div>
             </div>
         </div>
     </section>
@@ -1220,6 +1227,24 @@
         // Top nav: mobile burger menu
         // ----------------------------------------------------
         // Mobile role selector: segmented toggle (эксперт / предприниматель)
+        // Calculator accordion (mobile only — always open on desktop via md:block)
+        function toggleCalcAccordion() {
+            const body = document.getElementById('calcBody');
+            const label = document.getElementById('calcToggleLabel');
+            const chevron = document.getElementById('calcToggleChevron');
+            if (!body) return;
+            const isHidden = body.classList.contains('hidden');
+            if (isHidden) {
+                body.classList.remove('hidden');
+                if (label) label.textContent = 'свернуть';
+                if (chevron) chevron.style.transform = 'rotate(180deg)';
+            } else {
+                body.classList.add('hidden');
+                if (label) label.textContent = 'собрать свой комплекс';
+                if (chevron) chevron.style.transform = 'rotate(0deg)';
+            }
+        }
+
         function selectRole(role) {
             const thumb = document.getElementById('roleToggleThumb');
             const expertContent = document.getElementById('roleContentExpert');
