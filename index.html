@@ -18,7 +18,7 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=13">
+    <link rel="stylesheet" href="assets/styles.css?v=14">
 
     <!-- Google Fonts: Plus Jakarta Sans & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -206,9 +206,14 @@
                 <a href="#faq" class="text-sm font-medium text-serene-800 hover:text-accent-terracotta transition-colors">q&amp;a</a>
             </nav>
 
-            <a href="#audit" class="inline-flex items-center rounded-full bg-gradient-to-r from-accent-terracotta to-accent-sunset text-white font-bold text-xs sm:text-sm px-4 sm:px-5 py-2.5 shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-transform">
-                бесплатный аудит
-            </a>
+            <div class="flex items-center gap-2 sm:gap-3">
+                <a href="https://t.me/nikakuznecovaa" target="_blank" rel="noopener" aria-label="написать в телеграм" class="w-9 h-9 flex items-center justify-center rounded-full glass-panel border border-white/70 hover:scale-105 active:scale-95 transition-transform shrink-0">
+                    <i data-lucide="send" class="w-4 h-4 text-accent-terracotta"></i>
+                </a>
+                <a href="#audit" class="inline-flex items-center rounded-full bg-gradient-to-r from-accent-terracotta to-accent-sunset text-white font-bold text-xs sm:text-sm px-4 sm:px-5 py-2.5 shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-transform">
+                    бесплатный аудит
+                </a>
+            </div>
         </div>
 
         <nav id="mobileNav" hidden class="md:hidden border-t border-white/60 px-4 py-3 flex flex-col gap-1 bg-white/90 backdrop-blur">
@@ -216,6 +221,9 @@
             <a href="#services" onclick="closeMobileNav()" class="py-2.5 text-sm font-medium text-serene-800">услуги</a>
             <a href="https://nikakuznecova24-svg.github.io/portfolio/" target="_blank" rel="noopener" class="py-2.5 text-sm font-medium text-serene-800">кейсы</a>
             <a href="#faq" onclick="closeMobileNav()" class="py-2.5 text-sm font-medium text-serene-800">q&amp;a</a>
+            <a href="https://t.me/nikakuznecovaa" target="_blank" rel="noopener" onclick="closeMobileNav()" class="py-2.5 text-sm font-medium text-serene-800 flex items-center gap-2">
+                <i data-lucide="send" class="w-4 h-4 text-accent-terracotta"></i> написать в телеграм
+            </a>
             <a href="#audit" onclick="closeMobileNav()" class="mt-1 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-accent-terracotta to-accent-sunset text-white font-bold text-sm px-5 py-2.5 shadow-md">
                 бесплатный аудит
             </a>
