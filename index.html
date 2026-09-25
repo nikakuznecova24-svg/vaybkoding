@@ -18,7 +18,7 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=23">
+    <link rel="stylesheet" href="assets/styles.css?v=24">
 
     <!-- Google Fonts: Plus Jakarta Sans & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -215,17 +215,23 @@
             </div>
         </div>
 
-        <nav id="mobileNav" hidden class="md:hidden max-w-2xl mx-auto mt-2 rounded-3xl shadow-lg border border-white/70 px-4 py-3 flex flex-col gap-1 bg-white/95">
-            <a href="#about" onclick="closeMobileNav()" class="py-2.5 text-sm font-medium text-serene-800">обо мне</a>
-            <a href="#services" onclick="closeMobileNav()" class="py-2.5 text-sm font-medium text-serene-800">услуги</a>
-            <a href="/portfolio/" class="py-2.5 text-sm font-medium text-serene-800">кейсы</a>
-            <a href="#faq" onclick="closeMobileNav()" class="py-2.5 text-sm font-medium text-serene-800">q&amp;a</a>
-            <a href="https://t.me/nikakuznecovaa" target="_blank" rel="noopener" onclick="closeMobileNav()" class="py-2.5 text-sm font-medium text-serene-800 flex items-center gap-2">
-                <i data-lucide="send" class="w-4 h-4 text-accent-terracotta"></i> написать в телеграм
-            </a>
-            <a href="#audit" onclick="closeMobileNav()" class="mt-1 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-accent-terracotta to-accent-sunset text-white font-bold text-sm px-5 py-2.5 shadow-md">
+        <div id="mobileNavOverlay" hidden onclick="closeMobileNav()" class="md:hidden fixed inset-0 bg-serene-900/50 z-40"></div>
+        <nav id="mobileNav" hidden class="md:hidden fixed top-0 left-0 h-full w-[78%] max-w-xs bg-white z-50 shadow-2xl p-6 flex flex-col">
+            <button type="button" onclick="closeMobileNav()" aria-label="закрыть меню" class="self-end w-9 h-9 flex items-center justify-center rounded-full hover:bg-serene-50 transition-colors mb-6">
+                <i data-lucide="x" class="w-6 h-6 text-serene-900"></i>
+            </button>
+            <a href="#about" onclick="closeMobileNav()" class="py-3 text-lg font-medium text-serene-900">обо мне</a>
+            <a href="#services" onclick="closeMobileNav()" class="py-3 text-lg font-medium text-serene-900">услуги</a>
+            <a href="/portfolio/" class="py-3 text-lg font-medium text-serene-900">кейсы</a>
+            <a href="#faq" onclick="closeMobileNav()" class="py-3 text-lg font-medium text-serene-900">q&amp;a</a>
+            <a href="#audit" onclick="closeMobileNav()" class="mt-4 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-accent-terracotta to-accent-sunset text-white font-bold text-sm px-5 py-3 shadow-md">
                 бесплатный аудит
             </a>
+            <div class="mt-auto pt-6">
+                <a href="https://t.me/nikakuznecovaa" target="_blank" rel="noopener" aria-label="написать в телеграм" class="w-10 h-10 flex items-center justify-center rounded-full glass-panel border border-white/70">
+                    <i data-lucide="send" class="w-4 h-4 text-accent-terracotta"></i>
+                </a>
+            </div>
         </nav>
     </header>
 
@@ -1106,21 +1112,29 @@
         // ----------------------------------------------------
         function toggleMobileNav() {
             const nav = document.getElementById('mobileNav');
+            const overlay = document.getElementById('mobileNavOverlay');
             const burger = document.getElementById('navBurger');
             if (!nav) return;
             const isHidden = nav.hasAttribute('hidden');
             if (isHidden) {
                 nav.removeAttribute('hidden');
+                overlay?.removeAttribute('hidden');
+                document.body.style.overflow = 'hidden';
                 burger?.setAttribute('aria-expanded', 'true');
             } else {
                 nav.setAttribute('hidden', '');
+                overlay?.setAttribute('hidden', '');
+                document.body.style.overflow = '';
                 burger?.setAttribute('aria-expanded', 'false');
             }
         }
         function closeMobileNav() {
             const nav = document.getElementById('mobileNav');
+            const overlay = document.getElementById('mobileNavOverlay');
             const burger = document.getElementById('navBurger');
             if (nav) nav.setAttribute('hidden', '');
+            overlay?.setAttribute('hidden', '');
+            document.body.style.overflow = '';
             burger?.setAttribute('aria-expanded', 'false');
         }
 
