@@ -18,7 +18,7 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=30">
+    <link rel="stylesheet" href="assets/styles.css?v=31">
 
     <!-- Google Fonts: Plus Jakarta Sans & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,12 +55,15 @@
         /* Горизонтальный свайп-скролл карточек услуг на мобильных: скрываем полосу прокрутки */
         .services-scroll { scrollbar-width: none; -ms-overflow-style: none; }
         .services-scroll::-webkit-scrollbar { display: none; }
-        /* Иконка-подсказка «листай вбок»: рука покачивается туда-сюда */
+        /* Иконка-подсказка «листай вбок»: рука едет слева направо к черте и возвращается */
         @keyframes swipeHint {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(6px); }
+            0% { transform: translateX(0); opacity: 1; }
+            45% { transform: translateX(10px); opacity: 0.4; }
+            50% { transform: translateX(-2px); opacity: 0; }
+            75% { transform: translateX(0); opacity: 1; }
+            100% { transform: translateX(0); opacity: 1; }
         }
-        .swipe-hint-icon { animation: swipeHint 1.3s ease-in-out infinite; }
+        .swipe-hint-icon { animation: swipeHint 1.6s ease-in-out infinite; }
 
         /* Custom premium scrollbar */
         ::-webkit-scrollbar {
@@ -492,10 +495,11 @@
         <div class="max-w-5xl mx-auto">
             
             <!-- Section Title -->
-            <div class="text-center mb-8 relative">
+            <div class="flex items-center justify-between md:justify-center gap-3 mb-8">
                 <h2 class="font-display text-3xl md:text-4xl font-bold text-serene-900">линейка услуг</h2>
-                <div class="md:hidden absolute top-0 right-0 w-9 h-9 rounded-xl bg-serene-900/[0.05] flex items-center justify-center">
-                    <i data-lucide="hand" class="w-4 h-4 text-serene-800/70 swipe-hint-icon"></i>
+                <div class="md:hidden relative w-12 h-9 rounded-lg bg-serene-900/10 overflow-hidden flex items-center shrink-0">
+                    <span class="absolute top-1/2 right-2.5 -translate-y-1/2 w-px h-4 bg-serene-800/25"></span>
+                    <i data-lucide="hand" class="w-4 h-4 text-serene-800/70 ml-2 swipe-hint-icon"></i>
                 </div>
             </div>
 
