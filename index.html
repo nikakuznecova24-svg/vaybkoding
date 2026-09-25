@@ -212,12 +212,10 @@
     <!-- SECTION: Top navigation -->
     <header id="siteNav" class="sticky top-0 z-30 glass-panel border-b border-white/60">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <button type="button" id="navBurger" onclick="toggleMobileNav()" aria-label="меню" aria-expanded="false" class="md:hidden w-9 h-9 flex items-center justify-center">
-                    <i data-lucide="menu" class="nav-adaptive w-6 h-6 md:text-serene-900" style="filter: drop-shadow(0 1px 2px rgba(0,0,0,0.25))"></i>
-                </button>
-                <a href="#hero" class="nav-adaptive font-display text-base sm:text-lg font-bold md:text-serene-900 shrink-0" style="filter: drop-shadow(0 1px 2px rgba(0,0,0,0.25))">Ника Кузнецова</a>
-            </div>
+            <button type="button" id="navBurger" onclick="toggleMobileNav()" aria-label="меню" aria-expanded="false" class="md:hidden w-9 h-9 flex items-center justify-center">
+                <i data-lucide="menu" class="nav-adaptive w-6 h-6 md:text-serene-900" style="filter: drop-shadow(0 1px 2px rgba(0,0,0,0.25))"></i>
+            </button>
+            <a href="#hero" class="hidden md:block font-display text-lg font-bold text-serene-900 shrink-0">Ника Кузнецова</a>
 
             <nav class="hidden md:flex items-center gap-8">
                 <a href="#about" class="text-sm font-medium text-serene-800 hover:text-accent-terracotta transition-colors">обо мне</a>
