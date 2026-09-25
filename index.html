@@ -87,26 +87,6 @@
             .blur-2xl {
                 filter: blur(24px) !important;
             }
-            /* Верхнее меню на мобильных — полностью прозрачное, поверх фото в шапке,
-               без белой подложки; текст/иконка светлые, с лёгкой тенью для читаемости.
-               При скролле ниже шапки (класс nav-solid, ставится в JS) подложка и тёмный
-               текст возвращаются — иначе меню станет нечитаемым на светлом фоне ниже. */
-            #siteNav {
-                background: transparent;
-                border-bottom: none;
-            }
-            #siteNav.nav-solid {
-                background: rgba(255, 255, 255, 0.88);
-                border-bottom: 1px solid rgba(255, 255, 255, 0.6);
-            }
-            #siteNav .nav-adaptive {
-                color: #fff;
-            }
-            #siteNav.nav-solid .nav-adaptive {
-                color: #22211F;
-                text-shadow: none;
-                filter: none;
-            }
         }
         /* На тач-устройствах касание пальцем при скролле «залипает» как :hover —
            карточки услуг (13 шт, shadow-xl -> hover:shadow-2xl, transition-all 300ms)
@@ -213,7 +193,7 @@
     <header id="siteNav" class="sticky top-0 z-30 glass-panel border-b border-white/60">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
             <button type="button" id="navBurger" onclick="toggleMobileNav()" aria-label="меню" aria-expanded="false" class="md:hidden w-9 h-9 flex items-center justify-center">
-                <i data-lucide="menu" class="nav-adaptive w-6 h-6 md:text-serene-900" style="filter: drop-shadow(0 1px 2px rgba(0,0,0,0.25))"></i>
+                <i data-lucide="menu" class="w-6 h-6 text-serene-900"></i>
             </button>
             <a href="#hero" class="hidden md:block font-display text-lg font-bold text-serene-900 shrink-0">Ника Кузнецова</a>
 
@@ -246,25 +226,27 @@
 
     <!-- Ambient Floating Wind Particles -->
     <!-- Hero -->
-    <section id="hero" class="relative min-h-[90vh] flex items-center justify-center px-4 py-20 overflow-hidden">
-        <img src="https://static.tildacdn.com/tild3531-3563-4233-a232-333639326430/Unknown.jpeg"
-             alt="Calm Mountain Valley Background"
-             class="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
-             onerror="this.src='https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80'">
-        <div class="absolute inset-0 bg-serene-50/25"></div>
-        <div class="absolute inset-0" style="background: radial-gradient(ellipse 65% 55% at 50% 42%, rgba(250,248,245,0.6), rgba(250,248,245,0) 72%);"></div>
-        <div class="relative z-10 max-w-4xl text-center">
-            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-panel border border-white/80 shadow-sm text-xs text-serene-800 mb-6">
+    <section id="hero" class="relative px-4 pt-8 sm:pt-12 pb-16">
+        <div class="max-w-3xl mx-auto">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-panel border border-white/80 shadow-sm text-xs text-serene-800 mb-5">
                 <span class="w-2 h-2 rounded-full bg-accent-sage animate-ping"></span>
                 <span class="font-medium">✨ продукты за несколько дней с помощью ии</span>
             </div>
-            <h1 class="font-display text-2xl sm:text-4xl md:text-5xl font-bold text-serene-900 leading-[1.15] tracking-tight mb-6 drop-shadow-sm">
-                создаю ии-решения, которые помогают бизнесу продавать.
-            </h1>
-            <p class="text-serene-800/80 text-sm sm:text-base max-w-2xl mx-auto mb-8">
-                веб-сервисы, интерактивные инструменты, ии-агенты и сайты для экспертов и предпринимателей. вместо месяцев разработки — готовый продукт за несколько дней.
-            </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+
+            <div class="relative rounded-[2.5rem] overflow-hidden shadow-xl">
+                <img src="assets/nika-hero.jpg" alt="Ника Кузнецова" class="w-full h-[70vh] max-h-[560px] object-cover object-top">
+                <div class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/70 via-black/25 to-transparent pointer-events-none"></div>
+                <div class="absolute inset-x-0 bottom-0 p-6 sm:p-10">
+                    <h1 class="font-display text-2xl sm:text-4xl md:text-5xl font-bold text-white leading-[1.15] tracking-tight mb-3">
+                        Ника Кузнецова:
+                    </h1>
+                    <p class="text-white/90 text-sm sm:text-lg max-w-xl">
+                        создаю ии-решения, которые помогают бизнесу продавать. веб-сервисы, агенты и сайты для экспертов и предпринимателей — готовый продукт за несколько дней.
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mt-8">
                 <a href="#audit" style="padding:1rem 1.75rem" class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-accent-terracotta to-accent-sunset text-white font-bold text-sm sm:text-base shadow-lg hover:scale-105 active:scale-95 transition-transform">
                     хочу обсудить проект и получить бесплатный аудит
                     <i data-lucide="arrow-right" class="w-4 h-4 shrink-0"></i>
@@ -1024,7 +1006,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             try { initScrollProgressBar(); } catch(e) { console.error('scroll progress init failed', e); }
             try { initTelegramLinks(); } catch(e) { console.error('telegram links init failed', e); }
-            try { initNavSolidToggle(); } catch(e) { console.error('nav solid toggle init failed', e); }
         });
 
         window.onload = function() {
@@ -1078,25 +1059,6 @@
             const burger = document.getElementById('navBurger');
             if (nav) nav.setAttribute('hidden', '');
             burger?.setAttribute('aria-expanded', 'false');
-        }
-
-        // На мобильных меню прозрачное поверх фото в шапке; как только страница
-        // проскроллена ниже шапки, включаем светлую подложку и тёмный текст,
-        // иначе меню исчезает на светлом фоне остальных секций.
-        function initNavSolidToggle() {
-            const nav = document.getElementById('siteNav');
-            const hero = document.getElementById('hero');
-            if (!nav || !hero) return;
-            let ticking = false;
-            function update() {
-                const threshold = Math.max(hero.offsetHeight - nav.offsetHeight - 20, 40);
-                nav.classList.toggle('nav-solid', window.scrollY > threshold);
-                ticking = false;
-            }
-            window.addEventListener('scroll', () => {
-                if (!ticking) { requestAnimationFrame(update); ticking = true; }
-            }, { passive: true });
-            update();
         }
 
         // ----------------------------------------------------
