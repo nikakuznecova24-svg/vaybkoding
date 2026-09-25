@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>портфолио — ника кузнецова | вайбкодинг</title>
+    <meta name="description" content="сайты, платформы и telegram-агенты на вайб-кодинге — то, что уже сделано и работает.">
+    <meta property="og:title" content="то, что уже живёт, работает и делает деньги другим бизнесам">
+    <meta property="og:description" content="сайты, платформы и telegram-агенты на вайб-кодинге — то, что уже сделано и работает.">
+    <meta property="og:image" content="https://nikakuznecovaa.ru/assets/nika-hero.jpg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+
+    <script>
+        const TELEGRAM_USERNAME = "nikakuznecovaa";
+    </script>
+
+    <link rel="stylesheet" href="assets/styles.css?v=1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FAF8F5;
+            background-image:
+                radial-gradient(1400px 800px at 10% 0%, rgba(224,122,95,0.18), transparent 70%),
+                radial-gradient(1400px 800px at 90% 25%, rgba(168,181,160,0.16), transparent 70%),
+                radial-gradient(1400px 900px at 10% 100%, rgba(212,162,74,0.18), transparent 70%);
+            color: #22211F;
+            overflow-x: hidden;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+        .flex-wrap { flex-wrap: wrap; }
+        .mt-8 { margin-top: 2rem; }
+        .mt-auto { margin-top: auto; }
+        .portfolio-filter {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            background: rgba(34,33,31,0.05);
+            color: rgba(34,33,31,0.7);
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .portfolio-filter.is-active {
+            background: #E07A5F;
+            color: #fff;
+        }
+        @keyframes portfolio-spin { to { transform: rotate(360deg); } }
+        .loader-spinner {
+            width: 22px;
+            height: 22px;
+            border: 2px solid rgba(224,122,95,0.2);
+            border-top-color: #E07A5F;
+            border-radius: 50%;
+            animation: portfolio-spin 0.8s linear infinite;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-accent-sunset/20 selection:text-serene-900">
+
+    <section class="py-16 px-4">
+        <div class="max-w-3xl mx-auto">
+
+            <a href="/" class="text-xs text-serene-800/60 hover:text-accent-terracotta underline">← на главную</a>
+
+            <div class="mt-8 mb-12">
+                <h1 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-serene-900 leading-snug mb-6">
+                    то, что уже живёт, работает и делает деньги другим бизнесам
+                </h1>
+                <div class="flex flex-col sm:flex-row items-center gap-4">
+                    <a href="#audit" onclick="scrollToAudit(event)" class="inline-flex px-4 py-2.5 sm:px-8 sm:py-4 w-auto text-xs sm:text-base bg-gradient-to-r from-accent-terracotta to-accent-sunset text-white font-medium rounded-full shadow-lg shadow-accent-terracotta/20 hover:shadow-xl hover:shadow-accent-terracotta/30 hover:scale-[1.02] active:scale-95 transition-all duration-300 text-center items-center justify-center gap-3">
+                        хочу обсудить проект и получить бесплатный аудит
+                    </a>
+                </div>
+            </div>
+
+            <div id="work" class="flex flex-wrap gap-2 mb-8">
+                <button type="button" class="portfolio-filter" data-filter="все" onclick="filterPortfolio(this)">все</button>
+                <button type="button" class="portfolio-filter" data-filter="сайты" onclick="filterPortfolio(this)">сайты / лендинги</button>
+                <button type="button" class="portfolio-filter" data-filter="воронка" onclick="filterPortfolio(this)">воронка в тг</button>
+                <button type="button" class="portfolio-filter" data-filter="сервисы" onclick="filterPortfolio(this)">сервисы</button>
+                <button type="button" class="portfolio-filter" data-filter="агенты" onclick="filterPortfolio(this)">ии-агенты</button>
+                <button type="button" class="portfolio-filter" data-filter="платформы" onclick="filterPortfolio(this)">платформы</button>
+            </div>
+
+            <div id="workGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+
+                <div class="portfolio-item spotlight-card bg-gradient-to-br from-white to-accent-terracotta/[0.05] rounded-[2.5rem] p-6 md:p-8 border border-accent-terracotta/10 shadow-xl flex flex-col hover:shadow-2xl transition-all duration-300" data-category="сайты">
+                    <a href="https://svyazany.ru" target="_blank" rel="noopener" class="relative w-full block overflow-hidden rounded-2xl mb-4" style="padding-top: 56.25%; background: #F3EDE6;">
+                        <div id="loader-svyazany" class="absolute inset-0 flex flex-col items-center justify-center gap-2" style="background: #F3EDE6; z-index: 2;">
+                            <div class="loader-spinner"></div>
+                            <span class="text-xs text-serene-800/60 font-medium">загружаю превью…</span>
+                        </div>
+                        <iframe src="https://svyazany.ru" title="связаны — живое превью" loading="lazy" onload="document.getElementById('loader-svyazany').style.display='none'" style="width: 400%; height: 400%; transform: scale(0.25); transform-origin: 0 0; border: 0; position: absolute; top: 0; left: 0; pointer-events: none;"></iframe>
+                        <span class="text-serene-800 rounded-full text-xs font-semibold shadow-sm" style="position:absolute; bottom:0.5rem; right:0.5rem; padding:0.25rem 0.75rem; background:rgba(255,255,255,0.9);">открыть сайт →</span>
+                    </a>
+                    <h3 class="font-display text-lg md:text-xl font-bold text-serene-900 mb-3">сайт «связаны»</h3>
+                    <p class="text-serene-800 text-sm md:text-base mb-3">когда продаёшь неочевидный, эмоциональный подарок — текста на странице мало, нужно, чтобы человек прямо на сайте почувствовал, как это будет выглядеть. <strong class="text-accent-terracotta font-bold">лид-магнит и мини-конструктор разворота дают попробовать продукт до оплаты</strong> и снимают главное сомнение «а как это будет смотреться?».</p>
+                    <button type="button" onclick="togglePortfolioCard(this)" class="service-toggle inline-flex items-center gap-1.5 text-accent-terracotta font-semibold text-sm mb-1">
+                        <span class="toggle-label">подробнее</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 transition-transform toggle-chevron"></i>
+                    </button>
+                    <div class="service-details hidden text-serene-800 space-y-2 mt-4 mb-2 text-sm md:text-base pt-4 border-t border-serene-200/50">
+                        <p><strong class="font-semibold text-serene-900">для кого:</strong> студии и бренды с эмоциональным, персональным продуктом — подарки, услуги на заказ</p>
+                        <p><strong class="font-semibold text-serene-900">что входит:</strong> сайт-визитка, лид-магнит, мини-конструктор разворота</p>
+                        <p><strong class="font-semibold text-serene-900">срок:</strong> 5-10 дней</p>
+                        <p><strong class="font-semibold text-serene-900">ориентир цены:</strong> от 15 000 ₽</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-item spotlight-card bg-gradient-to-br from-white to-accent-terracotta/[0.05] rounded-[2.5rem] p-6 md:p-8 border border-accent-terracotta/10 shadow-xl flex flex-col hover:shadow-2xl transition-all duration-300" data-category="сайты">
+                    <a href="https://gvasaliya.ru/" target="_blank" rel="noopener" class="relative w-full block overflow-hidden rounded-2xl mb-4" style="padding-top: 56.25%; background: #F3EDE6;">
+                        <div id="loader-psy" class="absolute inset-0 flex flex-col items-center justify-center gap-2" style="background: #F3EDE6; z-index: 2;">
+                            <div class="loader-spinner"></div>
+                            <span class="text-xs text-serene-800/60 font-medium">загружаю превью…</span>
+                        </div>
+                        <iframe src="https://gvasaliya.ru/" title="сайт психолога — живое превью" loading="lazy" onload="document.getElementById('loader-psy').style.display='none'" style="width: 400%; height: 400%; transform: scale(0.25); transform-origin: 0 0; border: 0; position: absolute; top: 0; left: 0; pointer-events: none;"></iframe>
+                        <span class="text-serene-800 rounded-full text-xs font-semibold shadow-sm" style="position:absolute; bottom:0.5rem; right:0.5rem; padding:0.25rem 0.75rem; background:rgba(255,255,255,0.9);">открыть сайт →</span>
+                    </a>
+                    <h3 class="font-display text-lg md:text-xl font-bold text-serene-900 mb-3">сайт психолога</h3>
+                    <p class="text-serene-800 text-sm md:text-base mb-3">когда устал(а) объяснять на созвонах, чем занимаешься — нужен <strong class="text-accent-terracotta font-bold">сайт, который сразу показывает уровень эксперта и ведёт к записи одним понятным действием</strong>, без лишних вопросов и кликов.</p>
+                    <button type="button" onclick="togglePortfolioCard(this)" class="service-toggle inline-flex items-center gap-1.5 text-accent-terracotta font-semibold text-sm mb-1">
+                        <span class="toggle-label">подробнее</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 transition-transform toggle-chevron"></i>
+                    </button>
+                    <div class="service-details hidden text-serene-800 space-y-2 mt-4 mb-2 text-sm md:text-base pt-4 border-t border-serene-200/50">
+                        <p><strong class="font-semibold text-serene-900">для кого:</strong> эксперты и специалисты, которые продают консультации или услуги</p>
+                        <p><strong class="font-semibold text-serene-900">что входит:</strong> визитка-лендинг, блок «обо мне», подход, форматы работы, отзывы, запись в один клик</p>
+                        <p><strong class="font-semibold text-serene-900">срок:</strong> 5-10 дней</p>
+                        <p><strong class="font-semibold text-serene-900">ориентир цены:</strong> от 15 000 ₽</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-item spotlight-card bg-gradient-to-br from-white to-accent-terracotta/[0.05] rounded-[2.5rem] p-6 md:p-8 border border-accent-terracotta/10 shadow-xl flex flex-col hover:shadow-2xl transition-all duration-300" data-category="воронка">
+                    <div class="relative w-full rounded-2xl mb-4 overflow-hidden">
+                        <div style="background: #F3EDE6; height: 220px; overflow-y: auto; -webkit-overflow-scrolling: touch;">
+                            <img src="assets/svyazany-bot.jpg" alt="бот-воронка связаны" style="width: 100%; height: auto; display: block;">
+                        </div>
+                        <span class="text-serene-800 rounded-full text-xs font-semibold shadow-sm" style="position:absolute; bottom:0.5rem; right:0.5rem; padding:0.25rem 0.75rem; background:rgba(255,255,255,0.9); pointer-events:none;">листай ↓</span>
+                    </div>
+                    <h3 class="font-display text-lg md:text-xl font-bold text-serene-900 mb-3">бот-воронка «связаны»</h3>
+                    <p class="text-serene-800 text-sm md:text-base mb-3">когда не успеваешь вручную прогревать каждого нового подписчика — нужна <strong class="text-accent-terracotta font-bold">система, которая сама, шаг за шагом, доводит человека до готовности заказать</strong>, без твоего участия в переписке, 24/7.</p>
+                    <button type="button" onclick="togglePortfolioCard(this)" class="service-toggle inline-flex items-center gap-1.5 text-accent-terracotta font-semibold text-sm mb-1">
+                        <span class="toggle-label">подробнее</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 transition-transform toggle-chevron"></i>
+                    </button>
+                    <div class="service-details hidden text-serene-800 space-y-2 mt-4 mb-2 text-sm md:text-base pt-4 border-t border-serene-200/50">
+                        <p><strong class="font-semibold text-serene-900">для кого:</strong> те, кто продаёт через telegram-канал или рассылку</p>
+                        <p><strong class="font-semibold text-serene-900">что входит:</strong> серия сообщений, которая сама прогревает и ведёт к заказу</p>
+                        <p><strong class="font-semibold text-serene-900">срок:</strong> 5-10 дней</p>
+                        <p><strong class="font-semibold text-serene-900">ориентир цены:</strong> от 25 000 ₽</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-item spotlight-card bg-gradient-to-br from-white to-accent-terracotta/[0.05] rounded-[2.5rem] p-6 md:p-8 border border-accent-terracotta/10 shadow-xl flex flex-col hover:shadow-2xl transition-all duration-300" data-category="сервисы">
+                    <div class="relative w-full rounded-2xl mb-4 overflow-hidden">
+                        <div style="background: #F3EDE6; height: 220px; overflow-y: auto; -webkit-overflow-scrolling: touch;">
+                            <img src="assets/finance.jpg" alt="финансовый дневник богатой женщины" style="width: 100%; height: auto; display: block;">
+                        </div>
+                        <span class="text-serene-800 rounded-full text-xs font-semibold shadow-sm" style="position:absolute; bottom:0.5rem; right:0.5rem; padding:0.25rem 0.75rem; background:rgba(255,255,255,0.9); pointer-events:none;">листай ↓</span>
+                    </div>
+                    <h3 class="font-display text-lg md:text-xl font-bold text-serene-900 mb-3">финансовый дневник богатой женщины</h3>
+                    <p class="text-serene-800 text-sm md:text-base mb-3">когда деньги утекают незаметно и непонятно, когда закроются кредиты — нужен не эксель, а <strong class="text-accent-terracotta font-bold">простой трекер, который сам считает план на месяц и день финансовой свободы</strong> при текущем темпе выплат.</p>
+                    <button type="button" onclick="togglePortfolioCard(this)" class="service-toggle inline-flex items-center gap-1.5 text-accent-terracotta font-semibold text-sm mb-1">
+                        <span class="toggle-label">подробнее</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 transition-transform toggle-chevron"></i>
+                    </button>
+                    <div class="service-details hidden text-serene-800 space-y-2 mt-4 mb-2 text-sm md:text-base pt-4 border-t border-serene-200/50">
+                        <p><strong class="font-semibold text-serene-900">для кого:</strong> те, кто хочет держать личные финансы под контролем без экселя</p>
+                        <p><strong class="font-semibold text-serene-900">что входит:</strong> план на месяц (минимум/оптимум/максимум), кредиты и платежи с датами, день финансовой свободы</p>
+                        <p><strong class="font-semibold text-serene-900">срок:</strong> 5-10 дней</p>
+                        <p><strong class="font-semibold text-serene-900">ориентир цены:</strong> от 10 000 ₽</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-item spotlight-card bg-gradient-to-br from-white to-accent-terracotta/[0.05] rounded-[2.5rem] p-6 md:p-8 border border-accent-terracotta/10 shadow-xl flex flex-col hover:shadow-2xl transition-all duration-300" data-category="агенты">
+                    <h3 class="font-display text-lg md:text-xl font-bold text-serene-900 mb-3">личный ии-агент</h3>
+                    <p class="text-serene-800 text-sm md:text-base mb-3">когда задачи, напоминания и разговоры разбросаны по головам и чатам — нужен <strong class="text-accent-terracotta font-bold">агент, который держит всё в одном месте и отвечает в любой момент, 24/7</strong>, без выходных. живой пример работы такого агента, а не просто описание услуги.</p>
+                    <button type="button" onclick="togglePortfolioCard(this)" class="service-toggle inline-flex items-center gap-1.5 text-accent-terracotta font-semibold text-sm mb-1">
+                        <span class="toggle-label">подробнее</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 transition-transform toggle-chevron"></i>
+                    </button>
+                    <div class="service-details hidden text-serene-800 space-y-2 mt-4 mb-2 text-sm md:text-base pt-4 border-t border-serene-200/50">
+                        <p><strong class="font-semibold text-serene-900">для кого:</strong> те, у кого много задач или вопросов и нет времени отвечать на каждый лично</p>
+                        <p><strong class="font-semibold text-serene-900">что входит:</strong> агент в telegram с памятью диалога, держит задачи и напоминания, отвечает 24/7</p>
+                        <p><strong class="font-semibold text-serene-900">срок:</strong> 5-10 дней</p>
+                        <p><strong class="font-semibold text-serene-900">ориентир цены:</strong> от 20 000 ₽</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-item spotlight-card bg-gradient-to-br from-white to-accent-terracotta/[0.05] rounded-[2.5rem] p-6 md:p-8 border border-accent-terracotta/10 shadow-xl flex flex-col hover:shadow-2xl transition-all duration-300" data-category="платформы">
+                    <div class="relative w-full rounded-2xl mb-4 overflow-hidden">
+                        <div style="background: #F3EDE6; height: 220px; overflow-y: auto; -webkit-overflow-scrolling: touch;">
+                            <img src="assets/potok.jpg" alt="платформа поток · 70 дней" style="width: 100%; height: auto; display: block;">
+                        </div>
+                        <span class="text-serene-800 rounded-full text-xs font-semibold shadow-sm" style="position:absolute; bottom:0.5rem; right:0.5rem; padding:0.25rem 0.75rem; background:rgba(255,255,255,0.9); pointer-events:none;">листай ↓</span>
+                    </div>
+                    <h3 class="font-display text-lg md:text-xl font-bold text-serene-900 mb-3">платформа «поток · 70 дней»</h3>
+                    <p class="text-serene-800 text-sm md:text-base mb-3">когда крупная цель пугает масштабом и легко забросить — нужна <strong class="text-accent-terracotta font-bold">система, которая раскладывает её на спринты, недели и дни, показывает стрики и прогресс</strong>, чтобы двигаться, а не буксовать.</p>
+                    <button type="button" onclick="togglePortfolioCard(this)" class="service-toggle inline-flex items-center gap-1.5 text-accent-terracotta font-semibold text-sm mb-1">
+                        <span class="toggle-label">подробнее</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 transition-transform toggle-chevron"></i>
+                    </button>
+                    <div class="service-details hidden text-serene-800 space-y-2 mt-4 mb-2 text-sm md:text-base pt-4 border-t border-serene-200/50">
+                        <p><strong class="font-semibold text-serene-900">для кого:</strong> те, кто ведёт крупную личную цель и рискует её забросить</p>
+                        <p><strong class="font-semibold text-serene-900">что входит:</strong> каскад цель → спринт → неделя → день, стрики выполнения, ачивки, тепловая карта задач</p>
+                        <p><strong class="font-semibold text-serene-900">срок:</strong> 5-10 дней</p>
+                        <p><strong class="font-semibold text-serene-900">ориентир цены:</strong> от 25 000 ₽</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="audit" class="glass-panel rounded-[3rem] p-8 md:p-12 border border-white shadow-xl relative">
+                <div class="max-w-2xl mx-auto text-center">
+                    <span class="text-xs font-semibold text-accent-terracotta block mb-3">личный разбор</span>
+
+                    <h2 class="font-display text-3xl md:text-4xl font-bold text-serene-900 mb-6">
+                        бесплатный аудит сайта или воронки
+                    </h2>
+
+                    <p class="text-serene-800 leading-relaxed font-light mb-8 text-sm md:text-base">
+                        прежде чем предлагать решение — я хочу понять вашу ситуацию. напишите мне, и я разберу ваш сайт, лендинг или воронку и подскажу, как усилить смыслы с помощью вайбкодинга.
+                    </p>
+
+                    <div class="spotlight-card bg-serene-50/75 p-6 rounded-2xl border border-serene-200/50 mb-8 text-left space-y-4 relative">
+                        <div class="absolute top-0 left-0 w-full h-1 rounded-t-2xl bg-gradient-to-r from-accent-terracotta via-accent-sunset to-accent-gold"></div>
+                        <p class="text-xs font-semibold text-serene-900 mb-2">экспресс-бриф:</p>
+                        <div>
+                            <label class="block text-[10px] text-serene-800/80 mb-1 font-medium">имя <span class="text-accent-terracotta">*</span></label>
+                            <input id="briefName" type="text" placeholder="как к вам обращаться" class="w-full text-xs px-3 py-2 bg-white rounded-xl focus:ring-1 focus:ring-accent-sunset border border-serene-200 focus:outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-[10px] text-serene-800/80 mb-1 font-medium">телефон или telegram <span class="text-accent-terracotta">*</span></label>
+                            <input id="briefContact" type="text" placeholder="+7 999 000-00-00 или @username" class="w-full text-xs px-3 py-2 bg-white rounded-xl focus:ring-1 focus:ring-accent-sunset border border-serene-200 focus:outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-[10px] text-serene-800/80 mb-1 font-medium">ваша сфера или ниша</label>
+                            <input id="briefNiche" type="text" placeholder="например, фитнес-тренер или ИТ-консалтинг" class="w-full text-xs px-3 py-2 bg-white rounded-xl focus:ring-1 focus:ring-accent-sunset border border-serene-200 focus:outline-none">
+                        </div>
+
+                        <div class="relative">
+                            <label class="block text-[10px] text-serene-800/80 mb-2 font-medium">что хотите создать?</label>
+                            <button type="button" id="briefTypeToggle" onclick="toggleBriefDropdown()" class="w-full flex items-center justify-between gap-2 text-xs px-3 py-2 bg-white rounded-xl border border-serene-200 text-serene-800 focus:outline-none focus:ring-1 focus:ring-accent-sunset text-left">
+                                <span id="briefTypeToggleLabel" class="truncate">выбрать из списка</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 shrink-0 transition-transform" id="briefTypeToggleChevron"></i>
+                            </button>
+                            <div id="briefTypeChips" class="hidden absolute z-20 mt-2 w-full bg-white rounded-xl border border-serene-200 shadow-lg p-2 flex flex-col gap-1 max-h-96 overflow-y-auto">
+                                <button type="button" data-type="Лендинг / Сайт" onclick="pickBriefType(this)" class="brief-chip w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-serene-800 hover:bg-serene-50 transition-all">лендинг / сайт</button>
+                                <button type="button" data-type="Сервис / интерактивный лид-магнит" onclick="pickBriefType(this)" class="brief-chip w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-serene-800 hover:bg-serene-50 transition-all">сервис / лид-магнит</button>
+                                <button type="button" data-type="Платформа для обучения" onclick="pickBriefType(this)" class="brief-chip w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-serene-800 hover:bg-serene-50 transition-all">платформа для обучения</button>
+                                <button type="button" data-type="ИИ-агент" onclick="pickBriefType(this)" class="brief-chip w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-serene-800 hover:bg-serene-50 transition-all">ии-агент</button>
+                                <button type="button" data-type="Воронка в Telegram" onclick="pickBriefType(this)" class="brief-chip w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-serene-800 hover:bg-serene-50 transition-all">воронка в telegram</button>
+                                <button type="button" data-type="Мини-апп" onclick="pickBriefType(this)" class="brief-chip w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-serene-800 hover:bg-serene-50 transition-all">мини-апп</button>
+                                <button type="button" data-type="Чат-бот" onclick="pickBriefType(this)" class="brief-chip w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-serene-800 hover:bg-serene-50 transition-all">чат-бот</button>
+                                <button type="button" data-type="Несколько решений сразу" onclick="pickBriefType(this)" class="brief-chip w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-serene-800 hover:bg-serene-50 transition-all">несколько решений сразу</button>
+                            </div>
+                            <select id="briefType" class="hidden">
+                                <option value="">не выбрано</option>
+                                <option value="Лендинг / Сайт">лендинг / сайт</option>
+                                <option value="Сервис / интерактивный лид-магнит">сервис / интерактивный лид-магнит</option>
+                                <option value="Платформа для обучения">платформа для обучения</option>
+                                <option value="ИИ-агент">ии-агент</option>
+                                <option value="Воронка в Telegram">воронка в telegram</option>
+                                <option value="Мини-апп">мини-апп</option>
+                                <option value="Чат-бот">чат-бот</option>
+                                <option value="Несколько решений сразу">несколько решений сразу</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-[10px] text-serene-800/80 mb-1 font-medium">вопрос или комментарий</label>
+                            <textarea id="briefQuestion" rows="3" placeholder="если есть что добавить" class="w-full text-xs px-3 py-2 bg-white rounded-xl focus:ring-1 focus:ring-accent-sunset border border-serene-200 focus:outline-none resize-none"></textarea>
+                        </div>
+
+                        <label class="flex items-start gap-2 cursor-pointer">
+                            <input id="briefConsent" type="checkbox" class="mt-0.5 shrink-0">
+                            <span class="text-[10px] text-serene-800/70 leading-relaxed">согласен(-на) на обработку персональных данных согласно <a href="/privacy.html" target="_blank" class="underline hover:text-accent-terracotta">политике конфиденциальности</a> <span class="text-accent-terracotta">*</span></span>
+                        </label>
+
+                        <div class="pt-2">
+                            <button onclick="sendBriefToTelegram()" class="w-full py-3 bg-gradient-to-r from-accent-terracotta to-accent-sunset hover:shadow-md hover:scale-[1.01] active:scale-[0.99] rounded-xl text-xs font-semibold text-white transition-all flex items-center justify-center gap-2 shadow-sm">
+                                <span id="sendBriefBtnText">отправить экспресс-бриф</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col items-center gap-4">
+                        <a id="telegramBtn" href="#" target="_blank" class="group relative px-10 py-4 w-full sm:w-auto bg-serene-900 text-white font-medium rounded-full shadow-lg hover:bg-serene-800 transition-all duration-300 flex items-center justify-center gap-3">
+                            <span class="absolute top-0 left-0 w-full h-full rounded-full bg-serene-900/10 animate-ping opacity-75"></span>
+                            <i data-lucide="send" class="w-5 h-5 text-accent-sunset shrink-0"></i>
+                            <span>написать в телеграм</span>
+                        </a>
+                        <p class="text-[10px] text-serene-800/60">откроется диалог, где вы сможете задать вопрос</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        function scrollToAudit(event) {
+            if (event) event.preventDefault();
+            const target = document.getElementById('audit');
+            if (!target) return;
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const formCard = target.querySelector('.spotlight-card');
+            if (formCard) {
+                setTimeout(function(){
+                    formCard.classList.add('ring-4', 'ring-accent-terracotta/40');
+                    setTimeout(function(){ formCard.classList.remove('ring-4', 'ring-accent-terracotta/40'); }, 1200);
+                }, 400);
+            }
+        }
+
+        function initTelegramLinks() {
+            const btn = document.getElementById('telegramBtn');
+            if (btn) btn.href = `https://t.me/${TELEGRAM_USERNAME}`;
+        }
+
+        function selectBriefType(typeValue) {
+            const chip = document.querySelector('#briefTypeChips button[data-type="' + typeValue + '"]');
+            if (chip) setChipOn(chip, true);
+            syncBriefTypeValue();
+        }
+
+        const BRIEF_CHIP_OFF = "brief-chip w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-serene-800 hover:bg-serene-50 transition-all";
+        const BRIEF_CHIP_ON = "brief-chip w-full text-left px-3 py-2 rounded-lg text-xs font-medium bg-accent-terracotta/10 text-accent-terracotta transition-all";
+
+        function setChipOn(el, on) {
+            el.dataset.on = on ? '1' : '0';
+            el.className = on ? BRIEF_CHIP_ON : BRIEF_CHIP_OFF;
+        }
+
+        function syncBriefTypeValue() {
+            const chips = document.querySelectorAll('#briefTypeChips button');
+            const selected = Array.from(chips).filter(function(b){ return b.dataset.on === '1'; }).map(function(b){ return b.getAttribute('data-type'); });
+            const selectEl = document.getElementById('briefType');
+            if (selectEl) selectEl.value = selected.join(', ');
+            const label = document.getElementById('briefTypeToggleLabel');
+            if (label) label.textContent = selected.length ? selected.join(', ') : 'выбрать из списка';
+        }
+
+        function pickBriefType(el) {
+            setChipOn(el, el.dataset.on !== '1');
+            syncBriefTypeValue();
+        }
+
+        function toggleBriefDropdown() {
+            const panel = document.getElementById('briefTypeChips');
+            const chevron = document.getElementById('briefTypeToggleChevron');
+            if (!panel) return;
+            panel.classList.toggle('hidden');
+            if (chevron) chevron.classList.toggle('rotate-180');
+        }
+
+        document.addEventListener('click', function(e) {
+            const toggle = document.getElementById('briefTypeToggle');
+            const panel = document.getElementById('briefTypeChips');
+            if (!toggle || !panel || panel.classList.contains('hidden')) return;
+            if (!toggle.contains(e.target) && !panel.contains(e.target)) {
+                panel.classList.add('hidden');
+                const chevron = document.getElementById('briefTypeToggleChevron');
+                if (chevron) chevron.classList.remove('rotate-180');
+            }
+        });
+
+        const BRIEF_WORKER_URL = "https://vaybkoding-brief.nikakuznecova24.workers.dev";
+
+        function sendBriefToTelegram() {
+            const nameEl = document.getElementById('briefName');
+            const contactEl = document.getElementById('briefContact');
+            const name = nameEl.value.trim();
+            const contact = contactEl.value.trim();
+            const btnText = document.getElementById('sendBriefBtnText');
+            const originalText = btnText.textContent;
+
+            const consentEl = document.getElementById('briefConsent');
+
+            if (!name || !contact || !consentEl.checked) {
+                const badEl = !name ? nameEl : (!contact ? contactEl : null);
+                if (badEl) {
+                    badEl.classList.add('ring-2', 'ring-accent-terracotta');
+                    badEl.focus();
+                    setTimeout(function(){ badEl.classList.remove('ring-2', 'ring-accent-terracotta'); }, 2500);
+                }
+                btnText.textContent = !name ? "укажите имя" : (!contact ? "укажите телефон или telegram" : "нужно согласие на обработку данных");
+                setTimeout(function(){ btnText.textContent = originalText; }, 2500);
+                return;
+            }
+
+            const niche = document.getElementById('briefNiche').value.trim() || 'не указана';
+            const type = document.getElementById('briefType').value || 'не указано';
+            const question = document.getElementById('briefQuestion').value.trim() || 'нет';
+            btnText.textContent = "отправляю…";
+
+            fetch(BRIEF_WORKER_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: name, contact: contact, niche: niche, types: type, question: question })
+            })
+            .then(function(res){ return res.json(); })
+            .then(function(data){
+                if (!data || !data.ok) throw new Error('not ok');
+                btnText.textContent = "✓ заявка отправлена!";
+            })
+            .catch(function(){
+                const message = `Привет! Собрал экспресс-бриф на твоем сайте.\nИмя: ${name}\nКонтакт: ${contact}\nНиша: ${niche}\nИнтересует решение: ${type}\nВопрос: ${question}\nХочу получить бесплатный аудит!`;
+                window.open(`https://t.me/${TELEGRAM_USERNAME}?text=${encodeURIComponent(message)}`, '_blank');
+                btnText.textContent = "открываю telegram…";
+            })
+            .finally(function(){
+                setTimeout(function(){ btnText.textContent = originalText; }, 4000);
+            });
+        }
+
+        window.addEventListener('load', function() {
+            try { lucide.createIcons(); } catch(e) { console.error('lucide init failed', e); }
+            try { initTelegramLinks(); } catch(e) { console.error('telegram links init failed', e); }
+        });
+
+        function togglePortfolioCard(btn) {
+            const wrap = btn.parentElement;
+            const details = wrap.querySelector('.service-details');
+            const label = btn.querySelector('.toggle-label');
+            const chevron = btn.querySelector('.toggle-chevron');
+            const opening = details.classList.contains('hidden');
+            details.classList.toggle('hidden');
+            label.textContent = opening ? 'свернуть' : 'подробнее';
+            chevron.classList.toggle('rotate-180');
+        }
+
+        function filterPortfolio(btn) {
+            const filter = btn.dataset.filter;
+            document.querySelectorAll('.portfolio-filter').forEach(function(b) {
+                b.classList.toggle('is-active', b === btn);
+            });
+            document.querySelectorAll('.portfolio-item').forEach(function(item) {
+                const show = filter === 'все' || item.dataset.category === filter;
+                item.style.display = show ? '' : 'none';
+            });
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            const first = document.querySelector('.portfolio-filter[data-filter="все"]');
+            if (first) filterPortfolio(first);
+        });
+    </script>
+</body>
+</html>
