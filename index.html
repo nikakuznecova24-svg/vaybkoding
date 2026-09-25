@@ -24,7 +24,7 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=40">
+    <link rel="stylesheet" href="assets/styles.css?v=41">
 
     <!-- Google Fonts: Plus Jakarta Sans & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -153,7 +153,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(380px circle at var(--x, 0px) var(--y, 0px), rgba(244, 162, 97, 0.16), transparent 80%);
+            background: radial-gradient(420px circle at var(--x, 0px) var(--y, 0px), rgba(244, 162, 97, 0.3), transparent 80%);
             z-index: 1;
             pointer-events: none;
             border-radius: inherit;
@@ -379,7 +379,7 @@
                     <button type="button" onclick="selectRole('founder')" id="roleTabFounder" class="relative z-10 flex-1 py-2.5 text-sm font-semibold text-center text-serene-800/70 transition-colors">предприниматель</button>
                 </div>
 
-                <div id="roleContentExpert" class="bg-white rounded-[2.5rem] border border-serene-900/[0.06] shadow-xl p-6 sm:p-8">
+                <div id="roleContentExpert" class="rounded-[2.5rem] border border-serene-900/[0.06] shadow-xl p-6 sm:p-8" style="background: radial-gradient(120% 100% at 15% 0%, rgba(224,122,95,0.14), rgba(255,255,255,0.9) 55%), #ffffff;">
                     <div class="flex items-center gap-3.5 pb-6 border-b border-serene-200/60 mb-6">
                         <div class="w-10 h-10 rounded-2xl bg-accent-terracotta/10 flex items-center justify-center text-xl shrink-0">🧠</div>
                         <div>
@@ -407,7 +407,7 @@
                     </div>
                 </div>
 
-                <div id="roleContentFounder" hidden class="bg-white rounded-[2.5rem] border border-serene-900/[0.06] shadow-xl p-6 sm:p-8">
+                <div id="roleContentFounder" hidden class="rounded-[2.5rem] border border-serene-900/[0.06] shadow-xl p-6 sm:p-8" style="background: radial-gradient(120% 100% at 15% 0%, rgba(244,162,97,0.16), rgba(255,255,255,0.9) 55%), #ffffff;">
                     <div class="flex items-center gap-3.5 pb-6 border-b border-serene-200/60 mb-6">
                         <div class="w-10 h-10 rounded-2xl bg-accent-sunset/10 flex items-center justify-center text-xl shrink-0">⚡</div>
                         <div>
