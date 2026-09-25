@@ -18,7 +18,7 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=28">
+    <link rel="stylesheet" href="assets/styles.css?v=29">
 
     <!-- Google Fonts: Plus Jakarta Sans & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -242,6 +242,19 @@
     <!-- Premium Reading Progress Bar -->
     <div class="fixed top-0 left-0 w-full h-1.5 bg-serene-200/50 z-40"></div>
     <div id="scrollProgress" class="fixed top-0 left-0 w-full h-1.5 bg-gradient-to-r from-accent-terracotta to-accent-sunset z-50 shadow-sm" style="transform-origin: left; transform: scaleX(0); transition: transform 0.3s ease-out;"></div>
+
+    <!-- Toast: quiz teaser, appears once when the services section is reached -->
+    <div id="quizToast" class="fixed bottom-5 inset-x-4 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 sm:w-full sm:max-w-md z-40 opacity-0 translate-y-6 pointer-events-none transition-all duration-500 ease-out">
+        <div class="relative bg-white rounded-full border-2 border-accent-terracotta shadow-2xl pl-5 pr-3 py-3 flex items-center gap-3">
+            <a href="quiz.html" class="flex-1 flex items-center gap-2 text-serene-900 font-semibold text-xs sm:text-sm">
+                🎯 не знаете, что выбрать? пройти тест за 10 секунд
+                <i data-lucide="arrow-right" class="w-4 h-4 text-accent-terracotta shrink-0"></i>
+            </a>
+            <button type="button" onclick="closeQuizToast()" aria-label="закрыть" class="w-7 h-7 flex items-center justify-center rounded-full hover:bg-serene-50 transition-colors shrink-0">
+                <i data-lucide="x" class="w-4 h-4 text-serene-800/60"></i>
+            </button>
+        </div>
+    </div>
 
     <!-- Ambient Floating Wind Particles -->
     <!-- Hero -->
@@ -734,12 +747,6 @@
                 </div>
             </div>
         </div>
-        <div class="flex items-center justify-center mt-10">
-            <a href="quiz.html" style="padding:0.9rem 1.75rem; border-width: 2px;" class="inline-flex items-center gap-2 rounded-full bg-white border-accent-terracotta text-serene-900 font-semibold shadow-lg hover:scale-105 active:scale-95 transition-transform text-sm sm:text-base text-center">
-                🎯 не знаете, что выбрать? пройти тест за 10 секунд
-                <i data-lucide="arrow-right" class="w-5 h-5 shrink-0 text-accent-terracotta"></i>
-            </a>
-        </div>
     </section>
 
     <div class="flex items-center justify-center gap-3 py-1 relative z-10">
@@ -1091,7 +1098,31 @@
             try { initTelegramLinks(); } catch(e) { console.error('telegram links init failed', e); }
             try { initRevealAnimations(); } catch(e) { console.error('reveal animations init failed', e); }
             try { initQuizPrefill(); } catch(e) { console.error('quiz prefill init failed', e); }
+            try { initQuizToast(); } catch(e) { console.error('quiz toast init failed', e); }
         };
+
+        // ----------------------------------------------------
+        // Quiz teaser toast — shows once when #services is reached
+        // ----------------------------------------------------
+        function initQuizToast() {
+            const toast = document.getElementById('quizToast');
+            const services = document.getElementById('services');
+            if (!toast || !services || !('IntersectionObserver' in window)) return;
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        toast.classList.remove('opacity-0', 'translate-y-6', 'pointer-events-none');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            observer.observe(services);
+        }
+        function closeQuizToast() {
+            const toast = document.getElementById('quizToast');
+            if (!toast) return;
+            toast.classList.add('opacity-0', 'translate-y-6', 'pointer-events-none');
+        }
 
         // ----------------------------------------------------
         // Scroll-in Reveal Animation
