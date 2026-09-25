@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "scripts": {
+    "build:css": "bun ./node_modules/@tailwindcss/cli/dist/index.mjs -i tailwind-input.css -o assets/styles.css --content ./index.html --content ./privacy.html --content ./quiz.html --minify"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "tailwindcss": "^4.3.3"
+  }
+}

@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Plus Jakarta Sans", sans-serif;
+  --color-serene-50: #faf8f5;
+  --color-serene-200: #eae0d5;
+  --color-serene-800: #3d3a36;
+  --color-serene-900: #22211f;
+  --color-accent-gold: #d4af37;
+  --color-accent-terracotta: #e07a5f;
+  --color-accent-sage: #81b29a;
+  --color-accent-sunset: #f4a261;
+  --animate-float-slow: float 8s ease-in-out infinite;
+  --animate-kenburns: kenburns 24s ease-in-out infinite alternate;
+  --animate-glow-pulse: glowPulse 3s ease-in-out infinite;
+}
