@@ -35,8 +35,10 @@
             scroll-behavior: smooth;
             scroll-padding-top: 4.5rem;
         }
-        .hero-gap-fix { padding-top: 8.5rem; }
-        @media (min-width: 640px) { .hero-gap-fix { padding-top: 10rem; } }
+        /* Раньше компенсировал полноэкранную старую шапку — с компактной шапкой
+           создавал огромный пустой отступ, поэтому убран. */
+        .hero-gap-fix { padding-top: 1rem; }
+        @media (min-width: 640px) { .hero-gap-fix { padding-top: 1.5rem; } }
         body {
             max-width: 100%;
             font-family: 'Inter', sans-serif;
@@ -227,16 +229,18 @@
     <!-- Ambient Floating Wind Particles -->
     <!-- Hero -->
     <section id="hero" class="relative px-4 pt-8 sm:pt-12 pb-16">
-        <div class="max-w-3xl mx-auto">
+
+        <!-- Mobile: photo card with text overlay -->
+        <div class="md:hidden max-w-3xl mx-auto">
             <div class="relative rounded-[2.5rem] overflow-hidden shadow-xl">
-                <img src="assets/nika-hero.jpg" alt="Ника Кузнецова" class="w-full h-[70vh] max-h-[560px] object-cover object-top">
+                <img src="assets/nika-hero.jpg" alt="Ника Кузнецова" class="w-full aspect-[3/4] object-cover object-top">
                 <div class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/70 via-black/25 to-transparent pointer-events-none"></div>
-                <div class="absolute top-5 left-5 sm:top-7 sm:left-7 inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-panel border border-white/80 shadow-sm text-xs text-serene-800">
+                <div class="absolute top-5 left-5 inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-panel border border-white/80 shadow-sm text-xs text-serene-800">
                     <span class="w-2 h-2 rounded-full bg-accent-sage animate-ping"></span>
                     <span class="font-medium">✨ продукты за несколько дней с помощью ии</span>
                 </div>
-                <div class="absolute inset-x-0 bottom-0 p-6 sm:p-10">
-                    <h1 class="font-display text-2xl sm:text-4xl md:text-5xl font-bold text-white leading-[1.15] tracking-tight mb-3">
+                <div class="absolute inset-x-0 bottom-0 p-6">
+                    <h1 class="font-display text-2xl sm:text-4xl font-bold text-white leading-[1.15] tracking-tight mb-3">
                         Ника Кузнецова
                     </h1>
                     <p class="text-white/90 text-sm sm:text-lg max-w-xl">
@@ -255,6 +259,44 @@
                 </a>
             </div>
         </div>
+
+        <!-- Desktop: split layout, text left / photo right -->
+        <div class="hidden md:grid max-w-6xl mx-auto grid-cols-2 gap-16 items-center">
+            <div>
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-panel border border-white/80 shadow-sm text-xs text-serene-800 mb-6">
+                    <span class="w-2 h-2 rounded-full bg-accent-sage animate-ping"></span>
+                    <span class="font-medium">✨ продукты за несколько дней с помощью ии</span>
+                </div>
+                <h1 class="font-display text-4xl lg:text-5xl font-bold text-serene-900 leading-[1.15] tracking-tight mb-5">
+                    создаю ии-решения, которые помогают бизнесу продавать
+                </h1>
+                <p class="text-serene-800/80 text-base lg:text-lg max-w-lg mb-8">
+                    веб-сервисы, интерактивные инструменты, ии-агенты и сайты для экспертов и предпринимателей. вместо месяцев разработки — готовый продукт за несколько дней.
+                </p>
+                <a href="#audit" style="padding:1rem 1.75rem" class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-accent-terracotta to-accent-sunset text-white font-bold text-base shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-transform mb-10">
+                    хочу обсудить проект и получить бесплатный аудит
+                    <i data-lucide="arrow-right" class="w-4 h-4 shrink-0"></i>
+                </a>
+                <div class="flex items-center gap-8 pt-8 border-t border-serene-900/10">
+                    <div>
+                        <p class="font-display text-2xl font-bold text-accent-terracotta">30+</p>
+                        <p class="text-xs text-serene-800/70">проектов через ии</p>
+                    </div>
+                    <div>
+                        <p class="font-display text-2xl font-bold text-accent-terracotta">6 лет</p>
+                        <p class="text-xs text-serene-800/70">опыта в продажах и маркетинге</p>
+                    </div>
+                    <div>
+                        <p class="font-display text-2xl font-bold text-accent-terracotta">100%</p>
+                        <p class="text-xs text-serene-800/70">веду проект сама, без агентства</p>
+                    </div>
+                </div>
+            </div>
+            <div class="rounded-[2.5rem] overflow-hidden shadow-xl border border-white">
+                <img src="assets/nika-hero.jpg" alt="Ника Кузнецова" class="w-full aspect-[4/5] object-cover object-top">
+            </div>
+        </div>
+
     </section>
 
     <!-- SECTION: Interactive Target Audience Selector -->
