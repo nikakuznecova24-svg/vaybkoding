@@ -18,7 +18,7 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=25">
+    <link rel="stylesheet" href="assets/styles.css?v=26">
 
     <!-- Google Fonts: Plus Jakarta Sans & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,6 +52,10 @@
             color: #22211F;
             overflow-x: clip;
         }
+        /* Горизонтальный свайп-скролл карточек услуг на мобильных: скрываем полосу прокрутки */
+        .services-scroll { scrollbar-width: none; -ms-overflow-style: none; }
+        .services-scroll::-webkit-scrollbar { display: none; }
+
         /* Custom premium scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -469,17 +473,20 @@
         <div class="max-w-5xl mx-auto">
             
             <!-- Section Title -->
-            <div class="text-center mb-12">
+            <div class="text-center mb-8 relative">
                 <h2 class="font-display text-3xl md:text-4xl font-bold text-serene-900">линейка услуг</h2>
+                <span class="md:hidden inline-flex items-center gap-1.5 text-xs text-serene-800/60 mt-2">
+                    <i data-lucide="hand" class="w-3.5 h-3.5"></i> листайте карточки вбок
+                </span>
             </div>
 
-            <!-- Services Stack -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+            <span class="block text-xs font-semibold text-accent-terracotta mb-3 px-4 md:px-0">сайты и инструменты</span>
 
-                <span class="md:col-span-2 lg:col-span-3 text-xs font-semibold text-accent-terracotta -mb-2">сайты и инструменты</span>
+            <!-- Services Stack -->
+            <div class="services-scroll flex overflow-x-auto snap-x snap-mandatory gap-4 -mx-4 px-4 pb-4 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 md:mx-0 md:px-0 md:pb-0 md:overflow-visible items-stretch">
 
                 <!-- Service 1: Лендинг / Сайт -->
-                <div class="spotlight-card bg-gradient-to-br from-white to-accent-terracotta/[0.05] rounded-[2.5rem] p-6 md:p-8 border border-accent-terracotta/10 shadow-xl flex flex-col hover:shadow-2xl transition-all duration-300">
+                <div class="spotlight-card snap-start shrink-0 w-[82%] sm:w-[55%] md:w-auto md:shrink bg-gradient-to-br from-white to-accent-terracotta/[0.05] rounded-[2.5rem] p-6 md:p-8 border border-accent-terracotta/10 shadow-xl flex flex-col hover:shadow-2xl transition-all duration-300">
                     <div class="flex-1">
                         <div class="flex items-center justify-end mb-4">
                             <span class="px-3 py-1 bg-serene-900/[0.05] text-serene-800/70 rounded-full text-xs font-semibold">популярно</span>
@@ -506,7 +513,7 @@
                 </div>
 
                 <!-- Service 2: Сервис / интерактивный лид-магнит -->
-                <div class="spotlight-card bg-gradient-to-br from-white to-accent-terracotta/[0.05] rounded-[2.5rem] p-6 md:p-8 border border-accent-terracotta/10 shadow-xl flex flex-col hover:shadow-2xl transition-all duration-300">
+                <div class="spotlight-card snap-start shrink-0 w-[82%] sm:w-[55%] md:w-auto md:shrink bg-gradient-to-br from-white to-accent-terracotta/[0.05] rounded-[2.5rem] p-6 md:p-8 border border-accent-terracotta/10 shadow-xl flex flex-col hover:shadow-2xl transition-all duration-300">
                     <div class="flex-1">
                         <div class="flex items-center justify-end mb-4">
                             <span class="px-3 py-1 bg-serene-900/[0.05] text-serene-800/70 rounded-full text-xs font-semibold">высокий отклик</span>
@@ -533,7 +540,7 @@
                 </div>
 
                 <!-- Service 3: Платформа для обучения -->
-                <div class="spotlight-card bg-gradient-to-br from-white to-accent-terracotta/[0.05] rounded-[2.5rem] p-6 md:p-8 border border-accent-terracotta/10 shadow-xl flex flex-col hover:shadow-2xl transition-all duration-300">
+                <div class="spotlight-card snap-start shrink-0 w-[82%] sm:w-[55%] md:w-auto md:shrink bg-gradient-to-br from-white to-accent-terracotta/[0.05] rounded-[2.5rem] p-6 md:p-8 border border-accent-terracotta/10 shadow-xl flex flex-col hover:shadow-2xl transition-all duration-300">
                     <div class="flex-1">
                         <div class="flex items-center justify-end mb-4">
                             <span class="px-3 py-1 bg-serene-900/[0.05] text-serene-800/70 rounded-full text-xs font-semibold">для наставников</span>
@@ -564,7 +571,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
 
                 <!-- Service 4: ИИ-агент -->
-                <div class="spotlight-card bg-gradient-to-br from-white to-accent-terracotta/[0.05] rounded-[2.5rem] p-6 md:p-8 border border-accent-terracotta/10 shadow-xl flex flex-col hover:shadow-2xl transition-all duration-300">
+                <div class="spotlight-card snap-start shrink-0 w-[82%] sm:w-[55%] md:w-auto md:shrink bg-gradient-to-br from-white to-accent-terracotta/[0.05] rounded-[2.5rem] p-6 md:p-8 border border-accent-terracotta/10 shadow-xl flex flex-col hover:shadow-2xl transition-all duration-300">
                     <div class="flex-1">
                         <div class="flex items-center justify-end mb-4">
                             <span class="px-3 py-1 bg-serene-900/[0.05] text-serene-800/70 rounded-full text-xs font-semibold">24/7 на связи</span>
@@ -590,7 +597,7 @@
                 </div>
 
                 <!-- Service 5: Воронка в Telegram -->
-                <div class="spotlight-card bg-gradient-to-br from-white to-accent-terracotta/[0.05] rounded-[2.5rem] p-6 md:p-8 border border-accent-terracotta/10 shadow-xl flex flex-col hover:shadow-2xl transition-all duration-300">
+                <div class="spotlight-card snap-start shrink-0 w-[82%] sm:w-[55%] md:w-auto md:shrink bg-gradient-to-br from-white to-accent-terracotta/[0.05] rounded-[2.5rem] p-6 md:p-8 border border-accent-terracotta/10 shadow-xl flex flex-col hover:shadow-2xl transition-all duration-300">
                     <div class="flex-1">
                         <div class="flex items-center justify-end mb-4">
                             <span class="px-3 py-1 bg-serene-900/[0.05] text-serene-800/70 rounded-full text-xs font-semibold">автопрогрев</span>
@@ -616,7 +623,7 @@
                 </div>
 
                 <!-- Service 6: Мини-апп -->
-                <div class="spotlight-card bg-gradient-to-br from-white to-accent-terracotta/[0.05] rounded-[2.5rem] p-6 md:p-8 border border-accent-terracotta/10 shadow-xl flex flex-col hover:shadow-2xl transition-all duration-300">
+                <div class="spotlight-card snap-start shrink-0 w-[82%] sm:w-[55%] md:w-auto md:shrink bg-gradient-to-br from-white to-accent-terracotta/[0.05] rounded-[2.5rem] p-6 md:p-8 border border-accent-terracotta/10 shadow-xl flex flex-col hover:shadow-2xl transition-all duration-300">
                     <div class="flex-1">
                         <div class="flex items-center justify-end mb-4">
                             <span class="px-3 py-1 bg-serene-900/[0.05] text-serene-800/70 rounded-full text-xs font-semibold">внутри telegram</span>
@@ -642,7 +649,7 @@
                 </div>
 
                 <!-- Service 7: Чат-бот -->
-                <div class="spotlight-card bg-gradient-to-br from-white to-accent-terracotta/[0.05] rounded-[2.5rem] p-6 md:p-8 border border-accent-terracotta/10 shadow-xl flex flex-col hover:shadow-2xl transition-all duration-300">
+                <div class="spotlight-card snap-start shrink-0 w-[82%] sm:w-[55%] md:w-auto md:shrink bg-gradient-to-br from-white to-accent-terracotta/[0.05] rounded-[2.5rem] p-6 md:p-8 border border-accent-terracotta/10 shadow-xl flex flex-col hover:shadow-2xl transition-all duration-300">
                     <div class="flex-1">
                         <div class="flex items-center justify-end mb-4">
                             <span class="px-3 py-1 bg-serene-900/[0.05] text-serene-800/70 rounded-full text-xs font-semibold">простой и быстрый</span>
