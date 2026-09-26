@@ -24,7 +24,7 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=85">
+    <link rel="stylesheet" href="assets/styles.css?v=86">
 
     <!-- Google Fonts: Plus Jakarta Sans & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -791,6 +791,7 @@
                         <p class="font-display text-2xl sm:text-3xl font-bold text-accent-terracotta">От <span id="calcTotal">0 ₽</span></p>
                         <p id="calcSaveLine" class="text-xs text-accent-sage font-semibold mt-1"></p>
                     </div>
+                    <p id="calcPathLine" class="hidden text-sm text-serene-800 leading-relaxed text-left bg-white/60 rounded-2xl px-4 py-3 mb-4"></p>
                     <a href="#audit" onclick="sendCalcToBrief(event)" style="padding:1.1rem 2rem" class="w-full text-base sm:text-xl bg-gradient-to-r from-accent-terracotta to-accent-sunset text-white font-bold rounded-full shadow-lg shadow-accent-terracotta/20 hover:shadow-xl hover:shadow-accent-terracotta/30 hover:scale-[1.02] active:scale-95 transition-all duration-300 text-center flex items-center justify-center gap-3">
                         Обсудить комплекс
                     </a>
@@ -1422,21 +1423,49 @@
             updateCalc();
         }
 
+        const CALC_BENEFITS = {
+            'Лендинг / Сайт': 'сайт сразу показывает ваш уровень и превращает интерес в заявку',
+            'Сервис / интерактивный лид-магнит': 'вовлекает аудиторию и собирает контакты',
+            'Платформа для обучения': 'помогает системно выстроить обучение или работу с клиентами',
+            'ИИ-агент': 'отвечает клиентам 24/7, пока вы заняты делом',
+            'Воронка в Telegram': 'сама прогревает и ведёт к покупке без вашего участия',
+            'Мини-апп': 'даёт всё нужное внутри telegram, без отдельного сайта',
+            'Чат-бот': 'принимает заявки по понятному сценарию, без лишней сложности'
+        };
+
         function updateCalc() {
             const chips = document.querySelectorAll('#calcChips .calc-chip');
             let sum = 0, count = 0;
+            const benefits = [];
             chips.forEach(function(c) {
-                if (c.dataset.on === '1') { sum += parseInt(c.dataset.price, 10); count++; }
+                if (c.dataset.on === '1') {
+                    sum += parseInt(c.dataset.price, 10); count++;
+                    const benefit = CALC_BENEFITS[c.getAttribute('data-type')];
+                    if (benefit) benefits.push(benefit);
+                }
             });
             const rate = count >= 3 ? 0.85 : (count === 2 ? 0.9 : 1);
             const total = count ? Math.round(sum * rate / 500) * 500 : 0;
             const sumLine = document.getElementById('calcSumLine');
             const totalEl = document.getElementById('calcTotal');
             const saveLine = document.getElementById('calcSaveLine');
+            const pathLine = document.getElementById('calcPathLine');
             sumLine.textContent = count > 1 ? 'по отдельности: ' + sum.toLocaleString('ru-RU') + ' ₽' : (count === 1 ? 'выбрано: 1 услуга' : 'выбери, что нужно');
             totalEl.textContent = total.toLocaleString('ru-RU') + ' ₽';
             const save = sum - total;
             saveLine.textContent = save > 0 ? 'экономия ' + save.toLocaleString('ru-RU') + ' ₽' : '';
+            if (pathLine) {
+                if (benefits.length >= 2) {
+                    pathLine.textContent = 'с этим набором: ' + benefits.join(' → ') + '. цельная система, а не разрозненные кусочки.';
+                    pathLine.classList.remove('hidden');
+                } else if (benefits.length === 1) {
+                    pathLine.textContent = 'с этим набором: ' + benefits[0] + '.';
+                    pathLine.classList.remove('hidden');
+                } else {
+                    pathLine.textContent = '';
+                    pathLine.classList.add('hidden');
+                }
+            }
         }
 
         function sendCalcToBrief(event) {
