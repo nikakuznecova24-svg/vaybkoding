@@ -24,7 +24,7 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=52">
+    <link rel="stylesheet" href="assets/styles.css?v=53">
 
     <!-- Google Fonts: Plus Jakarta Sans & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -271,10 +271,6 @@
 
         <!-- Mobile: photo card with text overlay -->
         <div class="md:hidden max-w-3xl mx-auto relative">
-            <pre class="absolute -top-7 right-1 z-0 font-mono text-[11px] leading-relaxed text-serene-900/[0.22] select-none pointer-events-none rotate-2 whitespace-pre">function создатьМечту() {
-  const вайбкодинг = true;
-  запустить(проект, "5 дней");
-}</pre>
             <div class="reveal-up relative z-10 rounded-[2.5rem] overflow-hidden shadow-xl">
                 <img src="assets/nika-hero.jpg" alt="Ника Кузнецова" class="w-full aspect-[3/4] object-cover object-top">
                 <div class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/70 via-black/25 to-transparent pointer-events-none"></div>
@@ -337,22 +333,11 @@
                     </div>
                 </div>
             </div>
-            <div class="relative">
-                <pre class="hidden lg:block absolute top-8 -left-16 z-0 font-mono text-xs leading-relaxed text-serene-900/[0.18] select-none pointer-events-none -rotate-2 whitespace-pre">function
-создатьМечту() {
-  const
-  вайбкодинг = true;
-  запустить(
-    проект,
-    "5 дней"
-  );
-}</pre>
-                <div class="relative z-10 rounded-[2.5rem] overflow-hidden shadow-xl border border-white">
-                    <img src="assets/nika-hero.jpg" alt="Ника Кузнецова" class="w-full aspect-[4/5] object-cover object-top">
-                    <div class="absolute top-6 left-6 inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-panel border border-white/80 shadow-sm text-xs text-serene-800">
-                        <span class="w-2 h-2 rounded-full bg-accent-sage animate-ping"></span>
-                        <span class="font-medium">✨ продукты за несколько дней с помощью ии</span>
-                    </div>
+            <div class="relative rounded-[2.5rem] overflow-hidden shadow-xl border border-white">
+                <img src="assets/nika-hero.jpg" alt="Ника Кузнецова" class="w-full aspect-[4/5] object-cover object-top">
+                <div class="absolute top-6 left-6 inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-panel border border-white/80 shadow-sm text-xs text-serene-800">
+                    <span class="w-2 h-2 rounded-full bg-accent-sage animate-ping"></span>
+                    <span class="font-medium">✨ продукты за несколько дней с помощью ии</span>
                 </div>
             </div>
         </div>
@@ -377,9 +362,9 @@
                 </h2>
             </div>
 
-            <!-- Mobile: compact segmented toggle + single content card -->
-            <div class="md:hidden mb-12">
-                <div class="relative flex bg-serene-900/[0.08] rounded-full p-1 mb-6 max-w-xs mx-auto shadow-inner">
+            <!-- Compact segmented toggle + single content card (all breakpoints) -->
+            <div class="mb-12 max-w-2xl mx-auto">
+                <div class="relative flex bg-serene-900/[0.08] rounded-full p-1 mb-6 max-w-xs sm:max-w-sm mx-auto shadow-inner">
                     <div id="roleToggleThumb" class="absolute top-1 bottom-1 left-1 w-[calc(50%-4px)] bg-gradient-to-r from-accent-terracotta to-accent-sunset rounded-full shadow-md transition-transform duration-300 ease-out"></div>
                     <button type="button" onclick="selectRole('expert')" id="roleTabExpert" class="relative z-10 flex-1 py-2.5 text-sm font-semibold text-center text-white transition-colors">эксперт</button>
                     <button type="button" onclick="selectRole('founder')" id="roleTabFounder" class="relative z-10 flex-1 py-2.5 text-sm font-semibold text-center text-serene-800/70 transition-colors">предприниматель</button>
@@ -442,90 +427,6 @@
                 </div>
             </div>
 
-            <!-- Desktop: Two-Column Interactive Segment -->
-            <div class="hidden md:grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch mb-12">
-
-                <!-- Left Column: Expert / Specialist -->
-                <div id="expertCol" class="reveal-up spotlight-card group bg-[#FAF8F5]/40 rounded-[2.5rem] border border-serene-900/[0.06] p-6 sm:p-8 md:p-10 transition-all duration-300 flex flex-col justify-between hover:shadow-xl relative min-h-[440px]" style="transition-delay:0ms">
-                    <div class="absolute inset-0 bg-gradient-to-br from-accent-terracotta/[0.015] to-transparent rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
-                    
-                    <div class="relative z-10 flex flex-col justify-between h-full flex-grow">
-                        <div>
-                            <!-- Card Header -->
-                            <div class="flex items-center gap-3.5 pb-6 border-b border-serene-200/60 mb-8">
-                                <div class="w-10 h-10 rounded-2xl bg-accent-terracotta/10 flex items-center justify-center text-xl shrink-0">
-                                    🧠
-                                </div>
-                                <div>
-                                    <h3 class="font-display text-lg sm:text-xl font-bold text-serene-900">эксперт / специалист</h3>
-                                    <p class="text-[10px] text-serene-800/60 font-semibold mt-0.5">упаковка ценности и запуск</p>
-                                </div>
-                            </div>
-
-                            <!-- Rows Content -->
-                            <div class="space-y-5 text-sm sm:text-base text-serene-800 leading-relaxed font-light">
-                                <div class="pb-4 border-b border-serene-200/40 flex gap-3 last:border-b-0 last:pb-0">
-                                    <i data-lucide="chevron-right" class="w-4 h-4 text-accent-terracotta shrink-0 mt-0.5"></i>
-                                    <p><strong class="font-bold text-serene-900 block mb-0.5">устал доказывать ценность на созвонах:</strong> хочешь, чтобы цифровой продукт закрывал вопросы о чеке до первого слова.</p>
-                                </div>
-                                <div class="pb-4 border-b border-serene-200/40 flex gap-3 last:border-b-0 last:pb-0">
-                                    <i data-lucide="chevron-right" class="w-4 h-4 text-accent-terracotta shrink-0 mt-0.5"></i>
-                                    <p><strong class="font-bold text-serene-900 block mb-0.5">стыдно отправлять ссылку на сайт:</strong> нужен сайт, по которому сразу видно твой масштаб — без объяснений и оправданий.</p>
-                                </div>
-                                <div class="pb-4 border-b border-serene-200/40 flex gap-3 last:border-b-0 last:pb-0">
-                                    <i data-lucide="chevron-right" class="w-4 h-4 text-accent-terracotta shrink-0 mt-0.5"></i>
-                                    <p><strong class="font-bold text-serene-900 block mb-0.5">привычные прогревы больше не работают:</strong> ты ищешь новые интерактивные механики для вовлечения аудитории здесь и сейчас.</p>
-                                </div>
-                                <div class="flex gap-3">
-                                    <i data-lucide="chevron-right" class="w-4 h-4 text-accent-terracotta shrink-0 mt-0.5"></i>
-                                    <p><strong class="font-bold text-serene-900 block mb-0.5">конкуренты продают дороже:</strong> при этом уступают по качеству. дело в сильной упаковке смыслов.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Column: Entrepreneur / Founder -->
-                <div id="founderCol" class="reveal-up spotlight-card group bg-[#FAF8F5]/40 rounded-[2.5rem] border border-serene-900/[0.06] p-6 sm:p-8 md:p-10 transition-all duration-300 flex flex-col justify-between hover:shadow-xl relative min-h-[440px]" style="transition-delay:120ms">
-                    <div class="absolute inset-0 bg-gradient-to-br from-accent-sunset/[0.015] to-transparent rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
-                    
-                    <div class="relative z-10 flex flex-col justify-between h-full flex-grow">
-                        <div>
-                            <!-- Card Header -->
-                            <div class="flex items-center gap-3.5 pb-6 border-b border-serene-200/60 mb-8">
-                                <div class="w-10 h-10 rounded-2xl bg-accent-sunset/10 flex items-center justify-center text-xl shrink-0">
-                                    ⚡
-                                </div>
-                                <div>
-                                    <h3 class="font-display text-lg sm:text-xl font-bold text-serene-900">предприниматель</h3>
-                                    <p class="text-[10px] text-serene-800/60 font-semibold mt-0.5">автоматизация и масштаб</p>
-                                </div>
-                            </div>
-
-                            <!-- Rows Content -->
-                            <div class="space-y-5 text-sm sm:text-base text-serene-800 leading-relaxed font-light">
-                                <div class="pb-4 border-b border-serene-200/40 flex gap-3 last:border-b-0 last:pb-0">
-                                    <i data-lucide="chevron-right" class="w-4 h-4 text-accent-sunset shrink-0 mt-0.5"></i>
-                                    <p><strong class="font-bold text-serene-900 block mb-0.5">тонешь в операционке и рутине:</strong> квалификацию лидов и ручную переписку давно пора делегировать автоматизации.</p>
-                                </div>
-                                <div class="pb-4 border-b border-serene-200/40 flex gap-3 last:border-b-0 last:pb-0">
-                                    <i data-lucide="chevron-right" class="w-4 h-4 text-accent-sunset shrink-0 mt-0.5"></i>
-                                    <p><strong class="font-bold text-serene-900 block mb-0.5">нужна автономная воронка лидов:</strong> чтобы система сама прогревала людей с первого клика, пока ты сфокусирован на продукте.</p>
-                                </div>
-                                <div class="pb-4 border-b border-serene-200/40 flex gap-3 last:border-b-0 last:pb-0">
-                                    <i data-lucide="chevron-right" class="w-4 h-4 text-accent-sunset shrink-0 mt-0.5"></i>
-                                    <p><strong class="font-bold text-serene-900 block mb-0.5">уперся в потолок личных часов:</strong> хочешь превратить свою экспертную услугу в it-сервис.</p>
-                                </div>
-                                <div class="flex gap-3">
-                                    <i data-lucide="chevron-right" class="w-4 h-4 text-accent-sunset shrink-0 mt-0.5"></i>
-                                    <p><strong class="font-bold text-serene-900 block mb-0.5">хочешь быстро протестировать гипотезу:</strong> без полугода разработки, раздутых бюджетов и бесконечных согласований.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
         </div>
 
         <!-- Elegant Infinite Marquee Ticker -->
