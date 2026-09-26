@@ -24,7 +24,7 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=75">
+    <link rel="stylesheet" href="assets/styles.css?v=76">
 
     <!-- Google Fonts: Plus Jakarta Sans & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -192,6 +192,10 @@
             opacity: 1;
             transform: translateY(0) scale(1);
         }
+        /* Nav shrinks slightly on scroll */
+        #siteNavInner.nav-scrolled {
+            height: 3rem;
+        }
         /* Click reward pulse on CTA buttons */
         @keyframes ctaPulse {
             0% { transform: scale(1); }
@@ -218,7 +222,7 @@
 
     <!-- SECTION: Top navigation -->
     <header id="siteNav" class="sticky top-3 sm:top-4 z-30 px-3 sm:px-6">
-        <div class="max-w-2xl mx-auto glass-panel rounded-full shadow-lg border border-white/70 px-4 sm:px-6 h-16 flex items-center justify-between">
+        <div id="siteNavInner" class="max-w-2xl mx-auto glass-panel rounded-full shadow-lg border border-white/70 px-4 sm:px-6 h-16 flex items-center justify-between transition-all duration-300">
             <button type="button" id="navBurger" onclick="toggleMobileNav()" aria-label="меню" aria-expanded="false" class="md:hidden w-9 h-9 flex items-center justify-center">
                 <i data-lucide="menu" class="w-6 h-6 text-serene-900"></i>
             </button>
@@ -290,15 +294,15 @@
 
             <div class="flex items-center justify-center gap-8 mt-8">
                 <div class="text-center">
-                    <p class="font-display text-2xl font-bold text-accent-terracotta">30+</p>
+                    <p class="count-up font-display text-2xl font-bold text-accent-terracotta" data-count-to="30" data-suffix="+">0+</p>
                     <p class="text-xs text-serene-800/70">проектов через ии</p>
                 </div>
                 <div class="text-center">
-                    <p class="font-display text-2xl font-bold text-accent-terracotta">6 лет</p>
+                    <p class="count-up font-display text-2xl font-bold text-accent-terracotta" data-count-to="6" data-suffix=" лет">0 лет</p>
                     <p class="text-xs text-serene-800/70">опыта в продажах и маркетинге</p>
                 </div>
                 <div class="text-center">
-                    <p class="font-display text-2xl font-bold text-accent-terracotta">3 дня</p>
+                    <p class="count-up font-display text-2xl font-bold text-accent-terracotta" data-count-to="3" data-suffix=" дня">0 дня</p>
                     <p class="text-xs text-serene-800/70">средний срок разработки готового продукта</p>
                 </div>
             </div>
@@ -320,15 +324,15 @@
                 </a>
                 <div class="flex items-center gap-8 pt-8 border-t border-serene-900/10">
                     <div>
-                        <p class="font-display text-2xl font-bold text-accent-terracotta">30+</p>
+                        <p class="count-up font-display text-2xl font-bold text-accent-terracotta" data-count-to="30" data-suffix="+">0+</p>
                         <p class="text-xs text-serene-800/70">проектов через ии</p>
                     </div>
                     <div>
-                        <p class="font-display text-2xl font-bold text-accent-terracotta">6 лет</p>
+                        <p class="count-up font-display text-2xl font-bold text-accent-terracotta" data-count-to="6" data-suffix=" лет">0 лет</p>
                         <p class="text-xs text-serene-800/70">опыта в продажах и маркетинге</p>
                     </div>
                     <div>
-                        <p class="font-display text-2xl font-bold text-accent-terracotta">3 дня</p>
+                        <p class="count-up font-display text-2xl font-bold text-accent-terracotta" data-count-to="3" data-suffix=" дня">0 дня</p>
                         <p class="text-xs text-serene-800/70">средний срок разработки готового продукта</p>
                     </div>
                 </div>
@@ -1113,6 +1117,10 @@
             try { initSpotlightCards(); } catch(e) { console.error('spotlight cards init failed', e); }
             try { initTelegramLinks(); } catch(e) { console.error('telegram links init failed', e); }
             try { initRevealAnimations(); } catch(e) { console.error('reveal animations init failed', e); }
+            try { initCountUp(); } catch(e) { console.error('count-up init failed', e); }
+            try { initMagneticButtons(); } catch(e) { console.error('magnetic buttons init failed', e); }
+            try { initHeroParallax(); } catch(e) { console.error('hero parallax init failed', e); }
+            try { initNavShrink(); } catch(e) { console.error('nav shrink init failed', e); }
             try { initQuizPrefill(); } catch(e) { console.error('quiz prefill init failed', e); }
             try { const y = document.getElementById('footerYear'); if (y) y.textContent = new Date().getFullYear(); } catch(e) {}
         };
@@ -1136,6 +1144,97 @@
                 });
             }, { threshold: 0.15 });
             items.forEach(el => observer.observe(el));
+        }
+
+        // ----------------------------------------------------
+        // Count-up numbers (stats) on scroll into view
+        // ----------------------------------------------------
+        function initCountUp() {
+            const items = document.querySelectorAll('.count-up');
+            if (!items.length) return;
+            const animate = (el) => {
+                const target = parseInt(el.getAttribute('data-count-to'), 10) || 0;
+                const suffix = el.getAttribute('data-suffix') || '';
+                const duration = 900;
+                const start = performance.now();
+                function tick(now) {
+                    const progress = Math.min((now - start) / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    const value = Math.round(target * eased);
+                    el.textContent = value + suffix;
+                    if (progress < 1) requestAnimationFrame(tick);
+                }
+                requestAnimationFrame(tick);
+            };
+            if (!('IntersectionObserver' in window)) {
+                items.forEach(animate);
+                return;
+            }
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animate(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            items.forEach(el => observer.observe(el));
+        }
+
+        // ----------------------------------------------------
+        // Magnetic buttons (desktop, mouse-driven)
+        // ----------------------------------------------------
+        function initMagneticButtons() {
+            if (window.matchMedia && !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+            const targets = document.querySelectorAll('header a[href="#audit"]');
+            targets.forEach(btn => {
+                btn.addEventListener('mousemove', (e) => {
+                    const rect = btn.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+                    btn.style.transform = `translate(${x * 0.15}px, ${y * 0.3}px)`;
+                });
+                btn.addEventListener('mouseleave', () => {
+                    btn.style.transform = 'translate(0, 0)';
+                });
+            });
+        }
+
+        // ----------------------------------------------------
+        // Light parallax on hero photo
+        // ----------------------------------------------------
+        function initHeroParallax() {
+            if (window.matchMedia && window.matchMedia('(max-width: 767px)').matches) return;
+            const photo = document.querySelector('#hero .hidden.md\\:grid img');
+            if (!photo) return;
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (ticking) return;
+                ticking = true;
+                requestAnimationFrame(() => {
+                    const rect = photo.parentElement.getBoundingClientRect();
+                    const offset = rect.top * 0.06;
+                    photo.style.transform = `translateY(${offset}px) scale(1.08)`;
+                    ticking = false;
+                });
+            }, { passive: true });
+        }
+
+        // ----------------------------------------------------
+        // Nav shrinks slightly on scroll
+        // ----------------------------------------------------
+        function initNavShrink() {
+            const nav = document.getElementById('siteNavInner');
+            if (!nav) return;
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (ticking) return;
+                ticking = true;
+                requestAnimationFrame(() => {
+                    nav.classList.toggle('nav-scrolled', window.scrollY > 40);
+                    ticking = false;
+                });
+            }, { passive: true });
         }
 
         // ----------------------------------------------------
