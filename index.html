@@ -24,7 +24,7 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=58">
+    <link rel="stylesheet" href="assets/styles.css?v=59">
 
     <!-- Google Fonts: Plus Jakarta Sans & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -686,7 +686,7 @@
             <!-- Mobile: accent teaser card with arc transition (merges visually into calcBody below) -->
             <div class="md:hidden reveal-up relative">
                 <div class="absolute -top-4 -left-3 z-30 w-12 h-12 rounded-2xl bg-white shadow-lg flex items-center justify-center text-2xl -rotate-6">🧩</div>
-                <div class="relative rounded-t-[2.5rem] overflow-hidden shadow-xl bg-white text-center">
+                <div id="calcTeaserCard" class="relative rounded-[2.5rem] overflow-hidden shadow-xl bg-white text-center transition-all duration-300">
                     <div class="relative pt-8 pb-6 px-7 bg-gradient-to-br from-accent-terracotta to-accent-sunset">
                         <span class="text-xs font-semibold text-white/80 block mb-3 tracking-wide">комплексное решение</span>
                         <h2 class="font-display text-2xl font-bold text-white leading-snug">комплекс: цифровая экосистема</h2>
@@ -715,7 +715,7 @@
             </div>
 
             <div id="calcBody" class="hidden md:block">
-            <div class="reveal-up glass-panel rounded-b-[2.5rem] md:rounded-[3rem] p-6 sm:p-8 md:p-12 border-0 md:border md:border-white shadow-lg md:shadow-xl relative mb-8 md:mb-0">
+            <div class="reveal-up bg-white md:bg-white/45 md:backdrop-blur-[20px] rounded-b-[2.5rem] md:rounded-[3rem] p-6 sm:p-8 md:p-12 border-0 md:border md:border-white/60 shadow-none md:shadow-xl relative mb-8 md:mb-0">
                 <div id="calcChips" class="grid grid-cols-2 gap-2.5 sm:gap-4 mb-8">
                     <button type="button" class="calc-chip w-full flex items-center gap-3 text-sm px-3 py-2 bg-white rounded-xl border border-serene-200 focus:outline-none text-left" data-type="Лендинг / Сайт" data-price="15000" onclick="toggleCalcItem(this)">
                         <span class="calc-dot w-4 h-4 rounded-full border border-serene-200 shrink-0 flex items-center justify-center transition-colors"><i data-lucide="check" class="calc-check hidden w-2.5 h-2.5 text-white"></i></span>
@@ -1152,16 +1152,19 @@
             const body = document.getElementById('calcBody');
             const label = document.getElementById('calcToggleLabel');
             const chevron = document.getElementById('calcToggleChevron');
+            const teaser = document.getElementById('calcTeaserCard');
             if (!body) return;
             const isHidden = body.classList.contains('hidden');
             if (isHidden) {
                 body.classList.remove('hidden');
                 if (label) label.textContent = 'свернуть';
                 if (chevron) chevron.style.transform = 'rotate(180deg)';
+                if (teaser) { teaser.classList.remove('rounded-[2.5rem]'); teaser.classList.add('rounded-t-[2.5rem]'); }
             } else {
                 body.classList.add('hidden');
                 if (label) label.textContent = 'собрать свой комплекс';
                 if (chevron) chevron.style.transform = 'rotate(0deg)';
+                if (teaser) { teaser.classList.remove('rounded-t-[2.5rem]'); teaser.classList.add('rounded-[2.5rem]'); }
             }
         }
 
