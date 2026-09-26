@@ -24,7 +24,7 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=56">
+    <link rel="stylesheet" href="assets/styles.css?v=57">
 
     <!-- Google Fonts: Plus Jakarta Sans & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -683,21 +683,25 @@
     <!-- SECTION: Complex Calculator -->
     <section id="calculator" class="py-16 relative z-10 px-4">
         <div class="max-w-3xl mx-auto">
-            <!-- Mobile: accent teaser card with arc transition -->
-            <div class="md:hidden reveal-up relative rounded-[2.5rem] overflow-hidden shadow-xl mb-8 bg-white text-center">
-                <div class="absolute -top-4 -left-3 z-20 w-12 h-12 rounded-2xl bg-white shadow-lg flex items-center justify-center text-2xl -rotate-6">🧩</div>
-                <div class="relative pt-8 pb-12 px-7 bg-gradient-to-br from-accent-terracotta to-accent-sunset" style="border-radius: 0 0 50% 50% / 0 0 36px 36px;">
-                    <span class="text-xs font-semibold text-white/80 block mb-3 tracking-wide">комплексное решение</span>
-                    <h2 class="font-display text-2xl font-bold text-white leading-snug">комплекс: цифровая экосистема</h2>
-                    <p class="text-white/90 leading-relaxed font-light mb-2 mt-4 text-sm max-w-2xl mx-auto">
-                        выбери, что нужно для полной системы продаж — сайт, агент, воронка и другое. чем больше берёшь вместе, тем ниже цена за каждую часть
-                    </p>
-                </div>
-                <div class="pt-5 pb-7 px-7">
-                    <button type="button" id="calcToggleBtn" onclick="toggleCalcAccordion()" class="flex items-center justify-center gap-2 mx-auto rounded-full bg-gradient-to-r from-accent-terracotta to-accent-sunset text-white font-semibold text-sm px-6 py-3 shadow-md">
-                        <span id="calcToggleLabel">собрать свой комплекс</span>
-                        <i data-lucide="chevron-down" id="calcToggleChevron" class="w-4 h-4 transition-transform duration-300"></i>
-                    </button>
+            <!-- Mobile: accent teaser card with arc transition (merges visually into calcBody below) -->
+            <div class="md:hidden reveal-up relative">
+                <div class="absolute -top-4 -left-3 z-30 w-12 h-12 rounded-2xl bg-white shadow-lg flex items-center justify-center text-2xl -rotate-6">🧩</div>
+                <div class="relative rounded-t-[2.5rem] overflow-hidden shadow-xl bg-white text-center">
+                    <div class="relative pt-8 pb-6 px-7 bg-gradient-to-br from-accent-terracotta to-accent-sunset">
+                        <span class="text-xs font-semibold text-white/80 block mb-3 tracking-wide">комплексное решение</span>
+                        <h2 class="font-display text-2xl font-bold text-white leading-snug">комплекс: цифровая экосистема</h2>
+                        <p class="text-white/90 leading-relaxed font-light mb-2 mt-4 text-sm max-w-2xl mx-auto">
+                            выбери, что нужно для полной системы продаж — сайт, агент, воронка и другое. чем больше берёшь вместе, тем ниже цена за каждую часть
+                        </p>
+                    </div>
+                    <div class="relative bg-white" style="margin-top: -28px; border-radius: 50% 50% 0 0 / 28px 28px 0 0;">
+                        <div class="pt-7 pb-6 px-7">
+                            <button type="button" id="calcToggleBtn" onclick="toggleCalcAccordion()" class="flex items-center justify-center gap-2 mx-auto rounded-full bg-gradient-to-r from-accent-terracotta to-accent-sunset text-white font-semibold text-sm px-6 py-3 shadow-md">
+                                <span id="calcToggleLabel">собрать свой комплекс</span>
+                                <i data-lucide="chevron-down" id="calcToggleChevron" class="w-4 h-4 transition-transform duration-300"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -711,7 +715,7 @@
             </div>
 
             <div id="calcBody" class="hidden md:block">
-            <div class="reveal-up glass-panel rounded-[3rem] p-6 sm:p-8 md:p-12 border border-white shadow-xl relative">
+            <div class="reveal-up glass-panel rounded-b-[2.5rem] md:rounded-[3rem] p-6 sm:p-8 md:p-12 border-0 md:border md:border-white shadow-lg md:shadow-xl relative mb-8 md:mb-0">
                 <div id="calcChips" class="grid grid-cols-2 gap-2.5 sm:gap-4 mb-8">
                     <button type="button" class="calc-chip w-full flex items-center gap-3 text-sm px-3 py-2 bg-white rounded-xl border border-serene-200 focus:outline-none text-left" data-type="Лендинг / Сайт" data-price="15000" onclick="toggleCalcItem(this)">
                         <span class="calc-dot w-4 h-4 rounded-full border border-serene-200 shrink-0 flex items-center justify-center transition-colors"><i data-lucide="check" class="calc-check hidden w-2.5 h-2.5 text-white"></i></span>
@@ -1100,18 +1104,6 @@
         <div class="absolute -bottom-16 left-1/4 w-56 h-56 bg-accent-gold/10 rounded-full blur-[100px] pointer-events-none"></div>
     </section>
 
-    <!-- SECTION: Footer -->
-    <footer class="px-4 pb-8 pt-6 border-t border-serene-900/10">
-        <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-5 text-xs text-serene-800/60 text-center">
-            <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 order-2 sm:order-1">
-                <a href="/privacy.html" class="hover:text-accent-terracotta transition-colors">политика конфиденциальности</a>
-                <a href="https://t.me/nikakuznecovaa" target="_blank" rel="noopener" class="w-8 h-8 flex items-center justify-center rounded-full glass-panel border border-white/70 hover:scale-105 active:scale-95 transition-transform shrink-0">
-                    <i data-lucide="send" class="w-3.5 h-3.5 text-accent-terracotta"></i>
-                </a>
-            </div>
-            <p class="order-1 sm:order-2">&copy; <span id="footerYear"></span> Ника Кузнецова — вайбкодинг и ии-решения</p>
-        </div>
-    </footer>
 
 <!-- Custom Application Logic -->
     <script>
