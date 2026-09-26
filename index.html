@@ -24,7 +24,7 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=83">
+    <link rel="stylesheet" href="assets/styles.css?v=84">
 
     <!-- Google Fonts: Plus Jakarta Sans & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -215,6 +215,43 @@
     </style>
 </head>
 <body class="antialiased selection:bg-accent-sunset/20 selection:text-serene-900">
+
+    <noscript><style>#preloader{display:none!important}</style></noscript>
+    <div id="preloader" class="fixed inset-0 z-[100] flex items-center justify-center bg-serene-50 px-6">
+        <pre id="preloaderCode" class="font-mono text-[11px] sm:text-sm text-serene-800 leading-relaxed whitespace-pre-wrap max-w-md"></pre>
+    </div>
+    <script>
+        (function() {
+            var preloader = document.getElementById('preloader');
+            var codeEl = document.getElementById('preloaderCode');
+            if (!preloader || !codeEl) return;
+            var text = 'const nika = new Developer({ mode: "vibecoding" });\nnika.experience = "6 years in sales";\nbuild(yourIdea).launch();\n// loading...';
+            var i = 0;
+            function type() {
+                if (i <= text.length) {
+                    codeEl.textContent = text.slice(0, i) + '▌';
+                    i += 2;
+                    setTimeout(type, 12);
+                } else {
+                    codeEl.textContent = text;
+                }
+            }
+            type();
+
+            var hidden = false;
+            function hidePreloader() {
+                if (hidden) return;
+                hidden = true;
+                preloader.style.transition = 'opacity 0.5s ease, visibility 0.5s ease';
+                preloader.style.opacity = '0';
+                preloader.style.visibility = 'hidden';
+                preloader.style.pointerEvents = 'none';
+                setTimeout(function() { preloader.style.display = 'none'; }, 600);
+            }
+            window.addEventListener('load', hidePreloader);
+            setTimeout(hidePreloader, 4000);
+        })();
+    </script>
 
     <!-- SECTION: Top navigation -->
     <header id="siteNav" class="sticky top-3 sm:top-4 z-30 px-3 sm:px-6">
