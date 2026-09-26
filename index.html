@@ -24,7 +24,7 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=50">
+    <link rel="stylesheet" href="assets/styles.css?v=51">
 
     <!-- Google Fonts: Plus Jakarta Sans & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -270,8 +270,15 @@
     <section id="hero" class="relative px-4 pt-8 sm:pt-12 pb-16">
 
         <!-- Mobile: photo card with text overlay -->
-        <div class="md:hidden max-w-3xl mx-auto">
-            <div class="reveal-up relative rounded-[2.5rem] overflow-hidden shadow-xl">
+        <div class="md:hidden max-w-3xl mx-auto relative">
+            <pre class="absolute -top-5 -right-2 z-0 font-mono text-[10px] leading-relaxed text-serene-900/[0.08] select-none pointer-events-none rotate-3 whitespace-pre">function создатьМечту() {
+  const вайбкодинг = true;
+  if (вайбкодинг) {
+    запустить(проект, "5 дней");
+  }
+  return результат;
+}</pre>
+            <div class="reveal-up relative z-10 rounded-[2.5rem] overflow-hidden shadow-xl">
                 <img src="assets/nika-hero.jpg" alt="Ника Кузнецова" class="w-full aspect-[3/4] object-cover object-top">
                 <div class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/70 via-black/25 to-transparent pointer-events-none"></div>
                 <div class="absolute top-5 left-5 inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-panel border border-white/80 shadow-sm text-xs text-serene-800">
@@ -333,11 +340,20 @@
                     </div>
                 </div>
             </div>
-            <div class="relative rounded-[2.5rem] overflow-hidden shadow-xl border border-white">
-                <img src="assets/nika-hero.jpg" alt="Ника Кузнецова" class="w-full aspect-[4/5] object-cover object-top">
-                <div class="absolute top-6 left-6 inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-panel border border-white/80 shadow-sm text-xs text-serene-800">
-                    <span class="w-2 h-2 rounded-full bg-accent-sage animate-ping"></span>
-                    <span class="font-medium">✨ продукты за несколько дней с помощью ии</span>
+            <div class="relative">
+                <pre class="absolute -top-8 -right-6 z-0 font-mono text-xs leading-relaxed text-serene-900/[0.08] select-none pointer-events-none rotate-3 whitespace-pre">function создатьМечту() {
+  const вайбкодинг = true;
+  if (вайбкодинг) {
+    запустить(проект, "5 дней");
+  }
+  return результат;
+}</pre>
+                <div class="relative z-10 rounded-[2.5rem] overflow-hidden shadow-xl border border-white">
+                    <img src="assets/nika-hero.jpg" alt="Ника Кузнецова" class="w-full aspect-[4/5] object-cover object-top">
+                    <div class="absolute top-6 left-6 inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-panel border border-white/80 shadow-sm text-xs text-serene-800">
+                        <span class="w-2 h-2 rounded-full bg-accent-sage animate-ping"></span>
+                        <span class="font-medium">✨ продукты за несколько дней с помощью ии</span>
+                    </div>
                 </div>
             </div>
         </div>
