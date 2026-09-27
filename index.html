@@ -28,7 +28,7 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=115">
+    <link rel="stylesheet" href="assets/styles.css?v=116">
 
     <!-- Шрифты хранятся на сайте: assets/fonts -->
     <link rel="preload" href="assets/fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
@@ -160,6 +160,13 @@
             color: #fff; font-weight: 700; font-size: 0.9375rem; background: linear-gradient(90deg, #E07A5F, #F4A261);
             box-shadow: 0 10px 24px -8px rgba(224,122,95,0.6);
         }
+        .svc-sheet-cases {
+            display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 0.625rem;
+            border-radius: 9999px; padding: 0.9375rem; font-weight: 600; font-size: 0.9375rem; color: #E07A5F;
+            background: #fff; border: 1.5px solid rgba(224,122,95,0.35); transition: background .2s ease, border-color .2s ease;
+        }
+        .svc-sheet-cases:hover { background: #FFF7F2; border-color: #E07A5F; }
+        .svc-sheet-cases[hidden] { display: none; }
         body.sheet-open { overflow: hidden; }
 
         /* Десктоп: те же плитки в ряд, панель — по центру экрана */
@@ -660,19 +667,19 @@
             <div id="svcTiles">
                 <p class="svc-tiles-group">Сайты и инструменты</p>
                 <div class="svc-tiles svc-tiles--3">
-                    <button type="button" class="svc-tile" onclick="openServiceSheet(0)">
+                    <button type="button" class="svc-tile" data-cases="sites" onclick="openServiceSheet(0)">
                         <span class="svc-pop">Популярно</span>
                         <span class="svc-ic" aria-hidden="true">📌</span>
                         <span class="svc-nm">Лендинг / сайт</span>
                         <span class="svc-pr">от 15 000 ₽</span>
                     </button>
-                    <button type="button" class="svc-tile" onclick="openServiceSheet(1)">
+                    <button type="button" class="svc-tile" data-cases="services" onclick="openServiceSheet(1)">
                         <span class="svc-arrow"><svg class="w-[18px] h-[18px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
                         <span class="svc-ic" aria-hidden="true">🧲</span>
                         <span class="svc-nm">Сервис / <span class="whitespace-nowrap">лид-магнит</span></span>
                         <span class="svc-pr">от 10 000 ₽</span>
                     </button>
-                    <button type="button" class="svc-tile svc-tile--wide" onclick="openServiceSheet(2)">
+                    <button type="button" class="svc-tile svc-tile--wide" data-cases="platforms" onclick="openServiceSheet(2)">
                         <span class="svc-ic" aria-hidden="true">🎓</span>
                         <span class="svc-tx"><span class="svc-nm">Платформа для обучения</span><span class="svc-pr">от 25 000 ₽</span></span>
                         <span class="svc-arrow"><svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
@@ -680,13 +687,13 @@
                 </div>
                 <p class="svc-tiles-group">Telegram и автоматизация</p>
                 <div class="svc-tiles svc-tiles--4">
-                    <button type="button" class="svc-tile" onclick="openServiceSheet(3)">
+                    <button type="button" class="svc-tile" data-cases="agents" onclick="openServiceSheet(3)">
                         <span class="svc-arrow"><svg class="w-[18px] h-[18px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
                         <span class="svc-ic" aria-hidden="true">🤖</span>
                         <span class="svc-nm">ИИ-агент</span>
                         <span class="svc-pr">от 20 000 ₽</span>
                     </button>
-                    <button type="button" class="svc-tile" onclick="openServiceSheet(4)">
+                    <button type="button" class="svc-tile" data-cases="funnel" onclick="openServiceSheet(4)">
                         <span class="svc-arrow"><svg class="w-[18px] h-[18px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
                         <span class="svc-ic" aria-hidden="true">🔥</span>
                         <span class="svc-nm">Воронка в Telegram</span>
@@ -1347,6 +1354,7 @@
                 <div class="svc-sheet-row"><svg class="w-[18px] h-[18px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><p><strong>Срок:</strong> 5–10 дней</p></div>
             </div>
             <a href="#audit" class="svc-sheet-cta" id="svcSheetCta"><span></span><svg class="w-[18px] h-[18px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+            <a href="/portfolio/" class="svc-sheet-cases" id="svcSheetCases" hidden>Посмотреть кейсы <svg class="w-[18px] h-[18px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
         </div>
     </div>
 
@@ -1673,6 +1681,11 @@
             forRow.hidden = !forP;
             if (forP) forRow.querySelector('p').innerHTML = forP.innerHTML;
             svcSheetCta = card.querySelector('.service-cta');
+            // «Посмотреть кейсы» — портфолио с уже выбранной категорией этой услуги
+            const casesBtn = document.getElementById('svcSheetCases');
+            const cat = tile.dataset.cases;
+            casesBtn.hidden = !cat;
+            if (cat) casesBtn.href = '/portfolio/?cat=' + cat + '#work';
             document.querySelector('#svcSheetCta span').textContent = svcSheetCta ? svcSheetCta.textContent.trim() : 'Обсудить проект';
             sheet.hidden = false;
             document.body.classList.add('sheet-open');

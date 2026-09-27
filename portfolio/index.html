@@ -26,6 +26,8 @@
     <link rel="stylesheet" href="../assets/fonts.css?v=2">
 
     <style>
+        /* переход с главной по «Посмотреть кейсы»: фильтры не прилипают к краю экрана */
+        #work { scroll-margin-top: 1.5rem; }
         /* Unbounded широкий и плотный: заголовки обычной толщины (400), не жирные */
         .font-display, h1, h2, h3 { font-weight: 400 !important; letter-spacing: -0.01em; }
         /* Кнопка «назад на главную»: объёмный круг со стрелкой */
@@ -517,8 +519,12 @@
             });
         }
         document.addEventListener('DOMContentLoaded', function() {
-            const first = document.querySelector('.portfolio-filter[data-filter="все"]');
-            if (first) filterPortfolio(first);
+            // ?cat=… с главной (кнопка «Посмотреть кейсы» в карточке услуги) — сразу открыть нужную категорию
+            const CATS = { sites: 'сайты', services: 'сервисы', platforms: 'платформы', agents: 'агенты', funnel: 'воронка' };
+            const cat = CATS[new URLSearchParams(location.search).get('cat')];
+            const btn = (cat && document.querySelector('.portfolio-filter[data-filter="' + cat + '"]'))
+                || document.querySelector('.portfolio-filter[data-filter="все"]');
+            if (btn) filterPortfolio(btn);
         });
     </script>
 </body>
