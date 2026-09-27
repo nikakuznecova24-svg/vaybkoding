@@ -31,7 +31,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
         html {
@@ -241,7 +240,7 @@
     <header id="siteNav" class="sticky top-3 sm:top-4 z-30 px-3 sm:px-6">
         <div class="max-w-2xl mx-auto glass-panel rounded-full shadow-lg border border-white/70 px-4 sm:px-6 h-16 flex items-center justify-between">
             <button type="button" id="navBurger" onclick="toggleMobileNav()" aria-label="меню" aria-expanded="false" class="md:hidden w-9 h-9 flex items-center justify-center">
-                <i data-lucide="menu" class="w-6 h-6 text-serene-900"></i>
+                <svg class="w-6 h-6 text-serene-900" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg>
             </button>
 
             <nav class="hidden md:flex items-center gap-6">
@@ -253,7 +252,7 @@
 
             <div class="flex items-center gap-2 sm:gap-3">
                 <a href="https://t.me/nikakuznecovaa" target="_blank" rel="noopener" aria-label="написать в телеграм" class="hidden md:flex w-9 h-9 items-center justify-center rounded-full glass-panel border border-white/70 hover:scale-105 active:scale-95 transition-transform shrink-0">
-                    <i data-lucide="send" class="w-4 h-4 text-accent-terracotta"></i>
+                    <svg class="w-4 h-4 text-accent-terracotta" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
                 </a>
                 <a href="#audit" class="inline-flex items-center whitespace-nowrap rounded-full bg-gradient-to-r from-accent-terracotta to-accent-sunset text-white font-bold text-xs sm:text-sm px-4 sm:px-5 py-2.5 shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-transform">
                     Бесплатный аудит
@@ -264,7 +263,7 @@
         <div id="mobileNavOverlay" hidden onclick="closeMobileNav()" class="md:hidden fixed inset-0 bg-serene-900/50 z-40"></div>
         <nav id="mobileNav" hidden class="md:hidden fixed top-0 left-0 h-dvh w-[78%] max-w-xs bg-white z-50 shadow-2xl p-6 flex flex-col">
             <button type="button" onclick="closeMobileNav()" aria-label="закрыть меню" class="self-end w-9 h-9 flex items-center justify-center rounded-full hover:bg-serene-50 transition-colors mb-6">
-                <i data-lucide="x" class="w-6 h-6 text-serene-900"></i>
+                <svg class="w-6 h-6 text-serene-900" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
             </button>
             <a href="#about" onclick="closeMobileNav()" class="py-3 text-lg font-normal text-serene-800/70">Обо мне</a>
             <a href="#services" onclick="closeMobileNav()" class="py-3 text-lg font-normal text-serene-800/70">Услуги</a>
@@ -275,7 +274,7 @@
             </a>
             <div class="mt-auto pt-6">
                 <a href="https://t.me/nikakuznecovaa" target="_blank" rel="noopener" aria-label="написать в телеграм" class="w-10 h-10 flex items-center justify-center rounded-full glass-panel border border-white/70">
-                    <i data-lucide="send" class="w-4 h-4 text-accent-terracotta"></i>
+                    <svg class="w-4 h-4 text-accent-terracotta" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
                 </a>
             </div>
         </nav>
@@ -310,7 +309,7 @@
             </p>
             <a href="#audit" class="flex items-center justify-center gap-2 w-full rounded-full bg-gradient-to-r from-accent-terracotta to-accent-sunset text-white font-bold text-base py-4 shadow-lg active:scale-95 transition-transform">
                 Получить бесплатный аудит
-                <i data-lucide="arrow-right" class="w-4 h-4 shrink-0"></i>
+                <svg class="w-4 h-4 shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </a>
 
             <div class="grid grid-cols-3 gap-3 mt-8 text-center">
@@ -341,7 +340,7 @@
                 </p>
                 <a href="#audit" style="padding:1rem 1.75rem" class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-accent-terracotta to-accent-sunset text-white font-bold text-base shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-transform mb-10">
                     Хочу обсудить проект и получить бесплатный аудит
-                    <i data-lucide="arrow-right" class="w-4 h-4 shrink-0"></i>
+                    <svg class="w-4 h-4 shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </a>
                 <div class="grid grid-cols-3 gap-6 pt-8 border-t border-serene-900/10">
                     <div>
@@ -406,19 +405,19 @@
                     </div>
                     <div class="space-y-5 text-sm text-serene-800 leading-relaxed font-light">
                         <div class="pb-4 border-b border-serene-200/40 flex gap-3">
-                            <i data-lucide="chevron-right" class="w-4 h-4 text-accent-terracotta shrink-0 mt-0.5"></i>
+                            <svg class="w-4 h-4 text-accent-terracotta shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
                             <p><strong class="font-bold text-serene-900 block mb-0.5">Устал доказывать ценность на созвонах:</strong> хочешь, чтобы цифровой продукт закрывал вопросы о чеке до первого слова.</p>
                         </div>
                         <div class="pb-4 border-b border-serene-200/40 flex gap-3">
-                            <i data-lucide="chevron-right" class="w-4 h-4 text-accent-terracotta shrink-0 mt-0.5"></i>
+                            <svg class="w-4 h-4 text-accent-terracotta shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
                             <p><strong class="font-bold text-serene-900 block mb-0.5">Стыдно отправлять ссылку на сайт:</strong> нужен сайт, по которому сразу видно твой масштаб — без объяснений и оправданий.</p>
                         </div>
                         <div class="pb-4 border-b border-serene-200/40 flex gap-3">
-                            <i data-lucide="chevron-right" class="w-4 h-4 text-accent-terracotta shrink-0 mt-0.5"></i>
+                            <svg class="w-4 h-4 text-accent-terracotta shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
                             <p><strong class="font-bold text-serene-900 block mb-0.5">Привычные прогревы больше не работают:</strong> ты ищешь новые интерактивные механики для вовлечения аудитории здесь и сейчас.</p>
                         </div>
                         <div class="flex gap-3">
-                            <i data-lucide="chevron-right" class="w-4 h-4 text-accent-terracotta shrink-0 mt-0.5"></i>
+                            <svg class="w-4 h-4 text-accent-terracotta shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
                             <p><strong class="font-bold text-serene-900 block mb-0.5">Конкуренты продают дороже:</strong> при этом уступают по качеству. Дело в сильной упаковке смыслов.</p>
                         </div>
                     </div>
@@ -434,19 +433,19 @@
                     </div>
                     <div class="space-y-5 text-sm text-serene-800 leading-relaxed font-light">
                         <div class="pb-4 border-b border-serene-200/40 flex gap-3">
-                            <i data-lucide="chevron-right" class="w-4 h-4 text-accent-sunset shrink-0 mt-0.5"></i>
+                            <svg class="w-4 h-4 text-accent-sunset shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
                             <p><strong class="font-bold text-serene-900 block mb-0.5">Тонешь в операционке и рутине:</strong> квалификацию лидов и ручную переписку давно пора делегировать автоматизации.</p>
                         </div>
                         <div class="pb-4 border-b border-serene-200/40 flex gap-3">
-                            <i data-lucide="chevron-right" class="w-4 h-4 text-accent-sunset shrink-0 mt-0.5"></i>
+                            <svg class="w-4 h-4 text-accent-sunset shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
                             <p><strong class="font-bold text-serene-900 block mb-0.5">Нужна автономная воронка лидов:</strong> чтобы система сама прогревала людей с первого клика, пока ты сфокусирован на продукте.</p>
                         </div>
                         <div class="pb-4 border-b border-serene-200/40 flex gap-3">
-                            <i data-lucide="chevron-right" class="w-4 h-4 text-accent-sunset shrink-0 mt-0.5"></i>
+                            <svg class="w-4 h-4 text-accent-sunset shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
                             <p><strong class="font-bold text-serene-900 block mb-0.5">Уперся в потолок личных часов:</strong> хочешь превратить свою экспертную услугу в it-сервис.</p>
                         </div>
                         <div class="flex gap-3">
-                            <i data-lucide="chevron-right" class="w-4 h-4 text-accent-sunset shrink-0 mt-0.5"></i>
+                            <svg class="w-4 h-4 text-accent-sunset shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
                             <p><strong class="font-bold text-serene-900 block mb-0.5">Хочешь быстро протестировать гипотезу:</strong> без полугода разработки, раздутых бюджетов и бесконечных согласований.</p>
                         </div>
                     </div>
@@ -506,7 +505,7 @@
                 </div>
                 <div class="md:hidden relative h-9 rounded-lg bg-serene-900/10 overflow-hidden flex items-center shrink-0 swipe-hint-box">
                     <span class="absolute top-1/2 right-2.5 -translate-y-1/2 w-px h-4 bg-serene-800/25"></span>
-                    <i data-lucide="hand" class="w-4 h-4 text-serene-800/70 ml-2 swipe-hint-icon"></i>
+                    <svg class="w-4 h-4 text-serene-800/70 ml-2 swipe-hint-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2"/><path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg>
                 </div>
             </div>
 
@@ -527,7 +526,7 @@
                         <p class="text-sm font-bold text-accent-terracotta mb-2.5 md:mb-4 whitespace-nowrap"><span class="font-display text-base">От 15 000₽</span></p>
                         <button type="button" onclick="toggleServiceCard(this)" class="service-toggle inline-flex items-center gap-1.5 text-accent-terracotta font-semibold text-sm mb-1">
                             <span class="toggle-label">Подробнее</span>
-                            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform toggle-chevron"></i>
+                            <svg class="w-4 h-4 transition-transform toggle-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
                         </button>
                         <div class="service-details hidden text-serene-800 space-y-3 mt-3 mb-4 md:space-y-4 md:mt-4 md:mb-6 text-sm md:text-base max-w-3xl">
                             <p class="font-medium">По сайту клиент решает, писать вам или нет — часто ещё до звонка.</p>
@@ -539,7 +538,7 @@
                     </div>
                     <a href="#audit" onclick="selectBriefType('Лендинг / Сайт'); goToSection('audit', event)" class="service-cta hidden items-center gap-1.5 text-accent-terracotta font-semibold text-xs underline hover:text-accent-sunset transition-colors w-fit">
                         <span>Обсудить концепцию сайта</span>
-                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                     </a>
                 </div>
 
@@ -555,7 +554,7 @@
                         <p class="text-sm font-bold text-accent-terracotta mb-2.5 md:mb-4 whitespace-nowrap"><span class="font-display text-base">От 10 000₽</span></p>
                         <button type="button" onclick="toggleServiceCard(this)" class="service-toggle inline-flex items-center gap-1.5 text-accent-terracotta font-semibold text-sm mb-1">
                             <span class="toggle-label">Подробнее</span>
-                            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform toggle-chevron"></i>
+                            <svg class="w-4 h-4 transition-transform toggle-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
                         </button>
                         <div class="service-details hidden text-serene-800 space-y-3 mt-3 mb-4 md:space-y-4 md:mt-4 md:mb-6 text-sm md:text-base max-w-3xl">
                             <p class="font-medium">Веб-инструмент под конкретную задачу: интерактивный тест, калькулятор, диагностика — вместо скучного файла. Или рабочий инструмент для рутины: дашборд, трекер, сбор отзывов, калькулятор услуг.</p>
@@ -567,7 +566,7 @@
                     </div>
                     <a href="#audit" onclick="selectBriefType('Сервис / интерактивный лид-магнит'); goToSection('audit', event)" class="service-cta hidden items-center gap-1.5 text-accent-terracotta font-semibold text-xs underline hover:text-accent-sunset transition-colors w-fit">
                         <span>Обсудить сервис или лид-магнит</span>
-                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                     </a>
                 </div>
 
@@ -583,7 +582,7 @@
                         <p class="text-sm font-bold text-accent-terracotta mb-2.5 md:mb-4 whitespace-nowrap"><span class="font-display text-base">От 25 000₽</span></p>
                         <button type="button" onclick="toggleServiceCard(this)" class="service-toggle inline-flex items-center gap-1.5 text-accent-terracotta font-semibold text-sm mb-1">
                             <span class="toggle-label">Подробнее</span>
-                            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform toggle-chevron"></i>
+                            <svg class="w-4 h-4 transition-transform toggle-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
                         </button>
                         <div class="service-details hidden text-serene-800 space-y-3 mt-3 mb-4 md:space-y-4 md:mt-4 md:mb-6 text-sm md:text-base max-w-3xl">
                             <p class="font-medium">Закрытый веб-сервис для курса или наставничества. Ученик видит свой прогресс по урокам, отмечает пройденное и записывает выводы — всё в одном месте.</p>
@@ -594,7 +593,7 @@
                     </div>
                     <a href="#audit" onclick="selectBriefType('Платформа для обучения'); goToSection('audit', event)" class="service-cta hidden items-center gap-1.5 text-accent-terracotta font-semibold text-xs underline hover:text-accent-sunset transition-colors w-fit">
                         <span>Обсудить создание платформы</span>
-                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                     </a>
                 </div>
 
@@ -615,7 +614,7 @@
                         <p class="text-sm font-bold text-accent-terracotta mb-2.5 md:mb-4 whitespace-nowrap"><span class="font-display text-base">От 20 000₽</span></p>
                         <button type="button" onclick="toggleServiceCard(this)" class="service-toggle inline-flex items-center gap-1.5 text-accent-terracotta font-semibold text-sm mb-1">
                             <span class="toggle-label">Подробнее</span>
-                            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform toggle-chevron"></i>
+                            <svg class="w-4 h-4 transition-transform toggle-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
                         </button>
                         <div class="service-details hidden text-serene-800 space-y-3 mt-3 mb-4 md:space-y-4 md:mt-4 md:mb-6 text-sm md:text-base max-w-3xl">
                             <p class="font-medium">Бот, который отвечает вашим клиентам в Telegram или на сайте: консультирует, отвечает на частые вопросы, записывает на встречу. Работает и ночью, пока вы спите.</p>
@@ -626,7 +625,7 @@
                     </div>
                     <a href="#audit" onclick="selectBriefType('ИИ-агент'); goToSection('audit', event)" class="service-cta hidden items-center gap-1.5 text-accent-terracotta font-semibold text-xs underline hover:text-accent-sunset transition-colors w-fit">
                         <span>Обсудить ИИ-агента</span>
-                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                     </a>
                 </div>
 
@@ -642,7 +641,7 @@
                         <p class="text-sm font-bold text-accent-terracotta mb-2.5 md:mb-4 whitespace-nowrap"><span class="font-display text-base">От 25 000₽</span></p>
                         <button type="button" onclick="toggleServiceCard(this)" class="service-toggle inline-flex items-center gap-1.5 text-accent-terracotta font-semibold text-sm mb-1">
                             <span class="toggle-label">Подробнее</span>
-                            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform toggle-chevron"></i>
+                            <svg class="w-4 h-4 transition-transform toggle-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
                         </button>
                         <div class="service-details hidden text-serene-800 space-y-3 mt-3 mb-4 md:space-y-4 md:mt-4 md:mb-6 text-sm md:text-base max-w-3xl">
                             <p class="font-medium">Серия сообщений в telegram-боте, которая сама ведёт человека от первого касания до записи или покупки — без вашего участия в переписке.</p>
@@ -653,7 +652,7 @@
                     </div>
                     <a href="#audit" onclick="selectBriefType('Воронка в Telegram'); goToSection('audit', event)" class="service-cta hidden items-center gap-1.5 text-accent-terracotta font-semibold text-xs underline hover:text-accent-sunset transition-colors w-fit">
                         <span>Собрать воронку</span>
-                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                     </a>
                 </div>
 
@@ -669,7 +668,7 @@
                         <p class="text-sm font-bold text-accent-terracotta mb-2.5 md:mb-4 whitespace-nowrap"><span class="font-display text-base">От 15 000₽</span></p>
                         <button type="button" onclick="toggleServiceCard(this)" class="service-toggle inline-flex items-center gap-1.5 text-accent-terracotta font-semibold text-sm mb-1">
                             <span class="toggle-label">Подробнее</span>
-                            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform toggle-chevron"></i>
+                            <svg class="w-4 h-4 transition-transform toggle-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
                         </button>
                         <div class="service-details hidden text-serene-800 space-y-3 mt-3 mb-4 md:space-y-4 md:mt-4 md:mb-6 text-sm md:text-base max-w-3xl">
                             <p class="font-medium">Приложение прямо внутри Telegram — каталог, запись, личный кабинет или трекер, без отдельного сайта и без установки.</p>
@@ -680,7 +679,7 @@
                     </div>
                     <a href="#audit" onclick="selectBriefType('Мини-апп'); goToSection('audit', event)" class="service-cta hidden items-center gap-1.5 text-accent-terracotta font-semibold text-xs underline hover:text-accent-sunset transition-colors w-fit">
                         <span>Обсудить мини-апп</span>
-                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                     </a>
                 </div>
 
@@ -696,7 +695,7 @@
                         <p class="text-sm font-bold text-accent-terracotta mb-2.5 md:mb-4 whitespace-nowrap"><span class="font-display text-base">От 15 000₽</span></p>
                         <button type="button" onclick="toggleServiceCard(this)" class="service-toggle inline-flex items-center gap-1.5 text-accent-terracotta font-semibold text-sm mb-1">
                             <span class="toggle-label">Подробнее</span>
-                            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform toggle-chevron"></i>
+                            <svg class="w-4 h-4 transition-transform toggle-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
                         </button>
                         <div class="service-details hidden text-serene-800 space-y-3 mt-3 mb-4 md:space-y-4 md:mt-4 md:mb-6 text-sm md:text-base max-w-3xl">
                             <p class="font-medium">Бот с понятными сценариями: меню, ответы на частые вопросы, запись, приём заявок. Без ИИ — зато простой и предсказуемый в управлении.</p>
@@ -707,7 +706,7 @@
                     </div>
                     <a href="#audit" onclick="selectBriefType('Чат-бот'); goToSection('audit', event)" class="service-cta hidden items-center gap-1.5 text-accent-terracotta font-semibold text-xs underline hover:text-accent-sunset transition-colors w-fit">
                         <span>Обсудить чат-бота</span>
-                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                     </a>
                 </div>
 
@@ -731,7 +730,7 @@
                         </p>
                         <button type="button" id="calcToggleBtn" onclick="toggleCalcAccordion()" class="flex items-center justify-center gap-2 mx-auto rounded-full bg-white text-accent-terracotta font-semibold text-sm px-5 py-2.5 mt-4 shadow-md">
                             <span id="calcToggleLabel">Собрать свой комплекс</span>
-                            <i data-lucide="chevron-down" id="calcToggleChevron" class="w-4 h-4 transition-transform duration-300"></i>
+                            <svg id="calcToggleChevron" class="w-4 h-4 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
                         </button>
                     </div>
                 </div>
@@ -755,31 +754,31 @@
             <div class="glass-panel rounded-b-[2.5rem] md:rounded-b-[3rem] -mt-6 md:mt-0 z-10 md:z-auto pt-10 px-4 pb-4 sm:pt-12 sm:px-8 sm:pb-8 md:p-12 border-0 md:border md:border-t-0 md:border-white shadow-lg md:shadow-xl relative">
                 <div id="calcChips" class="grid grid-cols-2 gap-2 sm:gap-4 mb-5 sm:mb-8">
                     <button type="button" class="calc-chip w-full flex items-center gap-2.5 md:gap-3 text-sm px-2.5 py-1.5 md:px-3 md:py-2 bg-white rounded-xl border border-serene-200 focus:outline-none text-left" data-type="Лендинг / Сайт" data-price="15000" onclick="toggleCalcItem(this)">
-                        <span class="calc-dot w-4 h-4 rounded-full border border-serene-200 shrink-0 flex items-center justify-center transition-colors"><i data-lucide="check" class="calc-check hidden w-2.5 h-2.5 text-white"></i></span>
+                        <span class="calc-dot w-4 h-4 rounded-full border border-serene-200 shrink-0 flex items-center justify-center transition-colors"><svg class="calc-check hidden w-2.5 h-2.5 text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
                         <span class="font-medium text-serene-800">Лендинг / сайт</span>
                     </button>
                     <button type="button" class="calc-chip w-full flex items-center gap-2.5 md:gap-3 text-sm px-2.5 py-1.5 md:px-3 md:py-2 bg-white rounded-xl border border-serene-200 focus:outline-none text-left" data-type="Сервис / интерактивный лид-магнит" data-price="10000" onclick="toggleCalcItem(this)">
-                        <span class="calc-dot w-4 h-4 rounded-full border border-serene-200 shrink-0 flex items-center justify-center transition-colors"><i data-lucide="check" class="calc-check hidden w-2.5 h-2.5 text-white"></i></span>
+                        <span class="calc-dot w-4 h-4 rounded-full border border-serene-200 shrink-0 flex items-center justify-center transition-colors"><svg class="calc-check hidden w-2.5 h-2.5 text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
                         <span class="font-medium text-serene-800">Сервис / лид-магнит</span>
                     </button>
                     <button type="button" class="calc-chip w-full flex items-center gap-2.5 md:gap-3 text-sm px-2.5 py-1.5 md:px-3 md:py-2 bg-white rounded-xl border border-serene-200 focus:outline-none text-left" data-type="Платформа для обучения" data-price="25000" onclick="toggleCalcItem(this)">
-                        <span class="calc-dot w-4 h-4 rounded-full border border-serene-200 shrink-0 flex items-center justify-center transition-colors"><i data-lucide="check" class="calc-check hidden w-2.5 h-2.5 text-white"></i></span>
+                        <span class="calc-dot w-4 h-4 rounded-full border border-serene-200 shrink-0 flex items-center justify-center transition-colors"><svg class="calc-check hidden w-2.5 h-2.5 text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
                         <span class="font-medium text-serene-800">Платформа для обучения</span>
                     </button>
                     <button type="button" class="calc-chip w-full flex items-center gap-2.5 md:gap-3 text-sm px-2.5 py-1.5 md:px-3 md:py-2 bg-white rounded-xl border border-serene-200 focus:outline-none text-left" data-type="ИИ-агент" data-price="20000" onclick="toggleCalcItem(this)">
-                        <span class="calc-dot w-4 h-4 rounded-full border border-serene-200 shrink-0 flex items-center justify-center transition-colors"><i data-lucide="check" class="calc-check hidden w-2.5 h-2.5 text-white"></i></span>
+                        <span class="calc-dot w-4 h-4 rounded-full border border-serene-200 shrink-0 flex items-center justify-center transition-colors"><svg class="calc-check hidden w-2.5 h-2.5 text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
                         <span class="font-medium text-serene-800">ИИ-агент</span>
                     </button>
                     <button type="button" class="calc-chip w-full flex items-center gap-2.5 md:gap-3 text-sm px-2.5 py-1.5 md:px-3 md:py-2 bg-white rounded-xl border border-serene-200 focus:outline-none text-left" data-type="Воронка в Telegram" data-price="25000" onclick="toggleCalcItem(this)">
-                        <span class="calc-dot w-4 h-4 rounded-full border border-serene-200 shrink-0 flex items-center justify-center transition-colors"><i data-lucide="check" class="calc-check hidden w-2.5 h-2.5 text-white"></i></span>
+                        <span class="calc-dot w-4 h-4 rounded-full border border-serene-200 shrink-0 flex items-center justify-center transition-colors"><svg class="calc-check hidden w-2.5 h-2.5 text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
                         <span class="font-medium text-serene-800">Воронка в Telegram</span>
                     </button>
                     <button type="button" class="calc-chip w-full flex items-center gap-2.5 md:gap-3 text-sm px-2.5 py-1.5 md:px-3 md:py-2 bg-white rounded-xl border border-serene-200 focus:outline-none text-left" data-type="Мини-апп" data-price="15000" onclick="toggleCalcItem(this)">
-                        <span class="calc-dot w-4 h-4 rounded-full border border-serene-200 shrink-0 flex items-center justify-center transition-colors"><i data-lucide="check" class="calc-check hidden w-2.5 h-2.5 text-white"></i></span>
+                        <span class="calc-dot w-4 h-4 rounded-full border border-serene-200 shrink-0 flex items-center justify-center transition-colors"><svg class="calc-check hidden w-2.5 h-2.5 text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
                         <span class="font-medium text-serene-800">Мини-апп</span>
                     </button>
                     <button type="button" class="calc-chip w-full flex items-center gap-2.5 md:gap-3 text-sm px-2.5 py-1.5 md:px-3 md:py-2 bg-white rounded-xl border border-serene-200 focus:outline-none text-left" data-type="Чат-бот" data-price="15000" onclick="toggleCalcItem(this)">
-                        <span class="calc-dot w-4 h-4 rounded-full border border-serene-200 shrink-0 flex items-center justify-center transition-colors"><i data-lucide="check" class="calc-check hidden w-2.5 h-2.5 text-white"></i></span>
+                        <span class="calc-dot w-4 h-4 rounded-full border border-serene-200 shrink-0 flex items-center justify-center transition-colors"><svg class="calc-check hidden w-2.5 h-2.5 text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
                         <span class="font-medium text-serene-800">Чат-бот</span>
                     </button>
                 </div>
@@ -923,7 +922,7 @@
                     <button onclick="toggleFaq(1)" class="w-full text-left py-5 flex items-center gap-4 focus:outline-none group">
                         <span class="flex-1 font-display text-sm sm:text-base font-semibold text-serene-900">Сколько времени занимает создание ИИ-решения или сайта?</span>
                         <div id="faqIcon1" class="w-8 h-8 rounded-full bg-accent-terracotta flex items-center justify-center shrink-0 shadow-md transition-transform duration-300">
-                            <i data-lucide="plus" class="w-4 h-4 text-white"></i>
+                            <svg class="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
                         </div>
                     </button>
                     <div id="faqAnswer1" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
@@ -938,7 +937,7 @@
                     <button onclick="toggleFaq(2)" class="w-full text-left py-5 flex items-center gap-4 focus:outline-none group">
                         <span class="flex-1 font-display text-sm sm:text-base font-semibold text-serene-900">Нужны ли технические навыки для управления готовым решением?</span>
                         <div id="faqIcon2" class="w-8 h-8 rounded-full bg-accent-terracotta flex items-center justify-center shrink-0 shadow-md transition-transform duration-300">
-                            <i data-lucide="plus" class="w-4 h-4 text-white"></i>
+                            <svg class="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
                         </div>
                     </button>
                     <div id="faqAnswer2" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
@@ -953,7 +952,7 @@
                     <button onclick="toggleFaq(3)" class="w-full text-left py-5 flex items-center gap-4 focus:outline-none group">
                         <span class="flex-1 font-display text-sm sm:text-base font-semibold text-serene-900">Действительно ли это окупается и приносит прибыль?</span>
                         <div id="faqIcon3" class="w-8 h-8 rounded-full bg-accent-terracotta flex items-center justify-center shrink-0 shadow-md transition-transform duration-300">
-                            <i data-lucide="plus" class="w-4 h-4 text-white"></i>
+                            <svg class="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
                         </div>
                     </button>
                     <div id="faqAnswer3" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
@@ -968,7 +967,7 @@
                     <button onclick="toggleFaq(4)" class="w-full text-left py-5 flex items-center gap-4 focus:outline-none group">
                         <span class="flex-1 font-display text-sm sm:text-base font-semibold text-serene-900">Сколько правок включено и что если результат не понравится?</span>
                         <div id="faqIcon4" class="w-8 h-8 rounded-full bg-accent-terracotta flex items-center justify-center shrink-0 shadow-md transition-transform duration-300">
-                            <i data-lucide="plus" class="w-4 h-4 text-white"></i>
+                            <svg class="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
                         </div>
                     </button>
                     <div id="faqAnswer4" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
@@ -983,7 +982,7 @@
                     <button onclick="toggleFaq(5)" class="w-full text-left py-5 flex items-center gap-4 focus:outline-none group">
                         <span class="flex-1 font-display text-sm sm:text-base font-semibold text-serene-900">Что происходит после того, как сайт или сервис готов?</span>
                         <div id="faqIcon5" class="w-8 h-8 rounded-full bg-accent-terracotta flex items-center justify-center shrink-0 shadow-md transition-transform duration-300">
-                            <i data-lucide="plus" class="w-4 h-4 text-white"></i>
+                            <svg class="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
                         </div>
                     </button>
                     <div id="faqAnswer5" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
@@ -998,7 +997,7 @@
                     <button onclick="toggleFaq(6)" class="w-full text-left py-5 flex items-center gap-4 focus:outline-none group">
                         <span class="flex-1 font-display text-sm sm:text-base font-semibold text-serene-900">Почему вайбкодинг, а не классическая веб-студия?</span>
                         <div id="faqIcon6" class="w-8 h-8 rounded-full bg-accent-terracotta flex items-center justify-center shrink-0 shadow-md transition-transform duration-300">
-                            <i data-lucide="plus" class="w-4 h-4 text-white"></i>
+                            <svg class="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
                         </div>
                     </button>
                     <div id="faqAnswer6" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
@@ -1068,7 +1067,7 @@
                             <label class="block text-xs text-serene-800 mb-1.5 font-medium">Что хотите создать?</label>
                             <button type="button" id="briefTypeToggle" onclick="toggleBriefDropdown()" class="w-full flex items-center justify-between gap-2 text-base md:text-sm px-4 py-3 bg-white rounded-xl border border-serene-200 text-serene-800 focus:outline-none focus:ring-1 focus:ring-accent-sunset text-left">
                                 <span id="briefTypeToggleLabel" class="truncate">Выбрать из списка</span>
-                                <i data-lucide="chevron-down" class="w-4 h-4 shrink-0 transition-transform" id="briefTypeToggleChevron"></i>
+                                <svg class="w-4 h-4 shrink-0 transition-transform" id="briefTypeToggleChevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
                             </button>
                             <div id="briefTypeChips" class="hidden absolute z-20 mt-2 w-full bg-white rounded-xl border border-serene-200 shadow-lg p-2 flex flex-col gap-1 max-h-96 overflow-y-auto">
                                 <button type="button" data-type="Лендинг / Сайт" onclick="pickBriefType(this)" class="brief-chip w-full text-left px-3 py-2.5 rounded-lg text-sm font-medium text-serene-800 hover:bg-serene-50 transition-all">Лендинг / сайт</button>
@@ -1114,7 +1113,7 @@
                     <p class="text-sm text-serene-800/80">
                         Удобнее сразу в мессенджере?
                         <a id="telegramBtn" href="https://t.me/nikakuznecovaa" target="_blank" rel="noopener" class="inline-flex items-center gap-1 font-semibold text-accent-terracotta underline underline-offset-4 decoration-accent-terracotta/40 hover:decoration-accent-terracotta">
-                            Написать в Telegram<i data-lucide="arrow-up-right" class="w-4 h-4 shrink-0"></i>
+                            Написать в Telegram<svg class="w-4 h-4 shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
                         </a>
                     </p>
 
@@ -1137,7 +1136,6 @@
         });
 
         window.onload = function() {
-            try { lucide.createIcons(); } catch(e) { console.error('lucide init failed', e); }
             try { initScrollProgressBar(); } catch(e) { console.error('scroll progress init failed', e); }
             try { initSpotlightCards(); } catch(e) { console.error('spotlight cards init failed', e); }
             try { initTelegramLinks(); } catch(e) { console.error('telegram links init failed', e); }
