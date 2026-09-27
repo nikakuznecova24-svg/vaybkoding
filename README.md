@@ -37,7 +37,7 @@ GitHub Pages отдаёт index.html (и другие html-файлы) с заг
 
 ## шрифты
 
-Inter и Manrope хранятся на сайте: `assets/fonts/*.woff2` (переменные, по одному
+Inter и Unbounded хранятся на сайте: `assets/fonts/*.woff2` (переменные, по одному
 файлу на кириллицу / латиницу / latin-ext), подключаются через `assets/fonts.css`.
 Google Fonts больше не используется.
 
