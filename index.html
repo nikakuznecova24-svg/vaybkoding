@@ -28,7 +28,7 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=117">
+    <link rel="stylesheet" href="assets/styles.css?v=118">
 
     <!-- Шрифты хранятся на сайте: assets/fonts -->
     <link rel="preload" href="assets/fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
@@ -272,6 +272,31 @@
             .quiz-band { padding: 3rem 2rem; }
             .quiz-band-title { font-size: 2rem; }
             .quiz-band-btn { width: auto; }
+        }
+        /* Обо мне: личное письмо */
+        .about-letter { background: #fff; border-radius: 2rem; padding: 1.75rem 1.5rem; box-shadow: 0 30px 60px -30px rgba(34,33,31,0.25); }
+        .about-head { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+        .about-avatar { width: 4.75rem; height: 4.75rem; border-radius: 9999px; object-fit: cover; flex-shrink: 0; border: 3px solid #fff; box-shadow: 0 0 0 3px #E07A5F; }
+        .about-name { font-size: 1.375rem; line-height: 1.15; color: #22211F; }
+        .about-role { font-size: 0.875rem; color: #6b655e; margin-top: 0.25rem; }
+        .about-text { font-size: 1rem; line-height: 1.65; color: #3d3a36; }
+        .about-text p + p { margin-top: 0.875rem; }
+        .about-text mark { background: linear-gradient(transparent 60%, rgba(244,162,97,0.35) 60%); color: #22211F; }
+        .about-sign { font-size: 1.375rem; color: #E07A5F; margin: 1.25rem 0 1.5rem; }
+        .about-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+        .about-chips span { font-size: 0.875rem; padding: 0.5rem 0.875rem; border-radius: 9999px; background: #FFF7F2; border: 1px solid rgba(224,122,95,0.22); color: #3d3a36; }
+        .about-chips a { text-decoration: underline; text-underline-offset: 3px; }
+        .about-btns { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+        .about-btn-main, .about-btn-alt { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; border-radius: 9999px; padding: 0.875rem 1.5rem; font-size: 0.9375rem; transition: transform .2s ease; width: 100%; }
+        .about-btn-main { color: #fff; font-weight: 700; background: linear-gradient(90deg, #E07A5F, #F4A261); box-shadow: 0 10px 24px -8px rgba(224,122,95,0.6); }
+        .about-btn-alt { color: #E07A5F; font-weight: 600; background: #fff; border: 1.5px solid rgba(224,122,95,0.35); }
+        .about-btn-main:hover, .about-btn-alt:hover { transform: translateY(-2px); }
+        @media (min-width: 768px) {
+            .about-letter { padding: 3rem; border-radius: 2.25rem; }
+            .about-avatar { width: 6rem; height: 6rem; }
+            .about-name { font-size: 1.5rem; }
+            .about-text { font-size: 1.125rem; }
+            .about-btn-main, .about-btn-alt { width: auto; }
         }
         /* Цифры одинаковой ширины — счётчик не дёргает строку */
         .count-up { font-variant-numeric: tabular-nums; }
@@ -1026,32 +1051,29 @@
 
     <!-- SECTION: About / Trust -->
     <section id="about" class="py-16 relative z-10 px-4">
-        <div class="reveal-up max-w-4xl mx-auto glass-panel rounded-[3rem] p-8 sm:p-10 md:p-12 border border-white shadow-xl flex flex-col lg:flex-row items-center gap-10 text-center lg:text-left relative">
-            <img src="assets/nika-portrait.jpg" alt="Ника Кузнецова" class="w-36 h-36 lg:w-56 lg:h-56 rounded-full object-cover shadow-lg border-4 border-white shrink-0">
-            <div class="lg:flex-1">
-                <p class="eyebrow">Обо мне</p>
-                <h2 class="section-title mb-6">Ника Кузнецова</h2>
-                <div class="flex flex-col gap-3.5 text-left max-w-md mx-auto lg:mx-0 mb-8">
-                    <div class="flex items-start gap-3">
-                        <span class="w-2 h-2 rounded-full bg-gradient-to-br from-accent-terracotta to-accent-sunset shadow-[0_0_10px_rgba(224,122,95,0.7)] shrink-0 mt-1.5"></span>
-                        <p class="text-serene-800 text-sm md:text-base">6 лет опыта в продажах и маркетинге</p>
-                    </div>
-                    <div class="flex items-start gap-3">
-                        <span class="w-2 h-2 rounded-full bg-gradient-to-br from-accent-terracotta to-accent-sunset shadow-[0_0_10px_rgba(224,122,95,0.7)] shrink-0 mt-1.5"></span>
-                        <p class="text-serene-800 text-sm md:text-base">30+ реализованных проектов через ИИ</p>
-                    </div>
-                    <div class="flex items-start gap-3">
-                        <span class="w-2 h-2 rounded-full bg-gradient-to-br from-accent-terracotta to-accent-sunset shadow-[0_0_10px_rgba(224,122,95,0.7)] shrink-0 mt-1.5"></span>
-                        <p class="text-serene-800 text-sm md:text-base">Основатель студии персональных журналов про людей «<a href="https://svyazany.ru" target="_blank" rel="noopener" class="underline hover:text-accent-terracotta transition-colors">Связаны</a>»</p>
-                    </div>
-                    <div class="flex items-start gap-3">
-                        <span class="w-2 h-2 rounded-full bg-gradient-to-br from-accent-terracotta to-accent-sunset shadow-[0_0_10px_rgba(224,122,95,0.7)] shrink-0 mt-1.5"></span>
-                        <p class="text-serene-800 text-sm md:text-base">Веду каждый проект от идеи до сборки одна, без агентства</p>
-                    </div>
+        <div class="reveal-up about-letter max-w-3xl mx-auto">
+            <p class="eyebrow">Обо мне</p>
+            <div class="about-head">
+                <img src="assets/nika-portrait.jpg" alt="Ника Кузнецова" class="about-avatar">
+                <div>
+                    <h2 class="about-name font-display">Ника Кузнецова</h2>
+                    <p class="about-role">Маркетинг · ИИ · вайбкодинг</p>
                 </div>
-                <a href="/portfolio/" class="inline-flex items-center whitespace-nowrap rounded-full bg-gradient-to-r from-accent-terracotta to-accent-sunset text-white font-bold text-sm px-5 py-2.5 shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-transform">
-                    Смотреть портфолио
-                </a>
+            </div>
+            <div class="about-text">
+                <p>6 лет я работала в продажах и маркетинге и видела одно и то же: <mark>сильные эксперты теряют клиентов из-за слабой упаковки</mark> — сайта, по которому непонятно, чем они помогают, и переписки, в которой тонут заявки.</p>
+                <p>Когда появился вайбкодинг, я поняла, что могу собирать такие инструменты сама — <mark>за дни, а не месяцы</mark>. Без студии, менеджеров и испорченного телефона: вы общаетесь со мной от первого созвона до запуска.</p>
+            </div>
+            <p class="about-sign font-display">— Ника</p>
+            <div class="about-chips">
+                <span>🎯 6 лет в продажах</span>
+                <span>⚡️ 30+ проектов с ИИ</span>
+                <span>💛 Основатель «<a href="https://svyazany.ru" target="_blank" rel="noopener">Связаны</a>»</span>
+                <span>📍 Санкт-Петербург</span>
+            </div>
+            <div class="about-btns">
+                <a href="/portfolio/" class="about-btn-main">Смотреть портфолио <svg class="w-[18px] h-[18px] shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+                <a href="https://t.me/nikakuznecovaa" target="_blank" rel="noopener" class="about-btn-alt"><svg class="w-[18px] h-[18px] shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg> Написать в Telegram</a>
             </div>
         </div>
     </section>
