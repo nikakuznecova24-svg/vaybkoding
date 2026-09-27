@@ -28,7 +28,7 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=97">
+    <link rel="stylesheet" href="assets/styles.css?v=98">
 
     <!-- Шрифты хранятся на сайте: assets/fonts -->
     <link rel="preload" href="assets/fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
@@ -64,21 +64,58 @@
         /* Горизонтальный свайп-скролл карточек услуг на мобильных: скрываем полосу прокрутки */
         .services-scroll { scrollbar-width: none; -ms-overflow-style: none; }
         .services-scroll::-webkit-scrollbar { display: none; }
-        /* Иконка-подсказка «листай вбок»: рука тянет карточку, бокс схлопывается, потом всё сбрасывается */
-        @keyframes swipeHintBox {
-            0%, 15% { width: 3rem; }
-            55%, 68% { width: 0.6rem; }
-            85%, 100% { width: 3rem; }
+
+        /* Услуги на телефоне: компактный список вместо горизонтальной карусели.
+           Разметка та же, что на десктопе, меняется только раскладка до 768px. */
+        @media (max-width: 767px) {
+            #services .svc-group { padding-left: 0; padding-right: 0; margin-top: 0; margin-bottom: 0.75rem; }
+            #services .services-scroll + .svc-group { margin-top: 2rem; }
+            #services .services-scroll {
+                flex-direction: column; overflow: visible; scroll-snap-type: none;
+                margin: 0; padding: 0; gap: 0.625rem;
+            }
+            #services .services-scroll > .spotlight-card {
+                width: 100%; flex-shrink: 1; padding: 1rem 1rem 0.875rem;
+                border-radius: 1.25rem; cursor: pointer;
+                background: rgba(255,255,255,0.85);
+                box-shadow: 0 1px 2px rgba(34,33,31,0.04), 0 6px 16px -8px rgba(224,122,95,0.25);
+            }
+            #services .services-scroll > .spotlight-card > .flex-1 {
+                display: grid; grid-template-columns: 2.5rem 1fr auto;
+                column-gap: 0.875rem; align-items: start;
+            }
+            /* бейджи «Популярно» и т.п. на телефоне не показываем — это шум */
+            #services .services-scroll > .spotlight-card > .flex-1 > div:first-child { display: none; }
+            /* номер услуги — круглая метка слева */
+            #services .services-scroll > .spotlight-card > .flex-1 > span:first-of-type {
+                grid-column: 1; grid-row: 1 / span 3;
+                width: 2.5rem; height: 2.5rem; margin: 0; border-radius: 9999px;
+                display: flex; align-items: center; justify-content: center;
+                background: rgba(224,122,95,0.1); color: #E07A5F;
+                font-size: 0.8125rem; letter-spacing: 0.02em;
+            }
+            #services .services-scroll > .spotlight-card h3 {
+                grid-column: 2; grid-row: 1; margin: 0; align-self: center;
+                font-size: 1rem; line-height: 1.3;
+            }
+            /* цена — справа от названия */
+            #services .services-scroll > .spotlight-card > .flex-1 > p.font-bold {
+                grid-column: 3; grid-row: 1; margin: 0; align-self: center; line-height: 1.3;
+            }
+            #services .services-scroll > .spotlight-card > .flex-1 > p.font-bold span { font-size: 0.9375rem; }
+            #services .services-scroll > .spotlight-card > .flex-1 > p.text-serene-800 {
+                grid-column: 2 / span 2; grid-row: 2; margin: 0.25rem 0 0;
+                font-size: 0.875rem; line-height: 1.45; color: rgba(61,58,54,0.8);
+            }
+            #services .services-scroll > .spotlight-card .service-toggle {
+                grid-column: 2 / span 2; grid-row: 3; margin: 0.375rem 0 0; justify-self: start;
+                font-size: 0.8125rem;
+            }
+            #services .services-scroll > .spotlight-card .service-details {
+                grid-column: 1 / -1; grid-row: 4; margin: 0.875rem 0 0.25rem;
+            }
+            #services .services-scroll > .spotlight-card .service-cta { margin: 0.25rem 0 0.25rem 3.375rem; }
         }
-        @keyframes swipeHintHand {
-            0%, 15% { transform: translateX(0) scale(1) rotate(0deg); opacity: 1; }
-            55% { transform: translateX(16px) scale(1.35) rotate(-10deg); opacity: 1; }
-            68% { transform: translateX(16px) scale(1.35) rotate(-10deg); opacity: 0; }
-            72% { transform: translateX(-6px) scale(0.9) rotate(0deg); opacity: 0; }
-            85%, 100% { transform: translateX(0) scale(1) rotate(0deg); opacity: 1; }
-        }
-        .swipe-hint-box { animation: swipeHintBox 1.8s ease-in-out infinite; }
-        .swipe-hint-icon { animation: swipeHintHand 1.8s ease-in-out infinite; }
 
         /* Custom premium scrollbar */
         ::-webkit-scrollbar {
@@ -497,13 +534,9 @@
                     <p class="eyebrow">Услуги</p>
                     <h2 class="section-title">Линейка услуг</h2>
                 </div>
-                <div class="md:hidden relative h-9 rounded-lg bg-serene-900/10 overflow-hidden flex items-center shrink-0 swipe-hint-box">
-                    <span class="absolute top-1/2 right-2.5 -translate-y-1/2 w-px h-4 bg-serene-800/25"></span>
-                    <svg class="w-4 h-4 text-serene-800/70 ml-2 swipe-hint-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2"/><path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg>
-                </div>
             </div>
 
-            <span class="block text-sm font-semibold text-serene-800 mb-3 px-4 md:px-0">Сайты и инструменты</span>
+            <span class="svc-group block text-sm font-semibold text-serene-800 mb-3 px-4 md:px-0">Сайты и инструменты</span>
 
             <!-- Services Stack -->
             <div class="services-scroll flex overflow-x-auto snap-x snap-mandatory gap-4 -mx-4 px-6 pb-4 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 md:mx-0 md:px-0 md:pb-0 md:overflow-visible items-stretch">
@@ -543,7 +576,7 @@
                             <span class="px-3 py-1 bg-serene-900/[0.05] text-serene-800/70 rounded-full text-xs font-semibold">Высокий отклик</span>
                         </div>
                         <span class="block font-display text-xs font-bold text-serene-800/50 tracking-[0.18em] mb-1.5">02</span>
-                        <h3 class="font-display text-lg md:text-xl font-bold text-serene-900 mb-2 md:mb-3">Сервис / интерактивный лид-магнит</h3>
+                        <h3 class="font-display text-lg md:text-xl font-bold text-serene-900 mb-2 md:mb-3">Сервис / <span class="hidden md:inline">интерактивный </span><span class="whitespace-nowrap">лид-магнит</span></h3>
                         <p class="text-serene-800 text-sm md:text-base mb-2 md:mb-3">Интерактивный инструмент вместо скучного файла или рутинной таблицы</p>
                         <p class="text-sm font-bold text-accent-terracotta mb-2.5 md:mb-4 whitespace-nowrap"><span class="font-display text-base">От 10 000₽</span></p>
                         <button type="button" onclick="toggleServiceCard(this)" class="service-toggle inline-flex items-center gap-1.5 text-accent-terracotta font-semibold text-sm mb-1">
@@ -593,7 +626,7 @@
 
             </div>
 
-            <span class="block text-sm font-semibold text-serene-800 mt-10 mb-4 px-4 md:px-0">Telegram и автоматизация</span>
+            <span class="svc-group block text-sm font-semibold text-serene-800 mt-10 mb-4 px-4 md:px-0">Telegram и автоматизация</span>
             <div class="services-scroll flex overflow-x-auto snap-x snap-mandatory gap-4 -mx-4 px-6 pb-4 md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-6 md:mx-0 md:px-0 md:pb-0 md:overflow-visible items-stretch">
 
                 <!-- Service 4: ИИ-агент -->
@@ -1416,6 +1449,15 @@
         // ----------------------------------------------------
         // Service Card Expand/Collapse
         // ----------------------------------------------------
+        // На телефоне услуга — строка списка: нажатие в любом месте строки раскрывает подробности
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth >= 768) return;
+            const card = e.target.closest('#services .services-scroll > .spotlight-card');
+            if (!card || e.target.closest('a, button, .service-details')) return;
+            const btn = card.querySelector('.service-toggle');
+            if (btn) toggleServiceCard(btn);
+        });
+
         function toggleServiceCard(btn) {
             const wrap = btn.closest('.flex-1');
             const card = btn.closest('.flex-1').parentElement;
@@ -1429,7 +1471,7 @@
                 cta.classList.toggle('hidden');
                 cta.classList.toggle('inline-flex');
             }
-            label.textContent = opening ? 'свернуть' : 'подробнее';
+            label.textContent = opening ? 'Свернуть' : 'Подробнее';
             chevron.classList.toggle('rotate-180');
         }
 
