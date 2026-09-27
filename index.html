@@ -65,43 +65,25 @@
         .services-scroll { scrollbar-width: none; -ms-overflow-style: none; }
         .services-scroll::-webkit-scrollbar { display: none; }
 
-        /* Раздел услуг — тёмный: спокойный контраст вместо светлых градиентов */
-        #services.svc-dark {
-            background:
-                radial-gradient(900px 420px at 50% 0%, rgba(224,122,95,0.16), transparent 70%),
-                #1f1d1b;
-            color: #FAF8F5;
-        }
-        #services .eyebrow { color: #F4A261; }
-        #services .section-title { color: #FAF8F5; }
-        #services .svc-group { color: rgba(250,248,245,0.55); }
+        /* Раздел услуг: спокойные белые карточки без градиентов и оранжевого «сияния» */
         #services .svc-card {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
-            box-shadow: none;
+            background: #ffffff;
+            border: 1px solid rgba(34,33,31,0.07);
+            box-shadow: 0 1px 2px rgba(34,33,31,0.04), 0 10px 28px -14px rgba(34,33,31,0.14);
         }
         @media (hover: hover) {
-            #services .svc-card:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.16); }
+            #services .svc-card:hover { border-color: rgba(34,33,31,0.14); }
         }
-        #services .svc-card h3 { color: #FAF8F5; }
-        #services .svc-card > .flex-1 > p.text-serene-800 { color: rgba(250,248,245,0.68); }
-        #services .svc-card > .flex-1 > span:first-of-type { color: rgba(250,248,245,0.4); }
-        #services .svc-card > .flex-1 > p.font-bold { color: #F4A261; }
-        #services .svc-card > .flex-1 > div:first-child > span {
-            background: rgba(255,255,255,0.07); color: rgba(250,248,245,0.7);
-        }
-        #services .service-toggle { color: rgba(250,248,245,0.85); }
-        #services .service-toggle:hover { color: #FAF8F5; }
-        /* раскрытые подробности: светлый текст на тёмном, без оранжевых заливок */
-        #services .service-details { color: rgba(250,248,245,0.72); }
-        #services .service-details .font-medium,
-        #services .service-details strong { color: #FAF8F5; }
-        #services .service-details .border-t { border-color: rgba(255,255,255,0.1); }
-        #services .service-cta { color: #F4A261; text-decoration-color: rgba(244,162,97,0.4); }
-        #services .service-cta:hover { color: #FAF8F5; }
+        #services .svc-card > .flex-1 > p.text-serene-800 { color: rgba(61,58,54,0.8); }
+        #services .svc-card > .flex-1 > span:first-of-type { color: rgba(61,58,54,0.45); }
+        #services .service-toggle { color: rgba(34,33,31,0.8); }
+        #services .service-toggle:hover { color: #22211F; }
+        /* раскрытые подробности: обычный тёмный текст на белом, без оранжевых заливок */
+        #services .service-details { color: #3d3a36; }
+        #services .service-details .border-t { border-color: rgba(34,33,31,0.08); }
         /* раскрытая карточка не растягивает соседние в ряду */
         #services .services-scroll:has(.is-open) { align-items: start; }
-        #services .svc-card.is-open { border-color: rgba(244,162,97,0.35); background: rgba(255,255,255,0.06); }
+        #services .svc-card.is-open { border-color: rgba(224,122,95,0.35); }
 
         /* Услуги на телефоне: компактный список вместо горизонтальной карусели.
            Разметка та же, что на десктопе, меняется только раскладка до 768px. */
@@ -127,7 +109,7 @@
                 grid-column: 1; grid-row: 1 / span 3;
                 width: 2.5rem; height: 2.5rem; margin: 0; border-radius: 9999px;
                 display: flex; align-items: center; justify-content: center;
-                background: rgba(244,162,97,0.12); color: #F4A261;
+                background: rgba(224,122,95,0.1); color: #E07A5F;
                 font-size: 0.8125rem; letter-spacing: 0.02em;
             }
             #services .services-scroll > .svc-card h3 {
@@ -561,7 +543,7 @@
     </section>
 
     <!-- Section: Services with tighter spacing -->
-    <section id="services" class="svc-dark py-16 md:py-20 relative z-10 px-4">
+    <section id="services" class="py-16 relative z-10 px-4">
         <div class="max-w-5xl mx-auto">
             
             <!-- Section Title -->
