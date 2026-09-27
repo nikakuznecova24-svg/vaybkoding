@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: "Plus Jakarta Sans", sans-serif;
+  --font-display: "Manrope", sans-serif;
   --color-serene-50: #faf8f5;
   --color-serene-200: #eae0d5;
   --color-serene-800: #3d3a36;
@@ -13,4 +13,14 @@
   --animate-float-slow: float 8s ease-in-out infinite;
   --animate-kenburns: kenburns 24s ease-in-out infinite alternate;
   --animate-glow-pulse: glowPulse 3s ease-in-out infinite;
+}
+
+/* Единая система заголовков секций: надзаголовок + H2 */
+@layer components {
+  .eyebrow {
+    @apply font-display text-xs md:text-sm font-bold uppercase tracking-[0.18em] text-accent-terracotta mb-3;
+  }
+  .section-title {
+    @apply font-display text-3xl md:text-4xl font-bold text-serene-900 leading-tight tracking-tight;
+  }
 }
