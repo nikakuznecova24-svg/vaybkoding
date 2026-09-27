@@ -357,6 +357,47 @@
                 filter: blur(24px) !important;
             }
         }
+        /* Объёмные плашки метрик в hero (30+ / 6 лет / 5 дней) — приподнятая карточка
+           вместо голого текста: лёгкий градиент + внутренний блик сверху + мягкая тёплая
+           тень снизу создают эффект «стикера», а не плоской подписи на фоне. */
+        .stat-card {
+            position: relative;
+            padding: 0.85rem 0.5rem 1rem;
+            border-radius: 1.25rem;
+            background: linear-gradient(165deg, #ffffff 0%, #fdf9f4 55%, #f7efe3 100%);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.85),
+                0 14px 24px -14px rgba(224, 122, 95, 0.32),
+                0 3px 8px -3px rgba(34, 33, 31, 0.12);
+        }
+        @media (hover: hover) {
+            .stat-card {
+                transition: transform 0.25s ease, box-shadow 0.25s ease;
+            }
+            .stat-card:hover {
+                transform: translateY(-3px);
+                box-shadow:
+                    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+                    0 20px 30px -14px rgba(224, 122, 95, 0.4),
+                    0 6px 12px -4px rgba(34, 33, 31, 0.16);
+            }
+        }
+        /* Тонкий разделитель между плашками вместо пустого промежутка */
+        .stat-card + .stat-card::before {
+            content: "";
+            position: absolute;
+            left: -0.4rem;
+            top: 18%;
+            bottom: 18%;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, rgba(34, 33, 31, 0.16), transparent);
+        }
+        @media (min-width: 768px) {
+            .stat-card + .stat-card::before {
+                left: -0.8rem;
+            }
+        }
         /* На тач-устройствах касание пальцем при скролле «залипает» как :hover —
            карточки услуг (13 шт, shadow-xl -> hover:shadow-2xl, transition-all 300ms)
            начинают анимировать тень при каждом касании во время свайпа, а box-shadow
@@ -532,15 +573,15 @@
             </div>
 
             <div class="grid grid-cols-3 gap-3 mt-8 text-center">
-                <div>
+                <div class="stat-card">
                     <p class="count-up font-display text-2xl md:text-3xl font-bold text-accent-terracotta leading-none" data-count-to="30" data-suffix="+">30+</p>
                     <p class="mt-2 text-sm leading-snug text-serene-800/80">проектов<br>с ИИ</p>
                 </div>
-                <div>
+                <div class="stat-card">
                     <p class="count-up font-display text-2xl md:text-3xl font-bold text-accent-terracotta leading-none" data-count-to="6" data-forms="год|года|лет">6 лет</p>
                     <p class="mt-2 text-sm leading-snug text-serene-800/80">в продажах<br>и маркетинге</p>
                 </div>
-                <div>
+                <div class="stat-card">
                     <p class="count-up font-display text-2xl md:text-3xl font-bold text-accent-terracotta leading-none" data-count-to="5" data-forms="день|дня|дней">5 дней</p>
                     <p class="mt-2 text-sm leading-snug text-serene-800/80">средний срок<br>запуска</p>
                 </div>
@@ -552,7 +593,7 @@
         <div class="hidden md:grid max-w-6xl mx-auto grid-cols-2 gap-16 items-center">
             <div>
                 <h1 class="font-display text-4xl lg:text-5xl font-bold text-serene-900 leading-[1.15] tracking-tight mb-5">
-                    Создаю ИИ-решения, которые помогают бизнесу <span class="accent-word">продавать</span>
+                    <span class="whitespace-nowrap">Создаю ИИ-решения,</span> которые помогают бизнесу <span class="accent-word">продавать</span>
                 </h1>
                 <p class="text-serene-800/80 text-base lg:text-lg max-w-lg mb-8">
                     Веб-сервисы, интерактивные инструменты, ИИ-агенты и сайты для экспертов и предпринимателей. Вместо месяцев разработки — готовый продукт за несколько дней.
@@ -562,15 +603,15 @@
                     <svg class="w-4 h-4 shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </a>
                 <div class="grid grid-cols-3 gap-6 pt-8 border-t border-serene-900/10">
-                    <div>
+                    <div class="stat-card">
                         <p class="count-up font-display text-2xl md:text-3xl font-bold text-accent-terracotta leading-none" data-count-to="30" data-suffix="+">30+</p>
                         <p class="mt-2 text-sm leading-snug text-serene-800/80">проектов<br>с ИИ</p>
                     </div>
-                    <div>
+                    <div class="stat-card">
                         <p class="count-up font-display text-2xl md:text-3xl font-bold text-accent-terracotta leading-none" data-count-to="6" data-forms="год|года|лет">6 лет</p>
                         <p class="mt-2 text-sm leading-snug text-serene-800/80">в продажах<br>и маркетинге</p>
                     </div>
-                    <div>
+                    <div class="stat-card">
                         <p class="count-up font-display text-2xl md:text-3xl font-bold text-accent-terracotta leading-none" data-count-to="5" data-forms="день|дня|дней">5 дней</p>
                         <p class="mt-2 text-sm leading-snug text-serene-800/80">средний срок<br>запуска</p>
                     </div>
@@ -1108,12 +1149,6 @@
             </div>
         </div>
     </section>
-
-    <div class="flex items-center justify-center gap-3 py-1 relative z-10">
-        <div class="w-16 sm:w-24 h-px bg-serene-900/15"></div>
-        <span class="text-accent-terracotta text-xs">✦</span>
-        <div class="w-16 sm:w-24 h-px bg-serene-900/15"></div>
-    </div>
 
     <!-- Section: Our Values / Why it works -->
     <section id="values" class="py-16 relative z-10 px-4">
