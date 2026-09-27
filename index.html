@@ -1234,7 +1234,6 @@
                 items.forEach(animate);
                 return;
             }
-            if (!reduceMotion) items.forEach(el => { el.textContent = format(el, 0); });
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
