@@ -232,6 +232,10 @@
         @media (min-width: 768px) { .count-up { font-size: 1.7rem; } }
         #faq button span.font-display { font-weight: 400; line-height: 1.35; }
         .font-light { font-weight: 400; }
+        /* «FAQ» — только заглавные, «Частые вопросы» — в основном строчные.
+           По базовой линии они совпадают, но заглавные визуально «висят» выше;
+           оптически опускаем «FAQ» на ~половину разницы высоты заглавных и строчных. */
+        .faq-optical { position: relative; top: 0.05em; }
         /* Цифры одинаковой ширины — счётчик не дёргает строку */
         .count-up { font-variant-numeric: tabular-nums; }
         /* Glassmorphism panel */
@@ -1076,7 +1080,7 @@
         <div class="max-w-3xl mx-auto">
             
             <div class="flex items-baseline justify-between gap-4 mb-6 md:mb-8">
-                <p class="section-title !text-[1.5rem] md:!text-[2.5rem] !text-accent-terracotta">FAQ</p>
+                <p class="section-title !text-[1.5rem] md:!text-[2.5rem] !text-accent-terracotta faq-optical">FAQ</p>
                 <h2 class="section-title !text-[1.5rem] md:!text-[2.5rem] text-right whitespace-nowrap">Частые вопросы</h2>
             </div>
             <div class="h-px bg-serene-900/10 mb-1"></div>
