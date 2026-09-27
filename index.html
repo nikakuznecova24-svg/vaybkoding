@@ -28,7 +28,7 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=98">
+    <link rel="stylesheet" href="assets/styles.css?v=99">
 
     <!-- Шрифты хранятся на сайте: assets/fonts -->
     <link rel="preload" href="assets/fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
@@ -65,6 +65,44 @@
         .services-scroll { scrollbar-width: none; -ms-overflow-style: none; }
         .services-scroll::-webkit-scrollbar { display: none; }
 
+        /* Раздел услуг — тёмный: спокойный контраст вместо светлых градиентов */
+        #services.svc-dark {
+            background:
+                radial-gradient(900px 420px at 50% 0%, rgba(224,122,95,0.16), transparent 70%),
+                #1f1d1b;
+            color: #FAF8F5;
+        }
+        #services .eyebrow { color: #F4A261; }
+        #services .section-title { color: #FAF8F5; }
+        #services .svc-group { color: rgba(250,248,245,0.55); }
+        #services .svc-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: none;
+        }
+        @media (hover: hover) {
+            #services .svc-card:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.16); }
+        }
+        #services .svc-card h3 { color: #FAF8F5; }
+        #services .svc-card > .flex-1 > p.text-serene-800 { color: rgba(250,248,245,0.68); }
+        #services .svc-card > .flex-1 > span:first-of-type { color: rgba(250,248,245,0.4); }
+        #services .svc-card > .flex-1 > p.font-bold { color: #F4A261; }
+        #services .svc-card > .flex-1 > div:first-child > span {
+            background: rgba(255,255,255,0.07); color: rgba(250,248,245,0.7);
+        }
+        #services .service-toggle { color: rgba(250,248,245,0.85); }
+        #services .service-toggle:hover { color: #FAF8F5; }
+        /* раскрытые подробности: светлый текст на тёмном, без оранжевых заливок */
+        #services .service-details { color: rgba(250,248,245,0.72); }
+        #services .service-details .font-medium,
+        #services .service-details strong { color: #FAF8F5; }
+        #services .service-details .border-t { border-color: rgba(255,255,255,0.1); }
+        #services .service-cta { color: #F4A261; text-decoration-color: rgba(244,162,97,0.4); }
+        #services .service-cta:hover { color: #FAF8F5; }
+        /* раскрытая карточка не растягивает соседние в ряду */
+        #services .services-scroll:has(.is-open) { align-items: start; }
+        #services .svc-card.is-open { border-color: rgba(244,162,97,0.35); background: rgba(255,255,255,0.06); }
+
         /* Услуги на телефоне: компактный список вместо горизонтальной карусели.
            Разметка та же, что на десктопе, меняется только раскладка до 768px. */
         @media (max-width: 767px) {
@@ -74,47 +112,45 @@
                 flex-direction: column; overflow: visible; scroll-snap-type: none;
                 margin: 0; padding: 0; gap: 0.625rem;
             }
-            #services .services-scroll > .spotlight-card {
+            #services .services-scroll > .svc-card {
                 width: 100%; flex-shrink: 1; padding: 1rem 1rem 0.875rem;
                 border-radius: 1.25rem; cursor: pointer;
-                background: rgba(255,255,255,0.85);
-                box-shadow: 0 1px 2px rgba(34,33,31,0.04), 0 6px 16px -8px rgba(224,122,95,0.25);
             }
-            #services .services-scroll > .spotlight-card > .flex-1 {
+            #services .services-scroll > .svc-card > .flex-1 {
                 display: grid; grid-template-columns: 2.5rem 1fr auto;
                 column-gap: 0.875rem; align-items: start;
             }
             /* бейджи «Популярно» и т.п. на телефоне не показываем — это шум */
-            #services .services-scroll > .spotlight-card > .flex-1 > div:first-child { display: none; }
+            #services .services-scroll > .svc-card > .flex-1 > div:first-child { display: none; }
             /* номер услуги — круглая метка слева */
-            #services .services-scroll > .spotlight-card > .flex-1 > span:first-of-type {
+            #services .services-scroll > .svc-card > .flex-1 > span:first-of-type {
                 grid-column: 1; grid-row: 1 / span 3;
                 width: 2.5rem; height: 2.5rem; margin: 0; border-radius: 9999px;
                 display: flex; align-items: center; justify-content: center;
-                background: rgba(224,122,95,0.1); color: #E07A5F;
+                background: rgba(244,162,97,0.12); color: #F4A261;
                 font-size: 0.8125rem; letter-spacing: 0.02em;
             }
-            #services .services-scroll > .spotlight-card h3 {
+            #services .services-scroll > .svc-card h3 {
                 grid-column: 2; grid-row: 1; margin: 0; align-self: center;
                 font-size: 1rem; line-height: 1.3;
             }
             /* цена — справа от названия */
-            #services .services-scroll > .spotlight-card > .flex-1 > p.font-bold {
+            #services .services-scroll > .svc-card > .flex-1 > p.font-bold {
                 grid-column: 3; grid-row: 1; margin: 0; align-self: center; line-height: 1.3;
             }
-            #services .services-scroll > .spotlight-card > .flex-1 > p.font-bold span { font-size: 0.9375rem; }
-            #services .services-scroll > .spotlight-card > .flex-1 > p.text-serene-800 {
+            #services .services-scroll > .svc-card > .flex-1 > p.font-bold span { font-size: 0.9375rem; }
+            #services .services-scroll > .svc-card > .flex-1 > p.text-serene-800 {
                 grid-column: 2 / span 2; grid-row: 2; margin: 0.25rem 0 0;
-                font-size: 0.875rem; line-height: 1.45; color: rgba(61,58,54,0.8);
+                font-size: 0.875rem; line-height: 1.45;
             }
-            #services .services-scroll > .spotlight-card .service-toggle {
+            #services .services-scroll > .svc-card .service-toggle {
                 grid-column: 2 / span 2; grid-row: 3; margin: 0.375rem 0 0; justify-self: start;
                 font-size: 0.8125rem;
             }
-            #services .services-scroll > .spotlight-card .service-details {
+            #services .services-scroll > .svc-card .service-details {
                 grid-column: 1 / -1; grid-row: 4; margin: 0.875rem 0 0.25rem;
             }
-            #services .services-scroll > .spotlight-card .service-cta { margin: 0.25rem 0 0.25rem 3.375rem; }
+            #services .services-scroll > .svc-card .service-cta { margin: 0.25rem 0 0.25rem 3.375rem; }
         }
 
         /* Custom premium scrollbar */
@@ -525,7 +561,7 @@
     </section>
 
     <!-- Section: Services with tighter spacing -->
-    <section id="services" class="py-16 relative z-10 px-4">
+    <section id="services" class="svc-dark py-16 md:py-20 relative z-10 px-4">
         <div class="max-w-5xl mx-auto">
             
             <!-- Section Title -->
@@ -542,7 +578,7 @@
             <div class="services-scroll flex overflow-x-auto snap-x snap-mandatory gap-4 -mx-4 px-6 pb-4 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 md:mx-0 md:px-0 md:pb-0 md:overflow-visible items-stretch">
 
                 <!-- Service 1: Лендинг / Сайт -->
-                <div class="spotlight-card snap-start shrink-0 w-[82%] sm:w-[55%] md:w-auto md:shrink bg-gradient-to-br from-white to-accent-terracotta/[0.05] rounded-[2.5rem] p-5 md:p-8 border border-accent-terracotta/10 shadow-xl flex flex-col hover:shadow-2xl transition-all duration-300">
+                <div class="svc-card snap-start shrink-0 w-[82%] sm:w-[55%] md:w-auto md:shrink rounded-[2rem] p-5 md:p-8 flex flex-col transition-all duration-300">
                     <div class="flex-1">
                         <div class="flex items-center justify-end mb-2.5 md:mb-4">
                             <span class="px-3 py-1 bg-serene-900/[0.05] text-serene-800/70 rounded-full text-xs font-semibold">Популярно</span>
@@ -570,7 +606,7 @@
                 </div>
 
                 <!-- Service 2: Сервис / интерактивный лид-магнит -->
-                <div class="spotlight-card snap-start shrink-0 w-[82%] sm:w-[55%] md:w-auto md:shrink bg-gradient-to-br from-white to-accent-terracotta/[0.05] rounded-[2.5rem] p-5 md:p-8 border border-accent-terracotta/10 shadow-xl flex flex-col hover:shadow-2xl transition-all duration-300">
+                <div class="svc-card snap-start shrink-0 w-[82%] sm:w-[55%] md:w-auto md:shrink rounded-[2rem] p-5 md:p-8 flex flex-col transition-all duration-300">
                     <div class="flex-1">
                         <div class="flex items-center justify-end mb-2.5 md:mb-4">
                             <span class="px-3 py-1 bg-serene-900/[0.05] text-serene-800/70 rounded-full text-xs font-semibold">Высокий отклик</span>
@@ -598,7 +634,7 @@
                 </div>
 
                 <!-- Service 3: Платформа для обучения -->
-                <div class="spotlight-card snap-start shrink-0 w-[82%] sm:w-[55%] md:w-auto md:shrink bg-gradient-to-br from-white to-accent-terracotta/[0.05] rounded-[2.5rem] p-5 md:p-8 border border-accent-terracotta/10 shadow-xl flex flex-col hover:shadow-2xl transition-all duration-300">
+                <div class="svc-card snap-start shrink-0 w-[82%] sm:w-[55%] md:w-auto md:shrink rounded-[2rem] p-5 md:p-8 flex flex-col transition-all duration-300">
                     <div class="flex-1">
                         <div class="flex items-center justify-end mb-2.5 md:mb-4">
                             <span class="px-3 py-1 bg-serene-900/[0.05] text-serene-800/70 rounded-full text-xs font-semibold">Для наставников</span>
@@ -630,7 +666,7 @@
             <div class="services-scroll flex overflow-x-auto snap-x snap-mandatory gap-4 -mx-4 px-6 pb-4 md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-6 md:mx-0 md:px-0 md:pb-0 md:overflow-visible items-stretch">
 
                 <!-- Service 4: ИИ-агент -->
-                <div class="spotlight-card snap-start shrink-0 w-[82%] sm:w-[55%] md:w-auto md:shrink bg-gradient-to-br from-white to-accent-terracotta/[0.05] rounded-[2.5rem] p-5 md:p-8 border border-accent-terracotta/10 shadow-xl flex flex-col hover:shadow-2xl transition-all duration-300">
+                <div class="svc-card snap-start shrink-0 w-[82%] sm:w-[55%] md:w-auto md:shrink rounded-[2rem] p-5 md:p-8 flex flex-col transition-all duration-300">
                     <div class="flex-1">
                         <div class="flex items-center justify-end mb-2.5 md:mb-4">
                             <span class="px-3 py-1 bg-serene-900/[0.05] text-serene-800/70 rounded-full text-xs font-semibold">24/7 на связи</span>
@@ -657,7 +693,7 @@
                 </div>
 
                 <!-- Service 5: Воронка в Telegram -->
-                <div class="spotlight-card snap-start shrink-0 w-[82%] sm:w-[55%] md:w-auto md:shrink bg-gradient-to-br from-white to-accent-terracotta/[0.05] rounded-[2.5rem] p-5 md:p-8 border border-accent-terracotta/10 shadow-xl flex flex-col hover:shadow-2xl transition-all duration-300">
+                <div class="svc-card snap-start shrink-0 w-[82%] sm:w-[55%] md:w-auto md:shrink rounded-[2rem] p-5 md:p-8 flex flex-col transition-all duration-300">
                     <div class="flex-1">
                         <div class="flex items-center justify-end mb-2.5 md:mb-4">
                             <span class="px-3 py-1 bg-serene-900/[0.05] text-serene-800/70 rounded-full text-xs font-semibold">Автопрогрев</span>
@@ -684,7 +720,7 @@
                 </div>
 
                 <!-- Service 6: Мини-апп -->
-                <div class="spotlight-card snap-start shrink-0 w-[82%] sm:w-[55%] md:w-auto md:shrink bg-gradient-to-br from-white to-accent-terracotta/[0.05] rounded-[2.5rem] p-5 md:p-8 border border-accent-terracotta/10 shadow-xl flex flex-col hover:shadow-2xl transition-all duration-300">
+                <div class="svc-card snap-start shrink-0 w-[82%] sm:w-[55%] md:w-auto md:shrink rounded-[2rem] p-5 md:p-8 flex flex-col transition-all duration-300">
                     <div class="flex-1">
                         <div class="flex items-center justify-end mb-2.5 md:mb-4">
                             <span class="px-3 py-1 bg-serene-900/[0.05] text-serene-800/70 rounded-full text-xs font-semibold">Внутри Telegram</span>
@@ -711,7 +747,7 @@
                 </div>
 
                 <!-- Service 7: Чат-бот -->
-                <div class="spotlight-card snap-start shrink-0 w-[82%] sm:w-[55%] md:w-auto md:shrink bg-gradient-to-br from-white to-accent-terracotta/[0.05] rounded-[2.5rem] p-5 md:p-8 border border-accent-terracotta/10 shadow-xl flex flex-col hover:shadow-2xl transition-all duration-300">
+                <div class="svc-card snap-start shrink-0 w-[82%] sm:w-[55%] md:w-auto md:shrink rounded-[2rem] p-5 md:p-8 flex flex-col transition-all duration-300">
                     <div class="flex-1">
                         <div class="flex items-center justify-end mb-2.5 md:mb-4">
                             <span class="px-3 py-1 bg-serene-900/[0.05] text-serene-800/70 rounded-full text-xs font-semibold">Простой и быстрый</span>
@@ -1452,7 +1488,7 @@
         // На телефоне услуга — строка списка: нажатие в любом месте строки раскрывает подробности
         document.addEventListener('click', function(e) {
             if (window.innerWidth >= 768) return;
-            const card = e.target.closest('#services .services-scroll > .spotlight-card');
+            const card = e.target.closest('#services .services-scroll > .svc-card');
             if (!card || e.target.closest('a, button, .service-details')) return;
             const btn = card.querySelector('.service-toggle');
             if (btn) toggleServiceCard(btn);
@@ -1472,6 +1508,7 @@
                 cta.classList.toggle('inline-flex');
             }
             label.textContent = opening ? 'Свернуть' : 'Подробнее';
+            card.classList.toggle('is-open', opening);
             chevron.classList.toggle('rotate-180');
         }
 
