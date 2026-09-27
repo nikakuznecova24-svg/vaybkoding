@@ -91,6 +91,8 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #D4C5B3;
         }
+        /* Цифры одинаковой ширины — счётчик не дёргает строку */
+        .count-up { font-variant-numeric: tabular-nums; }
         /* Glassmorphism panel */
         .glass-panel {
             background: rgba(255, 255, 255, 0.45);
@@ -294,11 +296,11 @@
                     <p class="text-xs text-serene-800/70">проектов через ии</p>
                 </div>
                 <div class="text-center">
-                    <p class="count-up font-display text-2xl font-bold text-accent-terracotta" data-count-to="6" data-suffix=" лет">6 лет</p>
+                    <p class="count-up font-display text-2xl font-bold text-accent-terracotta" data-count-to="6" data-forms="год|года|лет">6 лет</p>
                     <p class="text-xs text-serene-800/70">опыта в продажах и маркетинге</p>
                 </div>
                 <div class="text-center">
-                    <p class="count-up font-display text-2xl font-bold text-accent-terracotta" data-count-to="5" data-suffix=" дней">5 дней</p>
+                    <p class="count-up font-display text-2xl font-bold text-accent-terracotta" data-count-to="5" data-forms="день|дня|дней">5 дней</p>
                     <p class="text-xs text-serene-800/70">средний срок разработки готового продукта</p>
                 </div>
             </div>
@@ -324,11 +326,11 @@
                         <p class="text-xs text-serene-800/70">проектов через ии</p>
                     </div>
                     <div>
-                        <p class="count-up font-display text-2xl font-bold text-accent-terracotta" data-count-to="6" data-suffix=" лет">6 лет</p>
+                        <p class="count-up font-display text-2xl font-bold text-accent-terracotta" data-count-to="6" data-forms="год|года|лет">6 лет</p>
                         <p class="text-xs text-serene-800/70">опыта в продажах и маркетинге</p>
                     </div>
                     <div>
-                        <p class="count-up font-display text-2xl font-bold text-accent-terracotta" data-count-to="5" data-suffix=" дней">5 дней</p>
+                        <p class="count-up font-display text-2xl font-bold text-accent-terracotta" data-count-to="5" data-forms="день|дня|дней">5 дней</p>
                         <p class="text-xs text-serene-800/70">средний срок разработки готового продукта</p>
                     </div>
                 </div>
@@ -1105,6 +1107,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             try { initScrollProgressBar(); } catch(e) { console.error('scroll progress init failed', e); }
             try { initTelegramLinks(); } catch(e) { console.error('telegram links init failed', e); }
+            try { initCountUp(); } catch(e) { console.error('count-up init failed', e); }
         });
 
         window.onload = function() {
@@ -1113,7 +1116,6 @@
             try { initSpotlightCards(); } catch(e) { console.error('spotlight cards init failed', e); }
             try { initTelegramLinks(); } catch(e) { console.error('telegram links init failed', e); }
             try { initRevealAnimations(); } catch(e) { console.error('reveal animations init failed', e); }
-            try { initCountUp(); } catch(e) { console.error('count-up init failed', e); }
             try { initQuizPrefill(); } catch(e) { console.error('quiz prefill init failed', e); }
             try { const y = document.getElementById('footerYear'); if (y) y.textContent = new Date().getFullYear(); } catch(e) {}
         };
@@ -1145,16 +1147,30 @@
         function initCountUp() {
             const items = document.querySelectorAll('.count-up');
             if (!items.length) return;
+            // Склонение: data-forms="год|года|лет" → 1 год, 2 года, 5 лет
+            const plural = (n, forms) => {
+                const n10 = n % 10, n100 = n % 100;
+                if (n10 === 1 && n100 !== 11) return forms[0];
+                if (n10 >= 2 && n10 <= 4 && (n100 < 10 || n100 >= 20)) return forms[1];
+                return forms[2];
+            };
+            const format = (el, n) => {
+                const forms = el.getAttribute('data-forms');
+                return forms ? n + ' ' + plural(n, forms.split('|')) : n + (el.getAttribute('data-suffix') || '');
+            };
+            const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             const animate = (el) => {
                 const target = parseInt(el.getAttribute('data-count-to'), 10) || 0;
-                const suffix = el.getAttribute('data-suffix') || '';
-                const duration = 900;
-                const start = performance.now();
+                if (reduceMotion) { el.textContent = format(el, target); return; }
+                const duration = 1200;
+                let start = null;
                 function tick(now) {
+                    // отсчёт времени с первого реально отрисованного кадра,
+                    // чтобы занятый при загрузке поток не «съедал» начало анимации
+                    if (start === null) start = now;
                     const progress = Math.min((now - start) / duration, 1);
-                    const eased = 1 - Math.pow(1 - progress, 3);
-                    const value = Math.round(target * eased);
-                    el.textContent = value + suffix;
+                    const eased = 1 - Math.pow(1 - progress, 2);
+                    el.textContent = format(el, Math.round(target * eased));
                     if (progress < 1) requestAnimationFrame(tick);
                 }
                 requestAnimationFrame(tick);
@@ -1163,6 +1179,7 @@
                 items.forEach(animate);
                 return;
             }
+            if (!reduceMotion) items.forEach(el => { el.textContent = format(el, 0); });
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
