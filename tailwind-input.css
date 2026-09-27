@@ -14,3 +14,13 @@
   --animate-kenburns: kenburns 24s ease-in-out infinite alternate;
   --animate-glow-pulse: glowPulse 3s ease-in-out infinite;
 }
+
+/* Единая система заголовков секций: надзаголовок + H2 */
+@layer components {
+  .eyebrow {
+    @apply font-display text-xs md:text-sm font-bold uppercase tracking-[0.18em] text-accent-terracotta mb-3;
+  }
+  .section-title {
+    @apply font-display text-3xl md:text-4xl font-bold text-serene-900 leading-tight tracking-tight;
+  }
+}
