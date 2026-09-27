@@ -237,6 +237,9 @@
         #hero .md\:hidden p.font-display { font-size: 1.7rem; font-weight: 400; }
         .count-up { font-size: 1.5rem; font-weight: 400; white-space: nowrap; }
         @media (min-width: 768px) { .count-up { font-size: 1.7rem; } }
+        /* Юнит («лет»/«дней») мельче и легче самой цифры — читается как подпись,
+           а не тянет карточку в ширину наравне с числом; остаётся в той же строке. */
+        .stat-unit { font-size: 0.5em; font-weight: 700; opacity: 0.82; margin-left: 0.05em; }
         #faq button span.font-display { font-weight: 400; line-height: 1.35; }
         .font-light { font-weight: 400; }
         /* «FAQ» — только заглавные, «Частые вопросы» — в основном строчные.
@@ -582,11 +585,11 @@
                     <p class="mt-2 text-sm leading-snug text-serene-800/80">проектов<br>с ИИ</p>
                 </div>
                 <div class="stat-card">
-                    <p class="count-up font-display text-2xl md:text-3xl font-bold text-accent-terracotta leading-none" data-count-to="6" data-forms="год|года|лет">6 лет</p>
+                    <p class="count-up font-display text-2xl md:text-3xl font-bold text-accent-terracotta leading-none" data-count-to="6" data-forms="год|года|лет">6 <span class="stat-unit">лет</span></p>
                     <p class="mt-2 text-sm leading-snug text-serene-800/80">в продажах<br>и маркетинге</p>
                 </div>
                 <div class="stat-card">
-                    <p class="count-up font-display text-2xl md:text-3xl font-bold text-accent-terracotta leading-none" data-count-to="5" data-forms="день|дня|дней">5 дней</p>
+                    <p class="count-up font-display text-2xl md:text-3xl font-bold text-accent-terracotta leading-none" data-count-to="5" data-forms="день|дня|дней">5 <span class="stat-unit">дней</span></p>
                     <p class="mt-2 text-sm leading-snug text-serene-800/80">средний срок<br>запуска</p>
                 </div>
             </div>
@@ -612,11 +615,11 @@
                         <p class="mt-2 text-sm leading-snug text-serene-800/80">проектов<br>с ИИ</p>
                     </div>
                     <div class="stat-card">
-                        <p class="count-up font-display text-2xl md:text-3xl font-bold text-accent-terracotta leading-none" data-count-to="6" data-forms="год|года|лет">6 лет</p>
+                        <p class="count-up font-display text-2xl md:text-3xl font-bold text-accent-terracotta leading-none" data-count-to="6" data-forms="год|года|лет">6 <span class="stat-unit">лет</span></p>
                         <p class="mt-2 text-sm leading-snug text-serene-800/80">в продажах<br>и маркетинге</p>
                     </div>
                     <div class="stat-card">
-                        <p class="count-up font-display text-2xl md:text-3xl font-bold text-accent-terracotta leading-none" data-count-to="5" data-forms="день|дня|дней">5 дней</p>
+                        <p class="count-up font-display text-2xl md:text-3xl font-bold text-accent-terracotta leading-none" data-count-to="5" data-forms="день|дня|дней">5 <span class="stat-unit">дней</span></p>
                         <p class="mt-2 text-sm leading-snug text-serene-800/80">средний срок<br>запуска</p>
                     </div>
                 </div>
@@ -1542,12 +1545,12 @@
             };
             const format = (el, n) => {
                 const forms = el.getAttribute('data-forms');
-                return forms ? n + ' ' + plural(n, forms.split('|')) : n + (el.getAttribute('data-suffix') || '');
+                return forms ? n + ' <span class="stat-unit">' + plural(n, forms.split('|')) + '</span>' : n + (el.getAttribute('data-suffix') || '');
             };
             const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             const animate = (el) => {
                 const target = parseInt(el.getAttribute('data-count-to'), 10) || 0;
-                if (reduceMotion) { el.textContent = format(el, target); return; }
+                if (reduceMotion) { el.innerHTML = format(el, target); return; }
                 const duration = 1200;
                 let start = null;
                 function tick(now) {
@@ -1556,7 +1559,7 @@
                     if (start === null) start = now;
                     const progress = Math.min((now - start) / duration, 1);
                     const eased = 1 - Math.pow(1 - progress, 2);
-                    el.textContent = format(el, Math.round(target * eased));
+                    el.innerHTML = format(el, Math.round(target * eased));
                     if (progress < 1) requestAnimationFrame(tick);
                 }
                 requestAnimationFrame(tick);
