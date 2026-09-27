@@ -24,7 +24,7 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=95">
+    <link rel="stylesheet" href="assets/styles.css?v=96">
 
     <!-- Google Fonts: Manrope & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1118,6 +1118,44 @@
 
         <div class="absolute -bottom-16 left-1/4 w-56 h-56 bg-accent-gold/10 rounded-full blur-[100px] pointer-events-none"></div>
     </section>
+
+    <!-- SECTION: Footer -->
+    <footer class="relative z-10 px-4 pt-14 pb-8 mt-8 border-t border-serene-900/10">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid gap-10 md:grid-cols-3">
+                <div>
+                    <p class="font-display text-xl font-bold text-serene-900">Ника Кузнецова</p>
+                    <p class="mt-2 text-sm leading-relaxed text-serene-800/80">Сайты, сервисы и ИИ-агенты для экспертов и предпринимателей</p>
+                    <a href="#audit" class="mt-5 inline-flex items-center rounded-full bg-gradient-to-r from-accent-terracotta to-accent-sunset text-white font-bold text-sm px-5 py-2.5 shadow-md hover:shadow-lg active:scale-95 transition-transform">Бесплатный аудит</a>
+                </div>
+
+                <nav aria-label="Разделы сайта">
+                    <p class="eyebrow">Разделы</p>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="#services" class="text-serene-800 hover:text-accent-terracotta transition-colors">Услуги</a></li>
+                        <li><a href="/portfolio/" class="text-serene-800 hover:text-accent-terracotta transition-colors">Кейсы</a></li>
+                        <li><a href="#audit" class="text-serene-800 hover:text-accent-terracotta transition-colors">Бесплатный аудит</a></li>
+                    </ul>
+                </nav>
+
+                <div>
+                    <p class="eyebrow">Контакты</p>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="https://t.me/nikakuznecovaa" target="_blank" rel="noopener" class="text-serene-800 hover:text-accent-terracotta transition-colors">Telegram: @nikakuznecovaa</a></li>
+                        <li><a href="mailto:nika.kuz.99@mail.ru" class="text-serene-800 hover:text-accent-terracotta transition-colors">nika.kuz.99@mail.ru</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-12 pt-6 border-t border-serene-900/10 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-xs text-serene-800/70 leading-relaxed">
+                <p>
+                    © <span id="footerYear">2026</span> Кузнецова Вероника Алексеевна · самозанятая, Санкт-Петербург
+                    <!-- ИНН: добавить после « · самозанятая, Санкт-Петербург» как « · ИНН 000000000000» -->
+                </p>
+                <a href="privacy.html" class="underline underline-offset-4 hover:text-accent-terracotta transition-colors">Политика конфиденциальности</a>
+            </div>
+        </div>
+    </footer>
 
 
 <!-- Custom Application Logic -->
