@@ -28,7 +28,7 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=99">
+    <link rel="stylesheet" href="assets/styles.css?v=100">
 
     <!-- Шрифты хранятся на сайте: assets/fonts -->
     <link rel="preload" href="assets/fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
@@ -341,29 +341,25 @@
     <!-- Hero -->
     <section id="hero" class="relative px-4 pt-8 sm:pt-12 pb-16">
 
-        <!-- Mobile: photo card + offer and CTA below -->
+        <!-- Mobile: photo card with text overlay -->
         <div class="md:hidden max-w-3xl mx-auto relative">
-            <div class="reveal-up relative z-10 rounded-[2rem] overflow-hidden shadow-xl">
-                <img src="assets/nika-hero.jpg" alt="Ника Кузнецова" class="w-full aspect-[5/4] object-cover object-[50%_30%]">
-                <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/55 to-transparent pointer-events-none"></div>
-                <div class="absolute top-4 left-4 inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-white/95 shadow-md text-sm font-semibold text-serene-900">
-                    <span class="w-2 h-2 rounded-full bg-accent-terracotta"></span>
-                    ✨ Продукты за несколько дней
+            <div class="reveal-up relative z-10 rounded-[2.5rem] overflow-hidden shadow-xl">
+                <img src="assets/nika-hero.jpg" alt="Ника Кузнецова" class="w-full aspect-[3/4] object-cover object-top">
+                <div class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/70 via-black/25 to-transparent pointer-events-none"></div>
+                <div class="absolute top-5 left-5 inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-panel border border-white/80 shadow-sm text-xs text-serene-800">
+                    <span class="w-2 h-2 rounded-full bg-accent-sage animate-ping"></span>
+                    <span class="font-medium">✨ Продукты за несколько дней с помощью ИИ</span>
                 </div>
-                <p class="absolute left-5 bottom-4 text-white text-base font-semibold">Ника Кузнецова</p>
+                <div class="absolute inset-x-0 bottom-0 p-6">
+                    <!-- Заголовок первого уровня на странице один — в десктопном блоке ниже; здесь имя абзацем с тем же видом -->
+                    <p class="font-display text-2xl sm:text-4xl font-bold text-white leading-[1.15] tracking-tight mb-3">
+                        Ника Кузнецова
+                    </p>
+                    <p class="text-white/90 text-sm sm:text-lg max-w-xl">
+                        Создаю ИИ-решения, которые помогают бизнесу продавать. Веб-сервисы, агенты и сайты для экспертов и предпринимателей — готовый продукт за несколько дней.
+                    </p>
+                </div>
             </div>
-
-            <!-- Заголовок первого уровня на странице один — в десктопном блоке ниже; здесь тот же текст абзацем -->
-            <p class="font-display text-[1.75rem] font-bold text-serene-900 leading-[1.15] tracking-tight mt-6 mb-3">
-                Создаю ИИ-решения, которые помогают бизнесу продавать
-            </p>
-            <p class="text-serene-800/80 text-base leading-relaxed mb-5">
-                Сайты, сервисы и ИИ-агенты для экспертов и предпринимателей — готовый продукт за несколько дней.
-            </p>
-            <a href="#audit" class="flex items-center justify-center gap-2 w-full rounded-full bg-gradient-to-r from-accent-terracotta to-accent-sunset text-white font-bold text-base py-4 shadow-lg active:scale-95 transition-transform">
-                Получить бесплатный аудит
-                <svg class="w-4 h-4 shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </a>
 
             <div class="grid grid-cols-3 gap-3 mt-8 text-center">
                 <div>
