@@ -1046,7 +1046,7 @@
                     </p>
 
                     <!-- Interactive Configurator Form -->
-                    <div class="spotlight-card bg-serene-50/75 p-6 rounded-2xl border border-serene-200/50 mb-8 text-left space-y-4 relative">
+                    <div id="briefCard" class="bg-serene-50/75 p-6 rounded-2xl border border-serene-200/50 mb-8 text-left space-y-4 relative">
                         <div class="absolute top-0 left-0 w-full h-1 rounded-t-2xl bg-gradient-to-r from-accent-terracotta via-accent-sunset to-accent-gold"></div>
                         <p class="text-sm font-semibold text-serene-900 mb-2">Экспресс-бриф:</p>
                         <div>
@@ -1356,7 +1356,7 @@
             if (target) {
                 target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 if (id === 'audit') {
-                    const formCard = target.querySelector('.spotlight-card');
+                    const formCard = document.getElementById('briefCard');
                     if (formCard) {
                         setTimeout(function(){
                             formCard.classList.add('ring-4', 'ring-accent-terracotta/40');
