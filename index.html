@@ -28,7 +28,7 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=119">
+    <link rel="stylesheet" href="assets/styles.css?v=120">
 
     <!-- Шрифты хранятся на сайте: assets/fonts -->
     <link rel="preload" href="assets/fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
@@ -243,36 +243,25 @@
            По базовой линии они совпадают, но заглавные визуально «висят» выше;
            оптически опускаем «FAQ» на ~половину разницы высоты заглавных и строчных. */
         .faq-optical { position: relative; top: 0.05em; }
-        /* Приглашение в квиз: светлая карточка с градиентной рамкой */
-        .quiz-band {
-            position: relative; overflow: hidden; color: #22211F;
-            border-radius: 2rem; padding: 2.5rem 1.5rem; border: 2px solid transparent;
-            background: linear-gradient(#FFFBF8, #FFFBF8) padding-box, linear-gradient(135deg, #E07A5F, #F4A261) border-box;
-            box-shadow: 0 24px 48px -28px rgba(224,122,95,0.6);
+        /* Приглашение в квиз: тонкая полоса под «Комплексом» */
+        .quiz-strip {
+            max-width: 48rem; margin: 0 auto; display: flex; align-items: center; gap: 0.875rem;
+            padding: 0.875rem 1.25rem 0.875rem 0.875rem; border-radius: 9999px; background: #fff;
+            border: 1.5px dashed rgba(224,122,95,0.45); color: #22211F; transition: border-color .2s ease, transform .2s ease;
         }
-        .quiz-band::before { content: ''; position: absolute; right: -60px; top: -60px; width: 220px; height: 220px; border-radius: 50%; background: rgba(244,162,97,0.12); pointer-events: none; }
-        .quiz-band-ic {
-            display: inline-flex; align-items: center; justify-content: center;
-            width: 4rem; height: 4rem; border-radius: 1.25rem; font-size: 2rem; line-height: 1;
-            background: linear-gradient(145deg, #FDF1EC, #FBE3D8); margin-bottom: 1rem;
+        .quiz-strip:hover { border-style: solid; border-color: #E07A5F; transform: translateY(-2px); }
+        .quiz-strip-ic { width: 2.5rem; height: 2.5rem; border-radius: 0.75rem; background: linear-gradient(145deg, #FDF1EC, #FBE3D8); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; flex-shrink: 0; }
+        .quiz-strip-txt { display: flex; flex-direction: column; min-width: 0; }
+        .quiz-strip-title { font-size: 1rem; line-height: 1.25; }
+        .quiz-strip-sub { font-size: 0.875rem; color: #6b655e; margin-top: 0.125rem; }
+        .quiz-strip-go { margin-left: auto; display: inline-flex; align-items: center; gap: 0.375rem; color: #E07A5F; font-weight: 700; font-size: 0.9375rem; white-space: nowrap; }
+        @media (max-width: 767px) {
+            .quiz-strip { border-radius: 1.375rem; flex-wrap: wrap; align-items: flex-start; }
+            .quiz-strip-go { margin-left: 3.375rem; }
         }
-        .quiz-band-title { font-size: 1.5rem; line-height: 1.15; color: #22211F; margin-bottom: 0.625rem; }
-        .quiz-band-sub { font-size: 0.9375rem; line-height: 1.5; color: #6b655e; margin: 0 auto 1.5rem; max-width: 26rem; }
-        @media (min-width: 768px) { .quiz-band-sub { max-width: 34rem; } }
-        .quiz-band-btn {
-            position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
-            border-radius: 9999px; padding: 0.9375rem 1.75rem; width: 100%; max-width: 22rem;
-            background: linear-gradient(90deg, #E07A5F, #F4A261); color: #fff; font-weight: 700; font-size: 0.9375rem;
-            box-shadow: 0 10px 24px -8px rgba(224,122,95,0.6); transition: transform .2s ease;
-        }
-        .quiz-band-btn:hover { transform: translateY(-2px); }
-        .quiz-band-btn:active { transform: scale(0.97); }
-        .quiz-band-note { font-size: 0.8125rem; color: rgba(61,58,54,0.65); margin-top: 0.75rem; }
-        @media (min-width: 768px) {
-            .quiz-band { padding: 3rem 2rem; }
-            .quiz-band-title { font-size: 2rem; }
-            .quiz-band-btn { width: auto; }
-        }
+        /* «Обо мне» на персиковой полосе во всю ширину — новая «глава» страницы */
+        #about.about-band { background: linear-gradient(180deg, #F6E7DC, #FBF1EA); padding-top: 4.5rem; padding-bottom: 4.5rem; }
+        #about.about-band .about-letter { box-shadow: 0 20px 44px -30px rgba(34,33,31,0.25); }
         /* Обо мне: личное письмо */
         .about-letter { background: #fff; border-radius: 2rem; padding: 1.75rem 1.5rem; box-shadow: 0 30px 60px -30px rgba(34,33,31,0.25); }
         .about-head { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
@@ -1035,15 +1024,14 @@
         </div>
     </section>
 
-    <!-- Приглашение в квиз -->
+    <!-- Приглашение в квиз: тонкая полоса -->
     <div class="px-4 pb-10 -mt-4 relative z-10">
-        <div class="quiz-band max-w-3xl mx-auto text-center">
-            <span class="quiz-band-ic" aria-hidden="true">⚡️</span>
-            <h2 class="quiz-band-title font-display">Не знаете, что выбрать?</h2>
-            <p class="quiz-band-sub">3 вопроса — и я подскажу, какое решение закроет вашу задачу</p>
-            <a href="quiz.html" class="quiz-band-btn">Пройти тест <svg class="w-[18px] h-[18px] shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-            <p class="quiz-band-note">Бесплатно, без регистрации</p>
-        </div>
+        <a href="quiz.html" class="quiz-strip">
+            <span class="quiz-strip-ic" aria-hidden="true">⚡️</span>
+            <span class="quiz-strip-txt"><span class="quiz-strip-title font-display">Не знаете, что выбрать?</span><span class="quiz-strip-sub">3 вопроса — и я подскажу решение</span></span>
+            <span class="quiz-strip-go">Пройти тест <svg class="w-[18px] h-[18px] shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </a>
+    </div>
     </div>
 
     <div class="flex items-center justify-center gap-3 py-1 relative z-10">
@@ -1053,7 +1041,7 @@
     </div>
 
     <!-- SECTION: About / Trust -->
-    <section id="about" class="py-16 relative z-10 px-4">
+    <section id="about" class="about-band relative z-10 px-4">
         <div class="reveal-up about-letter max-w-3xl mx-auto">
             <p class="eyebrow">Обо мне</p>
             <div class="about-head">
