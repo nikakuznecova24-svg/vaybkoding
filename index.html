@@ -28,7 +28,7 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=114">
+    <link rel="stylesheet" href="assets/styles.css?v=115">
 
     <!-- Шрифты хранятся на сайте: assets/fonts -->
     <link rel="preload" href="assets/fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
@@ -236,31 +236,31 @@
            По базовой линии они совпадают, но заглавные визуально «висят» выше;
            оптически опускаем «FAQ» на ~половину разницы высоты заглавных и строчных. */
         .faq-optical { position: relative; top: 0.05em; }
-        /* Приглашение в квиз: градиентная карточка */
+        /* Приглашение в квиз: светлая карточка с градиентной рамкой */
         .quiz-band {
-            position: relative; overflow: hidden; color: #fff;
-            border-radius: 2rem; padding: 2.5rem 1.5rem;
-            background: linear-gradient(135deg, #E07A5F, #F4A261);
-            box-shadow: 0 24px 48px -24px rgba(224,122,95,0.8);
+            position: relative; overflow: hidden; color: #22211F;
+            border-radius: 2rem; padding: 2.5rem 1.5rem; border: 2px solid transparent;
+            background: linear-gradient(#FFFBF8, #FFFBF8) padding-box, linear-gradient(135deg, #E07A5F, #F4A261) border-box;
+            box-shadow: 0 24px 48px -28px rgba(224,122,95,0.6);
         }
-        .quiz-band::before { content: ''; position: absolute; right: -60px; top: -60px; width: 220px; height: 220px; border-radius: 50%; background: rgba(255,255,255,0.12); pointer-events: none; }
+        .quiz-band::before { content: ''; position: absolute; right: -60px; top: -60px; width: 220px; height: 220px; border-radius: 50%; background: rgba(244,162,97,0.12); pointer-events: none; }
         .quiz-band-ic {
             display: inline-flex; align-items: center; justify-content: center;
             width: 4rem; height: 4rem; border-radius: 1.25rem; font-size: 2rem; line-height: 1;
-            background: #FAF3EA; box-shadow: 0 10px 24px -12px rgba(0,0,0,0.25); margin-bottom: 1rem;
+            background: linear-gradient(145deg, #FDF1EC, #FBE3D8); margin-bottom: 1rem;
         }
-        .quiz-band-title { font-size: 1.5rem; line-height: 1.15; color: #fff; margin-bottom: 0.625rem; }
-        .quiz-band-sub { font-size: 0.9375rem; line-height: 1.5; opacity: 0.92; margin: 0 auto 1.5rem; max-width: 26rem; }
+        .quiz-band-title { font-size: 1.5rem; line-height: 1.15; color: #22211F; margin-bottom: 0.625rem; }
+        .quiz-band-sub { font-size: 0.9375rem; line-height: 1.5; color: #6b655e; margin: 0 auto 1.5rem; max-width: 26rem; }
         @media (min-width: 768px) { .quiz-band-sub { max-width: 34rem; } }
         .quiz-band-btn {
             position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
             border-radius: 9999px; padding: 0.9375rem 1.75rem; width: 100%; max-width: 22rem;
-            background: #fff; color: #E07A5F; font-weight: 700; font-size: 0.9375rem;
-            box-shadow: 0 10px 24px -10px rgba(0,0,0,0.25); transition: transform .2s ease;
+            background: linear-gradient(90deg, #E07A5F, #F4A261); color: #fff; font-weight: 700; font-size: 0.9375rem;
+            box-shadow: 0 10px 24px -8px rgba(224,122,95,0.6); transition: transform .2s ease;
         }
         .quiz-band-btn:hover { transform: translateY(-2px); }
         .quiz-band-btn:active { transform: scale(0.97); }
-        .quiz-band-note { font-size: 0.8125rem; color: rgba(255,255,255,0.85); margin-top: 0.75rem; }
+        .quiz-band-note { font-size: 0.8125rem; color: rgba(61,58,54,0.65); margin-top: 0.75rem; }
         @media (min-width: 768px) {
             .quiz-band { padding: 3rem 2rem; }
             .quiz-band-title { font-size: 2rem; }
