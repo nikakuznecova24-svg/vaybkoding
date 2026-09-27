@@ -24,7 +24,7 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=94">
+    <link rel="stylesheet" href="assets/styles.css?v=95">
 
     <!-- Google Fonts: Manrope & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -91,6 +91,25 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #D4C5B3;
         }
+        /* Тёплая цветокоррекция фото в hero: серый студийный фон уходит в бежевый */
+        .hero-photo { filter: sepia(0.28) saturate(1.15) brightness(1.03) contrast(0.98); }
+        .hero-photo-wrap::after {
+            content: ''; position: absolute; inset: 0; pointer-events: none;
+            background: linear-gradient(160deg, rgba(244,162,97,0.22), rgba(224,122,95,0.12) 60%, rgba(250,248,245,0));
+            mix-blend-mode: soft-light;
+        }
+        /* Стилизованный чекбокс согласия */
+        .consent-check {
+            appearance: none; -webkit-appearance: none;
+            width: 1.125rem; height: 1.125rem; flex-shrink: 0; margin-top: 0.05rem;
+            border: 1.5px solid #d6c7b8; border-radius: 0.375rem; background: #fff;
+            cursor: pointer; transition: background-color .15s, border-color .15s;
+        }
+        .consent-check:checked {
+            background: #E07A5F url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.5 8.5l3 3 6-7'/%3E%3C/svg%3E") center/80% no-repeat;
+            border-color: #E07A5F;
+        }
+        .consent-check:focus-visible { outline: 2px solid #F4A261; outline-offset: 2px; }
         /* Цифры одинаковой ширины — счётчик не дёргает строку */
         .count-up { font-variant-numeric: tabular-nums; }
         /* Glassmorphism panel */
@@ -271,24 +290,28 @@
     <!-- Hero -->
     <section id="hero" class="relative px-4 pt-8 sm:pt-12 pb-16">
 
-        <!-- Mobile: photo card with text overlay -->
+        <!-- Mobile: photo card + offer and CTA below -->
         <div class="md:hidden max-w-3xl mx-auto relative">
-            <div class="reveal-up relative z-10 rounded-[2.5rem] overflow-hidden shadow-xl">
-                <img src="assets/nika-hero.jpg" alt="Ника Кузнецова" class="w-full aspect-[3/4] object-cover object-top">
-                <div class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/70 via-black/25 to-transparent pointer-events-none"></div>
-                <div class="absolute top-5 left-5 inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-panel border border-white/80 shadow-sm text-xs text-serene-800">
-                    <span class="w-2 h-2 rounded-full bg-accent-sage animate-ping"></span>
-                    <span class="font-medium">✨ Продукты за несколько дней с помощью ИИ</span>
+            <div class="reveal-up relative z-10 rounded-[2rem] overflow-hidden shadow-xl hero-photo-wrap">
+                <img src="assets/nika-hero.jpg" alt="Ника Кузнецова" class="hero-photo w-full aspect-[5/4] object-cover object-[50%_30%]">
+                <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/55 to-transparent pointer-events-none"></div>
+                <div class="absolute top-4 left-4 inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-white/95 shadow-md text-sm font-semibold text-serene-900">
+                    <span class="w-2 h-2 rounded-full bg-accent-terracotta"></span>
+                    Продукты за несколько дней
                 </div>
-                <div class="absolute inset-x-0 bottom-0 p-6">
-                    <h1 class="font-display text-2xl sm:text-4xl font-bold text-white leading-[1.15] tracking-tight mb-3">
-                        Ника Кузнецова
-                    </h1>
-                    <p class="text-white/90 text-sm sm:text-lg max-w-xl">
-                        Создаю ИИ-решения, которые помогают бизнесу продавать. Веб-сервисы, агенты и сайты для экспертов и предпринимателей — готовый продукт за несколько дней.
-                    </p>
-                </div>
+                <p class="absolute left-5 bottom-4 text-white text-base font-semibold">Ника Кузнецова</p>
             </div>
+
+            <h1 class="font-display text-[1.75rem] font-bold text-serene-900 leading-[1.15] tracking-tight mt-6 mb-3">
+                Создаю ИИ-решения, которые помогают бизнесу продавать
+            </h1>
+            <p class="text-serene-800/80 text-base leading-relaxed mb-5">
+                Сайты, сервисы и ИИ-агенты для экспертов и предпринимателей — готовый продукт за несколько дней.
+            </p>
+            <a href="#audit" class="flex items-center justify-center gap-2 w-full rounded-full bg-gradient-to-r from-accent-terracotta to-accent-sunset text-white font-bold text-base py-4 shadow-lg active:scale-95 transition-transform">
+                Получить бесплатный аудит
+                <i data-lucide="arrow-right" class="w-4 h-4 shrink-0"></i>
+            </a>
 
             <div class="grid grid-cols-3 gap-3 mt-8 text-center">
                 <div>
@@ -335,11 +358,11 @@
                     </div>
                 </div>
             </div>
-            <div class="relative rounded-[2.5rem] overflow-hidden shadow-xl border border-white">
-                <img src="assets/nika-hero.jpg" alt="Ника Кузнецова" class="w-full aspect-[4/5] object-cover object-top">
-                <div class="absolute top-6 left-6 inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-panel border border-white/80 shadow-sm text-xs text-serene-800">
-                    <span class="w-2 h-2 rounded-full bg-accent-sage animate-ping"></span>
-                    <span class="font-medium">✨ Продукты за несколько дней с помощью ИИ</span>
+            <div class="relative rounded-[2.5rem] overflow-hidden shadow-xl border border-white hero-photo-wrap">
+                <img src="assets/nika-hero.jpg" alt="Ника Кузнецова" class="hero-photo w-full aspect-[4/5] object-cover object-top">
+                <div class="absolute top-6 left-6 inline-flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-white/95 shadow-md text-sm font-semibold text-serene-900">
+                    <span class="w-2 h-2 rounded-full bg-accent-terracotta"></span>
+                    Продукты за несколько дней с помощью ИИ
                 </div>
             </div>
         </div>
@@ -764,7 +787,7 @@
                 <div class="pt-3 md:pt-4 border-t border-serene-200/50">
                     <div class="text-center mb-3 md:mb-4">
                         <p id="calcSumLine" class="text-serene-800/70 text-xs"></p>
-                        <p class="font-display text-xl sm:text-2xl md:text-3xl font-bold text-accent-terracotta">От <span id="calcTotal">0 ₽</span></p>
+                        <p id="calcTotal" class="font-display text-base md:text-lg font-semibold text-serene-800/70">Выберите элементы комплекса</p>
                         <p id="calcSaveLine" class="text-xs text-accent-sage font-semibold mt-1"></p>
                     </div>
                     <p id="calcPathLine" class="hidden text-xs md:text-sm text-serene-800 leading-relaxed text-left bg-white/60 rounded-2xl px-3 py-2.5 md:px-4 md:py-3 mb-3 md:mb-4"></p>
@@ -898,7 +921,6 @@
                 <!-- FAQ 1 -->
                 <div id="faqItem1">
                     <button onclick="toggleFaq(1)" class="w-full text-left py-5 flex items-center gap-4 focus:outline-none group">
-                        <span class="text-accent-terracotta text-base shrink-0">✦</span>
                         <span class="flex-1 font-display text-sm sm:text-base font-semibold text-serene-900">Сколько времени занимает создание ИИ-решения или сайта?</span>
                         <div id="faqIcon1" class="w-8 h-8 rounded-full bg-accent-terracotta flex items-center justify-center shrink-0 shadow-md transition-transform duration-300">
                             <i data-lucide="plus" class="w-4 h-4 text-white"></i>
@@ -914,7 +936,6 @@
                 <!-- FAQ 2 -->
                 <div id="faqItem2">
                     <button onclick="toggleFaq(2)" class="w-full text-left py-5 flex items-center gap-4 focus:outline-none group">
-                        <span class="text-accent-terracotta text-base shrink-0">✦</span>
                         <span class="flex-1 font-display text-sm sm:text-base font-semibold text-serene-900">Нужны ли технические навыки для управления готовым решением?</span>
                         <div id="faqIcon2" class="w-8 h-8 rounded-full bg-accent-terracotta flex items-center justify-center shrink-0 shadow-md transition-transform duration-300">
                             <i data-lucide="plus" class="w-4 h-4 text-white"></i>
@@ -930,7 +951,6 @@
                 <!-- FAQ 3 -->
                 <div id="faqItem3">
                     <button onclick="toggleFaq(3)" class="w-full text-left py-5 flex items-center gap-4 focus:outline-none group">
-                        <span class="text-accent-terracotta text-base shrink-0">✦</span>
                         <span class="flex-1 font-display text-sm sm:text-base font-semibold text-serene-900">Действительно ли это окупается и приносит прибыль?</span>
                         <div id="faqIcon3" class="w-8 h-8 rounded-full bg-accent-terracotta flex items-center justify-center shrink-0 shadow-md transition-transform duration-300">
                             <i data-lucide="plus" class="w-4 h-4 text-white"></i>
@@ -946,7 +966,6 @@
                 <!-- FAQ 4 -->
                 <div id="faqItem4">
                     <button onclick="toggleFaq(4)" class="w-full text-left py-5 flex items-center gap-4 focus:outline-none group">
-                        <span class="text-accent-terracotta text-base shrink-0">✦</span>
                         <span class="flex-1 font-display text-sm sm:text-base font-semibold text-serene-900">Сколько правок включено и что если результат не понравится?</span>
                         <div id="faqIcon4" class="w-8 h-8 rounded-full bg-accent-terracotta flex items-center justify-center shrink-0 shadow-md transition-transform duration-300">
                             <i data-lucide="plus" class="w-4 h-4 text-white"></i>
@@ -962,7 +981,6 @@
                 <!-- FAQ 5 -->
                 <div id="faqItem5">
                     <button onclick="toggleFaq(5)" class="w-full text-left py-5 flex items-center gap-4 focus:outline-none group">
-                        <span class="text-accent-terracotta text-base shrink-0">✦</span>
                         <span class="flex-1 font-display text-sm sm:text-base font-semibold text-serene-900">Что происходит после того, как сайт или сервис готов?</span>
                         <div id="faqIcon5" class="w-8 h-8 rounded-full bg-accent-terracotta flex items-center justify-center shrink-0 shadow-md transition-transform duration-300">
                             <i data-lucide="plus" class="w-4 h-4 text-white"></i>
@@ -978,7 +996,6 @@
                 <!-- FAQ 6 -->
                 <div id="faqItem6">
                     <button onclick="toggleFaq(6)" class="w-full text-left py-5 flex items-center gap-4 focus:outline-none group">
-                        <span class="text-accent-terracotta text-base shrink-0">✦</span>
                         <span class="flex-1 font-display text-sm sm:text-base font-semibold text-serene-900">Почему вайбкодинг, а не классическая веб-студия?</span>
                         <div id="faqIcon6" class="w-8 h-8 rounded-full bg-accent-terracotta flex items-center justify-center shrink-0 shadow-md transition-transform duration-300">
                             <i data-lucide="plus" class="w-4 h-4 text-white"></i>
@@ -1081,8 +1098,8 @@
                             <textarea id="briefQuestion" rows="3" placeholder="если есть что добавить" class="w-full text-base md:text-sm px-4 py-3 bg-white rounded-xl focus:ring-1 focus:ring-accent-sunset border border-serene-200 focus:outline-none resize-none"></textarea>
                         </div>
 
-                        <label class="flex items-start gap-2 cursor-pointer">
-                            <input id="briefConsent" type="checkbox" class="mt-0.5 w-4 h-4 shrink-0 accent-accent-terracotta">
+                        <label class="flex items-start gap-2.5 cursor-pointer">
+                            <input id="briefConsent" type="checkbox" class="consent-check">
                             <span class="text-xs text-serene-800/80 leading-relaxed">Согласен(-на) на обработку персональных данных согласно <a href="privacy.html" target="_blank" class="underline hover:text-accent-terracotta">политике конфиденциальности</a> <span class="text-accent-terracotta">*</span></span>
                         </label>
 
@@ -1093,15 +1110,13 @@
                         </div>
                     </div>
 
-                    <!-- Main Telegram Action -->
-                    <div class="flex flex-col items-center gap-4">
-                        <a id="telegramBtn" href="#" target="_blank" class="group relative px-10 py-4 w-full sm:w-auto bg-serene-900 text-white font-medium rounded-full shadow-lg hover:bg-serene-800 transition-all duration-300 flex items-center justify-center gap-3">
-                            <span class="absolute top-0 left-0 w-full h-full rounded-full bg-serene-900/10 animate-ping opacity-75"></span>
-                            <i data-lucide="send" class="w-5 h-5 text-accent-sunset shrink-0"></i>
-                            <span class="">Написать в телеграм</span>
+                    <!-- Secondary: direct Telegram link -->
+                    <p class="text-sm text-serene-800/80">
+                        Удобнее сразу в мессенджере?
+                        <a id="telegramBtn" href="https://t.me/nikakuznecovaa" target="_blank" rel="noopener" class="inline-flex items-center gap-1 font-semibold text-accent-terracotta underline underline-offset-4 decoration-accent-terracotta/40 hover:decoration-accent-terracotta">
+                            Написать в Telegram<i data-lucide="arrow-up-right" class="w-4 h-4 shrink-0"></i>
                         </a>
-                        <p class="text-xs text-serene-800/70">Откроется диалог, где вы сможете задать вопрос</p>
-                    </div>
+                    </p>
 
                 </div>
 
@@ -1440,9 +1455,13 @@
             const totalEl = document.getElementById('calcTotal');
             const saveLine = document.getElementById('calcSaveLine');
             const pathLine = document.getElementById('calcPathLine');
-            sumLine.textContent = count > 1 ? sum.toLocaleString('ru-RU') + ' ₽' : (count === 1 ? 'выбрано: 1 услуга' : 'выбери, что нужно');
+            sumLine.textContent = count > 1 ? sum.toLocaleString('ru-RU') + ' ₽' : (count === 1 ? 'выбрано: 1 услуга' : '');
             sumLine.classList.toggle('line-through', count > 1);
-            totalEl.textContent = total.toLocaleString('ru-RU') + ' ₽';
+            // пока ничего не выбрано — подсказка вместо «От 0 ₽»
+            totalEl.textContent = count ? 'От ' + total.toLocaleString('ru-RU') + ' ₽' : 'Выберите элементы комплекса';
+            totalEl.className = count
+                ? 'font-display text-xl sm:text-2xl md:text-3xl font-bold text-accent-terracotta'
+                : 'font-display text-base md:text-lg font-semibold text-serene-800/70';
             const save = sum - total;
             saveLine.textContent = save > 0 ? 'экономия ' + save.toLocaleString('ru-RU') + ' ₽' : '';
             if (pathLine) {
