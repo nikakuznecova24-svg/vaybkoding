@@ -19,7 +19,7 @@
 /* Единая система заголовков секций: надзаголовок + H2 */
 @layer components {
   .eyebrow {
-    @apply font-sans text-xs md:text-sm font-semibold uppercase tracking-[0.18em] text-accent-terracotta mb-3;
+    @apply font-sans text-xs md:text-sm font-semibold uppercase tracking-normal text-accent-terracotta mb-3;
   }
   .section-title {
     @apply font-display text-[1.75rem] md:text-[2.5rem] font-normal text-serene-900 leading-[1.12] tracking-[-0.01em];
