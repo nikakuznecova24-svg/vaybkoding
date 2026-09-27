@@ -10,11 +10,15 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://nikakuznecovaa.ru/">
     <meta property="og:site_name" content="Ника Кузнецова — вайбкодинг">
-    <meta property="og:image" content="https://nikakuznecovaa.ru/assets/nika-hero.jpg">
+    <meta property="og:image" content="https://nikakuznecovaa.ru/assets/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Ника Кузнецова — ИИ-решения, которые помогают бизнесу продавать">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://nikakuznecovaa.ru/assets/nika-hero.jpg">
+    <meta name="twitter:image" content="https://nikakuznecovaa.ru/assets/og-image.jpg">
 
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23E07A5F'/%3E%3Cstop offset='1' stop-color='%23F4A261'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' font-weight='700' fill='white' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
     <!-- ================================================================= -->
     <!-- НАСТРОЙКА ФОНА И КОНТАКТОВ                                        -->
@@ -24,12 +28,12 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=96">
+    <link rel="stylesheet" href="assets/styles.css?v=97">
 
-    <!-- Google Fonts: Manrope & Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Шрифты хранятся на сайте: assets/fonts -->
+    <link rel="preload" href="assets/fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/inter-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="assets/fonts.css?v=1">
     <!-- Lucide Icons -->
 
     <style>
@@ -294,9 +298,10 @@
                 <p class="absolute left-5 bottom-4 text-white text-base font-semibold">Ника Кузнецова</p>
             </div>
 
-            <h1 class="font-display text-[1.75rem] font-bold text-serene-900 leading-[1.15] tracking-tight mt-6 mb-3">
+            <!-- Заголовок первого уровня на странице один — в десктопном блоке ниже; здесь тот же текст абзацем -->
+            <p class="font-display text-[1.75rem] font-bold text-serene-900 leading-[1.15] tracking-tight mt-6 mb-3">
                 Создаю ИИ-решения, которые помогают бизнесу продавать
-            </h1>
+            </p>
             <p class="text-serene-800/80 text-base leading-relaxed mb-5">
                 Сайты, сервисы и ИИ-агенты для экспертов и предпринимателей — готовый продукт за несколько дней.
             </p>
@@ -369,8 +374,6 @@
 
     <!-- SECTION: Interactive Target Audience Selector -->
     <section id="role-selector" class="hero-gap-fix relative z-10 px-4">
-        <div class="absolute top-10 left-0 w-48 h-48 bg-accent-terracotta/10 rounded-full blur-[100px] pointer-events-none"></div>
-        <div class="absolute bottom-0 right-0 w-56 h-56 bg-accent-sunset/10 rounded-full blur-[100px] pointer-events-none"></div>
         <div class="max-w-5xl mx-auto">
             
             <div class="text-center mb-12">
@@ -486,8 +489,6 @@
 
     <!-- Section: Services with tighter spacing -->
     <section id="services" class="py-16 relative z-10 px-4">
-        <div class="absolute top-1/3 left-0 w-64 h-64 bg-accent-gold/10 rounded-full blur-[100px] pointer-events-none"></div>
-        <div class="absolute bottom-0 right-1/4 w-56 h-56 bg-accent-terracotta/10 rounded-full blur-[100px] pointer-events-none"></div>
         <div class="max-w-5xl mx-auto">
             
             <!-- Section Title -->
@@ -861,7 +862,6 @@
 
     <!-- SECTION: About / Trust -->
     <section id="about" class="py-16 relative z-10 px-4">
-        <div class="absolute top-0 right-1/3 w-48 h-48 bg-accent-sage/10 rounded-full blur-[100px] pointer-events-none"></div>
         <div class="reveal-up max-w-4xl mx-auto glass-panel rounded-[3rem] p-8 sm:p-10 md:p-12 border border-white shadow-xl flex flex-col lg:flex-row items-center gap-10 text-center lg:text-left relative">
             <img src="assets/nika-portrait.jpg" alt="Ника Кузнецова" class="w-36 h-36 lg:w-56 lg:h-56 rounded-full object-cover shadow-lg border-4 border-white shrink-0">
             <div class="lg:flex-1">
@@ -900,7 +900,6 @@
 
     <!-- SECTION: Premium Caring Accordion FAQ -->
     <section id="faq" class="py-20 relative z-10 px-4 overflow-hidden">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-48 bg-accent-terracotta/[0.06] rounded-full blur-[100px] pointer-events-none"></div>
         <div class="max-w-3xl mx-auto">
             
             <div class="text-center mb-8 md:mb-10">
@@ -1020,7 +1019,6 @@
     <!-- Section: Final CTA / Audit with tighter spacing -->
     <section id="audit" class="py-16 relative z-10 px-4">
         
-        <div class="absolute -bottom-10 right-1/4 w-64 h-64 bg-accent-sunset/10 rounded-full blur-[100px] pointer-events-none"></div>
 
         <div class="max-w-4xl mx-auto">
             
@@ -1116,7 +1114,6 @@
 
         </div>
 
-        <div class="absolute -bottom-16 left-1/4 w-56 h-56 bg-accent-gold/10 rounded-full blur-[100px] pointer-events-none"></div>
     </section>
 
     <!-- SECTION: Footer -->
