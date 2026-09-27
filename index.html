@@ -28,7 +28,7 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=111">
+    <link rel="stylesheet" href="assets/styles.css?v=112">
 
     <!-- Шрифты хранятся на сайте: assets/fonts -->
     <link rel="preload" href="assets/fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
@@ -236,6 +236,36 @@
            По базовой линии они совпадают, но заглавные визуально «висят» выше;
            оптически опускаем «FAQ» на ~половину разницы высоты заглавных и строчных. */
         .faq-optical { position: relative; top: 0.05em; }
+        /* Приглашение в квиз: градиентная карточка */
+        .quiz-band {
+            position: relative; overflow: hidden; color: #fff;
+            border-radius: 2rem; padding: 2.5rem 1.5rem;
+            background: linear-gradient(135deg, #E07A5F, #F4A261);
+            box-shadow: 0 24px 48px -24px rgba(224,122,95,0.8);
+        }
+        .quiz-band::before { content: ''; position: absolute; right: -60px; top: -60px; width: 220px; height: 220px; border-radius: 50%; background: rgba(255,255,255,0.12); pointer-events: none; }
+        .quiz-band-ic {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 4rem; height: 4rem; border-radius: 1.25rem; font-size: 2rem; line-height: 1;
+            background: #FAF3EA; box-shadow: 0 10px 24px -12px rgba(0,0,0,0.25); margin-bottom: 1rem;
+        }
+        .quiz-band-title { font-size: 1.5rem; line-height: 1.15; color: #fff; margin-bottom: 0.625rem; }
+        .quiz-band-sub { font-size: 0.9375rem; line-height: 1.5; opacity: 0.92; margin: 0 auto 1.5rem; max-width: 26rem; }
+        @media (min-width: 768px) { .quiz-band-sub { max-width: 34rem; } }
+        .quiz-band-btn {
+            position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+            border-radius: 9999px; padding: 0.9375rem 1.75rem; width: 100%; max-width: 22rem;
+            background: #fff; color: #E07A5F; font-weight: 700; font-size: 0.9375rem;
+            box-shadow: 0 10px 24px -10px rgba(0,0,0,0.25); transition: transform .2s ease;
+        }
+        .quiz-band-btn:hover { transform: translateY(-2px); }
+        .quiz-band-btn:active { transform: scale(0.97); }
+        .quiz-band-note { font-size: 0.8125rem; color: rgba(255,255,255,0.85); margin-top: 0.75rem; }
+        @media (min-width: 768px) {
+            .quiz-band { padding: 3rem 2rem; }
+            .quiz-band-title { font-size: 2rem; }
+            .quiz-band-btn { width: auto; }
+        }
         /* Цифры одинаковой ширины — счётчик не дёргает строку */
         .count-up { font-variant-numeric: tabular-nums; }
         /* Glassmorphism panel */
@@ -1186,11 +1216,15 @@
         <div class="w-16 sm:w-24 h-px bg-serene-900/15"></div>
     </div>
 
-    <div class="max-w-2xl mx-auto text-center px-4 py-4 relative z-10">
-        <p class="text-serene-800 text-sm md:text-base font-light mb-4">Не уверены, что именно заказывать?</p>
-        <a href="quiz.html" class="px-5 py-3 sm:px-8 sm:py-4 w-auto text-sm sm:text-base glass-panel hover:bg-white/80 text-serene-800 font-medium rounded-full border border-white/60 transition-all hover:scale-[1.02] text-center inline-flex items-center justify-center">
-            Пройти тест за 10 секунд
-        </a>
+    <!-- Приглашение в квиз -->
+    <div class="px-4 py-6 relative z-10">
+        <div class="quiz-band max-w-3xl mx-auto text-center">
+            <span class="quiz-band-ic" aria-hidden="true">⚡️</span>
+            <h2 class="quiz-band-title font-display">Не знаете, что выбрать?</h2>
+            <p class="quiz-band-sub">3 вопроса — и я подскажу, какое решение закроет вашу задачу</p>
+            <a href="quiz.html" class="quiz-band-btn">Пройти тест <svg class="w-[18px] h-[18px] shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+            <p class="quiz-band-note">Бесплатно, без регистрации</p>
+        </div>
     </div>
 
     <!-- Section: Final CTA / Audit with tighter spacing -->
