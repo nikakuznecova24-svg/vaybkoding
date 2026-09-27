@@ -28,7 +28,7 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=101">
+    <link rel="stylesheet" href="assets/styles.css?v=102">
 
     <!-- Шрифты хранятся на сайте: assets/fonts -->
     <link rel="preload" href="assets/fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
@@ -85,55 +85,64 @@
         #services .services-scroll:has(.is-open) { align-items: start; }
         #services .svc-card.is-open { border-color: rgba(224,122,95,0.35); }
 
-        /* Услуги на телефоне: компактный список вместо горизонтальной карусели.
-           Разметка та же, что на десктопе, меняется только раскладка до 768px. */
-        @media (max-width: 767px) {
-            #services .svc-group { padding-left: 0; padding-right: 0; margin-top: 0; margin-bottom: 0.75rem; }
-            #services .services-scroll + .svc-group { margin-top: 2rem; }
-            #services .services-scroll {
-                flex-direction: column; overflow: visible; scroll-snap-type: none;
-                margin: 0; padding: 0; gap: 0.625rem;
-            }
-            #services .services-scroll > .svc-card {
-                width: 100%; flex-shrink: 1; padding: 1rem 1rem 0.875rem;
-                border-radius: 1.25rem; cursor: pointer;
-            }
-            #services .services-scroll > .svc-card > .flex-1 {
-                display: grid; grid-template-columns: 2.5rem 1fr auto;
-                column-gap: 0.875rem; align-items: start;
-            }
-            /* бейджи «Популярно» и т.п. на телефоне не показываем — это шум */
-            #services .services-scroll > .svc-card > .flex-1 > div:first-child { display: none; }
-            /* номер услуги — круглая метка слева */
-            #services .services-scroll > .svc-card > .flex-1 > span:first-of-type {
-                grid-column: 1; grid-row: 1 / span 3;
-                width: 2.5rem; height: 2.5rem; margin: 0; border-radius: 9999px;
-                display: flex; align-items: center; justify-content: center;
-                background: rgba(224,122,95,0.1); color: #E07A5F;
-                font-size: 0.8125rem; letter-spacing: 0.02em;
-            }
-            #services .services-scroll > .svc-card h3 {
-                grid-column: 2; grid-row: 1; margin: 0; align-self: center;
-                font-size: 1rem; line-height: 1.3;
-            }
-            /* цена — справа от названия */
-            #services .services-scroll > .svc-card > .flex-1 > p.font-bold {
-                grid-column: 3; grid-row: 1; margin: 0; align-self: center; line-height: 1.3;
-            }
-            #services .services-scroll > .svc-card > .flex-1 > p.font-bold span { font-size: 0.9375rem; }
-            #services .services-scroll > .svc-card > .flex-1 > p.text-serene-800 {
-                grid-column: 2 / span 2; grid-row: 2; margin: 0.25rem 0 0;
-                font-size: 0.875rem; line-height: 1.45;
-            }
-            #services .services-scroll > .svc-card .service-toggle {
-                grid-column: 2 / span 2; grid-row: 3; margin: 0.375rem 0 0; justify-self: start;
-                font-size: 0.8125rem;
-            }
-            #services .services-scroll > .svc-card .service-details {
-                grid-column: 1 / -1; grid-row: 4; margin: 0.875rem 0 0.25rem;
-            }
-            #services .services-scroll > .svc-card .service-cta { margin: 0.25rem 0 0.25rem 3.375rem; }
+
+        /* ===== Услуги на телефоне: плитки 2×N + нижняя панель ===== */
+        .svc-tiles-group { font-size: 0.875rem; font-weight: 600; color: #3d3a36; margin: 0 0 0.625rem; }
+        .svc-tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 0.625rem; margin-bottom: 1.75rem; }
+        .svc-tile {
+            position: relative; display: flex; flex-direction: column; align-items: flex-start; text-align: left;
+            min-height: 9.5rem; padding: 1rem 0.875rem 0.875rem; border-radius: 1.375rem;
+            background: #fff; border: 1px solid rgba(34,33,31,0.07);
+            box-shadow: 0 1px 2px rgba(34,33,31,0.04), 0 10px 24px -14px rgba(34,33,31,0.18);
+            transition: transform .15s ease;
+            -webkit-tap-highlight-color: transparent;
         }
+        .svc-tile:active { transform: scale(0.97); }
+        .svc-tile--wide { grid-column: 1 / -1; flex-direction: row; align-items: center; gap: 0.875rem; min-height: 0; }
+        .svc-tile--wide .svc-tx { display: flex; flex-direction: column; }
+        .svc-tile--wide .svc-nm { margin: 0 0 0.25rem; }
+        .svc-tile--wide .svc-arrow { position: static; margin-left: auto; }
+        .svc-ic {
+            width: 2.875rem; height: 2.875rem; border-radius: 0.875rem; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center; color: #E07A5F;
+            background: linear-gradient(145deg, #FDF1EC, #FBE3D8);
+        }
+        .svc-tile:not(.svc-tile--wide) .svc-ic { margin-bottom: auto; }
+        .svc-ic--lg { width: 3.375rem; height: 3.375rem; border-radius: 1rem; }
+        .svc-ic--lg svg { width: 1.75rem; height: 1.75rem; }
+        .svc-nm { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 0.9375rem; line-height: 1.25; color: #22211F; margin: 0.875rem 0 0.375rem; }
+        .svc-pr { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 0.875rem; color: #E07A5F; }
+        .svc-arrow { position: absolute; top: 0.875rem; right: 0.875rem; color: rgba(34,33,31,0.3); }
+        .svc-pop { position: absolute; top: 0.875rem; right: 0.875rem; font-size: 0.625rem; font-weight: 700; color: #E07A5F; background: rgba(224,122,95,0.1); padding: 0.2rem 0.5rem; border-radius: 9999px; }
+
+        .svc-sheet { position: fixed; inset: 0; z-index: 60; }
+        .svc-sheet[hidden] { display: none; }
+        .svc-sheet-dim { position: absolute; inset: 0; background: rgba(34,33,31,0.45); opacity: 0; transition: opacity .25s ease; }
+        .svc-sheet-panel {
+            position: absolute; left: 0; right: 0; bottom: 0; max-height: 88dvh; overflow-y: auto;
+            background: #fff; border-radius: 1.75rem 1.75rem 0 0; padding: 0.625rem 1.375rem calc(1.5rem + env(safe-area-inset-bottom));
+            box-shadow: 0 -10px 40px rgba(0,0,0,0.18);
+            transform: translateY(100%); transition: transform .3s cubic-bezier(.2,.8,.2,1);
+        }
+        .svc-sheet.is-open .svc-sheet-dim { opacity: 1; }
+        .svc-sheet.is-open .svc-sheet-panel { transform: translateY(0); }
+        .svc-sheet-handle { width: 2.5rem; height: 0.3125rem; border-radius: 9px; background: rgba(34,33,31,0.15); margin: 0 auto 1.125rem; }
+        .svc-sheet-close { position: absolute; top: 1.125rem; right: 1.125rem; width: 2rem; height: 2rem; border-radius: 9999px; background: rgba(34,33,31,0.06); color: #3d3a36; display: flex; align-items: center; justify-content: center; }
+        .svc-sheet-top { display: flex; align-items: center; gap: 0.875rem; margin-bottom: 0.875rem; padding-right: 2.5rem; }
+        .svc-sheet-title { font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 1.3125rem; line-height: 1.2; color: #22211F; }
+        .svc-sheet-meta { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 1rem; color: #E07A5F; margin-top: 0.125rem; }
+        .svc-sheet-lead { font-size: 0.9375rem; line-height: 1.5; color: #3d3a36; margin-bottom: 1rem; }
+        .svc-sheet-lead p + p { margin-top: 0.5rem; }
+        .svc-sheet-rows { border-top: 1px solid rgba(34,33,31,0.08); padding-top: 0.875rem; display: grid; gap: 0.75rem; margin-bottom: 1.375rem; }
+        .svc-sheet-row { display: flex; gap: 0.75rem; font-size: 0.875rem; line-height: 1.45; color: #3d3a36; }
+        .svc-sheet-row svg { flex-shrink: 0; color: #E07A5F; margin-top: 0.0625rem; }
+        .svc-sheet-row strong { color: #22211F; font-weight: 600; }
+        .svc-sheet-cta {
+            display: flex; align-items: center; justify-content: center; gap: 0.5rem; border-radius: 9999px; padding: 1rem;
+            color: #fff; font-weight: 700; font-size: 0.9375rem; background: linear-gradient(90deg, #E07A5F, #F4A261);
+            box-shadow: 0 10px 24px -8px rgba(224,122,95,0.6);
+        }
+        body.sheet-open { overflow: hidden; }
 
         /* Custom premium scrollbar */
         ::-webkit-scrollbar {
@@ -550,6 +559,60 @@
                 </div>
             </div>
 
+
+            <!-- Телефон: плитки 2×N, подробности — в нижней панели (данные берутся из карточек ниже) -->
+            <div class="md:hidden" id="svcTiles">
+                <p class="svc-tiles-group">Сайты и инструменты</p>
+                <div class="svc-tiles">
+                    <button type="button" class="svc-tile" onclick="openServiceSheet(0)">
+                        <span class="svc-pop">Популярно</span>
+                        <span class="svc-ic"><svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></span>
+                        <span class="svc-nm">Лендинг / сайт</span>
+                        <span class="svc-pr">от 15 000 ₽</span>
+                    </button>
+                    <button type="button" class="svc-tile" onclick="openServiceSheet(1)">
+                        <span class="svc-arrow"><svg class="w-[18px] h-[18px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
+                        <span class="svc-ic"><svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4.1 12 6"/><path d="m5.1 8-2.9-.8"/><path d="m6 12-1.9 2"/><path d="M7.2 2.2 8 5.1"/><path d="M9.037 9.69a.498.498 0 0 1 .653-.653l11 4.5a.5.5 0 0 1-.074.949l-4.349 1.041a1 1 0 0 0-.74.739l-1.04 4.35a.5.5 0 0 1-.95.074z"/></svg></span>
+                        <span class="svc-nm">Сервис / <span class="whitespace-nowrap">лид-магнит</span></span>
+                        <span class="svc-pr">от 10 000 ₽</span>
+                    </button>
+                    <button type="button" class="svc-tile svc-tile--wide" onclick="openServiceSheet(2)">
+                        <span class="svc-ic"><svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></span>
+                        <span class="svc-tx"><span class="svc-nm">Платформа для обучения</span><span class="svc-pr">от 25 000 ₽</span></span>
+                        <span class="svc-arrow"><svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
+                    </button>
+                </div>
+                <p class="svc-tiles-group">Telegram и автоматизация</p>
+                <div class="svc-tiles">
+                    <button type="button" class="svc-tile" onclick="openServiceSheet(3)">
+                        <span class="svc-arrow"><svg class="w-[18px] h-[18px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
+                        <span class="svc-ic"><svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg></span>
+                        <span class="svc-nm">ИИ-агент</span>
+                        <span class="svc-pr">от 20 000 ₽</span>
+                    </button>
+                    <button type="button" class="svc-tile" onclick="openServiceSheet(4)">
+                        <span class="svc-arrow"><svg class="w-[18px] h-[18px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
+                        <span class="svc-ic"><svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z"/></svg></span>
+                        <span class="svc-nm">Воронка в Telegram</span>
+                        <span class="svc-pr">от 25 000 ₽</span>
+                    </button>
+                    <button type="button" class="svc-tile" onclick="openServiceSheet(5)">
+                        <span class="svc-arrow"><svg class="w-[18px] h-[18px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
+                        <span class="svc-ic"><svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg></span>
+                        <span class="svc-nm">Мини-апп</span>
+                        <span class="svc-pr">от 15 000 ₽</span>
+                    </button>
+                    <button type="button" class="svc-tile" onclick="openServiceSheet(6)">
+                        <span class="svc-arrow"><svg class="w-[18px] h-[18px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
+                        <span class="svc-ic"><svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span>
+                        <span class="svc-nm">Чат-бот</span>
+                        <span class="svc-pr">от 15 000 ₽</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Десктоп: карточки с раскрытием -->
+            <div class="hidden md:block">
             <span class="svc-group block text-sm font-semibold text-serene-800 mb-3 px-4 md:px-0">Сайты и инструменты</span>
 
             <!-- Services Stack -->
@@ -753,6 +816,7 @@
 
             </div>
 
+            </div>
         </div>
     </section>
 
@@ -1163,6 +1227,29 @@
 
     </section>
 
+
+    <!-- Нижняя панель с подробностями услуги (телефон) -->
+    <div id="svcSheet" class="svc-sheet" hidden>
+        <div class="svc-sheet-dim" onclick="closeServiceSheet()"></div>
+        <div class="svc-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="svcSheetTitle">
+            <div class="svc-sheet-handle"></div>
+            <button type="button" class="svc-sheet-close" onclick="closeServiceSheet()" aria-label="Закрыть"><svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+            <div class="svc-sheet-top">
+                <span class="svc-ic svc-ic--lg" id="svcSheetIcon"></span>
+                <div>
+                    <p class="svc-sheet-title" id="svcSheetTitle"></p>
+                    <p class="svc-sheet-meta" id="svcSheetMeta"></p>
+                </div>
+            </div>
+            <div class="svc-sheet-lead" id="svcSheetLead"></div>
+            <div class="svc-sheet-rows">
+                <div class="svc-sheet-row" id="svcSheetFor"><svg class="w-[18px] h-[18px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg><p></p></div>
+                <div class="svc-sheet-row"><svg class="w-[18px] h-[18px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><p><strong>Срок:</strong> 5–10 дней</p></div>
+            </div>
+            <a href="#audit" class="svc-sheet-cta" id="svcSheetCta"><span></span><svg class="w-[18px] h-[18px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        </div>
+    </div>
+
     <!-- SECTION: Footer -->
     <footer class="relative z-10 px-4 pt-14 pb-8 mt-8 border-t border-serene-900/10">
         <div class="max-w-5xl mx-auto">
@@ -1463,13 +1550,57 @@
         // ----------------------------------------------------
         // Service Card Expand/Collapse
         // ----------------------------------------------------
-        // На телефоне услуга — строка списка: нажатие в любом месте строки раскрывает подробности
-        document.addEventListener('click', function(e) {
-            if (window.innerWidth >= 768) return;
-            const card = e.target.closest('#services .services-scroll > .svc-card');
-            if (!card || e.target.closest('a, button, .service-details')) return;
-            const btn = card.querySelector('.service-toggle');
-            if (btn) toggleServiceCard(btn);
+        // ----------------------------------------------------
+        // Услуги на телефоне: нижняя панель с подробностями.
+        // Текст берётся из десктопной карточки с тем же номером — источник один.
+        // ----------------------------------------------------
+        let svcSheetCta = null;
+        function openServiceSheet(i) {
+            const card = document.querySelectorAll('#services .svc-card')[i];
+            const tile = document.querySelectorAll('#svcTiles .svc-tile')[i];
+            const sheet = document.getElementById('svcSheet');
+            if (!card || !tile || !sheet) return;
+            const details = card.querySelector('.service-details');
+            const price = card.querySelector('.flex-1 > p.font-bold');
+            document.getElementById('svcSheetIcon').innerHTML = tile.querySelector('.svc-ic').innerHTML;
+            document.getElementById('svcSheetTitle').textContent = tile.querySelector('.svc-nm').textContent;
+            document.getElementById('svcSheetMeta').textContent = (price ? price.textContent.trim().replace(/^От/, 'от').replace(/₽$/, ' ₽') : '') + ' · 5–10 дней';
+            const lead = document.getElementById('svcSheetLead');
+            lead.innerHTML = '';
+            details.querySelectorAll(':scope > p').forEach(function(p) { lead.appendChild(p.cloneNode(true)); });
+            const forP = details.querySelector('.border-t p');
+            const forRow = document.getElementById('svcSheetFor');
+            forRow.hidden = !forP;
+            if (forP) forRow.querySelector('p').innerHTML = forP.innerHTML;
+            svcSheetCta = card.querySelector('.service-cta');
+            document.querySelector('#svcSheetCta span').textContent = svcSheetCta ? svcSheetCta.textContent.trim() : 'Обсудить проект';
+            sheet.hidden = false;
+            document.body.classList.add('sheet-open');
+            requestAnimationFrame(function() { requestAnimationFrame(function() { sheet.classList.add('is-open'); }); });
+        }
+        function closeServiceSheet() {
+            const sheet = document.getElementById('svcSheet');
+            if (!sheet || sheet.hidden) return;
+            sheet.classList.remove('is-open');
+            document.body.classList.remove('sheet-open');
+            setTimeout(function() { sheet.hidden = true; }, 300);
+        }
+        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeServiceSheet(); });
+        document.addEventListener('DOMContentLoaded', function() {
+            const cta = document.getElementById('svcSheetCta');
+            if (cta) cta.addEventListener('click', function(e) {
+                e.preventDefault();
+                closeServiceSheet();
+                // тот же сценарий, что у ссылки «Обсудить…» в карточке: выбрать тип в брифе и перейти к форме
+                if (svcSheetCta) svcSheetCta.click();
+            });
+            // свайп вниз по панели закрывает её
+            const panel = document.querySelector('#svcSheet .svc-sheet-panel');
+            let y0 = null;
+            if (panel) {
+                panel.addEventListener('touchstart', function(e) { y0 = panel.scrollTop <= 0 ? e.touches[0].clientY : null; }, { passive: true });
+                panel.addEventListener('touchend', function(e) { if (y0 !== null && e.changedTouches[0].clientY - y0 > 70) closeServiceSheet(); y0 = null; });
+            }
         });
 
         function toggleServiceCard(btn) {
