@@ -90,13 +90,6 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #D4C5B3;
         }
-        /* Тёплая цветокоррекция фото в hero: серый студийный фон уходит в бежевый */
-        .hero-photo { filter: sepia(0.28) saturate(1.15) brightness(1.03) contrast(0.98); }
-        .hero-photo-wrap::after {
-            content: ''; position: absolute; inset: 0; pointer-events: none;
-            background: linear-gradient(160deg, rgba(244,162,97,0.22), rgba(224,122,95,0.12) 60%, rgba(250,248,245,0));
-            mix-blend-mode: soft-light;
-        }
         /* Стилизованный чекбокс согласия */
         .consent-check {
             appearance: none; -webkit-appearance: none;
@@ -291,8 +284,8 @@
 
         <!-- Mobile: photo card + offer and CTA below -->
         <div class="md:hidden max-w-3xl mx-auto relative">
-            <div class="reveal-up relative z-10 rounded-[2rem] overflow-hidden shadow-xl hero-photo-wrap">
-                <img src="assets/nika-hero.jpg" alt="Ника Кузнецова" class="hero-photo w-full aspect-[5/4] object-cover object-[50%_30%]">
+            <div class="reveal-up relative z-10 rounded-[2rem] overflow-hidden shadow-xl">
+                <img src="assets/nika-hero.jpg" alt="Ника Кузнецова" class="w-full aspect-[5/4] object-cover object-[50%_30%]">
                 <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/55 to-transparent pointer-events-none"></div>
                 <div class="absolute top-4 left-4 inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-white/95 shadow-md text-sm font-semibold text-serene-900">
                     <span class="w-2 h-2 rounded-full bg-accent-terracotta"></span>
@@ -357,8 +350,8 @@
                     </div>
                 </div>
             </div>
-            <div class="relative rounded-[2.5rem] overflow-hidden shadow-xl border border-white hero-photo-wrap">
-                <img src="assets/nika-hero.jpg" alt="Ника Кузнецова" class="hero-photo w-full aspect-[4/5] object-cover object-top">
+            <div class="relative rounded-[2.5rem] overflow-hidden shadow-xl border border-white">
+                <img src="assets/nika-hero.jpg" alt="Ника Кузнецова" class="w-full aspect-[4/5] object-cover object-top">
                 <div class="absolute top-6 left-6 inline-flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-white/95 shadow-md text-sm font-semibold text-serene-900">
                     <span class="w-2 h-2 rounded-full bg-accent-terracotta"></span>
                     Продукты за несколько дней с помощью ИИ
