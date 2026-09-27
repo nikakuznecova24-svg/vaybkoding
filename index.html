@@ -28,7 +28,7 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=108">
+    <link rel="stylesheet" href="assets/styles.css?v=109">
 
     <!-- Шрифты хранятся на сайте: assets/fonts -->
     <link rel="preload" href="assets/fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
@@ -92,12 +92,28 @@
         .svc-tile {
             position: relative; display: flex; flex-direction: column; align-items: flex-start; text-align: left;
             min-height: 9.5rem; padding: 1rem 0.875rem 0.875rem; border-radius: 1.375rem;
-            background: #fff; border: 1px solid rgba(34,33,31,0.07);
+            background: linear-gradient(#fff, #fff) padding-box, linear-gradient(rgba(34,33,31,0.07), rgba(34,33,31,0.07)) border-box;
+            border: 2px solid transparent;
             box-shadow: 0 1px 2px rgba(34,33,31,0.04), 0 10px 24px -14px rgba(34,33,31,0.18);
             transition: transform .15s ease;
             -webkit-tap-highlight-color: transparent;
         }
         .svc-tile:active { transform: scale(0.97); }
+        /* Наведение / нажатие: персиковый фон, тонкая градиентная рамка, квадрат с эмодзи заливается градиентом */
+        .svc-ic { transition: background .2s ease; }
+        @media (hover: hover) {
+            .svc-tile:hover {
+                background: linear-gradient(#FFF7F2, #FFF7F2) padding-box, linear-gradient(135deg, #E07A5F, #F4A261) border-box;
+                box-shadow: 0 18px 34px -18px rgba(224,122,95,0.55);
+            }
+            .svc-tile:hover .svc-ic { background: linear-gradient(135deg, #E07A5F, #F4A261); }
+            .svc-tile:hover .svc-arrow { color: #E07A5F; }
+        }
+        .svc-tile:active .svc-ic, .svc-tile:focus-visible .svc-ic { background: linear-gradient(135deg, #E07A5F, #F4A261); }
+        .svc-tile:active, .svc-tile:focus-visible {
+            outline: none;
+            background: linear-gradient(#FFF7F2, #FFF7F2) padding-box, linear-gradient(135deg, #E07A5F, #F4A261) border-box;
+        }
         .svc-tile--wide { grid-column: 1 / -1; flex-direction: row; align-items: center; gap: 0.875rem; min-height: 0; }
         .svc-tile--wide .svc-tx { display: flex; flex-direction: column; }
         .svc-tile--wide .svc-nm { margin: 0 0 0.25rem; }
@@ -152,9 +168,8 @@
             .svc-tiles { gap: 1rem; margin-bottom: 2.5rem; }
             .svc-tiles--3 { grid-template-columns: repeat(3, 1fr); }
             .svc-tiles--4 { grid-template-columns: repeat(4, 1fr); }
-            .svc-tile { min-height: 12rem; padding: 1.5rem 1.375rem 1.375rem; border-radius: 1.75rem; cursor: pointer; transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
-            .svc-tile:hover { transform: translateY(-3px); border-color: rgba(224,122,95,0.25); box-shadow: 0 1px 2px rgba(34,33,31,0.04), 0 18px 36px -16px rgba(224,122,95,0.35); }
-            .svc-tile:hover .svc-arrow { color: #E07A5F; }
+            .svc-tile { min-height: 12rem; padding: 1.5rem 1.375rem 1.375rem; border-radius: 1.75rem; cursor: pointer; transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
+            .svc-tile:hover { transform: translateY(-4px); }
             .svc-tile--wide { grid-column: auto; flex-direction: column; align-items: flex-start; gap: 0; min-height: 12rem; }
             .svc-tile--wide .svc-tx { display: contents; }
             .svc-tile--wide .svc-ic { margin-bottom: auto; }
