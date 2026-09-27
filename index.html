@@ -28,7 +28,7 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=120">
+    <link rel="stylesheet" href="assets/styles.css?v=123">
 
     <!-- Шрифты хранятся на сайте: assets/fonts -->
     <link rel="preload" href="assets/fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
@@ -290,6 +290,47 @@
         }
         /* факты в одну строку, когда хватает ширины */
         @media (min-width: 1024px) { .about-chips { flex-wrap: nowrap; } .about-chips span { white-space: nowrap; } }
+        /* ===== Мобильная компактность ===== */
+        @media (max-width: 767px) {
+            /* «Обо мне»: факты в две строки, мельче */
+            .about-chips { gap: 0.375rem; }
+            .about-chips span { font-size: 0.6875rem; padding: 0.3125rem 0.5rem; white-space: nowrap; }
+            /* «Подход»: заголовки карточек в одну строку */
+            .value-title { font-size: 1rem !important; white-space: nowrap; line-height: 1.2 !important; }
+            /* Анкета аудита компактнее */
+            #audit .glass-panel { padding: 1.5rem 1rem !important; border-radius: 2rem !important; }
+            #briefCard { padding: 1rem !important; }
+            #briefCard > * + * { margin-top: 0.625rem !important; }
+            #briefCard input, #briefCard textarea, #briefCard #briefTypeToggle { padding: 0.5rem 0.75rem !important; }
+            #briefCard label.block { margin-bottom: 0.25rem !important; }
+            #briefCard textarea { min-height: 0; }
+            #audit .section-title { margin-bottom: 0.75rem !important; }
+            #audit .section-title + p { margin-bottom: 1.25rem !important; }
+            #audit .section-title + p { font-size: 0.875rem !important; line-height: 1.5 !important; }
+            #briefCard input, #briefCard textarea, #briefCard #briefTypeToggle { font-size: 16px !important; border-radius: 0.75rem !important; }
+            #briefCard label.block { font-size: 0.75rem !important; }
+            #briefCard > p:first-of-type { font-size: 0.875rem !important; }
+            #briefCard button[onclick="sendBriefToTelegram()"] { padding-top: 0.75rem !important; padding-bottom: 0.75rem !important; }
+            #briefCard .consent-check + span { font-size: 0.6875rem !important; }
+            #audit .glass-panel > .max-w-2xl > #briefCard { margin-bottom: 1.25rem !important; }
+            .footer-brand p.font-display { font-size: 1.125rem !important; }
+            .footer-brand p.mt-2 { font-size: 0.8125rem !important; margin-top: 0.25rem !important; }
+            .footer-bottom { font-size: 0.6875rem !important; gap: 0.5rem !important; }
+            #audit .section-title { font-size: 1.5rem !important; }
+            #audit .eyebrow { margin-bottom: 0.5rem; }
+            #briefCard .consent-check { width: 1rem; height: 1rem; }
+            .footer-brand a { padding: 0.5rem 1rem !important; font-size: 0.8125rem !important; }
+            .footer-grid { gap: 1.25rem 1rem; }
+            /* Футер компактнее: ссылки в две колонки */
+            .site-footer { padding-top: 2.25rem !important; padding-bottom: 1.5rem !important; margin-top: 1rem !important; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem 1rem; }
+            .footer-brand { grid-column: 1 / -1; }
+            .footer-brand a { margin-top: 1rem !important; }
+            .site-footer .eyebrow { margin-bottom: 0.5rem; }
+            .site-footer ul { font-size: 0.8125rem; }
+            .site-footer ul > li + li { margin-top: 0.5rem !important; }
+            .footer-bottom { margin-top: 1.75rem !important; padding-top: 1rem !important; }
+        }
         /* Цифры одинаковой ширины — счётчик не дёргает строку */
         .count-up { font-variant-numeric: tabular-nums; }
         /* Glassmorphism panel */
@@ -940,6 +981,12 @@
         </div>
     </section>
 
+    <div class="flex items-center justify-center gap-3 py-1 relative z-10">
+        <div class="w-16 sm:w-24 h-px bg-serene-900/15"></div>
+        <span class="text-accent-terracotta text-xs">✦</span>
+        <div class="w-16 sm:w-24 h-px bg-serene-900/15"></div>
+    </div>
+
     <!-- SECTION: Complex Calculator -->
     <section id="calculator" class="py-16 relative z-10 px-4">
         <div class="max-w-3xl mx-auto">
@@ -1034,12 +1081,6 @@
     </div>
     </div>
 
-    <div class="flex items-center justify-center gap-3 py-1 relative z-10">
-        <div class="w-16 sm:w-24 h-px bg-serene-900/15"></div>
-        <span class="text-accent-terracotta text-xs">✦</span>
-        <div class="w-16 sm:w-24 h-px bg-serene-900/15"></div>
-    </div>
-
     <!-- SECTION: About / Trust -->
     <section id="about" class="about-band relative z-10 px-4">
         <div class="reveal-up about-letter max-w-3xl mx-auto">
@@ -1097,7 +1138,7 @@
                     <div class="value-card reveal-up bg-white p-6 sm:p-8 rounded-3xl border border-serene-900/[0.06] shadow-lg hover:shadow-2xl hover:-translate-y-1 relative group overflow-hidden flex flex-col justify-start min-h-[160px] sm:min-h-[220px] transition-all duration-300" style="transition-delay:0ms">
                         <div class="absolute -bottom-8 -right-8 w-36 h-36 bg-accent-terracotta/10 rounded-full blur-2xl pointer-events-none"></div>
                         <span class="absolute top-4 right-5 text-5xl sm:text-6xl font-display font-light text-serene-900/10 blur-[1px] group-hover:text-accent-terracotta/20 transition-colors duration-300 pointer-events-none select-none">01</span>
-                        <h4 class="font-display text-xl font-bold leading-none text-serene-900 relative z-10 pr-14">Смыслы как фундамент</h4>
+                        <h4 class="value-title font-display text-xl font-bold leading-none text-serene-900 relative z-10 pr-14">Смыслы как фундамент</h4>
                         <p class="text-serene-800 text-sm leading-relaxed font-light mt-1.5 relative z-10">
                             Прежде чем открыть редактор кода, я созваниваюсь с вами и разбираю: <strong class="font-semibold text-serene-900">кто ваш клиент, чего он боится, почему купит именно у вас</strong>. Эти ответы становятся текстом на сайте — <strong class="font-semibold text-serene-900">не шаблонные фразы, а ваши формулировки</strong>.
                         </p>
@@ -1107,7 +1148,7 @@
                     <div class="value-card reveal-up bg-accent-sunset/10 p-6 sm:p-8 rounded-3xl border border-accent-sunset/20 shadow-lg hover:shadow-2xl hover:-translate-y-1 relative group overflow-hidden flex flex-col justify-start min-h-[160px] sm:min-h-[220px] transition-all duration-300" style="transition-delay:120ms">
                         <div class="absolute -bottom-8 -right-8 w-36 h-36 bg-accent-sunset/20 rounded-full blur-2xl pointer-events-none"></div>
                         <span class="absolute top-4 right-5 text-5xl sm:text-6xl font-display font-light text-serene-900/10 blur-[1px] group-hover:text-accent-sunset/30 transition-colors duration-300 pointer-events-none select-none">02</span>
-                        <h4 class="font-display text-xl font-bold leading-none text-serene-900 relative z-10 pr-14">Продажи — главная цель</h4>
+                        <h4 class="value-title font-display text-xl font-bold leading-none text-serene-900 relative z-10 pr-14">Продажи — главная цель</h4>
                         <p class="text-serene-800 text-sm leading-relaxed font-light mt-1.5 relative z-10">
                             <strong class="font-semibold text-serene-900">6 лет в продажах и маркетинге</strong> научили меня одному: люди покупают не характеристики, а ощущение, что их поняли. Поэтому я собираю тексты и интерфейс так, чтобы <strong class="font-semibold text-serene-900">мягко влюбить покупателя в ваш продукт</strong> — без нажима и уговоров.
                         </p>
@@ -1117,7 +1158,7 @@
                     <div class="value-card reveal-up animate-glow-pulse bg-accent-terracotta text-white p-6 sm:p-8 rounded-3xl shadow-xl hover:shadow-2xl hover:-translate-y-1 relative group overflow-hidden flex flex-col justify-start min-h-[160px] sm:min-h-[220px] md:col-span-2 transition-transform duration-300" style="transition-delay:240ms">
                         <div class="absolute -bottom-10 -right-10 w-48 h-48 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
                         <span class="absolute top-4 right-5 text-5xl sm:text-6xl font-display font-light text-white/10 blur-[1px] group-hover:text-white/20 transition-colors duration-300 pointer-events-none select-none">03</span>
-                        <h4 class="font-display text-lg sm:text-xl font-bold leading-none whitespace-nowrap relative z-10 pr-16">Вайбкодинг — это скорость</h4>
+                        <h4 class="value-title font-display text-lg sm:text-xl font-bold leading-none whitespace-nowrap relative z-10 pr-16">Вайбкодинг — это скорость</h4>
                         <p class="text-white/80 text-sm leading-relaxed font-light mt-1.5 relative z-10">
                             <strong class="font-semibold text-white">Прототип — за 3-5 дней</strong>, готовый продукт с текстами и интеграциями — <strong class="font-semibold text-white">за 5-10 дней</strong>. Это не абстрактное «быстро», а <strong class="font-semibold text-white">конкретный срок, который я называю в начале работы и держу</strong>.
                         </p>
@@ -1315,7 +1356,7 @@
 
                         <div>
                             <label class="block text-xs text-serene-800 mb-1.5 font-medium">Вопрос или комментарий</label>
-                            <textarea id="briefQuestion" rows="3" placeholder="если есть что добавить" class="w-full text-base md:text-sm px-4 py-3 bg-white rounded-xl focus:ring-1 focus:ring-accent-sunset border border-serene-200 focus:outline-none resize-none"></textarea>
+                            <textarea id="briefQuestion" rows="2" placeholder="если есть что добавить" class="w-full text-base md:text-sm px-4 py-3 bg-white rounded-xl focus:ring-1 focus:ring-accent-sunset border border-serene-200 focus:outline-none resize-none"></textarea>
                         </div>
 
                         <label class="flex items-start gap-2.5 cursor-pointer">
@@ -1371,10 +1412,10 @@
     </div>
 
     <!-- SECTION: Footer -->
-    <footer class="relative z-10 px-4 pt-14 pb-8 mt-8 border-t border-serene-900/10">
+    <footer class="site-footer relative z-10 px-4 pt-14 pb-8 mt-8 border-t border-serene-900/10">
         <div class="max-w-5xl mx-auto">
-            <div class="grid gap-10 md:grid-cols-3">
-                <div>
+            <div class="footer-grid grid gap-10 md:grid-cols-3">
+                <div class="footer-brand">
                     <p class="font-display text-xl font-bold text-serene-900">Ника Кузнецова</p>
                     <p class="mt-2 text-sm leading-relaxed text-serene-800/80">Сайты, сервисы и ИИ-агенты для экспертов и предпринимателей</p>
                     <a href="#audit" class="mt-5 inline-flex items-center rounded-full bg-gradient-to-r from-accent-terracotta to-accent-sunset text-white font-bold text-sm px-5 py-2.5 shadow-md hover:shadow-lg active:scale-95 transition-transform">Бесплатный аудит</a>
@@ -1392,13 +1433,13 @@
                 <div>
                     <p class="eyebrow">Контакты</p>
                     <ul class="space-y-2.5 text-sm">
-                        <li><a href="https://t.me/nikakuznecovaa" target="_blank" rel="noopener" class="text-serene-800 hover:text-accent-terracotta transition-colors">Telegram: @nikakuznecovaa</a></li>
+                        <li><a href="https://t.me/nikakuznecovaa" target="_blank" rel="noopener" class="text-serene-800 hover:text-accent-terracotta transition-colors"><span class="hidden md:inline">Telegram: </span>@nikakuznecovaa</a></li>
                         <li><a href="mailto:nika.kuz.99@mail.ru" class="text-serene-800 hover:text-accent-terracotta transition-colors">nika.kuz.99@mail.ru</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="mt-12 pt-6 border-t border-serene-900/10 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-xs text-serene-800/70 leading-relaxed">
+            <div class="footer-bottom mt-12 pt-6 border-t border-serene-900/10 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-xs text-serene-800/70 leading-relaxed">
                 <p>
                     © <span id="footerYear">2026</span> Кузнецова Вероника Алексеевна · самозанятая, Санкт-Петербург
                     <!-- ИНН: добавить после « · самозанятая, Санкт-Петербург» как « · ИНН 000000000000» -->
