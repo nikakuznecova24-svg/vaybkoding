@@ -10,11 +10,15 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://nikakuznecovaa.ru/">
     <meta property="og:site_name" content="Ника Кузнецова — вайбкодинг">
-    <meta property="og:image" content="https://nikakuznecovaa.ru/assets/nika-hero.jpg">
+    <meta property="og:image" content="https://nikakuznecovaa.ru/assets/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Ника Кузнецова — ИИ-решения, которые помогают бизнесу продавать">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://nikakuznecovaa.ru/assets/nika-hero.jpg">
+    <meta name="twitter:image" content="https://nikakuznecovaa.ru/assets/og-image.jpg">
 
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23E07A5F'/%3E%3Cstop offset='1' stop-color='%23F4A261'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' font-weight='700' fill='white' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
     <!-- ================================================================= -->
     <!-- НАСТРОЙКА ФОНА И КОНТАКТОВ                                        -->
@@ -24,12 +28,12 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=95">
+    <link rel="stylesheet" href="assets/styles.css?v=97">
 
-    <!-- Google Fonts: Manrope & Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Шрифты хранятся на сайте: assets/fonts -->
+    <link rel="preload" href="assets/fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/inter-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="assets/fonts.css?v=1">
     <!-- Lucide Icons -->
 
     <style>
@@ -89,13 +93,6 @@
         }
         ::-webkit-scrollbar-thumb:hover {
             background: #D4C5B3;
-        }
-        /* Тёплая цветокоррекция фото в hero: серый студийный фон уходит в бежевый */
-        .hero-photo { filter: sepia(0.28) saturate(1.15) brightness(1.03) contrast(0.98); }
-        .hero-photo-wrap::after {
-            content: ''; position: absolute; inset: 0; pointer-events: none;
-            background: linear-gradient(160deg, rgba(244,162,97,0.22), rgba(224,122,95,0.12) 60%, rgba(250,248,245,0));
-            mix-blend-mode: soft-light;
         }
         /* Стилизованный чекбокс согласия */
         .consent-check {
@@ -291,19 +288,20 @@
 
         <!-- Mobile: photo card + offer and CTA below -->
         <div class="md:hidden max-w-3xl mx-auto relative">
-            <div class="reveal-up relative z-10 rounded-[2rem] overflow-hidden shadow-xl hero-photo-wrap">
-                <img src="assets/nika-hero.jpg" alt="Ника Кузнецова" class="hero-photo w-full aspect-[5/4] object-cover object-[50%_30%]">
+            <div class="reveal-up relative z-10 rounded-[2rem] overflow-hidden shadow-xl">
+                <img src="assets/nika-hero.jpg" alt="Ника Кузнецова" class="w-full aspect-[5/4] object-cover object-[50%_30%]">
                 <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/55 to-transparent pointer-events-none"></div>
                 <div class="absolute top-4 left-4 inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-white/95 shadow-md text-sm font-semibold text-serene-900">
                     <span class="w-2 h-2 rounded-full bg-accent-terracotta"></span>
-                    Продукты за несколько дней
+                    ✨ Продукты за несколько дней
                 </div>
                 <p class="absolute left-5 bottom-4 text-white text-base font-semibold">Ника Кузнецова</p>
             </div>
 
-            <h1 class="font-display text-[1.75rem] font-bold text-serene-900 leading-[1.15] tracking-tight mt-6 mb-3">
+            <!-- Заголовок первого уровня на странице один — в десктопном блоке ниже; здесь тот же текст абзацем -->
+            <p class="font-display text-[1.75rem] font-bold text-serene-900 leading-[1.15] tracking-tight mt-6 mb-3">
                 Создаю ИИ-решения, которые помогают бизнесу продавать
-            </h1>
+            </p>
             <p class="text-serene-800/80 text-base leading-relaxed mb-5">
                 Сайты, сервисы и ИИ-агенты для экспертов и предпринимателей — готовый продукт за несколько дней.
             </p>
@@ -357,11 +355,11 @@
                     </div>
                 </div>
             </div>
-            <div class="relative rounded-[2.5rem] overflow-hidden shadow-xl border border-white hero-photo-wrap">
-                <img src="assets/nika-hero.jpg" alt="Ника Кузнецова" class="hero-photo w-full aspect-[4/5] object-cover object-top">
+            <div class="relative rounded-[2.5rem] overflow-hidden shadow-xl border border-white">
+                <img src="assets/nika-hero.jpg" alt="Ника Кузнецова" class="w-full aspect-[4/5] object-cover object-top">
                 <div class="absolute top-6 left-6 inline-flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-white/95 shadow-md text-sm font-semibold text-serene-900">
                     <span class="w-2 h-2 rounded-full bg-accent-terracotta"></span>
-                    Продукты за несколько дней с помощью ИИ
+                    ✨ Продукты за несколько дней с помощью ИИ
                 </div>
             </div>
         </div>
@@ -376,14 +374,12 @@
 
     <!-- SECTION: Interactive Target Audience Selector -->
     <section id="role-selector" class="hero-gap-fix relative z-10 px-4">
-        <div class="absolute top-10 left-0 w-48 h-48 bg-accent-terracotta/10 rounded-full blur-[100px] pointer-events-none"></div>
-        <div class="absolute bottom-0 right-0 w-56 h-56 bg-accent-sunset/10 rounded-full blur-[100px] pointer-events-none"></div>
         <div class="max-w-5xl mx-auto">
             
             <div class="text-center mb-12">
                 <p class="eyebrow">Для кого</p>
                 <h2 class="section-title">
-                    Нам с тобой по пути, если ты…
+                    Нам по пути, если вы…
                 </h2>
             </div>
 
@@ -406,15 +402,15 @@
                     <div class="space-y-5 text-sm text-serene-800 leading-relaxed font-light">
                         <div class="pb-4 border-b border-serene-200/40 flex gap-3">
                             <svg class="w-4 h-4 text-accent-terracotta shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
-                            <p><strong class="font-bold text-serene-900 block mb-0.5">Устал доказывать ценность на созвонах:</strong> хочешь, чтобы цифровой продукт закрывал вопросы о чеке до первого слова.</p>
+                            <p><strong class="font-bold text-serene-900 block mb-0.5">Устали доказывать ценность на созвонах:</strong> хотите, чтобы цифровой продукт закрывал вопросы о чеке до первого слова.</p>
                         </div>
                         <div class="pb-4 border-b border-serene-200/40 flex gap-3">
                             <svg class="w-4 h-4 text-accent-terracotta shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
-                            <p><strong class="font-bold text-serene-900 block mb-0.5">Стыдно отправлять ссылку на сайт:</strong> нужен сайт, по которому сразу видно твой масштаб — без объяснений и оправданий.</p>
+                            <p><strong class="font-bold text-serene-900 block mb-0.5">Стыдно отправлять ссылку на сайт:</strong> нужен сайт, по которому сразу видно ваш масштаб — без объяснений и оправданий.</p>
                         </div>
                         <div class="pb-4 border-b border-serene-200/40 flex gap-3">
                             <svg class="w-4 h-4 text-accent-terracotta shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
-                            <p><strong class="font-bold text-serene-900 block mb-0.5">Привычные прогревы больше не работают:</strong> ты ищешь новые интерактивные механики для вовлечения аудитории здесь и сейчас.</p>
+                            <p><strong class="font-bold text-serene-900 block mb-0.5">Привычные прогревы больше не работают:</strong> вы ищете новые интерактивные механики для вовлечения аудитории здесь и сейчас.</p>
                         </div>
                         <div class="flex gap-3">
                             <svg class="w-4 h-4 text-accent-terracotta shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
@@ -434,19 +430,19 @@
                     <div class="space-y-5 text-sm text-serene-800 leading-relaxed font-light">
                         <div class="pb-4 border-b border-serene-200/40 flex gap-3">
                             <svg class="w-4 h-4 text-accent-sunset shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
-                            <p><strong class="font-bold text-serene-900 block mb-0.5">Тонешь в операционке и рутине:</strong> квалификацию лидов и ручную переписку давно пора делегировать автоматизации.</p>
+                            <p><strong class="font-bold text-serene-900 block mb-0.5">Тонете в операционке и рутине:</strong> квалификацию лидов и ручную переписку давно пора делегировать автоматизации.</p>
                         </div>
                         <div class="pb-4 border-b border-serene-200/40 flex gap-3">
                             <svg class="w-4 h-4 text-accent-sunset shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
-                            <p><strong class="font-bold text-serene-900 block mb-0.5">Нужна автономная воронка лидов:</strong> чтобы система сама прогревала людей с первого клика, пока ты сфокусирован на продукте.</p>
+                            <p><strong class="font-bold text-serene-900 block mb-0.5">Нужна автономная воронка лидов:</strong> чтобы система сама прогревала людей с первого клика, пока вы сосредоточены на продукте.</p>
                         </div>
                         <div class="pb-4 border-b border-serene-200/40 flex gap-3">
                             <svg class="w-4 h-4 text-accent-sunset shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
-                            <p><strong class="font-bold text-serene-900 block mb-0.5">Уперся в потолок личных часов:</strong> хочешь превратить свою экспертную услугу в it-сервис.</p>
+                            <p><strong class="font-bold text-serene-900 block mb-0.5">Упёрлись в потолок личных часов:</strong> хотите превратить свою экспертную услугу в it-сервис.</p>
                         </div>
                         <div class="flex gap-3">
                             <svg class="w-4 h-4 text-accent-sunset shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
-                            <p><strong class="font-bold text-serene-900 block mb-0.5">Хочешь быстро протестировать гипотезу:</strong> без полугода разработки, раздутых бюджетов и бесконечных согласований.</p>
+                            <p><strong class="font-bold text-serene-900 block mb-0.5">Хотите быстро протестировать гипотезу:</strong> без полугода разработки, раздутых бюджетов и бесконечных согласований.</p>
                         </div>
                     </div>
                 </div>
@@ -493,8 +489,6 @@
 
     <!-- Section: Services with tighter spacing -->
     <section id="services" class="py-16 relative z-10 px-4">
-        <div class="absolute top-1/3 left-0 w-64 h-64 bg-accent-gold/10 rounded-full blur-[100px] pointer-events-none"></div>
-        <div class="absolute bottom-0 right-1/4 w-56 h-56 bg-accent-terracotta/10 rounded-full blur-[100px] pointer-events-none"></div>
         <div class="max-w-5xl mx-auto">
             
             <!-- Section Title -->
@@ -726,7 +720,7 @@
                         <span class="text-xs font-display font-bold uppercase text-white/80 block mb-2 tracking-[0.18em]">Комплексное решение</span>
                         <h2 class="font-display text-2xl font-bold text-white leading-snug">Комплекс: цифровая экосистема</h2>
                         <p class="text-white/90 leading-relaxed font-light mb-1 mt-3 text-sm max-w-2xl mx-auto">
-                            Выбери, что нужно для полной системы продаж — сайт, агент, воронка и другое. Чем больше берёшь вместе, тем ниже цена за каждую часть
+                            Выберите, что нужно для полной системы продаж — сайт, агент, воронка и другое. Чем больше берёте вместе, тем ниже цена за каждую часть
                         </p>
                         <button type="button" id="calcToggleBtn" onclick="toggleCalcAccordion()" class="flex items-center justify-center gap-2 mx-auto rounded-full bg-white text-accent-terracotta font-semibold text-sm px-5 py-2.5 mt-4 shadow-md">
                             <span id="calcToggleLabel">Собрать свой комплекс</span>
@@ -744,7 +738,7 @@
                         <span class="text-xs font-display font-bold uppercase text-white/80 block mb-3 tracking-[0.18em]">Комплексное решение</span>
                         <h2 class="font-display text-3xl md:text-4xl font-bold text-white leading-snug">Комплекс: цифровая экосистема</h2>
                         <p class="text-white/90 leading-relaxed font-light mb-2 mt-4 text-base max-w-2xl mx-auto">
-                            Выбери, что нужно для полной системы продаж — сайт, агент, воронка и другое. Чем больше берёшь вместе, тем ниже цена за каждую часть
+                            Выберите, что нужно для полной системы продаж — сайт, агент, воронка и другое. Чем больше берёте вместе, тем ниже цена за каждую часть
                         </p>
                     </div>
                 </div>
@@ -868,7 +862,6 @@
 
     <!-- SECTION: About / Trust -->
     <section id="about" class="py-16 relative z-10 px-4">
-        <div class="absolute top-0 right-1/3 w-48 h-48 bg-accent-sage/10 rounded-full blur-[100px] pointer-events-none"></div>
         <div class="reveal-up max-w-4xl mx-auto glass-panel rounded-[3rem] p-8 sm:p-10 md:p-12 border border-white shadow-xl flex flex-col lg:flex-row items-center gap-10 text-center lg:text-left relative">
             <img src="assets/nika-portrait.jpg" alt="Ника Кузнецова" class="w-36 h-36 lg:w-56 lg:h-56 rounded-full object-cover shadow-lg border-4 border-white shrink-0">
             <div class="lg:flex-1">
@@ -907,7 +900,6 @@
 
     <!-- SECTION: Premium Caring Accordion FAQ -->
     <section id="faq" class="py-20 relative z-10 px-4 overflow-hidden">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-48 bg-accent-terracotta/[0.06] rounded-full blur-[100px] pointer-events-none"></div>
         <div class="max-w-3xl mx-auto">
             
             <div class="text-center mb-8 md:mb-10">
@@ -1027,7 +1019,6 @@
     <!-- Section: Final CTA / Audit with tighter spacing -->
     <section id="audit" class="py-16 relative z-10 px-4">
         
-        <div class="absolute -bottom-10 right-1/4 w-64 h-64 bg-accent-sunset/10 rounded-full blur-[100px] pointer-events-none"></div>
 
         <div class="max-w-4xl mx-auto">
             
@@ -1123,8 +1114,45 @@
 
         </div>
 
-        <div class="absolute -bottom-16 left-1/4 w-56 h-56 bg-accent-gold/10 rounded-full blur-[100px] pointer-events-none"></div>
     </section>
+
+    <!-- SECTION: Footer -->
+    <footer class="relative z-10 px-4 pt-14 pb-8 mt-8 border-t border-serene-900/10">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid gap-10 md:grid-cols-3">
+                <div>
+                    <p class="font-display text-xl font-bold text-serene-900">Ника Кузнецова</p>
+                    <p class="mt-2 text-sm leading-relaxed text-serene-800/80">Сайты, сервисы и ИИ-агенты для экспертов и предпринимателей</p>
+                    <a href="#audit" class="mt-5 inline-flex items-center rounded-full bg-gradient-to-r from-accent-terracotta to-accent-sunset text-white font-bold text-sm px-5 py-2.5 shadow-md hover:shadow-lg active:scale-95 transition-transform">Бесплатный аудит</a>
+                </div>
+
+                <nav aria-label="Разделы сайта">
+                    <p class="eyebrow">Разделы</p>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="#services" class="text-serene-800 hover:text-accent-terracotta transition-colors">Услуги</a></li>
+                        <li><a href="/portfolio/" class="text-serene-800 hover:text-accent-terracotta transition-colors">Кейсы</a></li>
+                        <li><a href="#audit" class="text-serene-800 hover:text-accent-terracotta transition-colors">Бесплатный аудит</a></li>
+                    </ul>
+                </nav>
+
+                <div>
+                    <p class="eyebrow">Контакты</p>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="https://t.me/nikakuznecovaa" target="_blank" rel="noopener" class="text-serene-800 hover:text-accent-terracotta transition-colors">Telegram: @nikakuznecovaa</a></li>
+                        <li><a href="mailto:nika.kuz.99@mail.ru" class="text-serene-800 hover:text-accent-terracotta transition-colors">nika.kuz.99@mail.ru</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-12 pt-6 border-t border-serene-900/10 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-xs text-serene-800/70 leading-relaxed">
+                <p>
+                    © <span id="footerYear">2026</span> Кузнецова Вероника Алексеевна · самозанятая, Санкт-Петербург
+                    <!-- ИНН: добавить после « · самозанятая, Санкт-Петербург» как « · ИНН 000000000000» -->
+                </p>
+                <a href="privacy.html" class="underline underline-offset-4 hover:text-accent-terracotta transition-colors">Политика конфиденциальности</a>
+            </div>
+        </div>
+    </footer>
 
 
 <!-- Custom Application Logic -->
@@ -1203,7 +1231,6 @@
                 items.forEach(animate);
                 return;
             }
-            if (!reduceMotion) items.forEach(el => { el.textContent = format(el, 0); });
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
