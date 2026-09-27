@@ -24,12 +24,12 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=92">
+    <link rel="stylesheet" href="assets/styles.css?v=93">
 
-    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <!-- Google Fonts: Manrope & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -216,43 +216,6 @@
 </head>
 <body class="antialiased selection:bg-accent-sunset/20 selection:text-serene-900">
 
-    <noscript><style>#preloader{display:none!important}</style></noscript>
-    <div id="preloader" class="fixed inset-0 z-[100] flex items-center justify-center bg-serene-50 px-6">
-        <pre id="preloaderCode" class="font-mono text-[11px] sm:text-sm text-serene-800 leading-relaxed whitespace-pre-wrap max-w-md"></pre>
-    </div>
-    <script>
-        (function() {
-            var preloader = document.getElementById('preloader');
-            var codeEl = document.getElementById('preloaderCode');
-            if (!preloader || !codeEl) return;
-            var text = 'const nika = new Developer({ mode: "vibecoding" });\nnika.experience = "6 years in sales";\nbuild(yourIdea).launch();\n// loading...';
-            var i = 0;
-            function type() {
-                if (i <= text.length) {
-                    codeEl.textContent = text.slice(0, i) + '▌';
-                    i += 2;
-                    setTimeout(type, 12);
-                } else {
-                    codeEl.textContent = text;
-                }
-            }
-            type();
-
-            var hidden = false;
-            function hidePreloader() {
-                if (hidden) return;
-                hidden = true;
-                preloader.style.transition = 'opacity 0.5s ease, visibility 0.5s ease';
-                preloader.style.opacity = '0';
-                preloader.style.visibility = 'hidden';
-                preloader.style.pointerEvents = 'none';
-                setTimeout(function() { preloader.style.display = 'none'; }, 600);
-            }
-            window.addEventListener('load', hidePreloader);
-            setTimeout(hidePreloader, 4000);
-        })();
-    </script>
-
     <!-- SECTION: Top navigation -->
     <header id="siteNav" class="sticky top-3 sm:top-4 z-30 px-3 sm:px-6">
         <div class="max-w-2xl mx-auto glass-panel rounded-full shadow-lg border border-white/70 px-4 sm:px-6 h-16 flex items-center justify-between">
@@ -335,7 +298,7 @@
                     <p class="text-xs text-serene-800/70">опыта в продажах и маркетинге</p>
                 </div>
                 <div class="text-center">
-                    <p class="count-up font-display text-2xl font-bold text-accent-terracotta" data-count-to="3" data-suffix=" дня">3 дня</p>
+                    <p class="count-up font-display text-2xl font-bold text-accent-terracotta" data-count-to="5" data-suffix=" дней">5 дней</p>
                     <p class="text-xs text-serene-800/70">средний срок разработки готового продукта</p>
                 </div>
             </div>
@@ -365,7 +328,7 @@
                         <p class="text-xs text-serene-800/70">опыта в продажах и маркетинге</p>
                     </div>
                     <div>
-                        <p class="count-up font-display text-2xl font-bold text-accent-terracotta" data-count-to="3" data-suffix=" дня">3 дня</p>
+                        <p class="count-up font-display text-2xl font-bold text-accent-terracotta" data-count-to="5" data-suffix=" дней">5 дней</p>
                         <p class="text-xs text-serene-800/70">средний срок разработки готового продукта</p>
                     </div>
                 </div>
