@@ -28,7 +28,7 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=113">
+    <link rel="stylesheet" href="assets/styles.css?v=114">
 
     <!-- Шрифты хранятся на сайте: assets/fonts -->
     <link rel="preload" href="assets/fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
@@ -1000,6 +1000,17 @@
         </div>
     </section>
 
+    <!-- Приглашение в квиз -->
+    <div class="px-4 pb-10 -mt-4 relative z-10">
+        <div class="quiz-band max-w-3xl mx-auto text-center">
+            <span class="quiz-band-ic" aria-hidden="true">⚡️</span>
+            <h2 class="quiz-band-title font-display">Не знаете, что выбрать?</h2>
+            <p class="quiz-band-sub">3 вопроса — и я подскажу, какое решение закроет вашу задачу</p>
+            <a href="quiz.html" class="quiz-band-btn">Пройти тест <svg class="w-[18px] h-[18px] shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+            <p class="quiz-band-note">Бесплатно, без регистрации</p>
+        </div>
+    </div>
+
     <div class="flex items-center justify-center gap-3 py-1 relative z-10">
         <div class="w-16 sm:w-24 h-px bg-serene-900/15"></div>
         <span class="text-accent-terracotta text-xs">✦</span>
@@ -1214,17 +1225,6 @@
         <div class="w-16 sm:w-24 h-px bg-serene-900/15"></div>
         <span class="text-accent-terracotta text-xs">✦</span>
         <div class="w-16 sm:w-24 h-px bg-serene-900/15"></div>
-    </div>
-
-    <!-- Приглашение в квиз -->
-    <div class="px-4 py-6 relative z-10">
-        <div class="quiz-band max-w-3xl mx-auto text-center">
-            <span class="quiz-band-ic" aria-hidden="true">⚡️</span>
-            <h2 class="quiz-band-title font-display">Не знаете, что выбрать?</h2>
-            <p class="quiz-band-sub">3 вопроса — и я подскажу, какое решение закроет вашу задачу</p>
-            <a href="quiz.html" class="quiz-band-btn">Пройти тест <svg class="w-[18px] h-[18px] shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-            <p class="quiz-band-note">Бесплатно, без регистрации</p>
-        </div>
     </div>
 
     <!-- Section: Final CTA / Audit with tighter spacing -->
