@@ -28,7 +28,7 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=118">
+    <link rel="stylesheet" href="assets/styles.css?v=119">
 
     <!-- Шрифты хранятся на сайте: assets/fonts -->
     <link rel="preload" href="assets/fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
@@ -281,8 +281,8 @@
         .about-role { font-size: 0.875rem; color: #6b655e; margin-top: 0.25rem; }
         .about-text { font-size: 1rem; line-height: 1.65; color: #3d3a36; }
         .about-text p + p { margin-top: 0.875rem; }
+        .about-text { margin-bottom: 1.5rem; }
         .about-text mark { background: linear-gradient(transparent 60%, rgba(244,162,97,0.35) 60%); color: #22211F; }
-        .about-sign { font-size: 1.375rem; color: #E07A5F; margin: 1.25rem 0 1.5rem; }
         .about-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
         .about-chips span { font-size: 0.875rem; padding: 0.5rem 0.875rem; border-radius: 9999px; background: #FFF7F2; border: 1px solid rgba(224,122,95,0.22); color: #3d3a36; }
         .about-chips a { text-decoration: underline; text-underline-offset: 3px; }
@@ -297,7 +297,10 @@
             .about-name { font-size: 1.5rem; }
             .about-text { font-size: 1.125rem; }
             .about-btn-main, .about-btn-alt { width: auto; }
+            .about-letter { max-width: 54rem; }
         }
+        /* факты в одну строку, когда хватает ширины */
+        @media (min-width: 1024px) { .about-chips { flex-wrap: nowrap; } .about-chips span { white-space: nowrap; } }
         /* Цифры одинаковой ширины — счётчик не дёргает строку */
         .count-up { font-variant-numeric: tabular-nums; }
         /* Glassmorphism panel */
@@ -1064,7 +1067,6 @@
                 <p>6 лет я работала в продажах и маркетинге и видела одно и то же: <mark>сильные эксперты теряют клиентов из-за слабой упаковки</mark> — сайта, по которому непонятно, чем они помогают, и переписки, в которой тонут заявки.</p>
                 <p>Когда появился вайбкодинг, я поняла, что могу собирать такие инструменты сама — <mark>за дни, а не месяцы</mark>. Без студии, менеджеров и испорченного телефона: вы общаетесь со мной от первого созвона до запуска.</p>
             </div>
-            <p class="about-sign font-display">— Ника</p>
             <div class="about-chips">
                 <span>🎯 6 лет в продажах</span>
                 <span>⚡️ 30+ проектов с ИИ</span>
