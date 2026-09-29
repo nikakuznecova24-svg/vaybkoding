@@ -28,7 +28,7 @@
     <!-- ================================================================= -->
 
     <!-- Скомпилированные стили (собраны заранее, без загрузки движка tailwind в браузере) -->
-    <link rel="stylesheet" href="assets/styles.css?v=123">
+    <link rel="stylesheet" href="assets/styles.css?v=124">
 
     <!-- Шрифты хранятся на сайте: assets/fonts -->
     <link rel="preload" href="assets/fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
@@ -469,6 +469,7 @@
                 <a href="#about" class="text-sm font-medium text-serene-800 hover:text-accent-terracotta transition-colors">Обо мне</a>
                 <a href="#services" class="text-sm font-medium text-serene-800 hover:text-accent-terracotta transition-colors">Услуги</a>
                 <a href="/portfolio/" class="text-sm font-medium text-serene-800 hover:text-accent-terracotta transition-colors">Кейсы</a>
+                <a href="#articles" class="text-sm font-medium text-serene-800 hover:text-accent-terracotta transition-colors">Статьи</a>
                 <a href="#faq" class="text-sm font-medium text-serene-800 hover:text-accent-terracotta transition-colors">Q&amp;A</a>
             </nav>
 
@@ -490,6 +491,7 @@
             <a href="#about" onclick="closeMobileNav()" class="py-3 text-lg font-normal text-serene-800/70">Обо мне</a>
             <a href="#services" onclick="closeMobileNav()" class="py-3 text-lg font-normal text-serene-800/70">Услуги</a>
             <a href="/portfolio/" class="py-3 text-lg font-normal text-serene-800/70">Кейсы</a>
+            <a href="#articles" onclick="closeMobileNav()" class="py-3 text-lg font-normal text-serene-800/70">Статьи</a>
             <a href="#faq" onclick="closeMobileNav()" class="py-3 text-lg font-normal text-serene-800/70">Q&amp;A</a>
             <a href="#audit" onclick="closeMobileNav()" class="mt-4 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-accent-terracotta to-accent-sunset text-white font-bold text-sm px-5 py-3 shadow-md">
                 Бесплатный аудит
@@ -1161,6 +1163,28 @@
                 </div>
 
             </div>
+        </div>
+    </section>
+
+    <div class="flex items-center justify-center gap-3 py-1 relative z-10">
+        <div class="w-16 sm:w-24 h-px bg-serene-900/15"></div>
+        <span class="text-accent-terracotta text-xs">✦</span>
+        <div class="w-16 sm:w-24 h-px bg-serene-900/15"></div>
+    </div>
+
+    <!-- SECTION: Articles -->
+    <section id="articles" class="py-16 relative z-10 px-4">
+        <div class="max-w-3xl mx-auto">
+            <div class="flex items-end justify-between gap-4 mb-6">
+                <h2 class="font-display text-4xl sm:text-5xl font-extrabold text-accent-terracotta leading-none tracking-tight">Статьи</h2>
+                <span class="text-[11px] sm:text-sm text-serene-800/45 font-medium whitespace-nowrap pb-1.5">(Про ИИ и бизнес)</span>
+            </div>
+            <div class="h-px bg-serene-900/10 mb-6"></div>
+            <a href="/articles/rutina-stoimost.html" class="block bg-white p-6 sm:p-8 rounded-3xl border border-serene-900/[0.06] shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+                <h3 class="font-display text-xl sm:text-2xl font-bold text-serene-900 leading-snug">Сколько вы платите за рутину, которую может делать ИИ</h3>
+                <p class="text-serene-800 text-sm leading-relaxed font-light mt-2">Считаем вместе, сколько бизнес тратит на повторяющуюся работу и что из неё уже сегодня может взять на себя ИИ.</p>
+                <span class="inline-block mt-4 text-accent-terracotta font-semibold text-sm">Читать статью →</span>
+            </a>
         </div>
     </section>
 
