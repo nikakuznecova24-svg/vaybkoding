@@ -264,6 +264,15 @@
                 </div>
 
                 <div class="portfolio-item spotlight-card bg-gradient-to-br from-white to-accent-terracotta/[0.05] rounded-[2.5rem] p-6 md:p-8 border border-accent-terracotta/10 shadow-xl flex flex-col hover:shadow-2xl transition-all duration-300" data-category="агенты">
+                    <div class="relative w-full rounded-2xl mb-4 overflow-hidden" data-yt="VyfvsoIkh-c" style="padding-top: 56.25%; background: #000;">
+                        <button type="button" onclick="playInlineVideo(this)" class="absolute inset-0 w-full h-full" style="border:0; padding:0; cursor:pointer; background-image:url('https://i.ytimg.com/vi/VyfvsoIkh-c/hqdefault.jpg'); background-size:cover; background-position:center;">
+                            <span class="absolute inset-0 flex items-center justify-center">
+                                <span style="width:3.5rem; height:3.5rem; border-radius:9999px; background:rgba(255,255,255,0.95); display:flex; align-items:center; justify-content:center; box-shadow:0 8px 20px -8px rgba(0,0,0,0.5);">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="#22211F"><path d="M8 5v14l11-7z"/></svg>
+                                </span>
+                            </span>
+                        </button>
+                    </div>
                     <h3 class="font-display text-lg md:text-xl font-bold text-serene-900 mb-3">Личный ИИ-агент</h3>
                     <div class="text-serene-800 text-sm md:text-base leading-snug space-y-2 mb-3">
                         <p><strong class="font-semibold text-serene-900">Задача:</strong> собрать задачи, напоминания и переписки в одном месте</p>
@@ -533,6 +542,12 @@
         window.addEventListener('load', function() {
             try { initTelegramLinks(); } catch(e) { console.error('telegram links init failed', e); }
         });
+
+        function playInlineVideo(btn) {
+            var wrap = btn.closest('[data-yt]');
+            var id = wrap.getAttribute('data-yt');
+            wrap.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0" title="видео" style="position:absolute; inset:0; width:100%; height:100%; border:0;" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+        }
 
         function togglePortfolioCard(btn) {
             const wrap = btn.parentElement;
